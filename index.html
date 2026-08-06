@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Golf - Sport- und Golf-Resort Gut Wissmannshof</title>
+    <meta name="description" content="Erlebe das 18-Loch Piraten-Adventure-Golf-Abenteuer auf Gut Wissmannshof. Spaß für die ganze Familie mit Übernachten, Schlemmen und Golfen!">
+    
+    <!-- Link to Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon (Fallback to high-quality SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏴‍☠️</text></svg>">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         Header & Navigation
+         ========================================================================== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-link" aria-label="Gut Wissmannshof Home">
+                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="logo-img">
+            </a>
+            
+            <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#welcome" class="nav-link" data-t="navWelcome">An Bord</a></li>
+                    <li><a href="#holes" class="nav-link" data-t="navHoles">Bahnen</a></li>
+                    <li><a href="#promo" class="nav-link" data-t="navPromo">Adventure & Golf</a></li>
+                    <li><a href="#prices" class="nav-link" data-t="navPrices">Preise & Zeiten</a></li>
+                    <li><a href="#rules" class="nav-link" data-t="navRules">Spielregeln</a></li>
+                    <li><a href="#contact" class="nav-link" data-t="navContact">Kontakt & Anfahrt</a></li>
+                    <li>
+                        <div class="lang-switcher">
+                            <button id="lang-de" class="lang-btn active">DE</button>
+                            <button id="lang-en" class="lang-btn">EN</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <span class="hero-tagline" data-t="heroTagline">Adventure Golf Gut Wissmannshof</span>
+            <h1 data-t="heroHeadline">Ahoi Landratten – euer Heimathafen für Betten, Beute und Abenteuer!</h1>
+            <p class="hero-subclaim" data-t="heroSub">Übernachten · Schlemmen · Golf spielen · Spaß haben</p>
+            <div class="hero-buttons">
+                <a href="#promo" class="btn btn-primary trigger-booking" data-t="btnBook">Abenteuer buchen</a>
+                <a href="#holes" class="btn btn-secondary" data-t="btnExplore">Die Bahnen erkunden</a>
+            </div>
+        </div>
+        
+        <!-- Waves Divider SVG -->
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,55.05,16.22,83.1,22.81,154.5,39.63,228.42,63.66,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Missionsbrief Section (Parchment)
+         ========================================================================== -->
+    <section id="welcome">
+        <div class="container">
+            <div class="welcome-scroll">
+                <!-- Pirate Skull Emblem -->
+                <div class="pirate-emblem-wrapper">
+                    <img src="assets/logo_pirate.jpg" alt="Gut Wissmannshof Pirate Logo" class="logo-pirate">
+                </div>
+                <div class="scroll-text">
+                    <h2 class="scroll-title" data-t="scrollTitle">An Bord der Gut Wissmannshof</h2>
+                    <div class="scroll-divider">
+                        <span></span>
+                        <!-- SVG Ship Wheel Ornament -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="%23B8963E" style="display:inline-block; vertical-align:middle;">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h-2zm0 6h2v4h-2z" fill="#B8963E"/>
+                        </svg>
+                        <span></span>
+                    </div>
+                    <p class="scroll-message" data-t="scrollMessage">
+                        Willkommen im ultimativen Heimathafen für die ganze Crew! Bei uns tauscht ihr harte Planken gegen gemütliche Hotelbetten, hungrige Mägen gegen feinste Piratenkost in unserem Restaurant, und wilde Meere gegen unsere traumhaften Golf-Landschaften. Egal ob ihr die Bälle auf unserer 18-Loch-Adventure-Golfanlage einlocht oder den Abschlag auf dem großen Meisterschaftsplatz wagt – hier ist der Spaß für Groß und Klein garantiert!
+                    </p>
+                </div>
+                
+                <div class="resort-features">
+                    <div class="feature-badge">
+                        <div class="feature-icon-wrapper">🏴‍☠️</div>
+                        <h4 data-t="featSleep">Übernachten</h4>
+                        <p class="caption" data-t="featSleepDesc">Kajüten & Kojen</p>
+                    </div>
+                    <div class="feature-badge">
+                        <div class="feature-icon-wrapper">🍖</div>
+                        <h4 data-t="featEat">Schlemmen</h4>
+                        <p class="caption" data-t="featEatDesc">Kombüsen-Genuss</p>
+                    </div>
+                    <div class="feature-badge">
+                        <div class="feature-icon-wrapper">🏌️</div>
+                        <h4 data-t="featGolf">Golfen</h4>
+                        <p class="caption" data-t="featGolfDesc">Großes Fairway</p>
+                    </div>
+                    <div class="feature-badge">
+                        <div class="feature-icon-wrapper">⚓</div>
+                        <h4 data-t="featFun">Spaß haben</h4>
+                        <p class="caption" data-t="featFunDesc">Für die ganze Crew</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Interactive Scorecard & 18 Holes
+         ========================================================================== -->
+    <section class="scorecard-section" id="holes">
+        <div class="container">
+            <div class="section-bar">
+                <span data-t="scorecardTitle">Interaktive Scorekarte & Bahnen-Plan</span>
+                <span>18 HOLES</span>
+            </div>
+            
+            <p style="text-align: center; max-width: 700px; margin: -20px auto 40px; font-weight: 500;" data-t="scorecardSubtitle">
+                Klickt auf eine Bahn, um den Kurs und die Slogans für eure Scorekarte zu enthüllen!
+            </p>
+            
+            <div class="scorecard-layout">
+                <!-- Holes Grid Selectors -->
+                <div class="holes-grid-container">
+                    <h3 data-t="navHoles">Bahnen</h3>
+                    <div class="holes-grid" id="holes-grid">
+                        <!-- Javascript generates 18 hole buttons here -->
+                    </div>
+                    
+                    <!-- Integrated Bahnen-Plan / Course Map -->
+                    <div class="map-container">
+                        <img src="assets/adventure_golf_map.jpg" alt="Adventure Golf Bahnen-Plan" class="map-img" onclick="window.open(this.src)">
+                    </div>
+                </div>
+                
+                <!-- Active Hole Detail Card -->
+                <div class="hole-detail-panel" id="hole-detail-panel">
+                    <div class="hole-detail-header">
+                        <div class="hole-title-group">
+                            <h2><span data-t="holeLabel">Bahn</span> <span id="hole-num-val">1</span></h2>
+                            <div style="font-size: 0.9rem; color: var(--color-gold-light); font-weight: 600; margin-top: 5px;" id="hole-loop-val">Schleife 1: Dschungel-Camp</div>
+                        </div>
+                        <div class="hole-stats">
+                            <div class="stat-item"><span data-t="parLabel">Par</span>: <span id="hole-par-val">3</span></div>
+                            <div class="stat-item"><span data-t="distLabel">Länge</span>: <span id="hole-dist-val">12m</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hole-quote-box">
+                        <p>“<span id="hole-quote">Quote will load here.</span>”</p>
+                    </div>
+                    
+                    <p class="hole-description" id="hole-desc">Hole description goes here...</p>
+                    
+                    <div class="hole-nav-footer">
+                        <button class="hole-nav-btn" id="hole-prev-btn" data-t="btnPrevHole">Vorherige</button>
+                        <button class="hole-nav-btn" id="hole-next-btn" data-t="btnNextHole">Nächste</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ==========================================================================
+         Special Offer: Adventure & Golf (15-Sec Promo Screen)
+         ========================================================================== -->
+    <section class="promo-section" id="promo">
+        <div class="container">
+            <div class="promo-container">
+                <div class="promo-content">
+                    <span class="promo-badge" data-t="promoBadge">Neues Gruppen-Angebot</span>
+                    <h2 data-t="promoTitle">Adventure & Golf</h2>
+                    <p class="promo-description" data-t="promoDesc">
+                        Ihr habt auf unserem Adventure-Golfplatz Blut geleckt und wollt wissen, wie sich echtes Golf anfühlt? Trommelt mindestens 6 Piraten zusammen und bucht unser exklusives Schnupperpaket!
+                    </p>
+                    <!-- Embedded Golf Clinic Image -->
+                    <div style="border-radius:var(--border-radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.2); box-shadow:var(--shadow-subtle);">
+                        <img src="assets/golf_clinic.jpg" alt="Golf Clinic" style="width:100%; display:block; aspect-ratio:3/2; object-fit:cover;">
+                    </div>
+                </div>
+                
+                <!-- 15-Second Compact Flyer Card -->
+                <div class="promo-card">
+                    <div class="promo-card-header">
+                        <h3 data-t="promoCardTitle">Adventure & Golf Paket</h3>
+                        <p data-t="promoCardSub">Das Rundum-Abenteuer für die Crew</p>
+                    </div>
+                    
+                    <ul class="promo-features-list">
+                        <li data-t="promoFeat1">90 Minuten Golf-Workspiel mit einem Profi-Trainer auf der Driving Range & Übungsplatz</li>
+                        <li data-t="promoFeat2">Anschließend eine komplette 18-Loch-Runde auf unserem Adventure-Golf-Kurs</li>
+                        <li data-t="promoFeat3">Großer Piraten-Pommes-Teller zum Picken für die ganze Crew nach der Runde</li>
+                        <li data-t="promoFeat4">Ein erfrischender Softdrink pro Person inklusive</li>
+                    </ul>
+                    
+                    <div class="promo-price-block">
+                        <span class="price-label" data-t="promoPricePerPerson">Pro Person</span>
+                        <span class="price-val">33 €</span>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary trigger-booking" data-t="btnEnlist">Jetzt Crew anheuern</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Bildergalerie / Slider Section
+         ========================================================================== -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-bar">
+                <span data-t="galleryTitle">Impressionen vom Kurs</span>
+                <span>RESORT VIEWS</span>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="assets/entrance.jpg" alt="Haupteingang & Kräuterspirale">
+                        <div class="slide-caption">
+                            <h3 data-t="slide1Title">Haupteingang & Kräuterspirale</h3>
+                            <p data-t="slide1Desc">Eingangsbereich der 18-Loch Adventure Golf-Anlage mit der gemauerten Kräuterspirale.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="assets/jeep.jpg" alt="Safari-Hole mit Zebra-Jeep">
+                        <div class="slide-caption">
+                            <h3 data-t="slide2Title">Safari-Hole mit Zebra-Jeep</h3>
+                            <p data-t="slide2Desc">Abwechslungsreiche Geländeverläufe mit echten Geländewagen als Hindernisse.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="assets/barrels.jpg" alt="Fässer-Hindernis & Golfcart">
+                        <div class="slide-caption">
+                            <h3 data-t="slide3Title">Fässer-Hindernis & Golfcart</h3>
+                            <p data-t="slide3Desc">Spielt um die urigen Weinfässer herum und meidet die Sandbunker.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="assets/pommes_fries.jpg" alt="Riesen-Pommes zum Picken">
+                        <div class="slide-caption">
+                            <h3 data-t="slide4Title">Kombüsen-Schmaus</h3>
+                            <p data-t="slide4Desc">Nach dem Törn gibt es leckere Pommes zum Picken für die ganze Crew.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="slider-control-btn slider-prev" id="slider-prev" aria-label="Previous image">&#10094;</button>
+                <button class="slider-control-btn slider-next" id="slider-next" aria-label="Next image">&#10095;</button>
+                
+                <div class="slider-dots" id="slider-dots">
+                    <!-- JS injects dots here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Pricing & General Info Table (SGR Datentabelle & Highlight Box)
+         ========================================================================== -->
+    <section class="info-section" id="prices">
+        <div class="container">
+            <div class="info-grid">
+                <!-- Left: Prices table conforming to CI guidelines -->
+                <div class="pricing-wrapper">
+                    <div class="section-bar">
+                        <span data-t="pricesTitle">Eintrittspreise & Zeiten</span>
+                        <span>PRICES</span>
+                    </div>
+                    
+                    <table class="sgr-table">
+                        <thead>
+                            <tr>
+                                <th data-t="priceHeaderAge">Spieler</th>
+                                <th style="text-align: right;" data-t="priceHeaderPrice">Preis (Runde)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-t="priceAdult">Erwachsene</td>
+                                <td class="price-col">8,50 €</td>
+                            </tr>
+                            <tr>
+                                <td data-t="priceKid">Kinder (bis 12 Jahre)</td>
+                                <td class="price-col">5,00 €</td>
+                            </tr>
+                            <tr>
+                                <td data-t="priceFamily">Familienkarte (2 Erw. + 2 Kinder)</td>
+                                <td class="price-col">24,00 €</td>
+                            </tr>
+                            <tr>
+                                <td data-t="priceTen">10er-Karte (Erwachsene)</td>
+                                <td class="price-col">75,00 €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Highlight-Box with Gold Border matching SGR design rules -->
+                    <div class="highlight-box">
+                        <span data-t="priceNote">Preishighlight: Neue Automaten für Schläger & Bälle vor Ort!</span>
+                    </div>
+                </div>
+                
+                <!-- Right: Opening hours & Contact Info Lines matching SGR rules -->
+                <div class="times-wrapper">
+                    <div class="section-bar">
+                        <span data-t="hoursTitle">Öffnungszeiten</span>
+                        <span>HOURS</span>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="font-size:1.3rem; margin-bottom:10px;" data-t="hoursDaily">Täglich geöffnet</h4>
+                        <p style="font-size: 1.8rem; font-weight: 700; color: var(--color-gold);" data-t="hoursTimes">07:00 – 21:00 Uhr</p>
+                        <p style="margin-top: 15px; color: var(--color-warm-gray);" data-t="hoursDesc">
+                            Dank unseres neuen Ticket- und Schlägerautomaten könnt ihr jederzeit flexibel spielen, unabhängig von den Bürozeiten!
+                        </p>
+                    </div>
+                    
+                    <div class="info-lines-wrapper">
+                        <div class="section-bar" style="margin-bottom: 20px;">
+                            <span data-t="contactTitle">Heimathafen Koordinaten</span>
+                            <span>INFO</span>
+                        </div>
+                        
+                        <div class="info-line">
+                            <span class="info-line-label" data-t="contactHdrAddress">Adresse</span>
+                            <span class="info-line-value">Wissmannshof 1, 34355 Staufenberg</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-line-label" data-t="contactHdrPhone">Telefon</span>
+                            <span class="info-line-value">+49 (0) 55 43 / 999 335</span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-line-label" data-t="contactHdrEmail">E-Mail</span>
+                            <span class="info-line-value"><a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></span>
+                        </div>
+                        <div class="info-line">
+                            <span class="info-line-label" data-t="contactHdrWeb">Webseite</span>
+                            <span class="info-line-value"><a href="https://www.wissmannshof.de" target="_blank">www.wissmannshof.de</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Automaten-Anleitung (Kiosk Guide)
+         ========================================================================== -->
+    <section class="kiosk-guide-section" id="kiosk-guide" style="background-color: var(--color-cream); border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="section-bar">
+                <span data-t="kioskSectionTitle">Schläger- & Ballausgabe</span>
+                <span>KIOSK GUIDE</span>
+            </div>
+            
+            <p style="text-align: center; max-width: 700px; margin: -20px auto 40px; font-weight: 500;" data-t="kioskSectionSubtitle">
+                So funktioniert unser moderner Ticket- und Mietautomat vor Ort
+            </p>
+            
+            <div class="kiosk-grid">
+                <!-- Step 1 -->
+                <div class="kiosk-step">
+                    <div class="kiosk-step-num">1</div>
+                    <h4 data-t="kioskStep1Title">1. Bezahlung</h4>
+                    <p data-t="kioskStep1Desc">Bezahlt bequem bargeldlos mit EC-Karte oder Kreditkarte am Automaten-Terminal.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="kiosk-step">
+                    <div class="kiosk-step-num">2</div>
+                    <h4 data-t="kioskStep2Title">2. Schläger wählen</h4>
+                    <p data-t="kioskStep2Desc">Wählt die gewünschte Anzahl aus. Die Fächer sind mit 2, 3 oder 4 Schlägern und Bällen befüllt.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="kiosk-step">
+                    <div class="kiosk-step-num">3</div>
+                    <h4 data-t="kioskStep3Title">3. E-Mail & PIN</h4>
+                    <p data-t="kioskStep3Desc">Gebt eure E-Mail-Adresse und einen selbst erdachten 6-stelligen PIN ein. Der PIN wird euch per E-Mail gesendet. Gut merken!</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="kiosk-step">
+                    <div class="kiosk-step-num">4</div>
+                    <h4 data-t="kioskStep4Title">4. Fach öffnen & spielen</h4>
+                    <p data-t="kioskStep4Desc">Das Fach öffnet sich automatisch. Schläger entnehmen und loslegen. (Es wird 15 € Kaution pro Fach berücksichtigt).</p>
+                </div>
+                <!-- Step 5 -->
+                <div class="kiosk-step">
+                    <div class="kiosk-step-num">5</div>
+                    <h4 data-t="kioskStep5Title">5. Rückgabe</h4>
+                    <p data-t="kioskStep5Desc">PIN eingeben, Fach öffnet sich. Schläger und Bälle vollzählig wieder einstellen. Die Kaution wird sofort erstattet!</p>
+                </div>
+            </div>
+            
+            <!-- Highlight Box (Gold-Rahmen) for instructions rule -->
+            <div class="kiosk-alert-box">
+                <div class="kiosk-alert-icon">⚠️</div>
+                <div class="kiosk-alert-content">
+                    <h4 data-t="kioskAlertTitle">Wichtiger Hinweis zur Schlägerrückgabe</h4>
+                    <p data-t="kioskAlertDesc">Sollte einmal ein Ball verloren gehen, ist das kein Problem – unsere Crew sucht ihn wieder. Wichtig ist aber, dass die geliehenen Schläger vollzählig wieder im Fach stehen, damit das Spiel ordnungsgemäß beendet wird.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Spielregeln & Verhaltensregeln (Rules & Conduct)
+         ========================================================================== -->
+    <section class="rules-section" id="rules" style="background-color: var(--color-white); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="section-bar">
+                <span data-t="rulesTitle">Spiel- & Verhaltensregeln</span>
+                <span>REGELN</span>
+            </div>
+            
+            <p style="text-align: center; max-width: 700px; margin: -20px auto 40px; font-weight: 500;" data-t="rulesSubtitle">
+                Für eine sichere, faire und lustige Runde auf unserem Parcours
+            </p>
+            
+            <div class="rules-grid">
+                <!-- Column 1: Game Rules -->
+                <div class="rules-column">
+                    <h3 class="rules-column-header" data-t="rulesHeader">Spielregeln (Auszug)</h3>
+                    <ul class="sgr-bullet-list">
+                        <li data-t="rulesF1">Maximal 4 Spieler bilden eine Spielergruppe (Flight). Größere Gruppen teilen sich auf.</li>
+                        <li data-t="rulesF2">Ziel ist es, den Ball mit möglichst wenigen Schlägen ins Loch zu bringen. Jeder Schlag zählt als Punkt.</li>
+                        <li data-t="rulesF3">Nach maximal 7 Schlägen ohne Erfolg wird eine 8 notiert und die Bahn ist beendet.</li>
+                        <li data-t="rulesF4">Der Ball wird zum Start innerhalb einer Putterlänge von der hinteren Begrenzung eingesetzt.</li>
+                        <li data-t="rulesF5">Die Lochfahnen verbleiben während des Spiels immer im Loch.</li>
+                        <li data-t="rulesF6">Landet ein Ball im Wasser oder Aus, wird er an der Austrittsstelle eingesetzt (+ 1 Strafschlag).</li>
+                      </ul>
+                      <p style="margin-top: 20px; font-style: italic; color: var(--color-warm-gray); text-align: center;" data-t="rulesEndNote">
+                          Am Ende werden alle Schläge addiert – Sieger ist, wer am wenigsten Schläge benötigt.
+                      </p>
+                  </div>
+                  
+                  <!-- Column 2: Code of Conduct -->
+                  <div class="rules-column">
+                      <h3 class="rules-column-header" data-t="conductHeader">Verhaltensregeln</h3>
+                      <ul class="sgr-bullet-list">
+                          <li data-t="conductF1">Spielbahnen nur mit flachen, möglichst rutschfesten (Sport-)Schuhen betreten.</li>
+                          <li data-t="conductF2">Die Reihenfolge der Bahnen 1-9 (Dschungel-Camp) sowie 1-9 (Schatzsuche) ist einzuhalten.</li>
+                          <li data-t="conductF3">Bitte andere Gruppen nicht durch hohen Lärmpegel oder vorzeitiges Betreten stören.</li>
+                          <li data-t="conductF4">Nur mit Leihgeräten spielen. Bei Verlust: Ball 1,00 € | Schläger 12,00 € Gebühr.</li>
+                          <li data-t="conductF5">Niemals direkt hinter einem Spieler stehen, der gerade ausholt oder schlägt.</li>
+                          <li data-t="conductF6">Bälle aus dem Wasser ausschließlich mit den bereitstehenden Keschern fischen.</li>
+                          <li data-t="conductF7">Eltern haben Aufsichtspflicht und müssen Kinder über Gefahren (Wasser, Hänge) aufklären.</li>
+                          <li data-t="conductF8">Piratenhunde dürfen gerne angeleint mit auf die Anlage. Für das kleine Malheur findet ihr Beutel an den Abfalleimern in der Nähe des Kurses.</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- ==========================================================================
+           Booking Modal (Interactive Popup)
+           ========================================================================== -->
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&#10006;</button>
+            <div class="modal-header">
+                <h3 data-t="modalTitle">Crew anheuern für Adventure & Golf</h3>
+                <p data-t="modalSub">Schreibt uns euren Terminwunsch. Wir melden uns umgehend bei euch zurück!</p>
+            </div>
+            
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="form-name" data-t="formName">Euer Name / Kapitän</label>
+                    <input type="text" id="form-name" class="form-control" required placeholder="z.B. Kapitän Blaubart">
+                </div>
+                <div class="form-group">
+                    <label for="form-email" data-t="formEmail">Eure E-Mail-Adresse</label>
+                    <input type="email" id="form-email" class="form-control" required placeholder="name@beispiel.de">
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label for="form-date" data-t="formDate">Wunschtermin</label>
+                        <input type="date" id="form-date" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="form-players" data-t="formPlayers">Anzahl Piraten (Min. 6)</label>
+                        <input type="number" id="form-players" class="form-control" min="6" value="6" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form-msg" data-t="formMessage">Flaschenpost-Nachricht</label>
+                    <textarea id="form-msg" class="form-control" data-t="formPlaceholderMessage" placeholder="Ahoi! Wir wollen am..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="display:block; width:100%;" data-t="btnSend">Anfrage per E-Mail absenden</button>
+                <p style="font-size: 0.85rem; color: var(--color-warm-gray); text-align: center; margin-top: 15px;" data-t="modalEmailNote">
+                    Hinweis: Eure Anfrage wird als E-Mail-Entwurf an info@wissmannshof.de vorbereitet.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Footer
+         ========================================================================== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="footer-logo-img">
+                <p style="margin-top: 15px;">Wissmannshof 1<br>34355 Staufenberg</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 data-t="navContact">Kontakt & Anfahrt</h4>
+                <p>Telefon: +49 (0) 55 43 / 999 335</p>
+                <p>E-Mail: <a href="mailto:info@wissmannshof.de" style="color:var(--color-gold-light);">info@wissmannshof.de</a></p>
+                <p>Web: <a href="https://www.wissmannshof.de" target="_blank" style="color:var(--color-gold-light);">www.wissmannshof.de</a></p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 data-t="navHoles">Bahnen</h4>
+                <ul style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <li><a href="#holes">Hole 1 - 9</a></li>
+                    <li><a href="#holes">Hole 10 - 18</a></li>
+                    <li><a href="#promo" data-t="navPromo">Promo Package</a></li>
+                    <li><a href="#prices" data-t="navPrices">Prices</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-t="copyright">Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</span></p>
+            <div class="footer-bottom-links">
+                <a href="https://www.wissmannshof.de/impressum/" target="_blank" rel="noopener" data-t="imprint">Impressum</a>
+                <a href="https://www.wissmannshof.de/datenschutz/" target="_blank" rel="noopener" data-t="privacy">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript logic -->
+    <script src="app.js"></script>
+</body>
+</html>
