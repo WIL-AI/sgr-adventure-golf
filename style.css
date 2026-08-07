@@ -432,6 +432,7 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 40px;
+    align-items: stretch;
 }
 
 .feature-link {
@@ -439,15 +440,21 @@ section {
     text-decoration: none;
     color: inherit;
     transition: var(--transition-smooth);
+    height: 100%;
 }
 
 .feature-badge {
     background-color: rgba(45, 106, 79, 0.05);
     border: 1px dashed var(--color-border);
-    padding: 15px;
+    padding: 20px 15px;
     border-radius: var(--border-radius-sm);
     text-align: center;
     transition: var(--transition-smooth);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .feature-badge:hover {
@@ -686,7 +693,13 @@ section {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: stretch;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .promo-badge {
@@ -724,6 +737,10 @@ section {
     color: var(--color-near-black);
     box-shadow: var(--shadow-medium);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .promo-card-header {
