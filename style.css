@@ -429,9 +429,16 @@ section {
 
 .resort-features {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 40px;
+}
+
+.feature-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
 }
 
 .feature-badge {
@@ -1594,4 +1601,24 @@ footer {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+}
+
+/* AI generated image watermark for EU AI Act compliance */
+.image-with-watermark {
+    position: relative;
+}
+
+.ai-watermark {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.62rem;
+    padding: 3px 7px;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-body);
+    font-weight: 500;
+    pointer-events: none;
+    letter-spacing: 0.05em;
 }

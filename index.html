@@ -19,7 +19,7 @@
          ========================================================================== -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo-link" aria-label="Gut Wissmannshof Home">
+            <a href="https://www.wissmannshof.de/" target="_blank" rel="noopener" class="logo-link" aria-label="Gut Wissmannshof Home">
                 <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="logo-img">
             </a>
             
@@ -94,25 +94,40 @@
                 </div>
                 
                 <div class="resort-features">
-                    <div class="feature-badge">
-                        <div class="feature-icon-wrapper">🏴‍☠️</div>
-                        <h4 data-t="featSleep">Übernachten</h4>
-                        <p class="caption" data-t="featSleepDesc">Kajüten & Kojen</p>
-                    </div>
-                    <div class="feature-badge">
-                        <div class="feature-icon-wrapper">🍖</div>
-                        <h4 data-t="featEat">Schlemmen</h4>
-                        <p class="caption" data-t="featEatDesc">Kombüsen-Genuss</p>
-                    </div>
-                    <div class="feature-badge">
-                        <div class="feature-icon-wrapper">🏌️</div>
-                        <h4 data-t="featGolf">Golfen</h4>
-                        <p class="caption" data-t="featGolfDesc">Großes Fairway</p>
-                    </div>
-                    <div class="feature-badge">
-                        <div class="feature-icon-wrapper">⚓</div>
-                        <h4 data-t="featFun">Spaß haben</h4>
-                        <p class="caption" data-t="featFunDesc">Für die ganze Crew</p>
+                    <a href="https://hotel-wissmannshof.com/hotel/" target="_blank" rel="noopener" class="feature-link">
+                        <div class="feature-badge">
+                            <div class="feature-icon-wrapper">🏴‍☠️</div>
+                            <h4 data-t="featSleep">Übernachten</h4>
+                            <p class="caption" data-t="featSleepDesc">Kajüten & Kojen</p>
+                        </div>
+                    </a>
+                    <a href="https://hotel-wissmannshof.com/restaurant/" target="_blank" rel="noopener" class="feature-link">
+                        <div class="feature-badge">
+                            <div class="feature-icon-wrapper">🍖</div>
+                            <h4 data-t="featEat">Schlemmen</h4>
+                            <p class="caption" data-t="featEatDesc">Kombüsen-Genuss</p>
+                        </div>
+                    </a>
+                    <a href="https://www.wissmannshof.de/" target="_blank" rel="noopener" class="feature-link">
+                        <div class="feature-badge">
+                            <div class="feature-icon-wrapper">🏌️</div>
+                            <h4 data-t="featGolf">Golfen</h4>
+                            <p class="caption" data-t="featGolfDesc">Großes Fairway</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Kindergolfkarte (Kids Golf Map PDF) Callout Box -->
+                <div class="kiosk-alert-box" style="margin-top: 40px; border-color: var(--color-gold); background-color: rgba(184, 150, 62, 0.05); text-align: left;">
+                    <div class="kiosk-alert-icon">🏴‍☠️</div>
+                    <div class="kiosk-alert-content" style="display: flex; flex-direction: column; gap: 10px;">
+                        <h4 data-t="kidsMapTitle" style="color: var(--color-brg-dark);">Für kleine Nachwuchs-Piraten 🏴‍☠️</h4>
+                        <p data-t="kidsMapDesc" style="color: var(--color-near-black); margin-bottom: 5px; line-height: 1.5;">
+                            Damit die kleinen Matrosen perfekt vorbereitet sind, findet ihr hier die bunte Kinder-Golfkarte mit allen spannenden Spieldetails und Zeichnungen zum Download!
+                        </p>
+                        <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/26-05-Adventure-Golf-Karte-%E2%80%94-Gut-Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="align-self: flex-start; padding: 8px 16px; font-size: 0.85rem; text-decoration: none;" data-t="btnDownloadKidsMap">
+                            Kinder-Golfkarte (PDF) herunterladen
+                        </a>
                     </div>
                 </div>
             </div>
@@ -166,6 +181,13 @@
                     
                     <p class="hole-description" id="hole-desc">Hole description goes here...</p>
                     
+                    <!-- Scorecard PDF Download Link -->
+                    <div style="margin: 25px 0; border-top: 1px dashed var(--color-border); padding-top: 20px; text-align: center;">
+                        <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/26-05-Scorekarte-Adventure-Golf-1-1.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="display: inline-block; padding: 10px 20px; font-size: 0.88rem; text-decoration: none;" data-t="btnDownloadScorecard">
+                            Scorekarte (PDF) herunterladen
+                        </a>
+                    </div>
+                    
                     <div class="hole-nav-footer">
                         <button class="hole-nav-btn" id="hole-prev-btn" data-t="btnPrevHole">Vorherige</button>
                         <button class="hole-nav-btn" id="hole-next-btn" data-t="btnNextHole">Nächste</button>
@@ -189,9 +211,10 @@
                     <p class="promo-description" data-t="promoDesc">
                         Ihr habt auf unserem Adventure-Golfplatz Blut geleckt und wollt wissen, wie sich echtes Golf anfühlt? Trommelt mindestens 6 Piraten zusammen und bucht unser exklusives Schnupperpaket!
                     </p>
-                    <!-- Embedded Golf Clinic Image -->
-                    <div style="border-radius:var(--border-radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.2); box-shadow:var(--shadow-subtle);">
+                    <!-- Embedded Golf Clinic Image with EU AI Act compliance watermark -->
+                    <div class="image-with-watermark" style="border-radius:var(--border-radius-md); overflow:hidden; border:1px solid rgba(255,255,255,0.2); box-shadow:var(--shadow-subtle);">
                         <img src="assets/golf_clinic.jpg" alt="Golf Clinic" style="width:100%; display:block; aspect-ratio:3/2; object-fit:cover;">
+                        <span class="ai-watermark">KI generiert / AI generated</span>
                     </div>
                 </div>
                 
@@ -521,7 +544,9 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="footer-logo-img">
+                <a href="https://www.wissmannshof.de/" target="_blank" rel="noopener">
+                    <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="footer-logo-img">
+                </a>
                 <p style="margin-top: 15px;">Wissmannshof 1<br>34355 Staufenberg</p>
             </div>
             
