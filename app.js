@@ -9,6 +9,7 @@ const holesData = [
         num: 1,
         par: 3,
         dist: 12,
+        image: "assets/hole_1.jpg",
         loopDe: "Schleife 1: Dschungel-Camp",
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Ahoi Landratten – auf Gut Wissmannshof findet ihr eure Koje, eure Festtafel, euer Fairway und euer Abenteuer.",
@@ -20,6 +21,7 @@ const holesData = [
         num: 2,
         par: 2,
         dist: 9,
+        image: "assets/hole_2.jpg",
         loopDe: "Schleife 1: Dschungel-Camp",
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Willkommen im Heimathafen Gut Wissmannshof: Hier schlaft ihr wie Kapitäne, schlemmt wie Piraten, golft wie Entdecker und feiert wie die Crew.",
@@ -31,6 +33,7 @@ const holesData = [
         num: 3,
         par: 3,
         dist: 14,
+        image: "assets/hole_3.jpg",
         loopDe: "Schleife 1: Dschungel-Camp",
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Setzt Kurs auf Gut Wissmannshof – Betten wie Kajüten, Teller wie Schatztruhen, Fairways wie Inseln und Spaß wie auf hoher See.",
@@ -42,6 +45,7 @@ const holesData = [
         num: 4,
         par: 4,
         dist: 18,
+        image: "assets/hole_4.jpg",
         loopDe: "Schleife 1: Dschungel-Camp",
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Land in Sicht! Wer auf Gut Wissmannshof anlegt, erobert Hotelkojen, Piratenmahl und Golfabenteuer in einem einzigen Hafen.",
@@ -53,6 +57,7 @@ const holesData = [
         num: 5,
         par: 3,
         dist: 11,
+        image: "assets/hole_5.jpg",
         loopDe: "Schleife 1: Dschungel-Camp",
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Ahoi! Auf Gut Wissmannshof könnt ihr anlegen, ausschlafen, schmausen, golfen und jeden Tag neue Piratenstories schreiben.",
@@ -598,6 +603,19 @@ function renderActiveHole() {
     
     document.getElementById('hole-quote').textContent = currentLang === 'de' ? hole.sloganDe : hole.sloganEn;
     document.getElementById('hole-desc').textContent = currentLang === 'de' ? hole.descDe : hole.descEn;
+    
+    // Dynamic Hole Map / Diagram loading
+    const mapWrapper = document.getElementById('hole-map-wrapper');
+    const mapImg = document.getElementById('hole-map-img');
+    if (mapWrapper && mapImg) {
+        if (hole.image) {
+            mapImg.src = hole.image;
+            mapImg.alt = currentLang === 'de' ? `Bahn ${hole.num} Grafik` : `Hole ${hole.num} Map`;
+            mapWrapper.style.display = 'block';
+        } else {
+            mapWrapper.style.display = 'none';
+        }
+    }
 }
 
 /* ==========================================================================
