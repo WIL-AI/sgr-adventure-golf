@@ -14,8 +14,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Ahoi Landratten – auf Gut Wissmannshof findet ihr eure Koje, eure Festtafel, euer Fairway und euer Abenteuer.",
         sloganEn: "Ahoi Landlubbers – at Gut Wissmannshof you will find your berth, your banquet, your fairway, and your adventure.",
-        descDe: "Zum Warmspielen! Startet euren Törn und umspielt die Fässer im Hafen.",
-        descEn: "Warm-up hole! Start your voyage and play around the barrels in the harbor."
+        descDe: "Der Auftakt gleicht einer schmalen Schneise durch dichtes Gestrüpp: Büsche kauern rechts und links, zwei tückische Bunker lauern am Wegesrand. Nur wer seinen Schlag von Anfang an unter Kontrolle hat, findet den Weg sicher zur Fahne.",
+        descEn: "The start resembles a narrow lane through dense brush: bushes crouch left and right, and two treacherous bunkers lie in wait by the wayside. Only those who control their stroke from the beginning will safely find the path to the flag."
     },
     {
         num: 2,
@@ -26,8 +26,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Willkommen im Heimathafen Gut Wissmannshof: Hier schlaft ihr wie Kapitäne, schlemmt wie Piraten, golft wie Entdecker und feiert wie die Crew.",
         sloganEn: "Welcome to homeport Gut Wissmannshof: Sleep like captains, feast like pirates, golf like explorers, and celebrate like the crew.",
-        descDe: "Ein kurzes, knackiges Par 2. Achtet auf die Neigung der Planken!",
-        descEn: "A short, snappy Par 2. Watch out for the tilt of the planks!"
+        descDe: "Die Bahn windet sich in einer wilden Spirale um einen dichten Busch, als wollte sie jeden Spieler einmal um die eigene Achse drehen. Der Ball muss den ungewöhnlichen Bogen mitgehen, sonst bleibt er irgendwo im Grün hängen - ein Loch für Köpfchen statt für rohe Kraft.",
+        descEn: "The lane winds in a wild spiral around a dense bush, as if it wanted to spin each player around their own axis. The ball must follow the unusual curve, otherwise it will get stuck in the rough - a hole for brains rather than raw power."
     },
     {
         num: 3,
@@ -38,8 +38,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Setzt Kurs auf Gut Wissmannshof – Betten wie Kajüten, Teller wie Schatztruhen, Fairways wie Inseln und Spaß wie auf hoher See.",
         sloganEn: "Set course for Gut Wissmannshof – beds like cabins, plates like treasure chests, fairways like islands, and fun like on the high seas.",
-        descDe: "Weite Bahn mit einer kniffligen Kurve um die Sandbank.",
-        descEn: "Wide lane with a tricky turn around the sandbank."
+        descDe: "Ein kleiner Wasserfall stürzt über moosbewachsene Felsen direkt neben dem Grün und liefert die passende Geräuschkulisse für den entscheidenden Putt. Wer sich vom plätschernden Wasser nicht ablenken lässt, hat hier gute Chancen auf ein Ass.",
+        descEn: "A small waterfall tumbles over mossy rocks right next to the green, providing the perfect soundtrack for the decisive putt. Those who don't let the babbling water distract them have a good chance of an ace here."
     },
     {
         num: 4,
@@ -50,8 +50,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Land in Sicht! Wer auf Gut Wissmannshof anlegt, erobert Hotelkojen, Piratenmahl und Golfabenteuer in einem einzigen Hafen.",
         sloganEn: "Land ahoy! Anchor at Gut Wissmannshof and conquer hotel berths, pirate feasts, and golf adventures in a single harbor.",
-        descDe: "Das erste schwere Loch. Die Steigung erfordert einen starken Schlag.",
-        descEn: "The first tough hole. The incline requires a powerful stroke."
+        descDe: "Ein Teich mit einer schmalen Holzbrücke teilt die Bahn in zwei Welten: Der leichte Verlauf umgeht das Wasser großzügig, der schwierige balanciert den Ball hauchdünn am Ufer entlang. Ein falscher Schlag, und der Ball versinkt für immer in den Fluten.",
+        descEn: "A pond with a narrow wooden bridge divides the lane into two worlds: the easy route bypasses the water generously, while the difficult one balances the ball razor-thinly along the bank. One wrong stroke, and the ball sinks into the waters forever."
     },
     {
         num: 5,
@@ -62,8 +62,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Ahoi! Auf Gut Wissmannshof könnt ihr anlegen, ausschlafen, schmausen, golfen und jeden Tag neue Piratenstories schreiben.",
         sloganEn: "Ahoi! At Gut Wissmannshof you can dock, sleep in, feast, golf, and write new pirate stories every single day.",
-        descDe: "Vorbei am ersten Wassergraben. Zielt genau zwischen den Klippen hindurch.",
-        descEn: "Pass the first water hazard. Aim precisely between the cliffs."
+        descDe: "Das Grün liegt wie eine einsame Insel inmitten eines glitzernden Teichs, weit ab vom sicheren Ufer. Nur ein Schlag mit exaktem Maß und ruhiger Hand bringt den Ball trockenen Fußes ans Ziel - alles andere endet mit einem Platscher.",
+        descEn: "The green sits like a lonely island in the middle of a glistening pond, far from the safe shore. Only a stroke with exact measure and a steady hand brings the ball dry-footed to the target - anything else ends with a splash."
     },
     {
         num: 6,
@@ -74,8 +74,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Anker werfen, Landratten – hier warten eure Nachtlager, eure Kombüse, eure Golf-Schatzsuche und euer Bord-Spaß.",
         sloganEn: "Drop anchor, landlubbers – your quarters, your galley, your golf treasure hunt, and shipboard fun await.",
-        descDe: "Ein tückischer Tunnel. Nur ein gerader Schlag sichert das Par.",
-        descEn: "A treacherous tunnel. Only a straight shot secures Par."
+        descDe: "Der Weg schlängelt sich in engen Kurven an einem Bunker entlang, als wollte er jeden geraden Schlag vereiteln. Erst nach der letzten Biegung öffnet sich der Blick auf das Grün - Geduld und ein ruhiges Handgelenk zahlen sich hier aus.",
+        descEn: "The path winds in tight curves along a bunker, as if trying to thwart any straight shot. Only after the last bend does the view of the green open up - patience and a steady wrist pay off here."
     },
     {
         num: 7,
@@ -86,8 +86,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Gut Wissmannshof: Euer Piratenstützpunkt zum Übernachten, Schlemmen, Golfen und Geschichten erzählen bis weit nach Sonnenuntergang.",
         sloganEn: "Gut Wissmannshof: Your pirate outpost to sleep, feast, golf, and tell tales long after sunset.",
-        descDe: "Schöne Hanglage. Spielt über den Hügel auf das tiefer liegende Grün.",
-        descEn: "Beautiful hillside layout. Play over the ridge down to the green."
+        descDe: "Ein kleiner Golfwagen steht am Rand geparkt, als würde er gespannt zuschauen, wie sich die Bälle einen Weg zwischen den Bunkern hindurchsuchen. Zwischen Sand und Fahrspur bleibt nur ein schmaler Korridor - Zielgenauigkeit schlägt hier jede Kraft.",
+        descEn: "A small golf cart is parked at the edge, as if watching expectantly as the balls seek a path between the bunkers. Only a narrow corridor remains between sand and cart track - accuracy beats raw power here."
     },
     {
         num: 8,
@@ -98,8 +98,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Wer hier einläuft, bekommt mehr als nur Landgang: Eine Koje zum Träumen, eine Kombüse zum Genießen, Bahnen zum Golfen und Abenteuer für die ganze Crew.",
         sloganEn: "Sailing in here gets you more than shore leave: A cabin to dream in, a galley to enjoy, fairways to golf, and adventures for the whole crew.",
-        descDe: "Die Brücke muss überquert werden! Zu viel Kraft und ihr landet im Fluss.",
-        descEn: "Cross the bridge! Too much power and you land in the river."
+        descDe: "Die Fairway zieht sich ruhig am Waldrand entlang, gesäumt von dichtem Grün, das jeden verirrten Ball sofort verschluckt. Die Stille hier täuscht: Nur ein sauber gemessener Schlag findet den schmalen Korridor bis zur Fahne.",
+        descEn: "The fairway runs quietly along the edge of the forest, bordered by dense green that swallows any stray ball immediately. The silence here is deceptive: only a cleanly measured shot finds the narrow corridor to the flag."
     },
     {
         num: 9,
@@ -110,8 +110,8 @@ const holesData = [
         loopEn: "Loop 1: Jungle Camp",
         sloganDe: "Euer Kurs: Gut Wissmannshof – hier wird aus einem Bett eine Kapitänskoje, aus jedem Teller Beute, aus jedem Loch ein Golf-Schatz und aus jedem Abend ein Abenteuer.",
         sloganEn: "Your heading: Gut Wissmannshof – where beds turn into captain's cabins, plates into booty, holes into golf treasures, and evenings into adventures.",
-        descDe: "Halbzeit! Spielt knapp an den Weinfässern vorbei ins Loch. Danach geht es auf Kurs 2!",
-        descEn: "Halfway mark! Putt closely past the wine barrels into the hole. Then set sail for Course 2!"
+        descDe: "Zum Abschluss des Famous-Golf-Parcours führt eine schmale, von Bäumen gesäumte Fairway geradewegs auf das Grün zu. Rechts und links warten dichte Kronen auf jeden Ausrutscher - ein letzter Konzentrationstest, bevor der Dschungel-Kurs wartet.",
+        descEn: "To conclude the Famous Golf course, a narrow, tree-lined fairway leads straight toward the green. Dense crowns wait for any slip-up on the right and left - a final test of concentration before the Jungle Course awaits."
     },
     {
         num: 10,
@@ -122,8 +122,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Aye, Käpt’n – wir servieren euch ruhige Nächte, volle Teller, lange Drives und kurze Putts, abgeschmeckt mit Piraten-Spaß.",
         sloganEn: "Aye, Captain – we serve you quiet nights, full plates, long drives, and short putts, seasoned with pirate fun.",
-        descDe: "Start der Schatzsuche! Bahn inspiriert von berühmten Golflöchern. Nur ein kleines Sandhindernis blockiert den Weg.",
-        descEn: "Start of the Treasure Hunt! Hole inspired by famous golf holes. Only a small sand bunker blocks the path."
+        descDe: "Ein schnurgerader Auftakt führt mitten hinein ins dichte Grün des Dschungels - der ideale Einstieg, um Schläger und Auge aufeinander einzuspielen. Von hier an wird der Pfad wilder, also lohnt sich ein ruhiger, sicherer erster Schlag.",
+        descEn: "A straight-as-an-arrow start leads right into the dense green of the jungle - the ideal warm-up to align club and eye. From here on, the path becomes wilder, so a calm, safe first shot is well worth it."
     },
     {
         num: 11,
@@ -134,8 +134,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Heimathafen für müde Seebären: Schlafen wie im Logbuch, essen wie im Piratenroman, golfen wie Schatzsucher und lachen wie echte Freibeuter.",
         sloganEn: "Homeport for weary sea dogs: Sleep like in a logbook, eat like in a pirate novel, golf like treasure hunters, and laugh like true buccaneers.",
-        descDe: "Ein geschwungenes Grün erfordert Gefühl im Handgelenk.",
-        descEn: "A curved green layout requiring a gentle putting touch."
+        descDe: "Der Pfad schlängelt sich schmal zwischen knorrigen Baumstämmen hindurch, als hätte der Dschungel selbst ihn gewachsen. Wer die Kurve zu weit schneidet, landet im dichten Unterholz - nur mit Gefühl und einem sanften Schlag bleibt der Ball auf Kurs.",
+        descEn: "The path winds narrowly between gnarly tree trunks, as if the jungle itself had grown it. If you cut the corner too close, you will land in dense undergrowth - only with touch and a gentle stroke will the ball stay on course."
     },
     {
         num: 12,
@@ -146,8 +146,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Gut Wissmannshof – wo euer Zimmer zur Kajüte wird, das Restaurant zur Galley, der Platz zum Golfrevier und jeder Tag zur Abenteuerfahrt.",
         sloganEn: "Gut Wissmannshof – where your room becomes a cabin, the restaurant a galley, the course a golf territory, and each day a voyage of adventure.",
-        descDe: "Die längste Bahn auf Kurs 2. Vorsicht vor der tiefen Senke in der Mitte.",
-        descEn: "The longest hole on Course 2. Beware of the deep depression in the middle."
+        descDe: "Ein träger Wasserlauf säumt die linke Flanke der Bahn, als hätte sich hier ein kleiner Dschungelfluss seinen Weg gebahnt. Der leichte Verlauf hält respektvollen Abstand zum Ufer, der schwierige zwängt sich waghalsig nah am Wasser entlang - ein Fehltritt, und der Ball treibt talwärts.",
+        descEn: "A sluggish watercourse borders the left flank of the lane, as if a small jungle river had carved its way here. The easy route keeps a respectful distance from the bank, while the difficult one squeezes daringly close to the water - one slip, and the ball drifts downstream."
     },
     {
         num: 13,
@@ -158,8 +158,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Arr! Wer hier übernachtet, frühstückt wie ein Pirat, spielt Golf wie ein Entdecker und findet Spaß wie auf einer Schatzinsel.",
         sloganEn: "Arr! Stay overnight, breakfast like a pirate, play golf like an explorer, and find fun like on a treasure island.",
-        descDe: "Erhöhtes Grün. Dosiert euren Schlag genau, um nicht hinten runterzufallen.",
-        descEn: "Elevated green. Gauge your speed perfectly to avoid running off the back."
+        descDe: "Noch mehr Wasser, noch mehr Nervenkitzel: Die Fahne versteckt sich hinter einer schmalen Landzunge, umspült von einem ruhigen Dschungelteich. Der mutige Schlag nimmt die direkte Route übers Wasser, der vorsichtige umrundet den Teich auf Nummer sicher.",
+        descEn: "More water, more thrills: the flag hides behind a narrow spit of land, washed by a calm jungle pond. The brave shot takes the direct route over the water, while the cautious one goes around the pond to be safe."
     },
     {
         num: 14,
@@ -170,8 +170,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Von der Kajüte zum Abschlag: Auf Gut Wissmannshof liegen Hotel, Restaurant, Golfplatz und Piratenabenteuer nur eine Planke voneinander entfernt.",
         sloganEn: "From cabin to tee-off: At Gut Wissmannshof, hotel, restaurant, golf course, and pirate adventure are just a plank apart.",
-        descDe: "Hindernislauf vorbei an den Ankeketten.",
-        descEn: "Obstacle run past the heavy anchor chains."
+        descDe: "Eine prall gefüllte Schatztruhe wacht über eine wacklige Hängebrücke, die tief über eine Dschungelschlucht führt. Der Ball muss die schmalen Holzplanken exakt treffen, um sicher zum Ziel auf der anderen Seite zu gelangen - wehe, er verfehlt die Brücke und stürzt in die Tiefe.",
+        descEn: "A treasure chest filled to the brim watches over a wobbly suspension bridge that leads deep across a jungle canyon. The ball must hit the narrow wooden planks precisely to reach the target on the other side safely - woe to it if it misses the bridge and plunges into the depths."
     },
     {
         num: 15,
@@ -182,8 +182,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Ahoi Genießer! Hier gibt’s weiche Kissen, starke Küche, weite Fairways und jede Menge Seemannsgarn für den Abend an der Bar.",
         sloganEn: "Ahoi gourmets! Here are soft pillows, hearty cooking, wide fairways, and plenty of sailor's yarn for evenings at the bar.",
-        descDe: "Spielt um das Gestrüpp herum. Der direkte Weg ist versperrt.",
-        descEn: "Play around the heavy vegetation. The direct path is blocked."
+        descDe: "Ein alter Jeep hat sich mitten in den Dschungel verirrt und steht seither als stille Landmarke an der Kurve, die die Bahn ums dichte Gebüsch herum nimmt. Vielleicht seine letzte Expedition - für Spieler markiert er jedenfalls den Punkt, an dem der Schlag die Richtung wechseln muss.",
+        descEn: "An old jeep has got lost in the middle of the jungle and has stood there ever since as a silent landmark on the curve where the lane bends around dense bushes. Perhaps its last expedition - for players it marks the point where the stroke must change direction."
     },
     {
         num: 16,
@@ -194,8 +194,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Gut Wissmannshof: Hafen für alle, die erst gut schlafen, dann gut essen, dann gut golfen und am Ende laut ‚Yo-ho-ho!‘ rufen wollen.",
         sloganEn: "Gut Wissmannshof: Haven for all who want to sleep well, eat well, golf well, and shout 'Yo-ho-ho!' in the end.",
-        descDe: "Wasser zur Rechten! Haltet euch links, um den Ball trocken zu halten.",
-        descEn: "Water to the right! Stay left to keep your ball dry."
+        descDe: "Zwischen schattigen Palmen und einem Ring aus glatten Flusskieseln windet sich die Bahn auf das versteckte Grün zu, als führe sie zu einem geheimen Dschungeltempel. Wer den Bogen um die Kiesel schafft, hat den schwierigsten Teil bereits hinter sich.",
+        descEn: "Between shady palm trees and a ring of smooth river pebbles, the lane winds toward the hidden green, as if leading to a secret jungle temple. If you make the curve around the pebbles, you've already conquered the hardest part."
     },
     {
         num: 17,
@@ -206,8 +206,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Wer hier anlegt, erlebt die volle Fahrt: Gemütlich nächtigen, lustvoll schlemmen, mutig golfen und mit der Crew bis zur letzten Welle feiern.",
         sloganEn: "Anchor here for the full voyage: Cozy lodging, hearty feasting, brave golfing, and celebrating with the crew to the last wave.",
-        descDe: "Engpass! Zielt durch die Steine hindurch auf das geneigte Grün.",
-        descEn: "Bottleneck! Aim through the rock portal onto the sloping green."
+        descDe: "Ein zickzack-gemustertes Tierfell zieht sich über die gesamte Länge der Bahn, als hätte hier ein Dschungelbewohner seine Spur hinterlassen. Volle Konzentration ist gefragt, um dem wilden Muster exakt zu folgen - ein einziger Ausrutscher, und der Ball verschwindet im Schlangenschlund.",
+        descEn: "A zigzag-patterned animal skin runs the entire length of the lane, as if a jungle inhabitant had left its track here. Full concentration is required to follow the wild pattern exactly - a single slip-up, and the ball disappears into the snake's mouth."
     },
     {
         num: 18,
@@ -218,8 +218,8 @@ const holesData = [
         loopEn: "Loop 2: Treasure Hunt",
         sloganDe: "Euer Piratenkurs: Hotelbett, Restaurantteller, Golfball und Bauchmuskel-Lachen – alles an einem Ort, alles auf Gut Wissmannshof.",
         sloganEn: "Your pirate course: Hotel bed, restaurant plate, golf ball, and belly laughs – all in one place, all at Gut Wissmannshof.",
-        descDe: "Das Finale vor dem Clubhaus! Einlocher erbeuten den Schatz und holen das Par.",
-        descEn: "The grand finale in front of the clubhouse! Sink it, claim the treasure, and fetch Par."
+        descDe: "Zum großen Finale des Dschungel-Parcours wartet ein herzförmiges Grün, gesäumt von alten, moosbewachsenen Holzfässern - vielleicht die letzten Vorräte einer vergessenen Expedition. Ein versöhnlicher, freundlicher Abschluss nach neun Bahnen voller Wasser, Brücken und wilder Kurven.",
+        descEn: "For the grand finale of the Jungle Course, a heart-shaped green awaits, bordered by old, mossy wooden barrels - perhaps the last supplies of a forgotten expedition. A reconciling, friendly finish after nine holes full of water, bridges, and wild curves."
     }
 ];
 
