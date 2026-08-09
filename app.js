@@ -281,7 +281,7 @@ const translations = {
         priceKid: "Kinder (bis 12 Jahre)",
         priceFamily: "Familienkarte (2 Erw. + 2 Kinder)",
         priceTen: "10er-Karte (Erwachsene)",
-        priceNote: "Preishighlight: Neue Automaten für Schläger & Bälle vor Ort!",
+        priceNote: "<strong>Neuer Automat f&uuml;r Schl&auml;ger & B&auml;lle vor Ort!</strong><br>Bitte beachtet: Am Automaten k&ouml;nnen zurzeit Schl&auml;ger nur zum regul&auml;ren Preis von 8,50 &euro; pro Teilnehmer ausgegeben werden. Zuk&uuml;nftig wird der Automat erweitert, sodass auch Kombinationsangebote f&uuml;r Familien (z. B. 2 Erwachsene + 2 Kinder) zur Entnahme bereitstehen. So k&ouml;nnt ihr jederzeit vollkommen flexibel spielen!",
         hoursTitle: "Öffnungszeiten & Büro",
         hoursDaily: "Automat & Bürozeiten",
         hoursTimes: "Automat: 07:00 – 21:00 Uhr",
@@ -412,7 +412,7 @@ const translations = {
         priceKid: "Children (up to 12 years)",
         priceFamily: "Family Card (2 Adults + 2 Kids)",
         priceTen: "10-Round Pass (Adults)",
-        priceNote: "Price Highlight: New ticketing and club rental machine on site!",
+        priceNote: "<strong>New ticketing and club rental machine on site!</strong><br>Please note: Currently, the machine only dispenses clubs at the regular price of &euro;8.50 per participant. In the future, the machine will be upgraded to support family combo offers (e.g., 2 adults + 2 children) directly. This will allow you to play with complete flexibility at any time!",
         hoursTitle: "Opening Hours & Office",
         hoursDaily: "Kiosk & Office Hours",
         hoursTimes: "Kiosk: 07:00 AM – 09:00 PM",
@@ -543,7 +543,7 @@ function updateLanguageUI() {
                     el.setAttribute('placeholder', translations[currentLang][key]);
                 }
             } else {
-                el.textContent = translations[currentLang][key];
+                el.innerHTML = translations[currentLang][key];
             }
         }
     });
