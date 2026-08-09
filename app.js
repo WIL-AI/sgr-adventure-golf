@@ -127,6 +127,7 @@ const holesData = [
     },
     {
         num: 11,
+        image: "assets/hole_11.jpg",
         par: 3,
         dist: 15,
         loopDe: "Schleife 2: Schatzsuche",
@@ -138,6 +139,7 @@ const holesData = [
     },
     {
         num: 12,
+        image: "assets/hole_12.jpg",
         par: 4,
         dist: 20,
         loopDe: "Schleife 2: Schatzsuche",
@@ -149,6 +151,7 @@ const holesData = [
     },
     {
         num: 13,
+        image: "assets/hole_13.jpg",
         par: 3,
         dist: 12,
         loopDe: "Schleife 2: Schatzsuche",
@@ -160,6 +163,7 @@ const holesData = [
     },
     {
         num: 14,
+        image: "assets/hole_14.jpg",
         par: 2,
         dist: 8,
         loopDe: "Schleife 2: Schatzsuche",
@@ -171,6 +175,7 @@ const holesData = [
     },
     {
         num: 15,
+        image: "assets/hole_15.jpg",
         par: 3,
         dist: 13,
         loopDe: "Schleife 2: Schatzsuche",
@@ -182,6 +187,7 @@ const holesData = [
     },
     {
         num: 16,
+        image: "assets/hole_16.jpg",
         par: 3,
         dist: 11,
         loopDe: "Schleife 2: Schatzsuche",
@@ -193,6 +199,7 @@ const holesData = [
     },
     {
         num: 17,
+        image: "assets/hole_17.jpg",
         par: 4,
         dist: 17,
         loopDe: "Schleife 2: Schatzsuche",
@@ -204,6 +211,7 @@ const holesData = [
     },
     {
         num: 18,
+        image: "assets/hole_18.jpg",
         par: 3,
         dist: 14,
         loopDe: "Schleife 2: Schatzsuche",
