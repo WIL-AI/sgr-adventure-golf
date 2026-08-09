@@ -505,7 +505,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 40px;
-    align-items: start;
+    align-items: stretch;
 }
 
 /* Left Grid of Holes */
@@ -515,6 +515,8 @@ section {
     padding: 25px;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
 }
 
 .holes-grid-container h3 {
@@ -1361,6 +1363,10 @@ footer {
     box-shadow: var(--shadow-subtle);
     background-color: var(--color-white);
     transition: var(--transition-smooth);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .map-container:hover {
@@ -1369,10 +1375,11 @@ footer {
 
 .map-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     cursor: pointer;
     transition: var(--transition-smooth);
+    object-fit: contain;
 }
 
 .map-img:hover {
