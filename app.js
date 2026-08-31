@@ -340,6 +340,12 @@ const translations = {
         contactHdrWeb: "Webseite",
         modalTitle: "Crew anheuern für Adventure & Golf",
         modalSub: "Schreibt uns euren Terminwunsch. Wir melden uns umgehend bei euch zurück!",
+        formTypeLabel: "Anfrage-Typ / Gewünschtes Abenteuer",
+        formTypeAdventure: "Nur Adventure Golf",
+        formTypeTraining: "Golf Training & Adventure Golf (Gruppen-Special ab 6 Pers.)",
+        formTypeOther: "Sonstige Anfrage",
+        formPlayersLabelGeneral: "Anzahl Piraten",
+        formPlayersLabelMin6: "Anzahl Piraten (Min. 6)",
         formName: "Euer Name / Kapitän",
         formEmail: "Eure E-Mail-Adresse",
         formDate: "Wunschtermin",
@@ -471,6 +477,12 @@ const translations = {
         contactHdrWeb: "Website",
         modalTitle: "Enlist Crew for Adventure & Golf",
         modalSub: "Send us your preferred date. We will get back to you immediately!",
+        formTypeLabel: "Request Type / Desired Adventure",
+        formTypeAdventure: "Adventure Golf Only",
+        formTypeTraining: "Golf Training & Adventure Golf (Group Special 6+ players)",
+        formTypeOther: "Other Inquiry",
+        formPlayersLabelGeneral: "Number of Pirates",
+        formPlayersLabelMin6: "Number of Pirates (Min. 6)",
         formName: "Your Name / Captain",
         formEmail: "Your Email Address",
         formDate: "Preferred Date",
@@ -738,7 +750,27 @@ function initModal() {
     const openBtns = document.querySelectorAll('.trigger-booking');
     const closeBtn = document.getElementById('modal-close');
     const form = document.getElementById('booking-form');
+    const formType = document.getElementById('form-type');
+    const formPlayers = document.getElementById('form-players');
+    const formPlayersLabel = document.getElementById('form-players-label');
     
+    if (formType && formPlayers && formPlayersLabel) {
+        formType.addEventListener('change', () => {
+            const val = formType.value;
+            if (val === 'training') {
+                formPlayers.min = 6;
+                if (parseInt(formPlayers.value) < 6) {
+                    formPlayers.value = 6;
+                }
+                formPlayersLabel.setAttribute('data-t', 'formPlayersLabelMin6');
+            } else {
+                formPlayers.min = 1;
+                formPlayersLabel.setAttribute('data-t', 'formPlayersLabelGeneral');
+            }
+            updateLanguageUI();
+        });
+    }
+
     openBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -758,43 +790,82 @@ function initModal() {
         e.preventDefault();
         
         // Read form values
+        const type = document.getElementById('form-type').value;
         const name = document.getElementById('form-name').value;
         const email = document.getElementById('form-email').value;
         const date = document.getElementById('form-date').value;
         const players = document.getElementById('form-players').value;
         const note = document.getElementById('form-msg').value;
         
-        // Validate minimum players
-        if (parseInt(players) < 6) {
+        // Validate minimum players only for training packages
+        if (type === 'training' && parseInt(players) < 6) {
             alert(currentLang === 'de' 
                 ? 'Ahoi! Für dieses Angebot müsst ihr mindestens 6 Piraten sein.' 
                 : 'Ahoi! You need at least 6 pirates for this offer.');
             return;
         }
         
+        // Map type values to language specific labels
+        let typeLabel = '';
+        if (currentLang === 'de') {
+            typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Nur Adventure Golf' : 'Sonstige Anfrage');
+        } else {
+            typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Adventure Golf Only' : 'Other Inquiry');
+        }
+        
         // Subject line
-        const subject = encodeURIComponent(`Adventure & Golf Anfrage - ${name}`);
+        const subject = encodeURIComponent(`${typeLabel} Anfrage - ${name}`);
         
         // Body formatted in fun pirate slang
         let body = '';
         if (currentLang === 'de') {
-            body = `Ahoi Gut Wissmannshof Crew!\n\n` +
-                   `Wir möchten gerne unseren nächsten Törn buchen und die Leinen losmachen:\n\n` +
-                   `Kapitän: ${name}\n` +
-                   `Wunschtermin: ${date}\n` +
-                   `Anzahl der Piraten: ${players} Personen\n` +
-                   `Flaschenpost-Notiz: ${note}\n\n` +
-                   `Yo-ho-ho! Meldet euch gerne bei uns zur Bestätigung.\n\n` +
-                   `Beste Grüße,\n${name}\n(${email})`;
+            body = `Ahoi Gut Wissmannshof Crew!
+
+` +
+                   `Wir möchten gerne unseren nächsten Törn buchen und die Leinen losmachen:
+
+` +
+                   `Anfrage-Typ: ${typeLabel}
+` +
+                   `Kapitän: ${name}
+` +
+                   `Wunschtermin: ${date}
+` +
+                   `Anzahl der Piraten: ${players} Personen
+` +
+                   `Flaschenpost-Notiz: ${note}
+
+` +
+                   `Yo-ho-ho! Meldet euch gerne bei uns zur Bestätigung.
+
+` +
+                   `Beste Grüße,
+${name}
+(${email})`;
         } else {
-            body = `Ahoi Gut Wissmannshof Crew!\n\n` +
-                   `We would like to book our next voyage and set sail:\n\n` +
-                   `Captain: ${name}\n` +
-                   `Preferred Date: ${date}\n` +
-                   `Number of Pirates: ${players} people\n` +
-                   `Message in a Bottle: ${note}\n\n` +
-                   `Yo-ho-ho! Please get back to us to confirm the trip.\n\n` +
-                   `Best regards,\n${name}\n(${email})`;
+            body = `Ahoi Gut Wissmannshof Crew!
+
+` +
+                   `We would like to book our next voyage and set sail:
+
+` +
+                   `Inquiry Type: ${typeLabel}
+` +
+                   `Captain: ${name}
+` +
+                   `Preferred Date: ${date}
+` +
+                   `Number of Pirates: ${players} people
+` +
+                   `Message in a Bottle: ${note}
+
+` +
+                   `Yo-ho-ho! Please get back to us to confirm the trip.
+
+` +
+                   `Best regards,
+${name}
+(${email})`;
         }
         
         const mailtoLink = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(body)}`;
@@ -802,6 +873,13 @@ function initModal() {
         window.location.href = mailtoLink;
         modal.classList.remove('open');
         form.reset();
+        
+        // Reset min/label after form reset
+        if (formPlayers && formPlayersLabel && formType) {
+            formPlayers.min = 1;
+            formPlayersLabel.setAttribute('data-t', 'formPlayersLabelGeneral');
+            updateLanguageUI();
+        }
     });
 }
 
