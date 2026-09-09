@@ -38,15 +38,37 @@ function initMobileNav() {
     
     if (!toggleBtn || !mainNav) return;
 
-    toggleBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('open');
-    });
+    // Create backdrop element if it doesn't exist
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'nav-backdrop';
+        document.body.appendChild(backdrop);
+    }
+
+    function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !mainNav.classList.contains('open');
+        mainNav.classList.toggle('open', isOpen);
+        toggleBtn.classList.toggle('open', isOpen);
+        backdrop.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    toggleBtn.addEventListener('click', () => toggleMenu());
+    backdrop.addEventListener('click', () => toggleMenu(false));
 
     // Close nav when clicking any link
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            mainNav.classList.remove('open');
+            toggleMenu(false);
         });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+            toggleMenu(false);
+        }
     });
 }
 
