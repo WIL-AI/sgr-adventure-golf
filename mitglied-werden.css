@@ -289,11 +289,11 @@ img {
    ========================================================================== */
 .hero-section {
     position: relative;
-    padding: 180px 0 100px;
+    padding: 190px 0 110px;
     background-color: var(--color-primary-dark);
-    background-image: url('assets/course_view.jpg');
+    background-image: url('assets/hero_membership.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     color: var(--color-white);
     overflow: hidden;
 }
@@ -301,7 +301,7 @@ img {
 .hero-backdrop {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(13, 34, 24, 0.92) 0%, rgba(20, 51, 36, 0.82) 60%, rgba(13, 34, 24, 0.94) 100%);
+    background: linear-gradient(180deg, rgba(13, 34, 24, 0.78) 0%, rgba(20, 51, 36, 0.52) 45%, rgba(13, 34, 24, 0.88) 100%);
 }
 
 .hero-container {
