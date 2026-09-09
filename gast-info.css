@@ -1,0 +1,1430 @@
+/* ==========================================================================
+   Sport- und Golf-Resort Gut Wissmannshof - Gäste-Info Landing Page CSS
+   Modern Luxury Golf Resort Design System
+   ========================================================================== */
+
+:root {
+    /* Brand Colors */
+    --color-primary-dark: #0D2218;
+    --color-primary: #143324;
+    --color-primary-light: #1E4D36;
+    
+    --color-gold: #B8963E;
+    --color-gold-light: #D4AF37;
+    --color-gold-pale: #EFE4C8;
+    
+    --color-cream: #F8F5EE;
+    --color-cream-dark: #EFE9DC;
+    --color-white: #FFFFFF;
+    
+    --color-text-dark: #19231E;
+    --color-text-muted: #5C6A63;
+    --color-text-light: #9AA8A0;
+    
+    --color-border: rgba(20, 51, 36, 0.12);
+    --color-border-gold: rgba(184, 150, 62, 0.35);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Shadows & Transitions */
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-luxury: 0 20px 40px rgba(13, 34, 24, 0.12);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Layout */
+    --max-width: 1200px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.text-center { text-align: center; }
+.text-white { color: var(--color-white) !important; }
+.text-gray { color: var(--color-text-light) !important; }
+
+/* Sections */
+.section {
+    padding: 85px 0;
+    position: relative;
+}
+
+.section-cream { background-color: var(--color-cream); }
+.section-white { background-color: var(--color-white); }
+.section-dark { 
+    background-color: var(--color-primary-dark); 
+    color: var(--color-white);
+}
+
+.section-header {
+    max-width: 780px;
+    margin: 0 auto 55px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    background-color: rgba(20, 51, 36, 0.08);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.section-tag-gold {
+    color: var(--color-gold-light);
+    background-color: rgba(184, 150, 62, 0.15);
+    border: 1px solid var(--color-border-gold);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-primary-dark);
+    margin-bottom: 18px;
+}
+
+.section-dark .section-title {
+    color: var(--color-white);
+}
+
+.section-subtitle {
+    font-size: 1.08rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.section-dark .section-subtitle {
+    color: #A8B8B0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.btn-gold {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 15px rgba(184, 150, 62, 0.3);
+}
+
+.btn-gold:hover {
+    background-color: #9C7E30;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 150, 62, 0.4);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-outline-white {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-outline-white:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+    border-color: var(--color-white);
+}
+
+.btn-outline-dark {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-block { width: 100%; }
+.btn-sm { padding: 10px 18px; font-size: 0.88rem; }
+.btn-lg { padding: 16px 32px; font-size: 1.05rem; }
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-img {
+    height: 46px;
+    width: auto;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.main-nav a {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    letter-spacing: 0.02em;
+}
+
+.main-nav a:hover {
+    color: var(--color-gold);
+}
+
+.nav-btn-highlight {
+    background-color: var(--color-primary);
+    color: var(--color-white) !important;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.nav-btn-highlight:hover {
+    background-color: var(--color-gold);
+    transform: translateY(-1px);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary-dark);
+    transition: var(--transition-smooth);
+}
+
+.mobile-menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(13, 34, 24, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-backdrop.open {
+    display: block;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    padding: 180px 0 95px;
+    background-color: var(--color-primary-dark);
+    background-image: url('assets/hero_membership.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 34, 24, 0.82) 0%, rgba(20, 51, 36, 0.58) 50%, rgba(13, 34, 24, 0.90) 100%);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-gold-light);
+    border: 1px solid var(--color-border-gold);
+    background-color: rgba(184, 150, 62, 0.15);
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.hero-gold-text {
+    color: var(--color-gold-light);
+    font-style: italic;
+}
+
+.hero-lead {
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: #D6E2DC;
+    max-width: 780px;
+    margin: 0 auto 36px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 55px;
+}
+
+/* Hero Trust Bar */
+.hero-trust-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 22px;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.trust-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.trust-text strong {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--color-white);
+}
+
+.trust-text span {
+    font-size: 0.8rem;
+    color: #A8B8B0;
+}
+
+/* ==========================================================================
+   Greenfee Cards Grid
+   ========================================================================== */
+.greenfee-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.gf-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: 38px 28px;
+    position: relative;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition-smooth);
+}
+
+.gf-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-luxury);
+}
+
+.featured-gf {
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 12px 35px rgba(184, 150, 62, 0.12);
+}
+
+.gf-badge {
+    position: absolute;
+    top: -13px;
+    left: 28px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 50px;
+}
+
+.badge-gold {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+}
+
+.gf-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 4px;
+}
+
+.gf-course {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 12px;
+}
+
+.gf-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: 24px;
+}
+
+.gf-price-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.row-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.row-label small {
+    font-weight: normal;
+    color: var(--color-text-muted);
+}
+
+.row-price {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.highlight-row {
+    background-color: rgba(184, 150, 62, 0.08);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-gold);
+}
+
+.row-sub {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.highlight-price {
+    color: var(--color-gold) !important;
+}
+
+.info-row {
+    border-bottom: none;
+    padding: 6px 0;
+}
+
+.info-row .row-sub {
+    color: var(--color-text-muted);
+    font-weight: normal;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5+1 Abos Section
+   ========================================================================== */
+.abos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+}
+
+.abo-card {
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    position: relative;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+}
+
+.abo-card:hover {
+    background-color: var(--color-white);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--color-gold);
+}
+
+.abo-badge {
+    position: absolute;
+    top: -12px;
+    right: 36px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 50px;
+}
+
+.abo-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.abo-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 8px;
+}
+
+.abo-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.abo-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 30px;
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.abo-price-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.abo-type {
+    font-weight: 600;
+    color: var(--color-text-dark);
+    font-size: 0.92rem;
+}
+
+.abo-sum {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.abo-saving {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    width: 100%;
+}
+
+/* ==========================================================================
+   Equipment & Carts Section
+   ========================================================================== */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.equip-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 30px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition-smooth);
+}
+
+.equip-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-gold);
+    transform: translateY(-4px);
+}
+
+.featured-equip {
+    border-color: var(--color-border-gold);
+    background-color: rgba(184, 150, 62, 0.08);
+}
+
+.equip-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.equip-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-white);
+    margin-bottom: 8px;
+}
+
+.equip-desc {
+    font-size: 0.88rem;
+    color: #A8B8B0;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.equip-price-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+    margin-bottom: 16px;
+}
+
+.equip-price-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #D6E2DC;
+}
+
+.equip-price-list strong {
+    font-size: 1.1rem;
+    color: var(--color-gold-light);
+}
+
+.equip-price-list small {
+    display: block;
+    font-size: 0.72rem;
+    color: #889990;
+}
+
+.vip-item {
+    background-color: rgba(184, 150, 62, 0.15);
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.equip-hint {
+    font-size: 0.75rem;
+    color: var(--color-gold-light);
+    font-style: italic;
+}
+
+.equip-single-price {
+    margin: 16px 0 10px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.eq-val {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--color-gold-light);
+    line-height: 1;
+}
+
+.eq-sub {
+    font-size: 0.8rem;
+    color: #A8B8B0;
+    margin-top: 4px;
+    display: block;
+}
+
+.equip-extra {
+    font-size: 0.82rem;
+    color: #889990;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Adventure Golf Showcase Banner
+   ========================================================================== */
+.adventure-banner-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    padding: 48px;
+    box-shadow: var(--shadow-medium);
+}
+
+.adv-prices-box {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.adv-p-item {
+    background-color: var(--color-cream);
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.adv-p-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.adv-p-val {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.adv-image {
+    height: 100%;
+    min-height: 280px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.adv-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   Knigge / Important Info
+   ========================================================================== */
+.knigge-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.knigge-card {
+    background-color: var(--color-cream);
+    padding: 28px 22px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+}
+
+.knigge-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.knigge-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+}
+
+.knigge-card p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Hotel & Gastronomie Showcase
+   ========================================================================== */
+.hotel-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hotel-showcase-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-luxury);
+    height: 380px;
+}
+
+.h-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hotel-perks-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.hotel-perks-list li {
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+.hotel-btn-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Contact / Lead Form Section
+   ========================================================================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 18px;
+}
+
+.contact-lead {
+    font-size: 1.05rem;
+    color: #A8B8B0;
+    line-height: 1.75;
+    margin-bottom: 36px;
+}
+
+.contact-person-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    margin-bottom: 36px;
+}
+
+.person-avatar {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.person-details strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--color-white);
+}
+
+.person-details span {
+    font-size: 0.85rem;
+    color: var(--color-gold-light);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.person-quote {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: #D6E2DC;
+    line-height: 1.5;
+}
+
+.contact-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.meta-icon {
+    font-size: 1.2rem;
+    color: var(--color-gold-light);
+}
+
+.meta-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #889990;
+}
+
+.meta-val {
+    font-size: 0.95rem;
+    color: var(--color-white);
+}
+
+.meta-val:hover {
+    color: var(--color-gold-light);
+}
+
+/* Contact Form Panel */
+.contact-form-panel {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 44px 36px;
+    box-shadow: var(--shadow-luxury);
+    color: var(--color-text-dark);
+}
+
+.form-header {
+    margin-bottom: 26px;
+}
+
+.form-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 6px;
+}
+
+.form-header p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-bottom: 6px;
+}
+
+.form-control {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    background-color: #FAFAFA;
+    border: 1px solid #DFDFDF;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-dark);
+    transition: var(--transition-smooth);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.15);
+}
+
+.form-disclaimer {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-top: 14px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background-color: #081610;
+    color: #A8B8B0;
+    padding: 70px 0 30px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    height: 44px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    margin-bottom: 16px;
+}
+
+.footer-address {
+    line-height: 1.6;
+}
+
+.footer-col h4 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a:hover {
+    color: var(--color-gold-light);
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+}
+
+.footer-tagline {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-gold-light);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints & Mobile Optimization
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .hero-title { font-size: 3.2rem; }
+    .hero-trust-bar { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .greenfee-cards-grid { grid-template-columns: 1fr; }
+    .abos-grid { grid-template-columns: 1fr; }
+    .equipment-grid { grid-template-columns: repeat(2, 1fr); }
+    .adventure-banner-grid { grid-template-columns: 1fr; }
+    .hotel-showcase-grid { grid-template-columns: 1fr; }
+    .knigge-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .section-header {
+        margin-bottom: 34px;
+    }
+
+    .section-title {
+        font-size: clamp(1.85rem, 6vw, 2.25rem);
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    /* Header & Mobile Nav */
+    .site-header {
+        padding: 12px 0;
+    }
+
+    .header-container {
+        padding: 0 16px;
+    }
+
+    .logo-img {
+        height: 38px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        padding: 8px;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: var(--color-white);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 85px 24px 40px;
+        gap: 16px;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow-y: auto;
+        z-index: 999;
+    }
+
+    .main-nav.open {
+        transform: translateX(0);
+    }
+
+    .main-nav a {
+        font-size: 1.05rem;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-btn-highlight {
+        text-align: center;
+        margin-top: 10px;
+        padding: 14px 20px;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding: 130px 0 50px;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 6px 14px;
+        letter-spacing: 0.08em;
+        margin-bottom: 18px;
+        line-height: 1.3;
+    }
+
+    .hero-title {
+        font-size: clamp(2.1rem, 7vw, 2.6rem);
+        line-height: 1.18;
+        margin-bottom: 18px;
+    }
+
+    .hero-lead {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+    .hero-trust-bar {
+        grid-template-columns: 1fr;
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .trust-item {
+        gap: 10px;
+    }
+
+    /* Cards */
+    .gf-card {
+        padding: 28px 18px;
+    }
+
+    .gf-badge {
+        left: 18px;
+    }
+
+    .abo-card {
+        padding: 28px 18px;
+    }
+
+    .equipment-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .equip-card {
+        padding: 24px 18px;
+    }
+
+    .adventure-banner-grid {
+        padding: 28px 18px;
+        gap: 24px;
+    }
+
+    .adv-prices-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .knigge-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .knigge-card {
+        padding: 22px 18px;
+    }
+
+    .hotel-showcase-img {
+        height: 220px;
+    }
+
+    .hotel-btn-row {
+        flex-direction: column;
+    }
+
+    .hotel-btn-row .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Contact Form & Info */
+    .contact-title {
+        font-size: 1.85rem;
+    }
+
+    .contact-lead {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
+    .contact-person-card {
+        padding: 16px;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+
+    .person-avatar {
+        width: 46px;
+        height: 46px;
+        font-size: 1.25rem;
+    }
+
+    .person-details strong {
+        font-size: 1rem;
+    }
+
+    .person-quote {
+        font-size: 0.82rem;
+    }
+
+    .contact-form-panel {
+        padding: 28px 16px;
+        border-radius: var(--radius-md);
+    }
+
+    .form-header h3 {
+        font-size: 1.35rem;
+    }
+
+    .form-header p {
+        font-size: 0.85rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-control {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+        padding: 11px 14px;
+    }
+
+    .btn-lg {
+        font-size: 0.95rem;
+        padding: 14px 16px;
+        white-space: normal;
+        height: auto;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 50px 0 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 36px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
