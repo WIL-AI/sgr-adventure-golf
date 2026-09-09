@@ -6,7 +6,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initMobileNav();
-    initPricingToggle();
     initPreselectHandlers();
     initFaqAccordion();
     initInquiryForm();
@@ -52,60 +51,7 @@ function initMobileNav() {
 }
 
 /* ==========================================================================
-   3. Monthly / Yearly Pricing Toggle
-   ========================================================================== */
-function initPricingToggle() {
-    const toggle = document.getElementById('pricing-toggle');
-    const labelMonthly = document.getElementById('label-monthly');
-    const labelYearly = document.getElementById('label-yearly');
-    
-    if (!toggle) return;
-
-    toggle.addEventListener('change', () => {
-        const isYearly = !toggle.checked; // default unchecked = yearly
-        
-        if (isYearly) {
-            labelYearly.classList.add('active');
-            labelMonthly.classList.remove('active');
-        } else {
-            labelMonthly.classList.add('active');
-            labelYearly.classList.remove('active');
-        }
-
-        // Update featured cards amount
-        document.querySelectorAll('.amount[data-monthly]').forEach(el => {
-            el.textContent = isYearly ? el.getAttribute('data-yearly') : el.getAttribute('data-monthly');
-        });
-
-        // Update featured cards period label
-        document.querySelectorAll('.price-period[data-monthly]').forEach(el => {
-            el.textContent = isYearly ? el.getAttribute('data-yearly') : el.getAttribute('data-monthly');
-        });
-
-        // Update compact cards price
-        document.querySelectorAll('.c-amount[data-monthly]').forEach(el => {
-            el.textContent = isYearly ? el.getAttribute('data-yearly') : el.getAttribute('data-monthly');
-        });
-    });
-
-    // Allow clicking labels directly
-    if (labelMonthly) {
-        labelMonthly.addEventListener('click', () => {
-            toggle.checked = true;
-            toggle.dispatchEvent(new Event('change'));
-        });
-    }
-
-    if (labelYearly) {
-        labelYearly.addEventListener('click', () => {
-            toggle.checked = false;
-            toggle.dispatchEvent(new Event('change'));
-        });
-    }
-}
-
-/* ==========================================================================
-   4. Preselect Category in Contact Form from Pricing Cards
+   3. Preselect Category in Contact Form from Pricing Cards
    ========================================================================== */
 function initPreselectHandlers() {
     const selectBox = document.getElementById('mgl-type');
