@@ -143,7 +143,7 @@ function initInquiryForm() {
 
         // Build email body
         const body = 
-            `Guten Tag Herr Wiegand, guten Tag Team Gut Wissmannshof,\n\n` +
+            `Guten Tag Team Wissmannshof,\n\n` +
             `ich interessiere mich für eine Mitgliedschaft auf Gut Wissmannshof und bitte um Kontaktaufnahme bzw. die Vereinbarung eines persönlichen Kennenlerntermins.\n\n` +
             `--------------------------------------------------\n` +
             `ANGABEN ZUR ANFRAGE:\n` +
