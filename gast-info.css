@@ -1021,6 +1021,165 @@ img {
     color: var(--color-gold-light);
 }
 
+/* PC CADDIE Card in Left Panel */
+.pccaddie-card {
+    margin-top: 24px;
+    background: linear-gradient(135deg, rgba(184, 150, 62, 0.15) 0%, rgba(20, 51, 36, 0.45) 100%);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 22px;
+}
+
+.pcc-card-top {
+    margin-bottom: 8px;
+}
+
+.pcc-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background-color: var(--color-gold);
+    color: var(--color-primary-dark);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.pccaddie-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-white);
+    margin-bottom: 6px;
+}
+
+.pccaddie-card p {
+    font-size: 0.85rem;
+    color: #C0CDC6;
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.btn-pccaddie {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background-color: var(--color-gold);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(184, 150, 62, 0.35);
+}
+
+.btn-pccaddie:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+}
+
+/* Plakativer PC CADDIE Banner am Formularkopf */
+.pccaddie-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: linear-gradient(135deg, #0D2218 0%, #173828 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(13, 34, 24, 0.18);
+    color: var(--color-white);
+}
+
+.pccaddie-banner-content {
+    flex: 1;
+}
+
+.pccaddie-pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary-dark);
+    background-color: var(--color-gold-light);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: 4px;
+}
+
+.pccaddie-banner-content strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--color-white);
+    margin-bottom: 2px;
+}
+
+.pccaddie-banner-content p {
+    font-size: 0.84rem;
+    color: #A8B8B0;
+    margin: 0;
+}
+
+.btn-pccaddie-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #B8963E 0%, #D4AF37 100%);
+    color: var(--color-primary-dark) !important;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 13px 22px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.btn-pccaddie-action:hover {
+    background: #FFFFFF;
+    color: var(--color-primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-divider-row {
+    position: relative;
+    text-align: center;
+    margin: 18px 0 24px;
+}
+
+.form-divider-row::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #E2E2E2;
+    z-index: 1;
+}
+
+.form-divider-row span {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-white);
+    padding: 0 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 /* Contact Form Panel */
 .contact-form-panel {
     background-color: var(--color-white);
@@ -1028,6 +1187,19 @@ img {
     padding: 44px 36px;
     box-shadow: var(--shadow-luxury);
     color: var(--color-text-dark);
+}
+
+@media (max-width: 768px) {
+    .pccaddie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px;
+    }
+    .btn-pccaddie-action {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .form-header {
