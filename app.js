@@ -257,7 +257,7 @@ const translations = {
         promoDesc: "Ihr habt auf unserem Adventure-Golfplatz Blut geleckt und wollt wissen, wie sich echtes Golf anfühlt? Trommelt mindestens 6 Piraten zusammen und bucht unser exklusives Schnupperpaket!",
         promoCardTitle: "Adventure & Golf Paket",
         promoCardSub: "Das Rundum-Abenteuer für die Crew",
-        promoFeat1: "90 Minuten Golf-Workspiel mit einem Profi-Trainer auf der Driving Range & Übungsplatz",
+        promoFeat1: "90 Minuten Golf-Workspiel mit einem Profi-Betreuer auf der Driving Range & Übungsplatz",
         promoFeat2: "Anschließend eine komplette 18-Loch-Runde auf unserem Adventure-Golf-Kurs",
         promoFeat3: "Großer Piraten-Pommes-Teller zum Picken für die ganze Crew nach der Runde",
         promoFeat4: "Ein erfrischender Softdrink pro Person inklusive",
