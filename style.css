@@ -172,6 +172,9 @@ header {
     padding: 4px 8px;
     border-radius: var(--border-radius-sm);
     transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .lang-btn.active {
