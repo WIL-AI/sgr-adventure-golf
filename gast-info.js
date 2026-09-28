@@ -105,7 +105,7 @@ const translations = {
         advDesc: "18 spektakuläre Kunstrasenbahnen im Piraten- und Abenteuer-Design! Mit Bunkern, Findlingen, Wasserhindernissen und Brücken – der perfekte Familienspaß direkt am Resort.",
         advAdult: "Erwachsene",
         advKid: "Kinder (bis 12 Jahre)",
-        advNote: "Automatische Schläger- und Ballausgabe vor Ort am Ticketautomaten (täglich 07:00 – 21:00 Uhr bespielbar). 10er-, 20er- und Familienkarten verfügbar.",
+        advNote: "Automatische Schläger- und Ballausgabe vor Ort am Ticketautomaten (täglich 07:00 – 21:00 Uhr bespielbar, tageslichtabhängig bis Einbruch der Dunkelheit; eine Platzbeleuchtung ist für die Zukunft in Planung). 10er-, 20er- und Familienkarten verfügbar.",
         btnAdvPage: "Zur Adventure Golf Infoseite ↗",
 
         tagKnigge: "Gut zu wissen",
