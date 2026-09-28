@@ -429,33 +429,40 @@ document.addEventListener('DOMContentLoaded', () => {
    Language Switcher Logic
    ========================================================================== */
 function initLanguage() {
-    const deBtn = document.getElementById('lang-de');
-    const enBtn = document.getElementById('lang-en');
-    
-    if (deBtn && enBtn) {
-        deBtn.addEventListener('click', () => setLanguage('de'));
-        enBtn.addEventListener('click', () => setLanguage('en'));
-    }
+    document.querySelectorAll('.lang-btn-de').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('de');
+        });
+    });
+    document.querySelectorAll('.lang-btn-en').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
+    });
 
     updateLanguageUI();
 }
 
-function setLanguage(lang) {
-    if (currentLang === lang) return;
+window.setLanguage = function(lang) {
     currentLang = lang;
-    localStorage.setItem('sgr_lang', lang);
+    try {
+        localStorage.setItem('sgr_lang', lang);
+    } catch (e) {}
     updateLanguageUI();
-}
+};
 
 function updateLanguageUI() {
-    // Update active button classes
-    const deBtn = document.getElementById('lang-de');
-    const enBtn = document.getElementById('lang-en');
-    if (deBtn) deBtn.classList.toggle('active', currentLang === 'de');
-    if (enBtn) enBtn.classList.toggle('active', currentLang === 'en');
-
-    // Update HTML lang attribute
     document.documentElement.lang = currentLang;
+
+    // Toggle active class on all lang buttons
+    document.querySelectorAll('.lang-btn-de').forEach(btn => {
+        btn.classList.toggle('active', currentLang === 'de');
+    });
+    document.querySelectorAll('.lang-btn-en').forEach(btn => {
+        btn.classList.toggle('active', currentLang === 'en');
+    });
 
     // Translate text nodes
     document.querySelectorAll('[data-t]').forEach(el => {

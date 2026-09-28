@@ -1484,7 +1484,7 @@ img {
     /* Pricing */
     .featured-pricing-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 16px;
         margin-bottom: 40px;
     }
 
@@ -1744,7 +1744,7 @@ img {
 
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 16px;
         margin-bottom: 36px;
     }
 
