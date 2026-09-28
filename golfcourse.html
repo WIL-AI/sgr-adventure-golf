@@ -1,610 +1,610 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golfplatz &amp; Hole 1–18 – Sport- und Golf-Resort Gut Wissmannshof | 27-Loch Meisterschaftsplatz</title>
-    <meta name="description" content="Entdecken Sie die Golfbahnen auf Gut Wissmannshof: Interaktiver 18-Loch Bahnen-Guide mit Platzgrafiken, Distanzen, Pro-Tipps, DGV Slope-Tabellen und Scorekarten-Download.">
-    <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="golfcourse.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Golfplatz &amp; Hole 1–18 – Sport- und Golf-Resort Gut Wissmannshof | 27-Loch Meisterschaftsplatz</title>
+ <meta name="description" content="Entdecken Sie die Golfbahnen auf Gut Wissmannshof: Interaktiver 18-Loch Bahnen-Guide mit Platzgrafiken, Distanzen, Pro-Tipps, DGV Slope-Tabellen und Scorekarten-Download.">
+ <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
+ 
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+ 
+ <!-- CSS Stylesheet -->
+ <link rel="stylesheet" href="golfcourse.css">
 </head>
 <body>
 
-    <!-- ==========================================================================
-         Header & Navigation (Clean, spacious, modern layout)
-         ========================================================================== -->
-    <header class="site-header" id="header">
-        <div class="header-container">
-            <a href="https://www.wissmannshof.de/" class="brand-logo" target="_blank" rel="noopener">
-                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="logo-img">
-            </a>
-            
-            <nav class="main-nav" id="main-nav">
-                <a href="home.html" class="nav-link" data-t="navHome">Startseite</a>
-                <a href="#loops" class="nav-link" data-t="navOverview">Golfplatz</a>
-                <a href="#bahnen" class="nav-link" data-t="navHoles">Hole 1–18</a>
-                <a href="#impressionen" class="nav-link" data-t="navGallery">Impressionen</a>
-                <a href="#specs" class="nav-link" data-t="navSpecs">Course Rating</a>
-                <a href="#downloads" class="nav-link" data-t="navDownloads">Downloads</a>
-                <a href="#training" class="nav-link" data-t="navPractice">Übungsanlagen</a>
-            </nav>
+ <!-- ==========================================================================
+ Header & Navigation (Clean, spacious, modern layout)
+ ========================================================================== -->
+ <header class="site-header" id="header">
+ <div class="header-container">
+ <a href="https://www.wissmannshof.de/" class="brand-logo" target="_blank" rel="noopener">
+ <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo" class="logo-img">
+ </a>
+ 
+ <nav class="main-nav" id="main-nav">
+ <a href="home.html" class="nav-link" data-t="navHome">Startseite</a>
+ <a href="#loops" class="nav-link" data-t="navOverview">Golfplatz</a>
+ <a href="#bahnen" class="nav-link" data-t="navHoles">Hole 1–18</a>
+ <a href="#impressionen" class="nav-link" data-t="navGallery">Impressionen</a>
+ <a href="#specs" class="nav-link" data-t="navSpecs">Course Rating</a>
+ <a href="#downloads" class="nav-link" data-t="navDownloads">Downloads</a>
+ <a href="#training" class="nav-link" data-t="navPractice">Übungsanlagen</a>
+ </nav>
 
-            <div class="nav-actions">
-                <a href="#buchen" class="nav-btn-highlight" data-t="navBtnBooking">Startzeit buchen</a>
-                <div class="lang-switcher">
-                    <button type="button" class="lang-btn lang-btn-de active" id="lang-de" onclick="setLanguage('de')" aria-label="Deutsch"><span>DE</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#ffce00" d="M0 320h640v160H0z"/><path fill="#000" d="M0 0h640v160H0z"/><path fill="#d00" d="M0 160h640v160H0z"/></svg></button>
-                    <button type="button" class="lang-btn lang-btn-en" id="lang-en" onclick="setLanguage('en')" aria-label="English"><span>EN</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/><path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/><path fill="#C8102E" d="M273 0v480h96V0h-96zM0 192v96h640v-96H0z"/></svg></button>
-                </div>
-            </div>
-            
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
+ <div class="nav-actions">
+ <a href="#buchen" class="nav-btn-highlight" data-t="navBtnBooking">Startzeit buchen</a>
+ <div class="lang-switcher">
+ <button type="button" class="lang-btn lang-btn-de active" id="lang-de" onclick="setLanguage('de')" aria-label="Deutsch"><span>DE</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#ffce00" d="M0 320h640v160H0z"/><path fill="#000" d="M0 0h640v160H0z"/><path fill="#d00" d="M0 160h640v160H0z"/></svg></button>
+ <button type="button" class="lang-btn lang-btn-en" id="lang-en" onclick="setLanguage('en')" aria-label="English"><span>EN</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/><path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/><path fill="#C8102E" d="M273 0v480h96V0h-96zM0 192v96h640v-96H0z"/></svg></button>
+ </div>
+ </div>
+ 
+ <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
+ <span></span>
+ <span></span>
+ <span></span>
+ </button>
+ </div>
+ </header>
 
-    <!-- ==========================================================================
-         Hero Section
-         ========================================================================== -->
-    <section class="hero-course">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge" data-t="heroBadge">27-Loch Meisterschaftsanlage &amp; Canyon-Kurs</div>
-                <h1 class="hero-title" data-t="heroTitle">Die <span>Golfbahnen</span> auf Gut Wissmannshof.</h1>
-                <p class="hero-lead" data-t="heroLead">
-                    Erleben Sie spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways, anspruchsvolle Greens und Course-Architektur auf absolutem PGA-Niveau – 365 Tage im Jahr bespielbar.
-                </p>
-                
-                <div class="hero-actions">
-                    <a href="#bahnen" class="btn btn-gold" data-t="btnHeroExplore">Hole 1–18 erkunden ↓</a>
-                    <a href="#buchen" class="btn btn-outline-white" data-t="btnHeroBook">Startzeit reservieren</a>
-                </div>
-                
-                <!-- Facts Bar -->
-                <div class="hero-facts-bar">
-                    <div class="fact-item">
-                        <div class="fact-number" data-t="fact1Number">27</div>
-                        <div class="fact-label" data-t="fact1Label">Loch Golf-Erlebnis</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number" data-t="fact2Number">18</div>
-                        <div class="fact-label" data-t="fact2Label">Meisterschaftskurs Blau-Gelb</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number" data-t="fact3Number">4</div>
-                        <div class="fact-label" data-t="fact3Label">Abschläge pro Bahn (W/G/B/R)</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number" data-t="fact4Number">365</div>
-                        <div class="fact-label" data-t="fact4Label">Tage ganzjährig bespielbar</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ <!-- ==========================================================================
+ Hero Section
+ ========================================================================== -->
+ <section class="hero-course">
+ <div class="container">
+ <div class="hero-content">
+ <div class="hero-badge" data-t="heroBadge">27-Loch Meisterschaftsanlage &amp; Canyon-Kurs</div>
+ <h1 class="hero-title" data-t="heroTitle">Die <span>Golfbahnen</span> auf Gut Wissmannshof.</h1>
+ <p class="hero-lead" data-t="heroLead">
+ Erleben Sie spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways, anspruchsvolle Greens und Course-Architektur auf absolutem PGA-Niveau – 365 Tage im Jahr bespielbar.
+ </p>
+ 
+ <div class="hero-actions">
+ <a href="#bahnen" class="btn btn-gold" data-t="btnHeroExplore">Hole 1–18 erkunden ↓</a>
+ <a href="#buchen" class="btn btn-outline-white" data-t="btnHeroBook">Startzeit reservieren</a>
+ </div>
+ 
+ <!-- Facts Bar -->
+ <div class="hero-facts-bar">
+ <div class="fact-item">
+ <div class="fact-number" data-t="fact1Number">27</div>
+ <div class="fact-label" data-t="fact1Label">Loch Golf-Erlebnis</div>
+ </div>
+ <div class="fact-item">
+ <div class="fact-number" data-t="fact2Number">18</div>
+ <div class="fact-label" data-t="fact2Label">Meisterschaftskurs Blau-Gelb</div>
+ </div>
+ <div class="fact-item">
+ <div class="fact-number" data-t="fact3Number">4</div>
+ <div class="fact-label" data-t="fact3Label">Abschläge pro Bahn (W/G/B/R)</div>
+ </div>
+ <div class="fact-item">
+ <div class="fact-number" data-t="fact4Number">365</div>
+ <div class="fact-label" data-t="fact4Label">Tage ganzjährig bespielbar</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Course Loops Overview (Blau, Gelb, Canyon, Rot) with Photo Previews
-         ========================================================================== -->
-    <section class="section section-cream" id="loops">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" data-t="tagLoops">Platzarchitektur</span>
-                <h2 class="section-title" data-t="loopsHeading">Unsere Kurs-Kombinationen</h2>
-                <p class="section-subtitle" data-t="loopsSub">
-                    Die Anlage von Gut Wissmannshof besticht durch drei unverwechselbare 9-Loch Schleifen und den Canyon Kurzplatz.
-                </p>
-            </div>
+ <!-- ==========================================================================
+ Course Loops Overview (Blau, Gelb, Canyon, Rot) with Photo Previews
+ ========================================================================== -->
+ <section class="section section-cream" id="loops">
+ <div class="container">
+ <div class="section-header text-center">
+ <span class="section-tag" data-t="tagLoops">Platzarchitektur</span>
+ <h2 class="section-title" data-t="loopsHeading">Unsere Kurs-Kombinationen</h2>
+ <p class="section-subtitle" data-t="loopsSub">
+ Die Anlage von Gut Wissmannshof besticht durch drei unverwechselbare 9-Loch Schleifen und den Canyon Kurzplatz.
+ </p>
+ </div>
 
-            <div class="course-loops-grid">
-                
-                <!-- Kurs Blau -->
-                <div class="loop-card">
-                    <div class="loop-card-img-wrap">
-                        <img src="assets/gallery_tee4_morning.jpg" alt="Kurs Blau – Landefeld Course">
-                        <div class="loop-card-img-overlay">
-                            <span class="loop-badge badge-blue" data-t="loopBlauBadge">Hole 1–9</span>
-                        </div>
-                    </div>
-                    <div class="loop-card-body">
-                        <h3 class="loop-title" data-t="loopBlauTitle">Kurs Blau (Landefeld)</h3>
-                        <ul class="loop-specs-list">
-                            <li><span>Distanz:</span> <strong data-t="loopBlauSpec1">Länge Weiß: 3.299 m | Gelb: 3.091 m</strong></li>
-                            <li><span>Zusammensetzung:</span> <strong data-t="loopBlauSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
-                        </ul>
-                        <p class="loop-desc" data-t="loopBlauDesc">
-                            Weite Ausblicke, abwechslungsreiche Höhenprofile und strategisch platzierte Wasser- und Sandhindernisse.
-                        </p>
-                    </div>
-                    <div class="loop-card-footer">
-                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('blau')" data-t="btnViewBlau">Hole 1–9 ansehen →</a>
-                    </div>
-                </div>
+ <div class="course-loops-grid">
+ 
+ <!-- Kurs Blau -->
+ <div class="loop-card">
+ <div class="loop-card-img-wrap">
+ <img src="assets/gallery_tee4_morning.jpg" alt="Kurs Blau – Landefeld Course">
+ <div class="loop-card-img-overlay">
+ <span class="loop-badge badge-blue" data-t="loopBlauBadge">Hole 1–9</span>
+ </div>
+ </div>
+ <div class="loop-card-body">
+ <h3 class="loop-title" data-t="loopBlauTitle">Kurs Blau (Landefeld)</h3>
+ <ul class="loop-specs-list">
+ <li><span>Distanz:</span> <strong data-t="loopBlauSpec1">Länge Weiß: 3.299 m | Gelb: 3.091 m</strong></li>
+ <li><span>Zusammensetzung:</span> <strong data-t="loopBlauSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
+ </ul>
+ <p class="loop-desc" data-t="loopBlauDesc">
+ Weite Ausblicke, abwechslungsreiche Höhenprofile und strategisch platzierte Wasser- und Sandhindernisse.
+ </p>
+ </div>
+ <div class="loop-card-footer">
+ <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('blau')" data-t="btnViewBlau">Hole 1–9 ansehen →</a>
+ </div>
+ </div>
 
-                <!-- Kurs Gelb -->
-                <div class="loop-card">
-                    <div class="loop-card-img-wrap">
-                        <img src="assets/gallery_fairway_waves_oak.jpg" alt="Kurs Gelb – Wissmannshof">
-                        <div class="loop-card-img-overlay">
-                            <span class="loop-badge badge-yellow" data-t="loopGelbBadge">Hole 10–18</span>
-                        </div>
-                    </div>
-                    <div class="loop-card-body">
-                        <h3 class="loop-title" data-t="loopGelbTitle">Kurs Gelb</h3>
-                        <ul class="loop-specs-list">
-                            <li><span>Distanz:</span> <strong data-t="loopGelbSpec1">Länge Weiß: 3.148 m | Gelb: 2.940 m</strong></li>
-                            <li><span>Zusammensetzung:</span> <strong data-t="loopGelbSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
-                        </ul>
-                        <p class="loop-desc" data-t="loopGelbDesc">
-                            Flüssig eingebettet in das sanfte Gelände mit spektakulärem Finale vor der Resorthotel-Sonnenterrasse.
-                        </p>
-                    </div>
-                    <div class="loop-card-footer">
-                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('gelb')" data-t="btnViewGelb">Hole 10–18 ansehen →</a>
-                    </div>
-                </div>
+ <!-- Kurs Gelb -->
+ <div class="loop-card">
+ <div class="loop-card-img-wrap">
+ <img src="assets/gallery_fairway_waves_oak.jpg" alt="Kurs Gelb – Wissmannshof">
+ <div class="loop-card-img-overlay">
+ <span class="loop-badge badge-yellow" data-t="loopGelbBadge">Hole 10–18</span>
+ </div>
+ </div>
+ <div class="loop-card-body">
+ <h3 class="loop-title" data-t="loopGelbTitle">Kurs Gelb</h3>
+ <ul class="loop-specs-list">
+ <li><span>Distanz:</span> <strong data-t="loopGelbSpec1">Länge Weiß: 3.148 m | Gelb: 2.940 m</strong></li>
+ <li><span>Zusammensetzung:</span> <strong data-t="loopGelbSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
+ </ul>
+ <p class="loop-desc" data-t="loopGelbDesc">
+ Flüssig eingebettet in das sanfte Gelände mit spektakulärem Finale vor der Resorthotel-Sonnenterrasse.
+ </p>
+ </div>
+ <div class="loop-card-footer">
+ <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('gelb')" data-t="btnViewGelb">Hole 10–18 ansehen →</a>
+ </div>
+ </div>
 
-                <!-- Canyon Kurs -->
-                <div class="loop-card">
-                    <div class="loop-card-img-wrap">
-                        <img src="assets/gallery_sunset_canyon_lake.jpg" alt="Canyon-Kurs Kurzplatz">
-                        <div class="loop-card-img-overlay">
-                            <span class="loop-badge badge-green" data-t="loopCanyonBadge">6 Loch (in Kürze 9 Loch)</span>
-                        </div>
-                    </div>
-                    <div class="loop-card-body">
-                        <h3 class="loop-title" data-t="loopCanyonTitle">Canyon-Kurs (Kurzplatz)</h3>
-                        <ul class="loop-specs-list">
-                            <li><span>Besonderheit:</span> <strong data-t="loopCanyonSpec1">Par 18 / 6 anspruchsvolle Bahnen</strong></li>
-                            <li><span>Zugang:</span> <strong data-t="loopCanyonSpec2">Ohne Platzerlaubnis / PE bespielbar</strong></li>
-                        </ul>
-                        <p class="loop-desc" data-t="loopCanyonDesc">
-                            Perfekt für die schnelle Runde nach Feierabend, Training des kurzen Spiels und für Einsteiger. In Kürze auf 9 Loch erweitert!
-                        </p>
-                    </div>
-                    <div class="loop-card-footer">
-                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('canyon')" data-t="btnViewCanyon">Canyon-Kurs ansehen →</a>
-                    </div>
-                </div>
+ <!-- Canyon Kurs -->
+ <div class="loop-card">
+ <div class="loop-card-img-wrap">
+ <img src="assets/gallery_sunset_canyon_lake.jpg" alt="Canyon-Kurs Kurzplatz">
+ <div class="loop-card-img-overlay">
+ <span class="loop-badge badge-green" data-t="loopCanyonBadge">6 Loch (in Kürze 9 Loch)</span>
+ </div>
+ </div>
+ <div class="loop-card-body">
+ <h3 class="loop-title" data-t="loopCanyonTitle">Canyon-Kurs (Kurzplatz)</h3>
+ <ul class="loop-specs-list">
+ <li><span>Besonderheit:</span> <strong data-t="loopCanyonSpec1">Par 18 / 6 anspruchsvolle Bahnen</strong></li>
+ <li><span>Zugang:</span> <strong data-t="loopCanyonSpec2">Ohne Platzerlaubnis / PE bespielbar</strong></li>
+ </ul>
+ <p class="loop-desc" data-t="loopCanyonDesc">
+ Perfekt für die schnelle Runde nach Feierabend, Training des kurzen Spiels und für Einsteiger. In Kürze auf 9 Loch erweitert!
+ </p>
+ </div>
+ <div class="loop-card-footer">
+ <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('canyon')" data-t="btnViewCanyon">Canyon-Kurs ansehen →</a>
+ </div>
+ </div>
 
-                <!-- Kurs Rot -->
-                <div class="loop-card">
-                    <div class="loop-card-img-wrap">
-                        <img src="assets/gallery_mountain_view_bunker.jpg" alt="Kurs Rot in Planung">
-                        <div class="loop-card-img-overlay">
-                            <span class="loop-badge badge-red" data-t="loopRotBadge">In Entwicklung</span>
-                        </div>
-                    </div>
-                    <div class="loop-card-body">
-                        <h3 class="loop-title" data-t="loopRotTitle">Kurs Rot (Ausblick)</h3>
-                        <ul class="loop-specs-list">
-                            <li><span>Status:</span> <strong data-t="loopRotSpec1">9 weitere Meisterschaftsbahnen</strong></li>
-                            <li><span>Ziel:</span> <strong data-t="loopRotSpec2">Erweiterung auf 27 vollwertige Meisterschaftslöcher</strong></li>
-                        </ul>
-                        <p class="loop-desc" data-t="loopRotDesc">
-                            Die dritte 9-Loch-Schleife vervollständigt künftig das 27-Loch Meisterschaftsresort Wissmannshof.
-                        </p>
-                    </div>
-                    <div class="loop-card-footer">
-                        <span class="btn btn-outline-dark" style="width:100%; opacity:0.6; cursor:default;" data-t="btnViewRot">In Planung</span>
-                    </div>
-                </div>
+ <!-- Kurs Rot -->
+ <div class="loop-card">
+ <div class="loop-card-img-wrap">
+ <img src="assets/gallery_mountain_view_bunker.jpg" alt="Kurs Rot in Planung">
+ <div class="loop-card-img-overlay">
+ <span class="loop-badge badge-red" data-t="loopRotBadge">In Entwicklung</span>
+ </div>
+ </div>
+ <div class="loop-card-body">
+ <h3 class="loop-title" data-t="loopRotTitle">Kurs Rot (Ausblick)</h3>
+ <ul class="loop-specs-list">
+ <li><span>Status:</span> <strong data-t="loopRotSpec1">9 weitere Meisterschaftsbahnen</strong></li>
+ <li><span>Ziel:</span> <strong data-t="loopRotSpec2">Erweiterung auf 27 vollwertige Meisterschaftslöcher</strong></li>
+ </ul>
+ <p class="loop-desc" data-t="loopRotDesc">
+ Die dritte 9-Loch-Schleife vervollständigt künftig das 27-Loch Meisterschaftsresort Wissmannshof.
+ </p>
+ </div>
+ <div class="loop-card-footer">
+ <span class="btn btn-outline-dark" style="width:100%; opacity:0.6; cursor:default;" data-t="btnViewRot">In Planung</span>
+ </div>
+ </div>
 
-            </div>
-        </div>
-    </section>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Interactive Hole-by-Hole Guide (Core Feature)
-         ========================================================================== -->
-    <section class="section section-white" id="bahnen">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" data-t="tagGuide">Interaktiver Course-Guide</span>
-                <h2 class="section-title" data-t="guideHeading">Hole 1 bis 18 im Detail entdecken</h2>
-                <p class="section-subtitle" data-t="guideSub">
-                    Wählen Sie eine Bahn aus, um die detaillierte Platzgrafik, Distanzen aller Teeboxen und Pro-Tipps anzuzeigen.
-                </p>
-            </div>
+ <!-- ==========================================================================
+ Interactive Hole-by-Hole Guide (Core Feature)
+ ========================================================================== -->
+ <section class="section section-white" id="bahnen">
+ <div class="container">
+ <div class="section-header text-center">
+ <span class="section-tag" data-t="tagGuide">Interaktiver Course-Guide</span>
+ <h2 class="section-title" data-t="guideHeading">Hole 1 bis 18 im Detail entdecken</h2>
+ <p class="section-subtitle" data-t="guideSub">
+ Wählen Sie eine Bahn aus, um die detaillierte Platzgrafik, Distanzen aller Teeboxen und Pro-Tipps anzuzeigen.
+ </p>
+ </div>
 
-            <div class="hole-guide-container">
-                
-                <!-- Course Loop Selector Tabs -->
-                <div class="guide-tabs">
-                    <button class="guide-tab-btn active" data-tab="blau" onclick="switchLoopTab('blau')" data-t="tabBlau">
-                        🔵 Kurs Blau (Hole 1–9)
-                    </button>
-                    <button class="guide-tab-btn" data-tab="gelb" onclick="switchLoopTab('gelb')" data-t="tabGelb">
-                        🟡 Kurs Gelb (Hole 10–18)
-                    </button>
-                    <button class="guide-tab-btn" data-tab="canyon" onclick="switchLoopTab('canyon')" data-t="tabCanyon">
-                        🟢 Canyon-Kurs (Kurzplatz)
-                    </button>
-                </div>
+ <div class="hole-guide-container">
+ 
+ <!-- Course Loop Selector Tabs -->
+ <div class="guide-tabs">
+ <button class="guide-tab-btn active" data-tab="blau" onclick="switchLoopTab('blau')" data-t="tabBlau">
+ 🔵 Kurs Blau (Hole 1–9)
+ </button>
+ <button class="guide-tab-btn" data-tab="gelb" onclick="switchLoopTab('gelb')" data-t="tabGelb">
+ 🟡 Kurs Gelb (Hole 10–18)
+ </button>
+ <button class="guide-tab-btn" data-tab="canyon" onclick="switchLoopTab('canyon')" data-t="tabCanyon">
+ 🟢 Canyon-Kurs (Kurzplatz)
+ </button>
+ </div>
 
-                <!-- Numbered Holes Buttons Row -->
-                <div class="hole-selector-bar" id="hole-selector-bar">
-                    <span class="hole-selector-title" data-t="selectorTitle">Bahn wählen:</span>
-                    <div class="hole-btn-grid" id="hole-btn-grid">
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
+ <!-- Numbered Holes Buttons Row -->
+ <div class="hole-selector-bar" id="hole-selector-bar">
+ <span class="hole-selector-title" data-t="selectorTitle">Bahn wählen:</span>
+ <div class="hole-btn-grid" id="hole-btn-grid">
+ <!-- Populated by JavaScript -->
+ </div>
+ </div>
 
-                <!-- Active Hole Detail Showcase Card -->
-                <div class="hole-showcase" id="hole-showcase-container">
-                    <!-- Populated dynamically via JS renderHole() -->
-                </div>
+ <!-- Active Hole Detail Showcase Card -->
+ <div class="hole-showcase" id="hole-showcase-container">
+ <!-- Populated dynamically via JS renderHole() -->
+ </div>
 
-            </div>
-        </div>
-    </section>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Atmosphere & Photo Gallery Grid (Full 15-Photo Luxury Showcase)
-         ========================================================================== -->
-    <section class="section section-cream" id="impressionen">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" data-t="tagGallery">Atmosphäre &amp; Natur</span>
-                <h2 class="section-title" data-t="galleryHeading">Impressionen unserer 27-Loch-Anlage</h2>
-                <p class="section-subtitle" data-t="gallerySub">
-                    Perfekt modellierte Fairways, kristallklare Wasserhindernisse, schneeweiße Sandbunker und blühende Naturlandschaften im Herzen des Kasseler Landes.
-                </p>
-            </div>
+ <!-- ==========================================================================
+ Atmosphere & Photo Gallery Grid (Full 15-Photo Luxury Showcase)
+ ========================================================================== -->
+ <section class="section section-cream" id="impressionen">
+ <div class="container">
+ <div class="section-header text-center">
+ <span class="section-tag" data-t="tagGallery">Atmosphäre &amp; Natur</span>
+ <h2 class="section-title" data-t="galleryHeading">Impressionen unserer 27-Loch-Anlage</h2>
+ <p class="section-subtitle" data-t="gallerySub">
+ Perfekt modellierte Fairways, kristallklare Wasserhindernisse, schneeweiße Sandbunker und blühende Naturlandschaften im Herzen des Kasseler Landes.
+ </p>
+ </div>
 
-            <div class="gallery-grid-lux">
-                
-                <!-- 1. Panorama Dunes & Lake (Span 2x2) -->
-                <div class="gallery-card-lux span-2-2" onclick="openLightbox('assets/gallery_panorama_dunes_lake.jpg', 'Meisterschaftsplatz Panorama – Weite Sanddünen und Wasserhindernis')">
-                    <img src="assets/gallery_panorama_dunes_lake.jpg" alt="Panorama Dünen und See">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">PGA Meisterschaftsplatz</span>
-                        <h4 class="lux-title">Wasserhindernis &amp; weiße Sanddünen</h4>
-                    </div>
-                </div>
+ <div class="gallery-grid-lux">
+ 
+ <!-- 1. Panorama Dunes & Lake (Span 2x2) -->
+ <div class="gallery-card-lux span-2-2" onclick="openLightbox('assets/gallery_panorama_dunes_lake.jpg', 'Meisterschaftsplatz Panorama – Weite Sanddünen und Wasserhindernis')">
+ <img src="assets/gallery_panorama_dunes_lake.jpg" alt="Panorama Dünen und See">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">PGA Meisterschaftsplatz</span>
+ <h4 class="lux-title">Wasserhindernis &amp; weiße Sanddünen</h4>
+ </div>
+ </div>
 
-                <!-- 2. Island Green Pine Forest (Span 2x1) -->
-                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_island_green_pineforest.jpg', 'Inselgrün mit Bunkerkranz vor tiefem Nadelwald')">
-                    <img src="assets/gallery_island_green_pineforest.jpg" alt="Inselgrün vor Nadelwald">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Signature Hole</span>
-                        <h4 class="lux-title">Inselgrün vor traumhafter Waldkulisse</h4>
-                    </div>
-                </div>
+ <!-- 2. Island Green Pine Forest (Span 2x1) -->
+ <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_island_green_pineforest.jpg', 'Inselgrün mit Bunkerkranz vor tiefem Nadelwald')">
+ <img src="assets/gallery_island_green_pineforest.jpg" alt="Inselgrün vor Nadelwald">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Signature Hole</span>
+ <h4 class="lux-title">Inselgrün vor traumhafter Waldkulisse</h4>
+ </div>
+ </div>
 
-                <!-- 3. Lavender Fairway View -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_lavender_fairway.jpg', 'Lavendelblüte mit Blick auf Fairway &amp; See')">
-                    <img src="assets/gallery_lavender_fairway.jpg" alt="Lavendelblick auf die Golfbahnen">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Flora &amp; Fauna</span>
-                        <h4 class="lux-title">Lavendelblüte am Fairway</h4>
-                    </div>
-                </div>
+ <!-- 3. Lavender Fairway View -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_lavender_fairway.jpg', 'Lavendelblüte mit Blick auf Fairway &amp; See')">
+ <img src="assets/gallery_lavender_fairway.jpg" alt="Lavendelblick auf die Golfbahnen">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Flora &amp; Fauna</span>
+ <h4 class="lux-title">Lavendelblüte am Fairway</h4>
+ </div>
+ </div>
 
-                <!-- 4. Bunker Stonewall Water -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_bunker_stonewall_water.jpg', 'Bunkerkante mit Natursteinmauer am Wasser')">
-                    <img src="assets/gallery_bunker_stonewall_water.jpg" alt="Bunker mit Natursteinmauer">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Course Design</span>
-                        <h4 class="lux-title">Naturstein-Uferbefestigung</h4>
-                    </div>
-                </div>
+ <!-- 4. Bunker Stonewall Water -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_bunker_stonewall_water.jpg', 'Bunkerkante mit Natursteinmauer am Wasser')">
+ <img src="assets/gallery_bunker_stonewall_water.jpg" alt="Bunker mit Natursteinmauer">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Course Design</span>
+ <h4 class="lux-title">Naturstein-Uferbefestigung</h4>
+ </div>
+ </div>
 
-                <!-- 5. Flag Pin Detail -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_flag_pin.jpg', 'Gut Wissmannshof Flagge am Grün')">
-                    <img src="assets/gallery_flag_pin.jpg" alt="Gut Wissmannshof Fahne auf dem Grün">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Qualität &amp; Detail</span>
-                        <h4 class="lux-title">Auf dem Grün</h4>
-                    </div>
-                </div>
+ <!-- 5. Flag Pin Detail -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_flag_pin.jpg', 'Gut Wissmannshof Flagge am Grün')">
+ <img src="assets/gallery_flag_pin.jpg" alt="Gut Wissmannshof Fahne auf dem Grün">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Qualität &amp; Detail</span>
+ <h4 class="lux-title">Auf dem Grün</h4>
+ </div>
+ </div>
 
-                <!-- 6. Blue Lake Mirror -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_blue_lake_mirror.jpg', 'Spiegelglattes Wasserhindernis unter blauem Himmel')">
-                    <img src="assets/gallery_blue_lake_mirror.jpg" alt="Blauer See Spiegelung">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Naturidylle</span>
-                        <h4 class="lux-title">Wasserhindernis im Sonnenschein</h4>
-                    </div>
-                </div>
+ <!-- 6. Blue Lake Mirror -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_blue_lake_mirror.jpg', 'Spiegelglattes Wasserhindernis unter blauem Himmel')">
+ <img src="assets/gallery_blue_lake_mirror.jpg" alt="Blauer See Spiegelung">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Naturidylle</span>
+ <h4 class="lux-title">Wasserhindernis im Sonnenschein</h4>
+ </div>
+ </div>
 
-                <!-- 7. Fairway Waves Oak Tree (Span 2x1) -->
-                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_fairway_waves_oak.jpg', 'Wellenförmig modelliertes Fairway mit markanter Eiche')">
-                    <img src="assets/gallery_fairway_waves_oak.jpg" alt="Wellenfairway mit Eiche">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Architektur</span>
-                        <h4 class="lux-title">Modellierte Fairway-Wellen &amp; alte Eichen</h4>
-                    </div>
-                </div>
+ <!-- 7. Fairway Waves Oak Tree (Span 2x1) -->
+ <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_fairway_waves_oak.jpg', 'Wellenförmig modelliertes Fairway mit markanter Eiche')">
+ <img src="assets/gallery_fairway_waves_oak.jpg" alt="Wellenfairway mit Eiche">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Architektur</span>
+ <h4 class="lux-title">Modellierte Fairway-Wellen &amp; alte Eichen</h4>
+ </div>
+ </div>
 
-                <!-- 8. Rolling Green with Hochsitz (Span 2x1) -->
-                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_rolling_green_hochsitz.jpg', 'Weites Grün mit charakteristischem Hochsitz')">
-                    <img src="assets/gallery_rolling_green_hochsitz.jpg" alt="Weites Grün mit Hochsitz">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Landhaus-Charme</span>
-                        <h4 class="lux-title">Großzügiges Grün &amp; Panoramablick</h4>
-                    </div>
-                </div>
+ <!-- 8. Rolling Green with Hochsitz (Span 2x1) -->
+ <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_rolling_green_hochsitz.jpg', 'Weites Grün mit charakteristischem Hochsitz')">
+ <img src="assets/gallery_rolling_green_hochsitz.jpg" alt="Weites Grün mit Hochsitz">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Landhaus-Charme</span>
+ <h4 class="lux-title">Großzügiges Grün &amp; Panoramablick</h4>
+ </div>
+ </div>
 
-                <!-- 9. Curved Bunker Dunes -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_curved_bunker_dunes.jpg', 'Elegante Bunkerschwünge in die Dünenlandschaft')">
-                    <img src="assets/gallery_curved_bunker_dunes.jpg" alt="Geschwungene Bunker in Dünen">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">Sandhindernisse</span>
-                        <h4 class="lux-title">Feinster weißer Quarzsand</h4>
-                    </div>
-                </div>
+ <!-- 9. Curved Bunker Dunes -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_curved_bunker_dunes.jpg', 'Elegante Bunkerschwünge in die Dünenlandschaft')">
+ <img src="assets/gallery_curved_bunker_dunes.jpg" alt="Geschwungene Bunker in Dünen">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">Sandhindernisse</span>
+ <h4 class="lux-title">Feinster weißer Quarzsand</h4>
+ </div>
+ </div>
 
-                <!-- 10. Tee 7 Landefeld Course -->
-                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_tee7_landefeld.jpg', 'Tee 7 – Landefeld Course Panorama')">
-                    <img src="assets/gallery_tee7_landefeld.jpg" alt="Abschlag Bahn 7 Landefeld Kurs">
-                    <div class="gallery-card-lux-overlay">
-                        <span class="lux-tag">HCP 1 Challenge</span>
-                        <h4 class="lux-title">Abschlag Bahn 7 (Kurs Blau)</h4>
-                    </div>
-                </div>
+ <!-- 10. Tee 7 Landefeld Course -->
+ <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_tee7_landefeld.jpg', 'Tee 7 – Landefeld Course Panorama')">
+ <img src="assets/gallery_tee7_landefeld.jpg" alt="Abschlag Bahn 7 Landefeld Kurs">
+ <div class="gallery-card-lux-overlay">
+ <span class="lux-tag">HCP 1 Challenge</span>
+ <h4 class="lux-title">Abschlag Bahn 7 (Kurs Blau)</h4>
+ </div>
+ </div>
 
-            </div>
-        </div>
-    </section>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         DGV Course Rating & Specs Table
-         ========================================================================== -->
-    <section class="section section-white" id="specs">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" data-t="tagSpecs">DGV Course Rating &amp; Slope</span>
-                <h2 class="section-title" data-t="specsHeading">Vorgabentabelle &amp; Platzdaten</h2>
-                <p class="section-subtitle" data-t="specsSub">
-                    Offizielle Einstufung des Deutschen Golf Verbandes (DGV) für 18-Loch Blau-Gelb und 9-Loch Runden.
-                </p>
-            </div>
+ <!-- ==========================================================================
+ DGV Course Rating & Specs Table
+ ========================================================================== -->
+ <section class="section section-white" id="specs">
+ <div class="container">
+ <div class="section-header text-center">
+ <span class="section-tag" data-t="tagSpecs">DGV Course Rating &amp; Slope</span>
+ <h2 class="section-title" data-t="specsHeading">Vorgabentabelle &amp; Platzdaten</h2>
+ <p class="section-subtitle" data-t="specsSub">
+ Offizielle Einstufung des Deutschen Golf Verbandes (DGV) für 18-Loch Blau-Gelb und 9-Loch Runden.
+ </p>
+ </div>
 
-            <div class="specs-table-card">
-                <div class="table-responsive">
-                    <table class="course-table">
-                        <thead>
-                            <tr>
-                                <th data-t="thTee">Abschlag / Farbe</th>
-                                <th data-t="thPar">Par</th>
-                                <th data-t="thLength">Länge (CR)</th>
-                                <th data-t="thSlope">Slope</th>
-                                <th data-t="thCR">Course Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="tee-dot tee-white"></span> <strong>Weiß (Herren Champions)</strong></td>
-                                <td>72</td>
-                                <td>6.447 m</td>
-                                <td>133</td>
-                                <td>74.2</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tee-dot tee-yellow"></span> <strong>Gelb (Herren Standard)</strong></td>
-                                <td>72</td>
-                                <td>6.031 m</td>
-                                <td>130</td>
-                                <td>72.4</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tee-dot tee-blue"></span> <strong>Blau (Damen Champions)</strong></td>
-                                <td>72</td>
-                                <td>5.602 m</td>
-                                <td>131</td>
-                                <td>75.6</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tee-dot tee-red"></span> <strong>Rot (Damen Standard)</strong></td>
-                                <td>72</td>
-                                <td>5.236 m</td>
-                                <td>127</td>
-                                <td>73.1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+ <div class="specs-table-card">
+ <div class="table-responsive">
+ <table class="course-table">
+ <thead>
+ <tr>
+ <th data-t="thTee">Abschlag / Farbe</th>
+ <th data-t="thPar">Par</th>
+ <th data-t="thLength">Länge (CR)</th>
+ <th data-t="thSlope">Slope</th>
+ <th data-t="thCR">Course Rating</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><span class="tee-dot tee-white"></span> <strong>Weiß (Herren Champions)</strong></td>
+ <td>72</td>
+ <td>6.447 m</td>
+ <td>133</td>
+ <td>74.2</td>
+ </tr>
+ <tr>
+ <td><span class="tee-dot tee-yellow"></span> <strong>Gelb (Herren Standard)</strong></td>
+ <td>72</td>
+ <td>6.031 m</td>
+ <td>130</td>
+ <td>72.4</td>
+ </tr>
+ <tr>
+ <td><span class="tee-dot tee-blue"></span> <strong>Blau (Damen Champions)</strong></td>
+ <td>72</td>
+ <td>5.602 m</td>
+ <td>131</td>
+ <td>75.6</td>
+ </tr>
+ <tr>
+ <td><span class="tee-dot tee-red"></span> <strong>Rot (Damen Standard)</strong></td>
+ <td>72</td>
+ <td>5.236 m</td>
+ <td>127</td>
+ <td>73.1</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Downloads & Documents Hub
-         ========================================================================== -->
-    <section class="section section-forest" id="downloads">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" style="color:var(--color-gold-light);" data-t="tagDownloads">Service &amp; Unterlagen</span>
-                <h2 class="section-title" data-t="downloadsHeading">Downloads &amp; Dokumente</h2>
-                <p class="section-subtitle" data-t="downloadsSub">
-                    Laden Sie sich offizielle Scorekarten, Vorgabentabellen und Spielregeln direkt als PDF herunter.
-                </p>
-            </div>
+ <!-- ==========================================================================
+ Downloads & Documents Hub
+ ========================================================================== -->
+ <section class="section section-forest" id="downloads">
+ <div class="container">
+ <div class="section-header text-center">
+ <span class="section-tag" style="color:var(--color-gold-light);" data-t="tagDownloads">Service &amp; Unterlagen</span>
+ <h2 class="section-title" data-t="downloadsHeading">Downloads &amp; Dokumente</h2>
+ <p class="section-subtitle" data-t="downloadsSub">
+ Laden Sie sich offizielle Scorekarten, Vorgabentabellen und Spielregeln direkt als PDF herunter.
+ </p>
+ </div>
 
-            <div class="downloads-grid">
-                
-                <div class="download-card">
-                    <div class="download-icon">📋</div>
-                    <h3 class="download-title" data-t="dl1Title">18-Loch Scorekarte</h3>
-                    <p class="download-desc" data-t="dl1Desc">
-                        Offizielle Scorekarte für Kurs Blau-Gelb inkl. Bahngrafiken, Handicap-Tabellen und Vorgabenmatrix.
-                    </p>
-                    <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Scorekarte_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-gold" data-t="btnDl1">Scorekarte herunterladen (PDF)</a>
-                </div>
+ <div class="downloads-grid">
+ 
+ <div class="download-card">
+ <div class="download-icon">📋</div>
+ <h3 class="download-title" data-t="dl1Title">18-Loch Scorekarte</h3>
+ <p class="download-desc" data-t="dl1Desc">
+ Offizielle Scorekarte für Kurs Blau-Gelb inkl. Bahngrafiken, Handicap-Tabellen und Vorgabenmatrix.
+ </p>
+ <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Scorekarte_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-gold" data-t="btnDl1">Scorekarte herunterladen (PDF)</a>
+ </div>
 
-                <div class="download-card">
-                    <div class="download-icon">📊</div>
-                    <h3 class="download-title" data-t="dl2Title">DGV Slope- & Vorgabentabellen</h3>
-                    <p class="download-desc" data-t="dl2Desc">
-                        Komplette Umrechnungstabellen für Damen und Herren von allen Teeboxen (Weiß, Gelb, Blau, Rot).
-                    </p>
-                    <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Vorgabentabelle_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-outline-white" data-t="btnDl2">Vorgabentabelle öffnen (PDF)</a>
-                </div>
+ <div class="download-card">
+ <div class="download-icon">📊</div>
+ <h3 class="download-title" data-t="dl2Title">DGV Slope- & Vorgabentabellen</h3>
+ <p class="download-desc" data-t="dl2Desc">
+ Komplette Umrechnungstabellen für Damen und Herren von allen Teeboxen (Weiß, Gelb, Blau, Rot).
+ </p>
+ <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Vorgabentabelle_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-outline-white" data-t="btnDl2">Vorgabentabelle öffnen (PDF)</a>
+ </div>
 
-                <div class="download-card">
-                    <div class="download-icon">📜</div>
-                    <h3 class="download-title" data-t="dl3Title">Platz- & Spielordnung</h3>
-                    <p class="download-desc" data-t="dl3Desc">
-                        Wissenswertes zu Spieltempo, Etikette, Kleiderordnung und Platzregeln auf Gut Wissmannshof.
-                    </p>
-                    <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Platzregeln_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-outline-white" data-t="btnDl3">Platzregeln einsehen (PDF)</a>
-                </div>
+ <div class="download-card">
+ <div class="download-icon">📜</div>
+ <h3 class="download-title" data-t="dl3Title">Platz- & Spielordnung</h3>
+ <p class="download-desc" data-t="dl3Desc">
+ Wissenswertes zu Spieltempo, Etikette, Kleiderordnung und Platzregeln auf Gut Wissmannshof.
+ </p>
+ <a href="https://www.wissmannshof.de/wp-content/uploads/2023/04/Platzregeln_Wissmannshof.pdf" target="_blank" rel="noopener" class="btn btn-outline-white" data-t="btnDl3">Platzregeln einsehen (PDF)</a>
+ </div>
 
-            </div>
-        </div>
-    </section>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Practice Facilities & Academy
-         ========================================================================== -->
-    <section class="section section-white" id="training">
-        <div class="container">
-            <div class="practice-grid">
-                <div class="practice-image-box">
-                    <img src="assets/resort_academy.jpg" alt="Übungsanlagen Gut Wissmannshof" style="width:100%; height:auto;">
-                </div>
-                <div class="practice-text-content">
-                    <span class="section-tag" data-t="tagPractice">Trainingszentrum</span>
-                    <h2 class="section-title" data-t="practiceHeading">Großzügige Übungsanlagen</h2>
-                    <p class="section-subtitle" style="margin:0 0 20px 0;" data-t="practiceSub">
-                        Optimale Trainingsbedingungen für alle Spielstärken direkt neben dem Clubhaus und Hotel.
-                    </p>
+ <!-- ==========================================================================
+ Practice Facilities & Academy
+ ========================================================================== -->
+ <section class="section section-white" id="training">
+ <div class="container">
+ <div class="practice-grid">
+ <div class="practice-image-box">
+ <img src="assets/resort_academy.jpg" alt="Übungsanlagen Gut Wissmannshof" style="width:100%; height:auto;">
+ </div>
+ <div class="practice-text-content">
+ <span class="section-tag" data-t="tagPractice">Trainingszentrum</span>
+ <h2 class="section-title" data-t="practiceHeading">Großzügige Übungsanlagen</h2>
+ <p class="section-subtitle" style="margin:0 0 20px 0;" data-t="practiceSub">
+ Optimale Trainingsbedingungen für alle Spielstärken direkt neben dem Clubhaus und Hotel.
+ </p>
 
-                    <ul class="practice-features-list">
-                        <li class="practice-feature-item">
-                            <div class="feature-check">✓</div>
-                            <div>
-                                <strong data-t="pf1Title">Große Driving Range mit Rasen- & Mattenabschlägen</strong>
-                                <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf1Desc">Zahlreiche Zielgrüns und überdachte Abschlaghütten für ganzjähriges Training bei jeder Witterung.</p>
-                            </div>
-                        </li>
-                        <li class="practice-feature-item">
-                            <div class="feature-check">✓</div>
-                            <div>
-                                <strong data-t="pf2Title">Großes Putting- & Chipping-Grün</strong>
-                                <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf2Desc">Originalgetreue Geschwindigkeiten und Ondulierungen wie auf den Meisterschaftsbahnen.</p>
-                            </div>
-                        </li>
-                        <li class="practice-feature-item">
-                            <div class="feature-check">✓</div>
-                            <div>
-                                <strong data-t="pf3Title">Übungsbunker & Pitching-Areal</strong>
-                                <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf3Desc">Perfektionieren Sie Ihr Bunkerspiel und Annäherungen aus allen Distanzen und Hanglagen.</p>
-                            </div>
-                        </li>
-                        <li class="practice-feature-item">
-                            <div class="feature-check">✓</div>
-                            <div>
-                                <strong data-t="pf4Title">PGA Golfschule & Pro-Betreuer</strong>
-                                <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf4Desc">Modernste Video- & Schwunganalyse sowie individueller Unterricht für Anfänger und Fortgeschrittene.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+ <ul class="practice-features-list">
+ <li class="practice-feature-item">
+ <div class="feature-check">✓</div>
+ <div>
+ <strong data-t="pf1Title">Große Driving Range mit Rasen- & Mattenabschlägen</strong>
+ <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf1Desc">Zahlreiche Zielgrüns und überdachte Abschlaghütten für ganzjähriges Training bei jeder Witterung.</p>
+ </div>
+ </li>
+ <li class="practice-feature-item">
+ <div class="feature-check">✓</div>
+ <div>
+ <strong data-t="pf2Title">Großes Putting- & Chipping-Grün</strong>
+ <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf2Desc">Originalgetreue Geschwindigkeiten und Ondulierungen wie auf den Meisterschaftsbahnen.</p>
+ </div>
+ </li>
+ <li class="practice-feature-item">
+ <div class="feature-check">✓</div>
+ <div>
+ <strong data-t="pf3Title">Übungsbunker & Pitching-Areal</strong>
+ <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf3Desc">Perfektionieren Sie Ihr Bunkerspiel und Annäherungen aus allen Distanzen und Hanglagen.</p>
+ </div>
+ </li>
+ <li class="practice-feature-item">
+ <div class="feature-check">✓</div>
+ <div>
+ <strong data-t="pf4Title">PGA Golfschule & Pro-Betreuer</strong>
+ <p style="font-size:0.9rem; color:var(--color-text-muted);" data-t="pf4Desc">Modernste Video- & Schwunganalyse sowie individueller Unterricht für Anfänger und Fortgeschrittene.</p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Startzeit Buchen / PC Caddie CTA Hub
-         ========================================================================== -->
-    <section class="section section-cream" id="buchen">
-        <div class="container">
-            <div class="cta-booking-card">
-                <div class="cta-booking-content">
-                    <span class="section-tag" style="color:var(--color-gold-light);" data-t="tagBooking">Abschlag sichern</span>
-                    <h2 class="section-title" style="color:var(--color-white);" data-t="ctaBookHeading">Bereit für Ihre Runde auf Gut Wissmannshof?</h2>
-                    <p class="section-subtitle" style="color:rgba(255,255,255,0.88); margin-bottom:30px;" data-t="ctaBookSub">
-                        Buchen Sie Ihre gewünschte Startzeit bequem online über PC CADDIE oder telefonisch im Clubsekretariat.
-                    </p>
-                    
-                    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center;">
-                        <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="pccaddie-badge-btn" data-t="btnPCCaddieBook">
-                            📱 Startzeit online via PC CADDIE buchen ↗
-                        </a>
-                    </div>
-                    
-                    <div style="margin-top:24px; font-size:0.95rem; color:rgba(255,255,255,0.75);">
-                        <span data-t="ctaCallDirect">Oder anrufen unter +49 (0) 5543 999 333</span> · <a href="mailto:info@wissmannshof.de" style="color:var(--color-gold-light); text-decoration:underline;">info@wissmannshof.de</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ <!-- ==========================================================================
+ Startzeit Buchen / PC Caddie CTA Hub
+ ========================================================================== -->
+ <section class="section section-cream" id="buchen">
+ <div class="container">
+ <div class="cta-booking-card">
+ <div class="cta-booking-content">
+ <span class="section-tag" style="color:var(--color-gold-light);" data-t="tagBooking">Abschlag sichern</span>
+ <h2 class="section-title" style="color:var(--color-white);" data-t="ctaBookHeading">Bereit für Ihre Runde auf Gut Wissmannshof?</h2>
+ <p class="section-subtitle" style="color:rgba(255,255,255,0.88); margin-bottom:30px;" data-t="ctaBookSub">
+ Buchen Sie Ihre gewünschte Startzeit bequem online über PC CADDIE oder telefonisch im Clubsekretariat.
+ </p>
+ 
+ <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center;">
+ <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="pccaddie-badge-btn" data-t="btnPCCaddieBook">
+ 📱 Startzeit online via PC CADDIE buchen ↗
+ </a>
+ </div>
+ 
+ <div style="margin-top:24px; font-size:0.95rem; color:rgba(255,255,255,0.75);">
+ <span data-t="ctaCallDirect">Oder anrufen unter +49 (0) 5543 999 333</span> · <a href="mailto:info@wissmannshof.de" style="color:var(--color-gold-light); text-decoration:underline;">info@wissmannshof.de</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <!-- ==========================================================================
-         Lightbox Zoom Modal
-         ========================================================================== -->
-    <div class="lightbox-modal" id="lightbox-modal">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Schließen">&times;</button>
-            <img src="" alt="Große Ansicht" class="lightbox-img" id="lightbox-img">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
-    </div>
+ <!-- ==========================================================================
+ Lightbox Zoom Modal
+ ========================================================================== -->
+ <div class="lightbox-modal" id="lightbox-modal">
+ <div class="lightbox-content">
+ <button class="lightbox-close" onclick="closeLightbox()" aria-label="Schließen">&times;</button>
+ <img src="" alt="Große Ansicht" class="lightbox-img" id="lightbox-img">
+ <div class="lightbox-caption" id="lightbox-caption"></div>
+ </div>
+ </div>
 
-    <!-- ==========================================================================
-         Footer
-         ========================================================================== -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h4>Sport- und Golf-Resort Gut Wissmannshof</h4>
-                    <p>Gut Wissmannshof 1<br>34355 Staufenberg / Kassel</p>
-                    <p style="margin-top: 12px;">Telefon: +49 (0) 5543 999 333<br>E-Mail: info@wissmannshof.de</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h5>Resort Seiten</h5>
-                    <ul class="footer-links">
-                        <li><a href="home.html">Startseite</a></li>
-                        <li><a href="golfcourse.html">Golfplatz &amp; Bahnen</a></li>
-                        <li><a href="gast-info.html">Gast-Informationen &amp; Greenfee</a></li>
-                        <li><a href="mitglied-werden.html">Mitgliedschaft</a></li>
-                        <li><a href="index.html">Adventure Golf</a></li>
-                    </ul>
-                </div>
+ <!-- ==========================================================================
+ Footer
+ ========================================================================== -->
+ <footer class="site-footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <h4>Sport- und Golf-Resort Gut Wissmannshof</h4>
+ <p>Gut Wissmannshof 1<br>34355 Staufenberg / Kassel</p>
+ <p style="margin-top: 12px;">Telefon: +49 (0) 5543 999 333<br>E-Mail: info@wissmannshof.de</p>
+ </div>
+ 
+ <div class="footer-col">
+ <h5>Resort Seiten</h5>
+ <ul class="footer-links">
+ <li><a href="home.html">Startseite</a></li>
+ <li><a href="golfcourse.html">Golfplatz &amp; Bahnen</a></li>
+ <li><a href="gast-info.html">Gast-Informationen &amp; Greenfee</a></li>
+ <li><a href="mitglied-werden.html">Mitgliedschaft</a></li>
+ <li><a href="index.html">Adventure Golf</a></li>
+ </ul>
+ </div>
 
-                <div class="footer-col">
-                    <h5>Platz &amp; Sport</h5>
-                    <ul class="footer-links">
-                        <li><a href="#loops">Kurs Blau (Landefeld)</a></li>
-                        <li><a href="#loops">Kurs Gelb</a></li>
-                        <li><a href="#loops">Canyon-Kurs (6/9 Loch)</a></li>
-                        <li><a href="#specs">Course Rating &amp; Slope</a></li>
-                        <li><a href="#downloads">Scorekarten Download</a></li>
-                    </ul>
-                </div>
+ <div class="footer-col">
+ <h5>Platz &amp; Sport</h5>
+ <ul class="footer-links">
+ <li><a href="#loops">Kurs Blau (Landefeld)</a></li>
+ <li><a href="#loops">Kurs Gelb</a></li>
+ <li><a href="#loops">Canyon-Kurs (6/9 Loch)</a></li>
+ <li><a href="#specs">Course Rating &amp; Slope</a></li>
+ <li><a href="#downloads">Scorekarten Download</a></li>
+ </ul>
+ </div>
 
-                <div class="footer-col">
-                    <h5>Direktbuchung</h5>
-                    <p style="font-size:0.9rem; line-height:1.6; margin-bottom:14px;">Reservieren Sie Ihre Startzeit direkt im offiziellen PC CADDIE Buchungssystem.</p>
-                    <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn btn-gold" style="padding:10px 20px; font-size:0.85rem;">PC CADDIE öffnen ↗</a>
-                </div>
-            </div>
+ <div class="footer-col">
+ <h5>Direktbuchung</h5>
+ <p style="font-size:0.9rem; line-height:1.6; margin-bottom:14px;">Reservieren Sie Ihre Startzeit direkt im offiziellen PC CADDIE Buchungssystem.</p>
+ <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn btn-gold" style="padding:10px 20px; font-size:0.85rem;">PC CADDIE öffnen ↗</a>
+ </div>
+ </div>
 
-            <div class="footer-bottom">
-                <div>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</div>
-                <div style="display:flex; gap:20px;">
-                    <a href="https://www.wissmannshof.de/impressum/" target="_blank" rel="noopener">Impressum</a>
-                    <a href="https://www.wissmannshof.de/datenschutz/" target="_blank" rel="noopener">Datenschutz</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+ <div class="footer-bottom">
+ <div>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</div>
+ <div style="display:flex; gap:20px;">
+ <a href="https://www.wissmannshof.de/impressum/" target="_blank" rel="noopener">Impressum</a>
+ <a href="https://www.wissmannshof.de/datenschutz/" target="_blank" rel="noopener">Datenschutz</a>
+ </div>
+ </div>
+ </div>
+ </footer>
 
-    <!-- JavaScript -->
-    <script src="golfcourse.js"></script>
+ <!-- JavaScript -->
+ <script src="golfcourse.js"></script>
 </body>
 </html>
