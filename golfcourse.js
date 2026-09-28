@@ -4,360 +4,360 @@
  ========================================================================== */
 
 const HOLE_DATA = [
- // --- KURS BLAU (Holes 1 - 9) ---
- {
- id: 1,
- loop: 'blau',
- holeNumber: 1,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 1 – Panoramablick', en: 'Hole 1 – Panoramic Vista' },
- par: 4,
- hcp: 11,
- tees: { white: 367, yellow: 350, blue: 317, red: 301 },
- image: 'assets/course_holes/blau_1.jpg',
- desc: {
- de: 'Ein einladender Auftakt mit herrlichem Weitblick über das Kasseler Land. Das Fairway fällt leicht ab, verlangt jedoch einen präzisen Abschlag zwischen den rechten Fairwaybunker und das linke Semirough.',
- en: 'An inviting opening hole offering sweeping views across the Kassel countryside. The fairway gently slopes downhill but demands an accurate tee shot between the fairway bunker on the right and the left semi-rough.'
- },
- protip: {
- de: 'Vom Tee genügt ein solides Holz 3 oder langes Eisen. Die Annäherung sollte idealerweise unterhalb der Fahne platziert werden, da das Grün von hinten nach vorne hängt.',
- en: 'A 3-wood or long iron off the tee is ideal. Aim your approach below the pin, as this green slopes noticeably from back to front.'
- }
- },
- {
- id: 2,
- loop: 'blau',
- holeNumber: 2,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 2 – Das sanfte Dogleg', en: 'Hole 2 – The Gentle Dogleg' },
- par: 4,
- hcp: 9,
- tees: { white: 375, yellow: 360, blue: 330, red: 315 },
- image: 'assets/course_holes/blau_2.jpg',
- desc: {
- de: 'Ein leichtes Dogleg nach links. Longhitter können versuchen, über die Bunkerkante links abzukürzen, während der sichere Weg über die rechte Fairwayhälfte führt.',
- en: 'A gentle dogleg left. Longer hitters can cut the corner over the left bunker edge, while the safer route is down the right side of the fairway.'
- },
- protip: {
- de: 'Achten Sie beim zweiten Schlag auf die gut platzierten Grünbunker links und rechts. Ein präzises Eisen auf das Grünzentrum spart Schläge.',
- en: 'Pay close attention to the greenside bunkers flanking both left and right on your second shot. A well-struck iron to the center of the green is best.'
- }
- },
- {
- id: 3,
- loop: 'blau',
- holeNumber: 3,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 3 – Die Klippe', en: 'Hole 3 – The Cliff' },
- par: 3,
- hcp: 17,
- tees: { white: 172, yellow: 158, blue: 140, red: 125 },
- image: 'assets/course_holes/blau_3.jpg',
- desc: {
- de: 'Ein anspruchsvolles Par 3 über ein natürliches Geländetal. Das Grün ist stufenförmig angelegt und wird vorne von tiefen Sandhindernissen bewacht.',
- en: 'A demanding Par 3 over a natural valley. The two-tier green is well guarded in front by deep sand hazards.'
- },
- protip: {
- de: 'Wählen Sie lieber einen Schläger mehr, um die vorderen Bunker sicher zu überwinden. Der Wind dreht hier gerne im Taleinschnitt.',
- en: 'Take one club extra to comfortably clear the front bunkers. Wind tends to swirl through the valley opening.'
- }
- },
- {
- id: 4,
- loop: 'blau',
- holeNumber: 4,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 4 – Der Waldkorridor', en: 'Hole 4 – Forest Corridor' },
- par: 5,
- hcp: 3,
- tees: { white: 520, yellow: 495, blue: 455, red: 435 },
- image: 'assets/course_holes/blau_4.jpg',
- desc: {
- de: 'Ein langes, strategisches Par 5. Nach dem Abschlag öffnet sich die Bahn leicht nach rechts, bevor sie in eine verengte Grünzone mit seitlichen Wasserhindernissen mündet.',
- en: 'A long, tactical Par 5. The fairway swings slightly right before narrowing down into a green complex guarded by lateral water hazards.'
- },
- protip: {
- de: 'Hier ist Taktik Trumpf: Legen Sie den zweiten Schlag clever vor dem Querbunker ab, um mit einem vollen Wedge das Grün attackieren zu können.',
- en: 'Strategy is key: Lay up cleanly short of the fairway hazard to leave yourself a confident full wedge into the flag.'
- }
- },
- {
- id: 5,
- loop: 'blau',
- holeNumber: 5,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 5 – Gutshof-Blick', en: 'Hole 5 – Manor View' },
- par: 4,
- hcp: 7,
- tees: { white: 390, yellow: 370, blue: 335, red: 310 },
- image: 'assets/course_holes/blau_5.jpg',
- desc: {
- de: 'Ein gerades Par 4 mit leicht ansteigendem Verlauf. Der Drive muss mittig platziert werden, da alte Eichen die Landezone seitlich begrenzen.',
- en: 'A straight Par 4 playing slightly uphill. The drive requires laser accuracy, bordered by mature oak trees on both sides.'
- },
- protip: {
- de: 'Das Grün ist extrem onduliert. Achten Sie auf die tagesaktuelle Fahnenposition für die richtige Schlägerwahl beim Schlag ins Grün.',
- en: 'The putting surface features undulating slopes. Check the daily pin sheet closely before selecting your approach club.'
- }
- },
- {
- id: 6,
- loop: 'blau',
- holeNumber: 6,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 6 – Schluchten-Schwung', en: 'Hole 6 – Gorge Swing' },
- par: 3,
- hcp: 13,
- tees: { white: 185, yellow: 170, blue: 145, red: 130 },
- image: 'assets/course_holes/blau_6.jpg',
- desc: {
- de: 'Ein optisch spektakuläres Par 3. Von erhöhten Abschlägen blickt man auf ein großzügiges Grün, das jedoch durch ein seitliches Wasserhindernis verteidigt wird.',
- en: 'A visually stunning Par 3. Elevated tees look down upon an expansive green defended by water hazard on the right side.'
- },
- protip: {
- de: 'Spielen Sie sicherheitshalber das linke Grünzentrum an, um das Wasser rechts komplett aus dem Spiel zu nehmen.',
- en: 'Target the left-center of the green to take the water on the right completely out of the equation.'
- }
- },
- {
- id: 7,
- loop: 'blau',
- holeNumber: 7,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 7 – Das Wissmannshof-Monster', en: 'Hole 7 – The Wissmannshof Beast' },
- par: 5,
- hcp: 1,
- tees: { white: 545, yellow: 518, blue: 472, red: 450 },
- image: 'assets/course_holes/blau_7.webp',
- desc: {
- de: 'Die schwerste Bahn auf Kurs Blau. Ein echtes Monster-Par 5 mit über 540 Metern von Weiß. Wind, Steigung und strategisch platzierte Bunker fordern höchste Konzentration.',
- en: 'The stroke index 1 hole on Course Blue. A genuine monster Par 5 stretching over 540 meters from the back tees. Elevation and hazards demand peak focus.'
- },
- protip: {
- de: 'Versuchen Sie nicht zu forcieren. Drei solide, kontrollierte Schläge sind der sicherste Weg zu einem Par oder soliden Bogey.',
- en: 'Do not force distance. Three controlled, smart shots are the safest path to a Par or well-earned Bogey.'
- }
- },
- {
- id: 8,
- loop: 'blau',
- holeNumber: 8,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 8 – Eichenallee', en: 'Hole 8 – Oak Avenue' },
- par: 4,
- hcp: 5,
- tees: { white: 410, yellow: 388, blue: 350, red: 330 },
- image: 'assets/course_holes/blau_8.jpg',
- desc: {
- de: 'Ein langes, geradliniges Par 4 mit leichtem Gefälle. Ein präziser Abschlag ist Pflicht, um eine freie Sicht auf das leicht erhöht liegende Grün zu haben.',
- en: 'A demanding, long Par 4 sloping downhill. A precise drive is essential to retain an unobstructed view onto the elevated green.'
- },
- protip: {
- de: 'Der Annäherungsschlag spielt sich meist einen halben Schläger kürzer als die gemessene Distanz durch das Gefälle.',
- en: 'The approach shot plays roughly half a club shorter than the yardage due to the downhill elevation.'
- }
- },
- {
- id: 9,
- loop: 'blau',
- holeNumber: 9,
- loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
- name: { de: 'Bahn 9 – Heimkehr zum Gutshof', en: 'Hole 9 – Manor Homecoming' },
- par: 4,
- hcp: 15,
- tees: { white: 335, yellow: 315, blue: 285, red: 265 },
- image: 'assets/course_holes/blau_9.webp',
- desc: {
- de: 'Ein klassisches Abschlussloch der ersten Neun, das direkt auf das Clubhaus und die Hotelterrasse zuführt. Eine lohnende Birdie-Chance bei klugem Course-Management.',
- en: 'A classic finishing hole for the front nine, leading back towards the clubhouse and hotel terrace. A rewarding birdie opportunity with smart course management.'
- },
- protip: {
- de: 'Ein kontrollierter Schlag mit dem Holz 3 in die Fairwaymitte eröffnet ein leichtes Wedge auf ein treppenförmiges Grün.',
- en: 'A controlled 3-wood into the center fairway leaves a straightforward wedge into a stepped green.'
- }
- },
+    // --- KURS BLAU (Holes 1 - 9 / Out) ---
+    {
+        id: 1,
+        loop: 'blau',
+        holeNumber: 1,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 1 – Der Auftakt', en: 'Hole 1 – The Opener' },
+        par: 5,
+        hcp: 3,
+        tees: { white: 471, yellow: 459, blue: 448, red: 409 },
+        image: 'assets/course_holes/blau_1.jpg',
+        desc: {
+            de: 'Ein meisterhaftes Par 5 zum Start mit weitem Blick über das Landefeld. Ein solider Abschlag eröffnet gute Chancen auf ein sicheres Par.',
+            en: 'A masterful opening Par 5 with sweeping views over the Landefeld. A solid tee shot opens up great opportunities for a safe Par.'
+        },
+        protip: {
+            de: 'Zielen Sie leicht rechts der Mitte, um den optimalen Winkel für den zweiten Schlag in Richtung Grün zu haben.',
+            en: 'Target slightly right of center to set up the ideal angle for your second shot towards the green.'
+        }
+    },
+    {
+        id: 2,
+        loop: 'blau',
+        holeNumber: 2,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 2 – Das sanfte Dogleg', en: 'Hole 2 – The Gentle Dogleg' },
+        par: 4,
+        hcp: 13,
+        tees: { white: 328, yellow: 304, blue: 293, red: 278 },
+        image: 'assets/course_holes/blau_2.jpg',
+        desc: {
+            de: 'Ein kürzeres Par 4, das Taktik vor Weite belohnt. Der Landebereich wird von Bunkern und dem Semirough geschützt.',
+            en: 'A shorter Par 4 that rewards strategy over distance. The landing area is framed by sand hazards and semi-rough.'
+        },
+        protip: {
+            de: 'Ein langes Eisen oder Holz 3 vom Abschlag reicht völlig aus, um mit einem kurzen Wedge das Grün anzuspielen.',
+            en: 'A long iron or 3-wood off the tee is ideal to leave a comfortable short wedge into the putting surface.'
+        }
+    },
+    {
+        id: 3,
+        loop: 'blau',
+        holeNumber: 3,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 3 – Die Klippe', en: 'Hole 3 – The Ridge' },
+        par: 4,
+        hcp: 5,
+        tees: { white: 425, yellow: 400, blue: 374, red: 355 },
+        image: 'assets/course_holes/blau_3.jpg',
+        desc: {
+            de: 'Ein langes und anspruchsvolles Par 4. Hier ist ein kontrollierter, kraftvoller Abschlag gefragt.',
+            en: 'A demanding, long Par 4 requiring a powerful and controlled drive to reach the landing corridor.'
+        },
+        protip: {
+            de: 'Spielen Sie das Grün defensiv über die Mitte an, da die vorderen Bunker Schläge festhalten.',
+            en: 'Play defensively towards the center of the green to avoid the guarding front bunkers.'
+        }
+    },
+    {
+        id: 4,
+        loop: 'blau',
+        holeNumber: 4,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 4 – Der Waldkorridor', en: 'Hole 4 – Forest Corridor' },
+        par: 5,
+        hcp: 11,
+        tees: { white: 451, yellow: 441, blue: 434, red: 413 },
+        image: 'assets/course_holes/blau_4.jpg',
+        desc: {
+            de: 'Ein strategisches Par 5 entlang sanfter Hügelkuppen mit herrlichem Panorama.',
+            en: 'A strategic Par 5 undulating along gentle ridges offering scenic views across the resort.'
+        },
+        protip: {
+            de: 'Legen Sie den zweiten Schlag clever ab, um einen vollen Schlag mit Spin auf die Fahne zu haben.',
+            en: 'Position your layup carefully to leave a full, spin-controlled wedge approach into the pin.'
+        }
+    },
+    {
+        id: 5,
+        loop: 'blau',
+        holeNumber: 5,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 5 – Das Präzisions-Par 3', en: 'Hole 5 – Precision Par 3' },
+        par: 3,
+        hcp: 15,
+        tees: { white: 138, yellow: 117, blue: 107, red: 99 },
+        image: 'assets/course_holes/blau_5.jpg',
+        desc: {
+            de: 'Ein kurzes, feines Par 3. Die richtige Schlägerwahl entscheidet über den Birdie-Putt.',
+            en: 'A short, crisp Par 3 where precise club selection sets up great birdie opportunities.'
+        },
+        protip: {
+            de: 'Achten Sie auf die Fahnenposition auf dem ondulierten Grün – die Mitte ist immer sicher.',
+            en: 'Observe the daily pin position closely on this tiered green; center green is always the safe play.'
+        }
+    },
+    {
+        id: 6,
+        loop: 'blau',
+        holeNumber: 6,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 6 – Schluchten-Schwung', en: 'Hole 6 – Gorge Swing' },
+        par: 4,
+        hcp: 7,
+        tees: { white: 334, yellow: 310, blue: 283, red: 264 },
+        image: 'assets/course_holes/blau_6.jpg',
+        desc: {
+            de: 'Ein flüssig geformtes Par 4, das Genauigkeit vom Abschlag bis zum Loch belohnt.',
+            en: 'A beautifully sculpted Par 4 rewarding precision from tee to green.'
+        },
+        protip: {
+            de: 'Vermeiden Sie das seitliche Rough rechts – der linke Fairwaybereich eröffnet den besten Anspielwinkel.',
+            en: 'Steer clear of the rough on the right; the left fairway section opens the cleanest angle to the pin.'
+        }
+    },
+    {
+        id: 7,
+        loop: 'blau',
+        holeNumber: 7,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 7 – Das Tannen-Par 3', en: 'Hole 7 – Pine Par 3' },
+        par: 3,
+        hcp: 9,
+        tees: { white: 185, yellow: 173, blue: 137, red: 127 },
+        image: 'assets/course_holes/blau_7.webp',
+        desc: {
+            de: 'Ein knackiges Par 3 über 170 Meter von Gelb. Gut verteidigt durch Bunker und Geländeondulationen.',
+            en: 'A testing Par 3 playing over 170 meters from yellow tees, well defended by sand traps.'
+        },
+        protip: {
+            de: 'Nehmen Sie im Zweifel einen Schläger mehr, um die vordere Bunkerkante sicher zu überwinden.',
+            en: 'Take one club extra to comfortably clear the front bunker edges.'
+        }
+    },
+    {
+        id: 8,
+        loop: 'blau',
+        holeNumber: 8,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 8 – Eichenallee', en: 'Hole 8 – Oak Avenue' },
+        par: 4,
+        hcp: 17,
+        tees: { white: 284, yellow: 261, blue: 236, red: 227 },
+        image: 'assets/course_holes/blau_8.jpg',
+        desc: {
+            de: 'Ein kurzes Par 4 mit Birdie-Potenzial. Longhitter können das Grün direkt attackieren.',
+            en: 'A short, sporty Par 4 with great birdie potential. Long hitters can challenge the green directly.'
+        },
+        protip: {
+            de: 'Ein defensiver Schlag mit dem Eisen in die Fairwaymitte lässt ein einfaches Wedge zur Fahne.',
+            en: 'A controlled iron to the fairway center leaves an easy wedge for a tap-in chance.'
+        }
+    },
+    {
+        id: 9,
+        loop: 'blau',
+        holeNumber: 9,
+        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        name: { de: 'Bahn 9 – Heimkehr zum Gutshof', en: 'Hole 9 – Manor Homecoming' },
+        par: 4,
+        hcp: 1,
+        tees: { white: 371, yellow: 342, blue: 316, red: 291 },
+        image: 'assets/course_holes/blau_9.webp',
+        desc: {
+            de: 'Die schwerste Bahn auf Kurs Blau (HCP 1). Ein anspruchsvolles Finish der ersten Neun vor dem Clubhaus.',
+            en: 'The handicap 1 challenge on Course Blue. A demanding and rewarding finish of the front nine.'
+        },
+        protip: {
+            de: 'Spielen Sie hier auf Nummer sicher: Mitte Fairway, Mitte Grün – ein Par fühlt sich hier wie ein Birdie an!',
+            en: 'Play for position: center fairway, center green – a Par on Hole 9 feels like a Birdie!'
+        }
+    },
 
- // --- KURS GELB (Holes 10 - 18 / Gelb 1 - 9) ---
- {
- id: 10,
- loop: 'gelb',
- holeNumber: 10,
- loopHoleNumber: 1,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 10 (Gelb 1) – Der Neustart', en: 'Hole 10 (Yellow 1) – The Restart' },
- par: 4,
- hcp: 12,
- tees: { white: 355, yellow: 335, blue: 305, red: 285 },
- image: 'assets/course_holes/gelb_1.jpg',
- desc: {
- de: 'Der Auftakt in die zweiten 9 Bahnen. Ein breites Fairway belohnt mutige Abschläge, während ein seitlicher Bunker auf der linken Seite vermieden werden sollte.',
- en: 'The start of the back nine. A generous fairway welcomes confident drives, while a fairway bunker on the left must be avoided.'
- },
- protip: {
- de: 'Zielen Sie auf die rechte Fairwayhälfte, um den optimalen Anspielwinkel ins Grün zu erhalten.',
- en: 'Aim towards the right half of the fairway for the cleanest angle into the green surface.'
- }
- },
- {
- id: 11,
- loop: 'gelb',
- holeNumber: 11,
- loopHoleNumber: 2,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 11 (Gelb 2) – Präzisions-Challenge', en: 'Hole 11 (Yellow 2) – Precision Challenge' },
- par: 3,
- hcp: 18,
- tees: { white: 160, yellow: 145, blue: 130, red: 115 },
- image: 'assets/course_holes/gelb_2.jpg',
- desc: {
- de: 'Ein kurzes, aber tückisches Par 3. Das Grün ist von drei Bunkern umgeben und erfordert einen hoch geschlagenen, weich landenden Eisenschlag.',
- en: 'A short but tricky Par 3. The green is heavily protected by three bunkers and requires a high, soft-landing iron shot.'
- },
- protip: {
- de: 'Spielen Sie auf die Grünmitte, unabhängig von der Fahnenposition. Hier ist das Grün am breitesten.',
- en: 'Target the middle of the green regardless of pin location; that is where the landing area is most generous.'
- }
- },
- {
- id: 12,
- loop: 'gelb',
- holeNumber: 12,
- loopHoleNumber: 3,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 12 (Gelb 3) – Die Höhenlinie', en: 'Hole 12 (Yellow 3) – The Contour' },
- par: 5,
- hcp: 4,
- tees: { white: 505, yellow: 480, blue: 440, red: 420 },
- image: 'assets/course_holes/gelb_3.jpg',
- desc: {
- de: 'Ein flüssig geschwungenes Par 5 entlang sanfter Hügelkuppen. Longhitter können bei Rückenwind mit dem zweiten Schlag das Grün attackieren.',
- en: 'A gracefully undulating Par 5 along rolling ridges. Long hitters can reach the green in two with favorable tailwinds.'
- },
- protip: {
- de: 'Vorsicht vor dem versteckten Graben 80 Meter vor dem Grün – planen Sie Ihre Vorlage präzise.',
- en: 'Watch out for the cross-ditch 80 meters short of the green – calculate your layup carefully.'
- }
- },
- {
- id: 13,
- loop: 'gelb',
- holeNumber: 13,
- loopHoleNumber: 4,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 13 (Gelb 4) – Plateau-Angriff', en: 'Hole 13 (Yellow 4) – Plateau Strike' },
- par: 4,
- hcp: 8,
- tees: { white: 380, yellow: 360, blue: 325, red: 305 },
- image: 'assets/course_holes/gelb_4.jpg',
- desc: {
- de: 'Ein ansteigendes Par 4 mit einem anspruchsvollen Plateaugrün. Zu kurze Schläge rollen über das Fairwaygefälle zurück.',
- en: 'An uphill Par 4 leading to a tiered plateau green. Short shots risk rolling back down the false front.'
- },
- protip: {
- de: 'Nehmen Sie für die Annäherung einen Schläger mehr, um den Höhenunterschied auszugleichen.',
- en: 'Take one club extra on your approach to compensate for the significant upward elevation.'
- }
- },
- {
- id: 14,
- loop: 'gelb',
- holeNumber: 14,
- loopHoleNumber: 5,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 14 (Gelb 5) – Der Weitblick', en: 'Hole 14 (Yellow 5) – Far Vista' },
- par: 4,
- hcp: 10,
- tees: { white: 365, yellow: 345, blue: 310, red: 290 },
- image: 'assets/course_holes/gelb_5.webp',
- desc: {
- de: 'Eine der schönsten Bahnen der Anlage mit Fernsicht. Ein breites Fairway verzeiht auch kleinere Ungenauigkeiten beim Abschlag.',
- en: 'One of the scenic highlights of the resort with expansive vistas. A generous fairway forgives slight miscues off the tee.'
- },
- protip: {
- de: 'Platzieren Sie Ihren Drive rechts der Mitte für eine ungestörte Annäherung an das von Bäumen eingerahmte Grün.',
- en: 'Place your drive slightly right of center for an unobstructed look into the tree-framed green.'
- }
- },
- {
- id: 15,
- loop: 'gelb',
- holeNumber: 15,
- loopHoleNumber: 6,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 15 (Gelb 6) – Die Herausforderung', en: 'Hole 15 (Yellow 6) – The Gauntlet' },
- par: 5,
- hcp: 2,
- tees: { white: 535, yellow: 510, blue: 465, red: 445 },
- image: 'assets/course_holes/gelb_6.jpg',
- desc: {
- de: 'Das anspruchsvollste Par 5 der zweiten Neun. Ein doppelter Dogleg-Charakter erfordert drei taktisch durchdachte Schläge.',
- en: 'The toughest Par 5 on the back nine. A double dogleg character demands three smartly engineered shots.'
- },
- protip: {
- de: 'Geduld zahlt sich aus: Bleiben Sie auf dem Fairway und attackieren Sie erst mit dem dritten Schlag die Fahne.',
- en: 'Patience pays dividends: Stay firmly in the fairway and attack the flag only with your third shot.'
- }
- },
- {
- id: 16,
- loop: 'gelb',
- holeNumber: 16,
- loopHoleNumber: 7,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 16 (Gelb 7) – Am See', en: 'Hole 16 (Yellow 7) – Lakeside' },
- par: 3,
- hcp: 16,
- tees: { white: 175, yellow: 160, blue: 138, red: 122 },
- image: 'assets/course_holes/gelb_7.jpg',
- desc: {
- de: 'Ein traumhaftes Par 3 mit Wasserhindernis vor dem Grün. Hier schlägt das Herz jedes Golfers höher.',
- en: 'A gorgeous Par 3 featuring a shimmering water hazard in front of the green. A pure thrill shot.'
- },
- protip: {
- de: 'Wählen Sie ausreichend Schlägerlänge. Der Wind vom Wasser bläst Bälle gerne kürzer als erwartet.',
- en: 'Choose sufficient club length. Breezes off the water often hold balls up shorter than expected.'
- }
- },
- {
- id: 17,
- loop: 'gelb',
- holeNumber: 17,
- loopHoleNumber: 8,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 17 (Gelb 8) – Der Kurvenläufer', en: 'Hole 17 (Yellow 8) – The Sweeper' },
- par: 4,
- hcp: 6,
- tees: { white: 398, yellow: 375, blue: 340, red: 320 },
- image: 'assets/course_holes/gelb_8.jpg',
- desc: {
- de: 'Ein langes Dogleg nach rechts. Ein kraftvoller Drive eröffnet die Chance auf das Par.',
- en: 'A long dogleg right. A powerful and shaped drive gives you the best chance at Par.'
- },
- protip: {
- de: 'Nicht zu viel abkürzen – der Wald rechts schluckt mutige Bälle schnell. Mitte Fairway ist ideal.',
- en: 'Do not cut too much of the dogleg – the trees on the right are unforgiving. Center fairway is ideal.'
- }
- },
- {
- id: 18,
- loop: 'gelb',
- holeNumber: 18,
- loopHoleNumber: 9,
- loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
- name: { de: 'Bahn 18 (Gelb 9) – Das Grand Finale', en: 'Hole 18 (Yellow 9) – The Grand Finale' },
- par: 4,
- hcp: 14,
- tees: { white: 340, yellow: 320, blue: 290, red: 270 },
- image: 'assets/course_holes/gelb_9.jpg',
- desc: {
- de: 'Der spektakuläre Abschluss vor der Sonnenterrasse des Resorthotels. Ein malerisches Grün mit Zuschauern garantiert Gänsehaut-Momente.',
- en: 'The spectacular finishing hole right in front of the resort sun terrace. A scenic green framed by clubhouse spectators.'
- },
- protip: {
- de: 'Schlagen Sie einen soliden Abschlag und genießen Sie den finalen Pitch auf das Inselgrün-Flair der 18.',
- en: 'Hit a solid tee shot and enjoy the applause on your final approach directly to the clubhouse green.'
- }
- }
+    // --- KURS GELB (Holes 10 - 18 / In) ---
+    {
+        id: 10,
+        loop: 'gelb',
+        holeNumber: 10,
+        loopHoleNumber: 1,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 10 (Gelb 1) – Der Neustart', en: 'Hole 10 (Yellow 1) – The Restart' },
+        par: 4,
+        hcp: 4,
+        tees: { white: 406, yellow: 358, blue: 326, red: 299 },
+        image: 'assets/course_holes/gelb_1.jpg',
+        desc: {
+            de: 'Ein starker Auftakt in die zweiten Neun über 358 Meter von Gelb mit HCP 4.',
+            en: 'A formidable start to the back nine measuring 358 meters from yellow tees with handicap 4.'
+        },
+        protip: {
+            de: 'Ein langer Drive auf die rechte Fairwayhälfte eröffnet den besten Blick auf das leicht erhöhte Grün.',
+            en: 'A strong drive down the right half of the fairway opens up the clearest line to the green.'
+        }
+    },
+    {
+        id: 11,
+        loop: 'gelb',
+        holeNumber: 11,
+        loopHoleNumber: 2,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 11 (Gelb 2) – Präzisions-Challenge', en: 'Hole 11 (Yellow 2) – Precision Challenge' },
+        par: 4,
+        hcp: 6,
+        tees: { white: 318, yellow: 303, blue: 285, red: 260 },
+        image: 'assets/course_holes/gelb_2.jpg',
+        desc: {
+            de: 'Ein tückisches Par 4 mit anspruchsvoll verteidigter Grünzone.',
+            en: 'A tactical Par 4 demanding high accuracy on the approach into a well-bunkered green.'
+        },
+        protip: {
+            de: 'Spielen Sie den Abschlag kontrolliert und vertrauen Sie auf Ihr kurzes Spiel.',
+            en: 'Keep your tee shot under control and trust your short game into the pin.'
+        }
+    },
+    {
+        id: 12,
+        loop: 'gelb',
+        holeNumber: 12,
+        loopHoleNumber: 3,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 12 (Gelb 3) – Das Schuss-Par 3', en: 'Hole 12 (Yellow 3) – The Shoot Par 3' },
+        par: 3,
+        hcp: 14,
+        tees: { white: 142, yellow: 135, blue: 128, red: 106 },
+        image: 'assets/course_holes/gelb_3.jpg',
+        desc: {
+            de: 'Ein attraktives Par 3 mit 135 Metern von Gelb – präzises Eisen gefragt!',
+            en: 'An attractive Par 3 playing 135 meters from yellow tees – pure iron precision.'
+        },
+        protip: {
+            de: 'Zielen Sie auf das Grünzentrum, um den Ball sicher zum Putt zu positionieren.',
+            en: 'Aim for the center of the green to guarantee an easy two-putt Par.'
+        }
+    },
+    {
+        id: 13,
+        loop: 'gelb',
+        holeNumber: 13,
+        loopHoleNumber: 4,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 13 (Gelb 4) – Das Weiten-Par 5', en: 'Hole 13 (Yellow 4) – The Long Par 5' },
+        par: 5,
+        hcp: 10,
+        tees: { white: 493, yellow: 474, blue: 455, red: 428 },
+        image: 'assets/course_holes/gelb_4.jpg',
+        desc: {
+            de: 'Ein großartiges Par 5 mit 474 Metern von Gelb entlang sanft geschwungener Fairways.',
+            en: 'A great Par 5 stretching 474 meters from yellow tees along rolling fairways.'
+        },
+        protip: {
+            de: 'Teilen Sie die Bahn in drei komfortable Schläge ein, um das Par souverän zu sichern.',
+            en: 'Divide the hole into three controlled shots to secure your regulation Par.'
+        }
+    },
+    {
+        id: 14,
+        loop: 'gelb',
+        holeNumber: 14,
+        loopHoleNumber: 5,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 14 (Gelb 5) – Das Insel-Gefühl', en: 'Hole 14 (Yellow 5) – Island Feeling' },
+        par: 3,
+        hcp: 18,
+        tees: { white: 159, yellow: 142, blue: 133, red: 109 },
+        image: 'assets/course_holes/gelb_5.webp',
+        desc: {
+            de: 'Ein malerisches Par 3 (HCP 18), das Konzentration und Gefühl verlangt.',
+            en: 'A scenic Par 3 (Handicap 18) demanding steady nerves and pure club contact.'
+        },
+        protip: {
+            de: 'Wählen Sie den passenden Schläger für die exakte Distanz und schwingen Sie locker durch.',
+            en: 'Select the exact yardage club and commit to a smooth, balanced swing.'
+        }
+    },
+    {
+        id: 15,
+        loop: 'gelb',
+        holeNumber: 15,
+        loopHoleNumber: 6,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 15 (Gelb 6) – Die Höhenlinie', en: 'Hole 15 (Yellow 6) – The Ridge' },
+        par: 4,
+        hcp: 8,
+        tees: { white: 358, yellow: 341, blue: 318, red: 294 },
+        image: 'assets/course_holes/gelb_6.jpg',
+        desc: {
+            de: 'Ein sportliches Par 4 mit weitem Blick über die Anlage.',
+            en: 'A sporty Par 4 with grand panoramic views across the championship course.'
+        },
+        protip: {
+            de: 'Vermeiden Sie die linken Bunker und spielen Sie den zweiten Schlag mit ausreichend Schläger.',
+            en: 'Avoid the left fairway bunkers and ensure sufficient club on your approach.'
+        }
+    },
+    {
+        id: 16,
+        loop: 'gelb',
+        holeNumber: 16,
+        loopHoleNumber: 7,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 16 (Gelb 7) – Das Monster Par 5', en: 'Hole 16 (Yellow 7) – The Monster Par 5' },
+        par: 5,
+        hcp: 2,
+        tees: { white: 526, yellow: 502, blue: 468, red: 446 },
+        image: 'assets/course_holes/gelb_7.jpg',
+        desc: {
+            de: 'Die schwerste Bahn der zweiten Neun (HCP 2). Über 500 Meter von Gelb mit Wasser und Sand.',
+            en: 'The stroke index 2 monster on the back nine stretching over 500 meters from yellow tees.'
+        },
+        protip: {
+            de: 'Hier ist intelligentes Course-Management der Schlüssel zum Erfolg. Drei präzise Schläge spielen.',
+            en: 'Intelligent course management is key here. Execute three calculated, clean shots.'
+        }
+    },
+    {
+        id: 17,
+        loop: 'gelb',
+        holeNumber: 17,
+        loopHoleNumber: 8,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 17 (Gelb 8) – Am See', en: 'Hole 17 (Yellow 8) – Lakeside' },
+        par: 3,
+        hcp: 16,
+        tees: { white: 168, yellow: 145, blue: 136, red: 127 },
+        image: 'assets/course_holes/gelb_8.jpg',
+        desc: {
+            de: 'Ein spektakuläres Par 3 am Wasser. Ein Postkarten-Motiv vor dem großen Finale.',
+            en: 'A breathtaking Par 3 right along the water hazard – a postcard view before the finale.'
+        },
+        protip: {
+            de: 'Lassen Sie sich vom Wasser nicht einschüchtern – ein satter Schlag auf Grünmitte reicht.',
+            en: 'Do not let the water hazard distract you – commit to the center of the green.'
+        }
+    },
+    {
+        id: 18,
+        loop: 'gelb',
+        holeNumber: 18,
+        loopHoleNumber: 9,
+        loopName: { de: 'Kurs Gelb (Back Nine)', en: 'Course Yellow (Back Nine)' },
+        name: { de: 'Bahn 18 (Gelb 9) – Das Grand Finale', en: 'Hole 18 (Yellow 9) – The Grand Finale' },
+        par: 5,
+        hcp: 12,
+        tees: { white: 529, yellow: 488, blue: 457, red: 428 },
+        image: 'assets/course_holes/gelb_9.jpg',
+        desc: {
+            de: 'Ein fulminantes Par 5 mit 488 Metern von Gelb direkt vor die Sonnenterrasse des Resorthotels.',
+            en: 'A glorious finishing Par 5 measuring 488 meters from yellow right in front of the sun terrace.'
+        },
+        protip: {
+            de: 'Genießen Sie den finalen Annäherungsschlag vor den Zuschauern auf der Clubhausterrasse!',
+            en: 'Enjoy your final approach shot framed by the spectators on the clubhouse terrace!'
+        }
+    }
 ];
 
 // Canyon Course Extra Card Info
@@ -410,14 +410,14 @@ const TRANSLATIONS = {
  
  loopBlauTitle: 'Kurs Blau (Landefeld)',
  loopBlauBadge: 'Bahnen 1–9',
- loopBlauSpec1: 'Länge Weiß: 3.299 m | Gelb: 3.091 m',
+ loopBlauSpec1: 'Länge Weiß: 2.987 m | Gelb: 2.807 m | Rot: 2.463 m',
  loopBlauSpec2: 'Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4',
  loopBlauDesc: 'Weite Ausblicke, abwechslungsreiche Höhenprofile und strategisch platzierte Wasser- und Sandhindernisse.',
  btnViewBlau: 'Bahnen 1–9 ansehen →',
  
  loopGelbTitle: 'Kurs Gelb',
  loopGelbBadge: 'Bahnen 10–18',
- loopGelbSpec1: 'Länge Weiß: 3.148 m | Gelb: 2.940 m',
+ loopGelbSpec1: 'Länge Weiß: 3.099 m | Gelb: 2.888 m | Rot: 2.497 m',
  loopGelbSpec2: 'Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4',
  loopGelbDesc: 'Flüssig eingebettet in das sanfte Gelände mit spektakulärem Finale vor der Resorthotel-Sonnenterrasse.',
  btnViewGelb: 'Bahnen 10–18 ansehen →',
@@ -531,14 +531,14 @@ const TRANSLATIONS = {
 
  loopBlauTitle: 'Course Blue (Landefeld)',
  loopBlauBadge: 'Holes 1–9',
- loopBlauSpec1: 'Length White: 3,299 m | Yellow: 3,091 m',
+ loopBlauSpec1: 'Length White: 2,987 m | Yellow: 2,807 m | Red: 2,463 m',
  loopBlauSpec2: 'Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4',
  loopBlauDesc: 'Expansive vistas, diverse elevation changes, and strategically placed hazards.',
  btnViewBlau: 'View Holes 1–9 →',
 
  loopGelbTitle: 'Course Yellow',
  loopGelbBadge: 'Holes 10–18',
- loopGelbSpec1: 'Length White: 3,148 m | Yellow: 2,940 m',
+ loopGelbSpec1: 'Length White: 3,099 m | Yellow: 2,888 m | Red: 2,497 m',
  loopGelbSpec2: 'Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4',
  loopGelbDesc: 'Flowing smoothly along rolling terrain with a breathtaking grand finale in front of the sun terrace.',
  btnViewGelb: 'View Holes 10–18 →',
