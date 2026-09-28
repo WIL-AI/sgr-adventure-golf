@@ -455,7 +455,7 @@ const TRANSLATIONS = {
  lblTeeMeters: 'm',
  
  lblTactic: 'Strategie & Bahnbeschreibung',
- lblProTip: 'Pro-Tipp vom Head-Pro',
+ lblProTip: 'Pro-Tipp',
  btnPrevHole: '← Vorherige Bahn',
  btnNextHole: 'Nächste Bahn →',
  
@@ -576,7 +576,7 @@ const TRANSLATIONS = {
  lblTeeMeters: 'm',
 
  lblTactic: 'Tactical Overview & Course Note',
- lblProTip: 'Head Pro Tip',
+ lblProTip: 'Pro Tip',
  btnPrevHole: '← Previous Hole',
  btnNextHole: 'Next Hole →',
 
