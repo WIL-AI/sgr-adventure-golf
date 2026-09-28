@@ -631,7 +631,82 @@
  <!-- ==========================================================================
  Footer
  ========================================================================== -->
- <footer class="site-footer">
+     <!-- ==========================================================================
+         Anfahrt & Google Maps Navigation
+         ========================================================================== -->
+    <section class="section section-white" id="anfahrt">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag" data-t="tagMap">Lage &amp; Anreise</span>
+                <h2 class="section-title" data-t="mapHeading">Schnelle Anfahrt zum Gut Wissmannshof</h2>
+                <p class="section-subtitle" data-t="mapSub">
+                    Im malerischen Dreiländereck Hessen, Niedersachsen und Thüringen – nur ca. 15 Minuten von Kassel und wenige Fahrminuten von der A7 entfernt.
+                </p>
+            </div>
+
+            <div class="map-grid">
+                <!-- Route & Address Card -->
+                <div class="map-info-card">
+                    <h3 data-t="mapCardTitle">Ihr Weg zu uns</h3>
+                    <p class="map-address-line">
+                        <strong>Sport- und Golf-Resort Gut Wissmannshof</strong><br>
+                        Gut Wissmannshof 1<br>
+                        34355 Staufenberg (Kassel)
+                    </p>
+
+                    <!-- Important Navigation Highlight Box -->
+                    <div class="nav-alert-box">
+                        <div class="nav-alert-icon">⚠️</div>
+                        <div class="nav-alert-content">
+                            <strong data-t="navAlertTitle">Wichtiger Navigationshinweis:</strong>
+                            <p data-t="navAlertText">
+                                Für eine stets korrekte und direkte Zielführung geben Sie in Ihr Navigationsgerät bitte immer die vollständige Adresse mit der Straße <strong>„Wissmannshof 1“ (in 34355 Staufenberg)</strong> ein.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="arrival-tips">
+                        <div class="tip-item">
+                            <span class="tip-icon">🚗</span>
+                            <div>
+                                <strong data-t="tip1Title">Über die Autobahn A7:</strong>
+                                <p data-t="tip1Desc">Ausfahrt Kassel-Nord oder Hedemünden / Hann. Münden – von dort bequem ausgeschildert.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🅿️</span>
+                            <div>
+                                <strong data-t="tip2Title">Kostenfreie Parkplätze &amp; E-Ladestationen:</strong>
+                                <p data-t="tip2Desc">Großzügige Parkmöglichkeiten direkt am Clubhaus und Resorthotel vorhanden.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-actions">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Gut+Wissmannshof+1,+34355+Staufenberg" target="_blank" rel="noopener" class="btn btn-gold" data-t="btnGoogleRoute">
+                            🗺️ Schnelle Route mit Google Maps berechnen ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Google Map Embed -->
+                <div class="map-iframe-wrapper">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Gut+Wissmannshof+1,+34355+Staufenberg&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Google Maps Standort Gut Wissmannshof">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
  <div class="container">
  <div class="footer-grid">
  <div class="footer-col">
