@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platzübersicht &amp; Bahnen 1–18 – Sport- und Golf-Resort Gut Wissmannshof | 27-Loch Meisterschaftsplatz</title>
+    <title>Golfplatz &amp; Hole 1–18 – Sport- und Golf-Resort Gut Wissmannshof | 27-Loch Meisterschaftsplatz</title>
     <meta name="description" content="Entdecken Sie die Golfbahnen auf Gut Wissmannshof: Interaktiver 18-Loch Bahnen-Guide mit Platzgrafiken, Distanzen, Pro-Tipps, DGV Slope-Tabellen und Scorekarten-Download.">
     <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
     
@@ -18,7 +18,7 @@
 <body>
 
     <!-- ==========================================================================
-         Header & Navigation
+         Header & Navigation (Clean, spacious, modern layout)
          ========================================================================== -->
     <header class="site-header" id="header">
         <div class="header-container">
@@ -27,18 +27,22 @@
             </a>
             
             <nav class="main-nav" id="main-nav">
-                <a href="home.html" data-t="navHome">Startseite</a>
-                <a href="#loops" data-t="navOverview">Platzübersicht</a>
-                <a href="#bahnen" data-t="navHoles">Bahnen 1–18</a>
-                <a href="#specs" data-t="navSpecs">Course Rating</a>
-                <a href="#downloads" data-t="navDownloads">Downloads</a>
-                <a href="#training" data-t="navPractice">Übungsanlagen</a>
+                <a href="home.html" class="nav-link" data-t="navHome">Startseite</a>
+                <a href="#loops" class="nav-link" data-t="navOverview">Golfplatz</a>
+                <a href="#bahnen" class="nav-link" data-t="navHoles">Hole 1–18</a>
+                <a href="#impressionen" class="nav-link" data-t="navGallery">Impressionen</a>
+                <a href="#specs" class="nav-link" data-t="navSpecs">Course Rating</a>
+                <a href="#downloads" class="nav-link" data-t="navDownloads">Downloads</a>
+                <a href="#training" class="nav-link" data-t="navPractice">Übungsanlagen</a>
+            </nav>
+
+            <div class="nav-actions">
                 <a href="#buchen" class="nav-btn-highlight" data-t="navBtnBooking">Startzeit buchen</a>
                 <div class="lang-switcher">
                     <button type="button" class="lang-btn lang-btn-de active" id="lang-de" onclick="setLanguage('de')" aria-label="Deutsch"><span>DE</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#ffce00" d="M0 320h640v160H0z"/><path fill="#000" d="M0 0h640v160H0z"/><path fill="#d00" d="M0 160h640v160H0z"/></svg></button>
                     <button type="button" class="lang-btn lang-btn-en" id="lang-en" onclick="setLanguage('en')" aria-label="English"><span>EN</span> <svg class="flag-icon" viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/><path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/><path fill="#C8102E" d="M273 0v480h96V0h-96zM0 192v96h640v-96H0z"/></svg></button>
                 </div>
-            </nav>
+            </div>
             
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
                 <span></span>
@@ -61,7 +65,7 @@
                 </p>
                 
                 <div class="hero-actions">
-                    <a href="#bahnen" class="btn btn-gold" data-t="btnHeroExplore">Bahnen interaktiv erkunden ↓</a>
+                    <a href="#bahnen" class="btn btn-gold" data-t="btnHeroExplore">Hole 1–18 erkunden ↓</a>
                     <a href="#buchen" class="btn btn-outline-white" data-t="btnHeroBook">Startzeit reservieren</a>
                 </div>
                 
@@ -89,7 +93,7 @@
     </section>
 
     <!-- ==========================================================================
-         Course Loops Overview (Blau, Gelb, Canyon, Rot)
+         Course Loops Overview (Blau, Gelb, Canyon, Rot) with Photo Previews
          ========================================================================== -->
     <section class="section section-cream" id="loops">
         <div class="container">
@@ -105,11 +109,14 @@
                 
                 <!-- Kurs Blau -->
                 <div class="loop-card">
-                    <div class="loop-card-header">
-                        <h3 class="loop-title" data-t="loopBlauTitle">Kurs Blau (Landefeld)</h3>
-                        <span class="loop-badge badge-blue" data-t="loopBlauBadge">Bahnen 1–9</span>
+                    <div class="loop-card-img-wrap">
+                        <img src="assets/gallery_tee4_morning.jpg" alt="Kurs Blau – Landefeld Course">
+                        <div class="loop-card-img-overlay">
+                            <span class="loop-badge badge-blue" data-t="loopBlauBadge">Hole 1–9</span>
+                        </div>
                     </div>
                     <div class="loop-card-body">
+                        <h3 class="loop-title" data-t="loopBlauTitle">Kurs Blau (Landefeld)</h3>
                         <ul class="loop-specs-list">
                             <li><span>Distanz:</span> <strong data-t="loopBlauSpec1">Länge Weiß: 3.299 m | Gelb: 3.091 m</strong></li>
                             <li><span>Zusammensetzung:</span> <strong data-t="loopBlauSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
@@ -119,17 +126,20 @@
                         </p>
                     </div>
                     <div class="loop-card-footer">
-                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('blau')" data-t="btnViewBlau">Bahnen 1–9 ansehen →</a>
+                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('blau')" data-t="btnViewBlau">Hole 1–9 ansehen →</a>
                     </div>
                 </div>
 
                 <!-- Kurs Gelb -->
                 <div class="loop-card">
-                    <div class="loop-card-header">
-                        <h3 class="loop-title" data-t="loopGelbTitle">Kurs Gelb</h3>
-                        <span class="loop-badge badge-yellow" data-t="loopGelbBadge">Bahnen 10–18</span>
+                    <div class="loop-card-img-wrap">
+                        <img src="assets/gallery_fairway_waves_oak.jpg" alt="Kurs Gelb – Wissmannshof">
+                        <div class="loop-card-img-overlay">
+                            <span class="loop-badge badge-yellow" data-t="loopGelbBadge">Hole 10–18</span>
+                        </div>
                     </div>
                     <div class="loop-card-body">
+                        <h3 class="loop-title" data-t="loopGelbTitle">Kurs Gelb</h3>
                         <ul class="loop-specs-list">
                             <li><span>Distanz:</span> <strong data-t="loopGelbSpec1">Länge Weiß: 3.148 m | Gelb: 2.940 m</strong></li>
                             <li><span>Zusammensetzung:</span> <strong data-t="loopGelbSpec2">Par: 36 | 2x Par 5, 2x Par 3, 5x Par 4</strong></li>
@@ -139,17 +149,20 @@
                         </p>
                     </div>
                     <div class="loop-card-footer">
-                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('gelb')" data-t="btnViewGelb">Bahnen 10–18 ansehen →</a>
+                        <a href="#bahnen" class="btn btn-outline-dark" style="width:100%;" onclick="switchLoopTab('gelb')" data-t="btnViewGelb">Hole 10–18 ansehen →</a>
                     </div>
                 </div>
 
                 <!-- Canyon Kurs -->
                 <div class="loop-card">
-                    <div class="loop-card-header">
-                        <h3 class="loop-title" data-t="loopCanyonTitle">Canyon-Kurs (Kurzplatz)</h3>
-                        <span class="loop-badge badge-green" data-t="loopCanyonBadge">6 Loch (in Kürze 9 Loch)</span>
+                    <div class="loop-card-img-wrap">
+                        <img src="assets/gallery_sunset_canyon_lake.jpg" alt="Canyon-Kurs Kurzplatz">
+                        <div class="loop-card-img-overlay">
+                            <span class="loop-badge badge-green" data-t="loopCanyonBadge">6 Loch (in Kürze 9 Loch)</span>
+                        </div>
                     </div>
                     <div class="loop-card-body">
+                        <h3 class="loop-title" data-t="loopCanyonTitle">Canyon-Kurs (Kurzplatz)</h3>
                         <ul class="loop-specs-list">
                             <li><span>Besonderheit:</span> <strong data-t="loopCanyonSpec1">Par 18 / 6 anspruchsvolle Bahnen</strong></li>
                             <li><span>Zugang:</span> <strong data-t="loopCanyonSpec2">Ohne Platzerlaubnis / PE bespielbar</strong></li>
@@ -165,11 +178,14 @@
 
                 <!-- Kurs Rot -->
                 <div class="loop-card">
-                    <div class="loop-card-header">
-                        <h3 class="loop-title" data-t="loopRotTitle">Kurs Rot (Ausblick)</h3>
-                        <span class="loop-badge badge-red" data-t="loopRotBadge">In Entwicklung</span>
+                    <div class="loop-card-img-wrap">
+                        <img src="assets/gallery_mountain_view_bunker.jpg" alt="Kurs Rot in Planung">
+                        <div class="loop-card-img-overlay">
+                            <span class="loop-badge badge-red" data-t="loopRotBadge">In Entwicklung</span>
+                        </div>
                     </div>
                     <div class="loop-card-body">
+                        <h3 class="loop-title" data-t="loopRotTitle">Kurs Rot (Ausblick)</h3>
                         <ul class="loop-specs-list">
                             <li><span>Status:</span> <strong data-t="loopRotSpec1">9 weitere Meisterschaftsbahnen</strong></li>
                             <li><span>Ziel:</span> <strong data-t="loopRotSpec2">Erweiterung auf 27 vollwertige Meisterschaftslöcher</strong></li>
@@ -194,7 +210,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <span class="section-tag" data-t="tagGuide">Interaktiver Course-Guide</span>
-                <h2 class="section-title" data-t="guideHeading">Bahnen im Detail entdecken</h2>
+                <h2 class="section-title" data-t="guideHeading">Hole 1 bis 18 im Detail entdecken</h2>
                 <p class="section-subtitle" data-t="guideSub">
                     Wählen Sie eine Bahn aus, um die detaillierte Platzgrafik, Distanzen aller Teeboxen und Pro-Tipps anzuzeigen.
                 </p>
@@ -205,10 +221,10 @@
                 <!-- Course Loop Selector Tabs -->
                 <div class="guide-tabs">
                     <button class="guide-tab-btn active" data-tab="blau" onclick="switchLoopTab('blau')" data-t="tabBlau">
-                        🔵 Kurs Blau (Bahnen 1–9)
+                        🔵 Kurs Blau (Hole 1–9)
                     </button>
                     <button class="guide-tab-btn" data-tab="gelb" onclick="switchLoopTab('gelb')" data-t="tabGelb">
-                        🟡 Kurs Gelb (Bahnen 10–18)
+                        🟡 Kurs Gelb (Hole 10–18)
                     </button>
                     <button class="guide-tab-btn" data-tab="canyon" onclick="switchLoopTab('canyon')" data-t="tabCanyon">
                         🟢 Canyon-Kurs (Kurzplatz)
@@ -233,9 +249,118 @@
     </section>
 
     <!-- ==========================================================================
+         Atmosphere & Photo Gallery Grid (Full 15-Photo Luxury Showcase)
+         ========================================================================== -->
+    <section class="section section-cream" id="impressionen">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag" data-t="tagGallery">Atmosphäre &amp; Natur</span>
+                <h2 class="section-title" data-t="galleryHeading">Impressionen unserer 27-Loch-Anlage</h2>
+                <p class="section-subtitle" data-t="gallerySub">
+                    Perfekt modellierte Fairways, kristallklare Wasserhindernisse, schneeweiße Sandbunker und blühende Naturlandschaften im Herzen des Kasseler Landes.
+                </p>
+            </div>
+
+            <div class="gallery-grid-lux">
+                
+                <!-- 1. Panorama Dunes & Lake (Span 2x2) -->
+                <div class="gallery-card-lux span-2-2" onclick="openLightbox('assets/gallery_panorama_dunes_lake.jpg', 'Meisterschaftsplatz Panorama – Weite Sanddünen und Wasserhindernis')">
+                    <img src="assets/gallery_panorama_dunes_lake.jpg" alt="Panorama Dünen und See">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">PGA Meisterschaftsplatz</span>
+                        <h4 class="lux-title">Wasserhindernis &amp; weiße Sanddünen</h4>
+                    </div>
+                </div>
+
+                <!-- 2. Island Green Pine Forest (Span 2x1) -->
+                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_island_green_pineforest.jpg', 'Inselgrün mit Bunkerkranz vor tiefem Nadelwald')">
+                    <img src="assets/gallery_island_green_pineforest.jpg" alt="Inselgrün vor Nadelwald">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Signature Hole</span>
+                        <h4 class="lux-title">Inselgrün vor traumhafter Waldkulisse</h4>
+                    </div>
+                </div>
+
+                <!-- 3. Lavender Fairway View -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_lavender_fairway.jpg', 'Lavendelblüte mit Blick auf Fairway &amp; See')">
+                    <img src="assets/gallery_lavender_fairway.jpg" alt="Lavendelblick auf die Golfbahnen">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Flora &amp; Fauna</span>
+                        <h4 class="lux-title">Lavendelblüte am Fairway</h4>
+                    </div>
+                </div>
+
+                <!-- 4. Bunker Stonewall Water -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_bunker_stonewall_water.jpg', 'Bunkerkante mit Natursteinmauer am Wasser')">
+                    <img src="assets/gallery_bunker_stonewall_water.jpg" alt="Bunker mit Natursteinmauer">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Course Design</span>
+                        <h4 class="lux-title">Naturstein-Uferbefestigung</h4>
+                    </div>
+                </div>
+
+                <!-- 5. Flag Pin Detail -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_flag_pin.jpg', 'Gut Wissmannshof Flagge am Grün')">
+                    <img src="assets/gallery_flag_pin.jpg" alt="Gut Wissmannshof Fahne auf dem Grün">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Qualität &amp; Detail</span>
+                        <h4 class="lux-title">Auf dem Grün</h4>
+                    </div>
+                </div>
+
+                <!-- 6. Blue Lake Mirror -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_blue_lake_mirror.jpg', 'Spiegelglattes Wasserhindernis unter blauem Himmel')">
+                    <img src="assets/gallery_blue_lake_mirror.jpg" alt="Blauer See Spiegelung">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Naturidylle</span>
+                        <h4 class="lux-title">Wasserhindernis im Sonnenschein</h4>
+                    </div>
+                </div>
+
+                <!-- 7. Fairway Waves Oak Tree (Span 2x1) -->
+                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_fairway_waves_oak.jpg', 'Wellenförmig modelliertes Fairway mit markanter Eiche')">
+                    <img src="assets/gallery_fairway_waves_oak.jpg" alt="Wellenfairway mit Eiche">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Architektur</span>
+                        <h4 class="lux-title">Modellierte Fairway-Wellen &amp; alte Eichen</h4>
+                    </div>
+                </div>
+
+                <!-- 8. Rolling Green with Hochsitz (Span 2x1) -->
+                <div class="gallery-card-lux span-2-1" onclick="openLightbox('assets/gallery_rolling_green_hochsitz.jpg', 'Weites Grün mit charakteristischem Hochsitz')">
+                    <img src="assets/gallery_rolling_green_hochsitz.jpg" alt="Weites Grün mit Hochsitz">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Landhaus-Charme</span>
+                        <h4 class="lux-title">Großzügiges Grün &amp; Panoramablick</h4>
+                    </div>
+                </div>
+
+                <!-- 9. Curved Bunker Dunes -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_curved_bunker_dunes.jpg', 'Elegante Bunkerschwünge in die Dünenlandschaft')">
+                    <img src="assets/gallery_curved_bunker_dunes.jpg" alt="Geschwungene Bunker in Dünen">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">Sandhindernisse</span>
+                        <h4 class="lux-title">Feinster weißer Quarzsand</h4>
+                    </div>
+                </div>
+
+                <!-- 10. Tee 7 Landefeld Course -->
+                <div class="gallery-card-lux" onclick="openLightbox('assets/gallery_tee7_landefeld.jpg', 'Tee 7 – Landefeld Course Panorama')">
+                    <img src="assets/gallery_tee7_landefeld.jpg" alt="Abschlag Bahn 7 Landefeld Kurs">
+                    <div class="gallery-card-lux-overlay">
+                        <span class="lux-tag">HCP 1 Challenge</span>
+                        <h4 class="lux-title">Abschlag Bahn 7 (Kurs Blau)</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
          DGV Course Rating & Specs Table
          ========================================================================== -->
-    <section class="section section-cream" id="specs">
+    <section class="section section-white" id="specs">
         <div class="container">
             <div class="section-header text-center">
                 <span class="section-tag" data-t="tagSpecs">DGV Course Rating &amp; Slope</span>
@@ -423,7 +548,7 @@
     <div class="lightbox-modal" id="lightbox-modal">
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox()" aria-label="Schließen">&times;</button>
-            <img src="" alt="Große Bahnansicht" class="lightbox-img" id="lightbox-img">
+            <img src="" alt="Große Ansicht" class="lightbox-img" id="lightbox-img">
             <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
     </div>
