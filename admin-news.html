@@ -114,7 +114,7 @@
         /* Studio Grid (Editor + Live Preview) */
         .admin-studio {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.25fr 0.75fr;
             gap: 28px;
             align-items: start;
         }
@@ -154,7 +154,7 @@
 
         /* Form Styles */
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .form-label {
             display: block;
@@ -196,6 +196,154 @@
             .form-row { grid-template-columns: 1fr; }
         }
 
+        /* Photo Mode Switcher Tabs */
+        .photo-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            border-bottom: 1.5px solid #EAE6DB;
+            padding-bottom: 8px;
+        }
+        .photo-tab-btn {
+            background: transparent;
+            border: 1.5px solid #D5CEBD;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .photo-tab-btn:hover {
+            border-color: var(--color-gold);
+            background: #FAF8F3;
+        }
+        .photo-tab-btn.active {
+            background: var(--color-primary);
+            color: var(--color-gold-light);
+            border-color: var(--color-primary);
+        }
+
+        .photo-panel {
+            display: none;
+        }
+        .photo-panel.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Drag & Drop Upload Dropzone */
+        .upload-dropzone {
+            border: 2px dashed var(--color-gold);
+            background: #FAF8F3;
+            border-radius: var(--radius-md);
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .upload-dropzone:hover, .upload-dropzone.dragover {
+            background: #F4EDE0;
+            border-color: var(--color-primary);
+            transform: scale(1.005);
+        }
+        .upload-dropzone input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .upload-icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .upload-text-main {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .upload-text-sub {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        .btn-choose-file {
+            margin-top: 10px;
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            pointer-events: none;
+        }
+
+        /* Upload Success Box */
+        .upload-success-box {
+            display: none;
+            background: #FFFFFF;
+            border: 1.5px solid var(--color-gold);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .upload-success-box.show {
+            display: flex;
+        }
+        .upload-preview-thumb {
+            width: 65px;
+            height: 45px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #D5CEBD;
+        }
+        .upload-details {
+            flex: 1;
+            font-size: 0.82rem;
+        }
+        .upload-details-title {
+            font-weight: 700;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .upload-details-meta {
+            color: var(--color-text-muted);
+            font-size: 0.76rem;
+        }
+        .btn-remove-upload {
+            background: transparent;
+            border: 1px solid #F5C6CB;
+            color: var(--color-danger);
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-remove-upload:hover {
+            background: var(--color-danger);
+            color: var(--color-white);
+        }
+
         /* Character Counter Badge */
         .teaser-counter-wrap {
             display: flex;
@@ -227,10 +375,10 @@
         /* Preset Photo Selector Grid */
         .preset-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 10px;
             margin-top: 8px;
-            max-height: 230px;
+            max-height: 220px;
             overflow-y: auto;
             padding: 4px;
             border: 1.5px solid #EAE6DB;
@@ -310,7 +458,7 @@
             flex-wrap: wrap;
         }
         .btn-save {
-            background: var(--color-gold-gradient, linear-gradient(135deg, #D4AF37 0%, #AA771C 100%));
+            background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
             color: var(--color-white);
             border: none;
             padding: 12px 28px;
@@ -353,7 +501,7 @@
         }
         .preview-img-container {
             width: 100%;
-            height: 180px;
+            height: 200px;
             position: relative;
             background: #EAE6DB;
         }
@@ -560,20 +708,57 @@
                             </div>
                         </div>
 
-                        <!-- Titelfoto Auswahl -->
+                        <!-- Titelfoto Auswahl & Upload -->
                         <div class="form-group">
                             <label class="form-label">
-                                Titelfoto auswählen <span class="req">*</span>
+                                Titelfoto auswählen oder hochladen <span class="req">*</span>
                             </label>
-                            <div class="form-hint">Klicken Sie auf ein Bild aus der Resort-Mediathek oder geben Sie einen Bildpfad ein:</div>
-                            
-                            <!-- Preset Grid -->
-                            <div id="presets-grid" class="preset-grid">
-                                <!-- Populated dynamically -->
+
+                            <!-- Mode Tabs -->
+                            <div class="photo-tabs">
+                                <button type="button" class="photo-tab-btn active" data-tab="upload" onclick="switchPhotoTab('upload')">
+                                    📁 Foto hochladen
+                                </button>
+                                <button type="button" class="photo-tab-btn" data-tab="presets" onclick="switchPhotoTab('presets')">
+                                    🖼️ Mediathek (12 Resort-Bilder)
+                                </button>
+                                <button type="button" class="photo-tab-btn" data-tab="url" onclick="switchPhotoTab('url')">
+                                    🔗 Bildpfad / URL
+                                </button>
                             </div>
 
-                            <div style="margin-top: 8px;">
+                            <!-- Tab 1: Upload (Drag & Drop + Mobile Camera) -->
+                            <div id="tab-panel-upload" class="photo-panel active">
+                                <div class="upload-dropzone" id="dropzone">
+                                    <input type="file" id="file-input" accept="image/*">
+                                    <div class="upload-icon">📸</div>
+                                    <div class="upload-text-main">Foto vom PC oder Smartphone hierher ziehen</div>
+                                    <div class="upload-text-sub">oder klicken, um eine Datei (JPG, PNG, WEBP) auszuwählen</div>
+                                    <div class="btn-choose-file">Foto auswählen…</div>
+                                </div>
+
+                                <div id="upload-status" class="upload-success-box">
+                                    <img id="upload-status-thumb" src="" alt="Vorschau" class="upload-preview-thumb">
+                                    <div class="upload-details">
+                                        <div class="upload-details-title">✓ Foto erfolgreich geladen</div>
+                                        <div class="upload-details-meta" id="upload-status-info">Optimiert für Web</div>
+                                    </div>
+                                    <button type="button" class="btn-remove-upload" onclick="clearUploadedImage()">Entfernen</button>
+                                </div>
+                            </div>
+
+                            <!-- Tab 2: Presets Grid -->
+                            <div id="tab-panel-presets" class="photo-panel">
+                                <div class="form-hint" style="margin-bottom: 6px;">Klicken Sie auf ein Motiv:</div>
+                                <div id="presets-grid" class="preset-grid">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Tab 3: URL Input -->
+                            <div id="tab-panel-url" class="photo-panel">
                                 <input type="text" id="article-image" class="form-input" placeholder="assets/gallery_golden_hour_tree_lake.jpg" required>
+                                <div class="form-hint">Dateipfad relativ oder vollständige Bild-URL.</div>
                             </div>
                         </div>
 
@@ -690,6 +875,7 @@
         // Admin Application Controller
         let currentArticles = [];
         let selectedPresetUrl = '';
+        let uploadedImageDataUrl = '';
 
         const categoryLabels = {
             turniere: 'Turniere & Events',
@@ -709,7 +895,128 @@
             renderPresetGrid();
             renderArticlesTable();
             setupLiveListeners();
+            setupFileUpload();
             updateLivePreview();
+        }
+
+        // Photo Tab Switcher
+        function switchPhotoTab(tabId) {
+            document.querySelectorAll('.photo-tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+            });
+            document.querySelectorAll('.photo-panel').forEach(panel => {
+                panel.classList.toggle('active', panel.id === `tab-panel-${tabId}`);
+            });
+        }
+
+        // Setup File Upload & Compression
+        function setupFileUpload() {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('file-input');
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('dragover');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                const files = e.dataTransfer.files;
+                if (files && files.length > 0) {
+                    processImageFile(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    processImageFile(e.target.files[0]);
+                }
+            });
+        }
+
+        /**
+         * Process and compress uploaded image with HTML5 Canvas
+         */
+        function processImageFile(file) {
+            if (!file.type.match('image.*')) {
+                alert('Bitte wählen Sie eine gültige Bilddatei aus (JPG, PNG, WEBP).');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    // Downscale to max 1280px width/height while keeping aspect ratio
+                    const maxDim = 1280;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Export as JPEG Data URL at 85% quality
+                    uploadedImageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+                    // Update Image input value
+                    document.getElementById('article-image').value = uploadedImageDataUrl;
+
+                    // Show success box
+                    const statusBox = document.getElementById('upload-status');
+                    const statusThumb = document.getElementById('upload-status-thumb');
+                    const statusInfo = document.getElementById('upload-status-info');
+                    
+                    statusThumb.src = uploadedImageDataUrl;
+                    const sizeKB = Math.round(uploadedImageDataUrl.length / 1024);
+                    statusInfo.textContent = `${file.name} (${width}×${height}px, ca. ${sizeKB} KB)`;
+                    statusBox.classList.add('show');
+
+                    // Deselect presets
+                    document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
+
+                    // Update Preview
+                    updateLivePreview();
+                    showToast('Foto erfolgreich hochgeladen und optimiert! ✓');
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearUploadedImage() {
+            uploadedImageDataUrl = '';
+            document.getElementById('file-input').value = '';
+            document.getElementById('upload-status').classList.remove('show');
+            
+            // Revert to first preset
+            const presets = NewsRepository.getPresets();
+            if (presets.length > 0) {
+                selectPreset(presets[0].url, document.querySelector('.preset-thumb'));
+            }
         }
 
         // Render Preset Photos
@@ -733,9 +1040,11 @@
 
         function selectPreset(url, element) {
             selectedPresetUrl = url;
+            uploadedImageDataUrl = '';
             document.getElementById('article-image').value = url;
             document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
             if (element) element.classList.add('active');
+            document.getElementById('upload-status').classList.remove('show');
             updateLivePreview();
         }
 
@@ -808,7 +1117,7 @@
             const date = document.getElementById('article-date').value;
             const author = document.getElementById('article-author').value.trim();
             const readTime = document.getElementById('article-readtime').value.trim();
-            const image = document.getElementById('article-image').value.trim();
+            const image = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
             const teaser = document.getElementById('article-teaser').value.trim();
             const content = document.getElementById('article-content').value.trim();
 
@@ -894,7 +1203,21 @@
             document.getElementById('article-date').value = item.date || '';
             document.getElementById('article-author').value = item.author || '';
             document.getElementById('article-readtime').value = item.readTime || '';
-            document.getElementById('article-image').value = item.image || '';
+            
+            const imgVal = item.image || '';
+            document.getElementById('article-image').value = imgVal;
+            if (imgVal.startsWith('data:image')) {
+                switchPhotoTab('upload');
+                document.getElementById('upload-status-thumb').src = imgVal;
+                document.getElementById('upload-status-info').textContent = 'Gespeichertes Foto';
+                document.getElementById('upload-status').classList.add('show');
+            } else {
+                switchPhotoTab('presets');
+                document.querySelectorAll('.preset-thumb').forEach(el => {
+                    el.classList.toggle('active', el.getAttribute('data-url') === imgVal);
+                });
+            }
+
             document.getElementById('article-teaser').value = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
             document.getElementById('article-content').value = typeof item.content === 'string' ? item.content : (item.content.de || item.content.en);
 
@@ -928,6 +1251,9 @@
             document.getElementById('article-readtime').value = '3 Min.';
             document.getElementById('form-title-heading').innerHTML = '<span>✍</span> Neuen News-Beitrag erstellen';
             document.getElementById('btn-submit-article').textContent = '💾 Artikel jetzt veröffentlichen';
+
+            clearUploadedImage();
+            switchPhotoTab('upload');
 
             // Reset preset selection
             renderPresetGrid();
