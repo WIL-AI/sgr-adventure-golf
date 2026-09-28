@@ -254,7 +254,7 @@ img {
 .hero-course {
     position: relative;
     padding: 165px 0 95px;
-    background: linear-gradient(180deg, rgba(13, 34, 24, 0.65) 0%, rgba(13, 34, 24, 0.88) 100%), url('assets/gallery_golden_hour_tree_lake.jpg') center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(13, 34, 24, 0.50) 0%, rgba(13, 34, 24, 0.82) 100%), url('assets/hero_sgr_image_01.jpg') center/cover no-repeat;
     color: var(--color-white);
     text-align: center;
     overflow: hidden;
