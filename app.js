@@ -540,9 +540,14 @@ function setLanguage(lang) {
 }
 
 function updateLanguageUI() {
+    // Update html lang attribute
+    document.documentElement.lang = currentLang;
+
     // Toggle active buttons
-    document.getElementById('lang-de').classList.toggle('active', currentLang === 'de');
-    document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+    const deBtn = document.getElementById('lang-de');
+    const enBtn = document.getElementById('lang-en');
+    if (deBtn) deBtn.classList.toggle('active', currentLang === 'de');
+    if (enBtn) enBtn.classList.toggle('active', currentLang === 'en');
     
     // Update all elements with a translation key
     const translateElements = document.querySelectorAll('[data-t]');

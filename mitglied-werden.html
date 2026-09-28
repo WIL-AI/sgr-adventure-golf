@@ -27,13 +27,17 @@
             </a>
             
             <nav class="main-nav" id="main-nav">
-                <a href="#vorteile">Philosophie</a>
-                <a href="#tarife">Mitgliedschaften</a>
-                <a href="#schnuppern">Schnupperweg</a>
-                <a href="#vertraege">Vertragsklarheit</a>
-                <a href="#resort">Resort</a>
-                <a href="#faq">FAQ</a>
-                <a href="#kontakt" class="nav-btn-highlight">Gespräch vereinbaren</a>
+                <a href="#vorteile" data-t="navPhilosophy">Philosophie</a>
+                <a href="#tarife" data-t="navMemberships">Mitgliedschaften</a>
+                <a href="#schnuppern" data-t="navTrial">Schnupperweg</a>
+                <a href="#vertraege" data-t="navContracts">Vertragsklarheit</a>
+                <a href="#resort" data-t="navResort">Resort</a>
+                <a href="#faq" data-t="navFaq">FAQ</a>
+                <a href="#kontakt" class="nav-btn-highlight" data-t="navBtnContact">Gespräch vereinbaren</a>
+                <div class="lang-switcher">
+                    <button id="lang-de" class="lang-btn active">DE</button>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </div>
             </nav>
             
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
@@ -50,16 +54,16 @@
     <section class="hero-section">
         <div class="hero-backdrop"></div>
         <div class="hero-container">
-            <div class="hero-badge">Sport- und Golf-Resort Gut Wissmannshof</div>
-            <h1 class="hero-title">Ein Preis.<br><span class="hero-gold-text">Ein Versprechen.</span></h1>
-            <p class="hero-lead">
+            <div class="hero-badge" data-t="heroBadge">Sport- und Golf-Resort Gut Wissmannshof</div>
+            <h1 class="hero-title" data-t="heroTitle">Ein Preis.<br><span class="hero-gold-text">Ein Versprechen.</span></h1>
+            <p class="hero-lead" data-t="heroLead">
                 Mitgliedschaft auf Gut Wissmannshof heißt: ein fester Betrag, klar benannt, von Anfang an. 
                 Keine Aufnahmegebühr, keine Umlagen, keine Nachforderungen. Was Sie sehen, ist das, was Sie zahlen. Mehr nicht.
             </p>
             
             <div class="hero-actions">
-                <a href="#kontakt" class="btn btn-gold">Schnuppermitgliedschaft anfragen</a>
-                <a href="#tarife" class="btn btn-outline-white">Beiträge im Überblick ↓</a>
+                <a href="#kontakt" class="btn btn-gold" data-t="btnHeroTrial">Schnuppermitgliedschaft anfragen</a>
+                <a href="#tarife" class="btn btn-outline-white" data-t="btnHeroRates">Beiträge im Überblick ↓</a>
             </div>
             
             <!-- Trust Highlights Bar -->
@@ -67,29 +71,29 @@
                 <div class="trust-item">
                     <span class="trust-icon">✓</span>
                     <div class="trust-text">
-                        <strong>365 Tage im Jahr</strong>
-                        <span>Volles Spielrecht auf Meisterschaftskurs</span>
+                        <strong data-t="trust1Title">365 Tage im Jahr</strong>
+                        <span data-t="trust1Sub">Volles Spielrecht auf Meisterschaftskurs</span>
                     </div>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">✓</span>
                     <div class="trust-text">
-                        <strong>0 € Aufnahmegebühr</strong>
-                        <span>Keine Einlage, keine Anteile</span>
+                        <strong data-t="trust2Title">0 € Aufnahmegebühr</strong>
+                        <span data-t="trust2Sub">Keine Einlage, keine Anteile</span>
                     </div>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">✓</span>
                     <div class="trust-text">
-                        <strong>Keine Umlagen</strong>
-                        <span>Investitionen trägt der Betreiber</span>
+                        <strong data-t="trust3Title">Keine Umlagen</strong>
+                        <span data-t="trust3Sub">Investitionen trägt der Betreiber</span>
                     </div>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">✓</span>
                     <div class="trust-text">
-                        <strong>100 % Planbarkeit</strong>
-                        <span>Monatlich ohne Aufpreis zahlbar</span>
+                        <strong data-t="trust4Title">100 % Planbarkeit</strong>
+                        <span data-t="trust4Sub">Monatlich ohne Aufpreis zahlbar</span>
                     </div>
                 </div>
             </div>
@@ -102,9 +106,9 @@
     <section class="section section-cream" id="vorteile">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">Maximale Transparenz</span>
-                <h2 class="section-title">Drei Dinge, die Sie bei uns nicht finden</h2>
-                <p class="section-subtitle">
+                <span class="section-tag" data-t="tagTransparency">Maximale Transparenz</span>
+                <h2 class="section-title" data-t="pillarsHeading">Drei Dinge, die Sie bei uns nicht finden</h2>
+                <p class="section-subtitle" data-t="pillarsSub">
                     Wir glauben, dass modernes Golfen auf Vertrauen, Klarheit und Verlässlichkeit beruht. 
                     Deshalb verzichten wir konsequent auf alles, was Sie anderswo ärgert.
                 </p>
@@ -115,8 +119,8 @@
                 <div class="pillar-card">
                     <div class="pillar-number">01</div>
                     <div class="pillar-icon">🚫</div>
-                    <h3 class="pillar-title">Keine Aufnahmegebühr</h3>
-                    <p class="pillar-desc">
+                    <h3 class="pillar-title" data-t="pillar1Title">Keine Aufnahmegebühr</h3>
+                    <p class="pillar-desc" data-t="pillar1Desc">
                         Der Eintritt in unsere Gemeinschaft kostet nichts extra. Sie zahlen Ihren Mitgliedsbeitrag, sonst nichts. 
                         Kein Einstandsbetrag, keine Aufnahmegebühr, keine Einlage, kein Anteilsschein.
                     </p>
@@ -126,8 +130,8 @@
                 <div class="pillar-card">
                     <div class="pillar-number">02</div>
                     <div class="pillar-icon">🛡️</div>
-                    <h3 class="pillar-title">Keine Umlagen</h3>
-                    <p class="pillar-desc">
+                    <h3 class="pillar-title" data-t="pillar2Title">Keine Umlagen</h3>
+                    <p class="pillar-desc" data-t="pillar2Desc">
                         Neue Bewässerung, neuer Fuhrpark, neues Clubhaus: Was auf der Anlage investiert wird, tragen wir als Betreiber. 
                         Unsere Mitglieder werden nicht nachträglich zur Kasse gebeten. Nie.
                     </p>
@@ -137,8 +141,8 @@
                 <div class="pillar-card">
                     <div class="pillar-number">03</div>
                     <div class="pillar-icon">📜</div>
-                    <h3 class="pillar-title">Keine Nachforderungen</h3>
-                    <p class="pillar-desc">
+                    <h3 class="pillar-title" data-t="pillar3Title">Keine Nachforderungen</h3>
+                    <p class="pillar-desc" data-t="pillar3Desc">
                         Natürlich gibt es Spielrechtsvertrag und AGB. Wir schreiben sie so, dass man sie versteht, und geben sie Ihnen vor der Unterschrift. 
                         Darin steht, was Ihre Mitgliedschaft kostet. Was dort nicht steht, kommt später auch nicht dazu.
                     </p>
@@ -149,24 +153,24 @@
                 <div class="pdf-callout-content">
                     <span class="pdf-icon">📄</span>
                     <div>
-                        <strong>Vollkommene Offenheit vor Vertragsabschluss:</strong>
-                        <span>Sie können unseren Mitgliedsantrag, die Spielbedingungen und AGB jederzeit transparent einsehen.</span>
+                        <strong data-t="calloutTitle">Vollkommene Offenheit vor Vertragsabschluss:</strong>
+                        <span data-t="calloutSub">Sie können unseren Mitgliedsantrag, die Spielbedingungen und AGB jederzeit transparent einsehen.</span>
                     </div>
                 </div>
-                <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/MGL-ANTRAG-ausfuellbar-1-1-05-26.html" target="_blank" rel="noopener" class="btn btn-outline-dark">Mitgliedsantrag & AGB ansehen</a>
+                <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/MGL-ANTRAG-ausfuellbar-1-1-05-26.html" target="_blank" rel="noopener" class="btn btn-outline-dark" data-t="btnCallout">Mitgliedsantrag &amp; AGB ansehen</a>
             </div>
         </div>
     </section>
 
     <!-- ==========================================================================
-         Beitragsübersicht & Tarif-Modelle (Ein Betrag. Klar, fest, kalkulierbar)
+         Beitragsübersicht & Tarif-Modelle
          ========================================================================== -->
     <section class="section section-white" id="tarife">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">Kalkulierbar & Fair</span>
-                <h2 class="section-title">Ein Betrag. Klar, fest, kalkulierbar.</h2>
-                <p class="section-subtitle">
+                <span class="section-tag" data-t="tagFair">Kalkulierbar &amp; Fair</span>
+                <h2 class="section-title" data-t="ratesHeading">Ein Betrag. Klar, fest, kalkulierbar.</h2>
+                <p class="section-subtitle" data-t="ratesSub">
                     Sie wissen am ersten Tag, was das Jahr kostet. Der Beitrag steht fest, wird nicht unterjährig angepasst und enthält alles, 
                     was zur Mitgliedschaft gehört. Auf Wunsch zahlen Sie monatlich – ohne Aufschlag, ohne Finanzierung, einfach als zwölf gleiche Beträge.
                 </p>
@@ -177,10 +181,10 @@
                 
                 <!-- Schnuppermitgliedschaft -->
                 <div class="pricing-card featured-card">
-                    <div class="card-badge badge-gold">Empfehlung für den Start</div>
+                    <div class="card-badge badge-gold" data-t="badgeTrial">Empfehlung für den Start</div>
                     <div class="card-header">
-                        <h3 class="card-title">Schnuppermitgliedschaft</h3>
-                        <p class="card-subtitle">Volles Spielrecht zum Kennenlernen ohne Risiko</p>
+                        <h3 class="card-title" data-t="cardTrialTitle">Schnuppermitgliedschaft</h3>
+                        <p class="card-subtitle" data-t="cardTrialSub">Volles Spielrecht zum Kennenlernen ohne Risiko</p>
                     </div>
                     
                     <div class="card-price-box">
@@ -188,29 +192,29 @@
                             <span class="currency">€</span>
                             <span class="amount">85</span>
                         </div>
-                        <span class="price-period">pro Monat <span class="price-yearly-sub">(1.020 € pro Jahr)</span></span>
+                        <span class="price-period" data-t="priceTrialPeriod">pro Monat <span class="price-yearly-sub">(1.020 € pro Jahr)</span></span>
                     </div>
                     
                     <ul class="card-features">
-                        <li><span class="check">✓</span> <strong>Unbegrenztes Spielrecht</strong> an 365 Tagen im Jahr</li>
-                        <li><span class="check">✓</span> Volle Nutzung aller <strong>Trainingsbereiche</strong> (Driving Range, Pitching &amp; Putting)</li>
-                        <li><span class="check">✓</span> Offizieller DGV-Ausweis &amp; Handicapführung</li>
-                        <li><span class="check">✓</span> Alle regulären Club-Vorteile &amp; Gäste-Privilegien</li>
-                        <li><span class="check">✓</span> Locker- &amp; Garderoben-Service inklusive</li>
-                        <li><span class="check">✓</span> <strong>Erst 12 Monate testen</strong>, dann frei entscheiden</li>
+                        <li><span class="check">✓</span> <strong data-t="trialF1">Unbegrenztes Spielrecht an 365 Tagen im Jahr</strong></li>
+                        <li><span class="check">✓</span> <span data-t="trialF2">Volle Nutzung aller Trainingsbereiche (Driving Range, Pitching &amp; Putting)</span></li>
+                        <li><span class="check">✓</span> <span data-t="trialF3">Offizieller DGV-Ausweis &amp; Handicapführung</span></li>
+                        <li><span class="check">✓</span> <span data-t="trialF4">Alle regulären Club-Vorteile &amp; Gäste-Privilegien</span></li>
+                        <li><span class="check">✓</span> <span data-t="trialF5">Locker- &amp; Garderoben-Service inklusive</span></li>
+                        <li><span class="check">✓</span> <strong data-t="trialF6">Erst 12 Monate testen, dann frei entscheiden</strong></li>
                     </ul>
                     
                     <div class="card-footer">
-                        <a href="#kontakt" class="btn btn-gold btn-block" data-preselect="schnupper">Schnuppermitgliedschaft anfragen</a>
+                        <a href="#kontakt" class="btn btn-gold btn-block" data-preselect="schnupper" data-t="btnSelectTrial">Schnuppermitgliedschaft anfragen</a>
                     </div>
                 </div>
 
                 <!-- Vollmitgliedschaft -->
                 <div class="pricing-card popular-card">
-                    <div class="card-badge badge-green">Das Premium-Erlebnis</div>
+                    <div class="card-badge badge-green" data-t="badgeFull">Das Premium-Erlebnis</div>
                     <div class="card-header">
-                        <h3 class="card-title">Vollmitgliedschaft</h3>
-                        <p class="card-subtitle">Das uneingeschränkte Rundum-sorglos-Golferlebnis</p>
+                        <h3 class="card-title" data-t="cardFullTitle">Vollmitgliedschaft</h3>
+                        <p class="card-subtitle" data-t="cardFullSub">Das uneingeschränkte Rundum-sorglos-Golferlebnis</p>
                     </div>
                     
                     <div class="card-price-box">
@@ -218,543 +222,440 @@
                             <span class="currency">€</span>
                             <span class="amount">153</span>
                         </div>
-                        <span class="price-period">pro Monat <span class="price-yearly-sub">(1.836 € pro Jahr)</span></span>
+                        <span class="price-period" data-t="priceFullPeriod">pro Monat <span class="price-yearly-sub">(1.836 € pro Jahr)</span></span>
                     </div>
                     
                     <ul class="card-features">
-                        <li><span class="check">✓</span> <strong>365 Tage unbegrenztes Spielrecht</strong> auf der gesamten 18-Loch-Anlage</li>
-                        <li><span class="check">✓</span> Inkl. aller Übungsanlagen, Driving Range &amp; Kurzspielbereiche</li>
-                        <li><span class="check">✓</span> DGV-Ausweis &amp; weltweite Turnierteilnahme</li>
-                        <li><span class="check">✓</span> <strong>Exklusiver Mehrwert:</strong> Jährlich <strong>5 Greenfeegutscheine für das Golfresort Hardenberg</strong> inklusive!</li>
-                        <li><span class="check">✓</span> Vorzugskonditionen für Begleitpersonen &amp; Gäste</li>
-                        <li><span class="check">✓</span> Clubturniere, Mannschaftsspiel &amp; exklusive Events</li>
+                        <li><span class="check">✓</span> <strong data-t="fullF1">365 Tage unbegrenztes Spielrecht auf der gesamten 18-Loch-Anlage</strong></li>
+                        <li><span class="check">✓</span> <span data-t="fullF2">Inkl. aller Übungsanlagen, Driving Range &amp; Kurzspielbereiche</span></li>
+                        <li><span class="check">✓</span> <span data-t="fullF3">DGV-Ausweis &amp; weltweite Turnierteilnahme</span></li>
+                        <li><span class="check">✓</span> <strong data-t="fullF4">Exklusiver Mehrwert: Jährlich 5 Greenfeegutscheine für das Golfresort Hardenberg inklusive!</strong></li>
+                        <li><span class="check">✓</span> <span data-t="fullF5">Vorzugskonditionen für Begleitpersonen &amp; Gäste</span></li>
+                        <li><span class="check">✓</span> <span data-t="fullF6">Clubturniere, Mannschaftsspiel &amp; exklusive Events</span></li>
                     </ul>
                     
                     <div class="card-footer">
-                        <a href="#kontakt" class="btn btn-primary btn-block" data-preselect="voll">Vollmitgliedschaft anfragen</a>
+                        <a href="#kontakt" class="btn btn-primary btn-block" data-preselect="voll" data-t="btnSelectFull">Vollmitgliedschaft anfragen</a>
                     </div>
                 </div>
             </div>
 
             <!-- Additional Categories Grid -->
             <div class="additional-pricing-section">
-                <h3 class="additional-title">Weitere maßgeschneiderte Mitgliedschaftsformen</h3>
+                <h3 class="additional-title" data-t="moreRatesTitle">Weitere maßgeschneiderte Mitgliedschaftsformen</h3>
                 
                 <div class="standard-pricing-grid">
                     <!-- Wochenmitgliedschaft -->
                     <div class="pricing-card-compact">
                         <div class="compact-header">
-                            <h4>Wochenmitgliedschaft</h4>
-                            <span class="compact-tag">Mo. – Fr.</span>
+                            <h4 data-t="catWeekTitle">Wochenmitgliedschaft</h4>
+                            <span class="compact-tag" data-t="catWeekTag">Mo. – Fr.</span>
                         </div>
-                        <p class="compact-desc">Für Ruheständler, Selbstständige &amp; Spieler, die die Ruhe unter der Woche schätzen.</p>
+                        <p class="compact-desc" data-t="catWeekDesc">Für Ruheständler, Selbstständige &amp; Spieler, die die Ruhe unter der Woche schätzen.</p>
                         <div class="compact-price">
-                            <span class="c-amount">132,80 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(1.593,60 € pro Jahr)</span></span>
+                            <span class="c-amount">128 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
                         </div>
-                        <ul class="compact-features">
-                            <li>✓ Spielrecht Montag bis Freitag (werktags)</li>
-                            <li>✓ Inkl. aller Trainingsbereiche &amp; Club-Vorteile</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="woche">Auswählen</a>
+                        <span class="c-yearly" data-t="catWeekYearly">(1.536 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="woche" data-t="btnInquire">Anfragen</a>
+                    </div>
+
+                    <!-- 9-Loch Mitgliedschaft -->
+                    <div class="pricing-card-compact">
+                        <div class="compact-header">
+                            <h4 data-t="cat9Title">9-Loch Mitgliedschaft</h4>
+                            <span class="compact-tag" data-t="cat9Tag">Zeitsparend</span>
+                        </div>
+                        <p class="compact-desc" data-t="cat9Desc">Ideal für Berufstätige mit wenig Zeit. Volles DGV-Spielrecht für 9 Löcher an 365 Tagen.</p>
+                        <div class="compact-price">
+                            <span class="c-amount">102 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
+                        </div>
+                        <span class="c-yearly" data-t="cat9Yearly">(1.224 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="9loch" data-t="btnInquire">Anfragen</a>
                     </div>
 
                     <!-- Zweitmitgliedschaft -->
                     <div class="pricing-card-compact">
                         <div class="compact-header">
-                            <h4>Zweitmitgliedschaft</h4>
-                            <span class="compact-tag">Zweitclub</span>
+                            <h4 data-t="catSecondTitle">Zweitmitgliedschaft</h4>
+                            <span class="compact-tag" data-t="catSecondTag">Zweitwohnsitz</span>
                         </div>
-                        <p class="compact-desc">Ihr zweites Golfzuhause, wenn Sie bereits Mitglied in einem anderen Heimatclub sind.</p>
+                        <p class="compact-desc" data-t="catSecondDesc">Für Golfer mit Erstwohnsitz &gt; 150 km oder Erstmitgliedschaft in einem Partnerclub.</p>
                         <div class="compact-price">
-                            <span class="c-amount">137,50 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(1.650,00 € pro Jahr)</span></span>
+                            <span class="c-amount">95 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
                         </div>
-                        <ul class="compact-features">
-                            <li>✓ Unbegrenztes Spielrecht 365 Tage im Jahr</li>
-                            <li>✓ Voller Zugang zu allen Trainingsbereichen</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="zweit">Auswählen</a>
-                    </div>
-
-                    <!-- Greenfee-Mitgliedschaft (Pay & Play) -->
-                    <div class="pricing-card-compact">
-                        <div class="compact-header">
-                            <h4>Greenfee-Mitgliedschaft</h4>
-                            <span class="compact-tag">Pay &amp; Play</span>
-                        </div>
-                        <p class="compact-desc">Maximale Flexibilität für Gelegenheitsspieler mit DGV-Ausweis und Spielguthaben.</p>
-                        <div class="compact-price">
-                            <span class="c-amount">65,00 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(780,00 € pro Jahr)</span></span>
-                        </div>
-                        <ul class="compact-features">
-                            <li>✓ DGV-Ausweis &amp; Handicapführung</li>
-                            <li>✓ <strong>Inkl. 12x 9-Loch-Runden</strong> p.a. + Sonderkonditionen</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="greenfee">Auswählen</a>
-                    </div>
-
-                    <!-- Studenten & Azubis -->
-                    <div class="pricing-card-compact">
-                        <div class="compact-header">
-                            <h4>Studenten / Azubis</h4>
-                            <span class="compact-tag">Bis 27 Jahre</span>
-                        </div>
-                        <p class="compact-desc">Für die nächste Golfer-Generation während Studium oder Berufsausbildung.</p>
-                        <div class="compact-price">
-                            <span class="c-amount">43,50 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(522,00 € pro Jahr)</span></span>
-                        </div>
-                        <ul class="compact-features">
-                            <li>✓ 365 Tage volles Spielrecht &amp; Trainingsanlagen</li>
-                            <li>✓ DGV-Ausweis (mit Ausbildungsnachweis)</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="student">Auswählen</a>
-                    </div>
-
-                    <!-- Trainingsmitgliedschaft -->
-                    <div class="pricing-card-compact">
-                        <div class="compact-header">
-                            <h4>Trainingsmitgliedschaft</h4>
-                            <span class="compact-tag">Einstieg</span>
-                        </div>
-                        <p class="compact-desc">Ideal zum Lernen und Trainieren vor oder während der Platzreife.</p>
-                        <div class="compact-price">
-                            <span class="c-amount">41,75 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(501,00 € pro Jahr)</span></span>
-                        </div>
-                        <ul class="compact-features">
-                            <li>✓ Unbegrenzt auf dem <strong>9-Loch Canyon Course</strong></li>
-                            <li>✓ Unbegrenzt auf Driving Range &amp; Übungsgrüns</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="training">Auswählen</a>
+                        <span class="c-yearly" data-t="catSecondYearly">(1.140 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="zweit" data-t="btnInquire">Anfragen</a>
                     </div>
 
                     <!-- Fernmitgliedschaft -->
                     <div class="pricing-card-compact">
                         <div class="compact-header">
-                            <h4>Fernmitgliedschaft</h4>
-                            <span class="compact-tag">&gt; 100 km</span>
+                            <h4 data-t="catRemoteTitle">Fernmitgliedschaft</h4>
+                            <span class="compact-tag" data-t="catRemoteTag">&gt; 150 km</span>
                         </div>
-                        <p class="compact-desc">Für Golfer mit Erstwohnsitz über 100 km entfernt (Partner: 29 €/Mo.).</p>
+                        <p class="compact-desc" data-t="catRemoteDesc">Offizielles DGV-Handicap für Vielreisende inklusive 3 Tages-Greenfees pro Jahr.</p>
                         <div class="compact-price">
-                            <span class="c-amount">37,00 €</span>
-                            <span class="c-sub">pro Monat <span class="c-yearly-sub">(444,00 € / Jahr)</span></span>
+                            <span class="c-amount">38 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
                         </div>
-                        <ul class="compact-features">
-                            <li>✓ DGV-Ausweis &amp; Handicapführung</li>
-                            <li>✓ Inkl. 6 kostenlose Runden auf dem Platz p.a.</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-outline-dark btn-sm" data-preselect="fern">Auswählen</a>
+                        <span class="c-yearly" data-t="catRemoteYearly">(456 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="fern" data-t="btnInquire">Anfragen</a>
                     </div>
 
-                    <!-- Firmenmitgliedschaft -->
-                    <div class="pricing-card-compact pricing-card-b2b">
+                    <!-- Ausbildung & Studenten -->
+                    <div class="pricing-card-compact">
                         <div class="compact-header">
-                            <h4>Firmenmitgliedschaft</h4>
-                            <span class="compact-tag">B2B</span>
+                            <h4 data-t="catStudentTitle">Ausbildung / Studenten</h4>
+                            <span class="compact-tag" data-t="catStudentTag">Bis 27 Jahre</span>
                         </div>
-                        <p class="compact-desc">Golf als Visitenkarte: Mitarbeiter-Benefit, Kundenevents &amp; exklusives Netzwerk.</p>
+                        <p class="compact-desc" data-t="catStudentDesc">Volles 18-Loch Spielrecht zu extrem fairen Konditionen während des Studiums.</p>
                         <div class="compact-price">
-                            <span class="c-amount">Auf Anfrage</span>
-                            <span class="c-sub">Maßgeschneidert kalkuliert</span>
+                            <span class="c-amount">60 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
                         </div>
-                        <ul class="compact-features">
-                            <li>✓ Übertragbare Spielrechte &amp; VIP-Services</li>
-                            <li>✓ Repräsentativer Rahmen für Geschäftstermine</li>
-                        </ul>
-                        <a href="#kontakt" class="btn btn-gold btn-sm" data-preselect="firma">Angebot anfordern</a>
+                        <span class="c-yearly" data-t="catStudentYearly">(720 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="student" data-t="btnInquire">Anfragen</a>
+                    </div>
+
+                    <!-- Jugend & Kinder -->
+                    <div class="pricing-card-compact">
+                        <div class="compact-header">
+                            <h4 data-t="catYouthTitle">Kinder &amp; Jugendliche</h4>
+                            <span class="compact-tag" data-t="catYouthTag">Bis 18 Jahre</span>
+                        </div>
+                        <p class="compact-desc" data-t="catYouthDesc">Nachwuchsförderung pur: Golfen, Jugendtraining, Turniere und Clubgemeinschaft.</p>
+                        <div class="compact-price">
+                            <span class="c-amount">20 €</span>
+                            <span class="c-period" data-t="periodMonth">/ Monat</span>
+                        </div>
+                        <span class="c-yearly" data-t="catYouthYearly">(240 € pro Jahr)</span>
+                        <a href="#kontakt" class="btn btn-outline-dark btn-sm btn-block" data-preselect="jugend" data-t="btnInquire">Anfragen</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="price-legal-notice">
-                <p>
-                    * Alle angegebenen Preise verstehen sich als Endpreise inklusive der gesetzlichen Mehrwertsteuer. 
-                    Keine Aufnahmegebühr, keine Umlagen, keine versteckten Nebenkosten.
-                </p>
             </div>
         </div>
     </section>
 
     <!-- ==========================================================================
-         Der Schnupperweg: Erst schnuppern, dann entscheiden
+         Der Schnupperweg: Schritt für Schritt zum Golf
          ========================================================================== -->
-    <section class="section section-dark" id="schnuppern">
+    <section class="section section-cream" id="schnuppern">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag section-tag-gold">Der entspannte Start</span>
-                <h2 class="section-title text-white">Ihr Start: erst schnuppern, dann entscheiden</h2>
-                <p class="section-subtitle text-gray">
-                    Niemand muss sich am ersten Tag für Jahre binden. Deshalb beginnt die Mitgliedschaft auf Gut Wissmannshof 
-                    mit der Schnuppermitgliedschaft – transparent, partnerschaftlich und ohne Druck.
+                <span class="section-tag" data-t="tagStepByStep">Einfach Ausprobieren</span>
+                <h2 class="section-title" data-t="pathHeading">Der entspannte Weg auf den Platz</h2>
+                <p class="section-subtitle" data-t="pathSub">
+                    Sie möchten Golf ohne Druck und ohne langfristige Bindung kennenlernen? 
+                    Bei uns gibt es keine Hürden – starten Sie einfach in Ihrem eigenen Rhythmus.
                 </p>
             </div>
 
-            <div class="roadmap-grid">
-                <!-- Step 1 -->
-                <div class="roadmap-card">
-                    <div class="roadmap-step-badge">Schritt 1</div>
-                    <h3 class="roadmap-title">Ankommen</h3>
-                    <p class="roadmap-desc">
-                        Sie werden Schnuppermitglied für 12 Monate zum festen Beitrag (85 € mtl.) mit vollem Spielrecht. 
-                        Sie erleben die Anlage, die Menschen und den Betrieb im echten Alltag – nicht nur an einem Probetag.
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-badge">1</div>
+                    <h3 class="step-title" data-t="step1Title">Schnupperkurs oder Driving Range</h3>
+                    <p class="step-desc" data-t="step1Desc">
+                        Erste Bälle schlagen, das Gefühl für den Schwung spüren. Völlig unkompliziert auf unserer modernen Driving Range.
                     </p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="roadmap-card">
-                    <div class="roadmap-step-badge">Schritt 2</div>
-                    <h3 class="roadmap-title">Prüfen</h3>
-                    <p class="roadmap-desc">
-                        Sie spielen auf dem Meisterschaftsplatz, trainieren auf den Grüns, genießen das Restaurant und lernen die Clubgemeinschaft kennen. 
-                        Sie merken ganz in Ruhe, ob es für Sie passt.
+                
+                <div class="step-card">
+                    <div class="step-badge">2</div>
+                    <h3 class="step-title" data-t="step2Title">Platzreife auf Gut Wissmannshof</h3>
+                    <p class="step-desc" data-t="step2Desc">
+                        Lernen Sie die Grundlagen in lockerer Atmosphäre bei unseren Golf-Professionals. Praxisnah, verständlich und mit Spaß.
                     </p>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="roadmap-card">
-                    <div class="roadmap-step-badge">Schritt 3</div>
-                    <h3 class="roadmap-title">Bleiben</h3>
-                    <p class="roadmap-desc">
-                        Am Ende der Schnupperzeit entscheiden Sie ganz entspannt, ob Sie regulär Vollmitglied werden. 
-                        Wer nicht bleiben möchte, geht ohne Diskussion. Wer bleibt, bleibt, weil er will.
+                
+                <div class="step-card">
+                    <div class="step-badge">3</div>
+                    <h3 class="step-title" data-t="step3Title">1 Jahr Schnuppermitgliedschaft</h3>
+                    <p class="step-desc" data-t="step3Desc">
+                        Für nur 85 € monatlich volle 365 Tage unbegrenzt spielen, Trainieren, Turniere spielen und Clubfreunde finden.
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-badge">4</div>
+                    <h3 class="step-title" data-t="step4Title">Frei entscheiden</h3>
+                    <p class="step-desc" data-t="step4Desc">
+                        Nach dem Schnupperjahr entscheiden Sie ganz in Ruhe, wie es weitergeht. Keine automatische Verlängerung in starre Altverträge.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="roadmap-info-box">
-                <p>
-                    <strong>Noch keine Platzreife?</strong> Die Schnuppermitgliedschaft richtet sich an Golfer mit Platzreife. 
-                    Wer noch am Anfang steht, findet in unserer <a href="https://www.wissmannshof.de/golf-akademie/" target="_blank" rel="noopener">Golf-Akademie</a> den perfekten, schnellen Einstieg mit DGV-Prüfung!
-                </p>
+    <!-- ==========================================================================
+         Transparenz & Vertragsunterlagen
+         ========================================================================== -->
+    <section class="section section-white" id="vertraege">
+        <div class="container">
+            <div class="contract-card">
+                <div class="contract-text">
+                    <span class="section-tag" data-t="tagContracts">Vertragsklarheit</span>
+                    <h2 class="section-title" data-t="contractsHeading">Alles schwarz auf weiß.<br>Schon vor Ihrer Entscheidung.</h2>
+                    <p data-t="contractsLead">
+                        Versteckte Klauseln, Kleingedrucktes mit bösen Überraschungen oder intransparente Vereinsstatuten? 
+                        Nicht bei uns. Wir stellen alle Vertragsgrundlagen offen zur Verfügung.
+                    </p>
+                    
+                    <ul class="contract-list">
+                        <li><span class="check">✓</span> <span data-t="cL1">Spielrechtsvertrag in einfacher, juristisch klarer Sprache</span></li>
+                        <li><span class="check">✓</span> <span data-t="cL2">Klar geregelte Laufzeiten und transparente Kündigungsfristen</span></li>
+                        <li><span class="check">✓</span> <span data-t="cL3">Platz- und Spielordnung im Sinne eines respektvollen Miteinanders</span></li>
+                        <li><span class="check">✓</span> <span data-t="cL4">Datenschutz nach strengen europäischen Richtlinien</span></li>
+                    </ul>
+                    
+                    <div class="contract-btn-group">
+                        <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/MGL-ANTRAG-ausfuellbar-1-1-05-26.html" target="_blank" rel="noopener" class="btn btn-outline-dark" data-t="btnDownloadContract">Vertragsunterlagen zum Download ↗</a>
+                        <a href="#kontakt" class="btn btn-gold" data-t="btnRequestCall">Beratungsgespräch anfragen</a>
+                    </div>
+                </div>
+                
+                <div class="contract-visual">
+                    <div class="contract-badge-box">
+                        <span class="big-icon">⚖️</span>
+                        <h4 data-t="certTitle">Gut Wissmannshof Transparenz-Garantie</h4>
+                        <p data-t="certDesc">„Was nicht im Spielrechtsvertrag steht, kann und wird Ihnen niemals nachträglich berechnet werden.“</p>
+                        <div class="signature-line" data-t="certSig">Team Wissmannshof</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ==========================================================================
-         Faire Verträge. Kurze Wege. (Vertragstransparenz)
+         Mehr als 18 Löcher: Das Resort
          ========================================================================== -->
-    <section class="section section-cream" id="vertraege">
+    <section class="section section-cream" id="resort">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">Verlässlichkeit</span>
-                <h2 class="section-title">Faire Verträge. Kurze Wege.</h2>
-                <p class="section-subtitle">
-                    Ein Vertrag ist bei uns keine Falle, sondern eine Verabredung. Ihre Mitgliedschaft besteht aus dem Mitgliedsantrag, 
-                    dem Spielrechtsvertrag und den Allgemeinen Geschäftsbedingungen. Diese Unterlagen bekommen Sie vollständig vorab zum Lesen.
+                <span class="section-tag" data-t="tagResort">Ihr neues Golf-Zuhause</span>
+                <h2 class="section-title" data-t="resortHeading">Mehr als 18 Löcher. Ein echtes Resort.</h2>
+                <p class="section-subtitle" data-t="resortSub">
+                    Gut Wissmannshof ist kein anonymer Platz, sondern ein Ort zum Wohlfühlen, Verweilen und Genießen.
                 </p>
             </div>
 
-            <div class="contract-rules-grid">
-                <div class="rule-box">
-                    <div class="rule-icon">📅</div>
-                    <h4>Laufzeit</h4>
-                    <p>Die reguläre Mitgliedschaft läuft übersichtlich für zwölf Monate ab Beitritt bzw. jeweils für ein Kalenderjahr.</p>
+            <div class="resort-grid">
+                <div class="resort-card">
+                    <div class="resort-img-wrapper">
+                        <img src="assets/resort_course.jpg" alt="18-Loch Meisterschaftsplatz Wissmannshof">
+                    </div>
+                    <div class="resort-card-content">
+                        <h3 data-t="resort1Title">18-Loch Meisterschaftsplatz</h3>
+                        <p data-t="resort1Desc">Herausforderndes Design, sanfte Hügel, reizvolle Wasserhindernisse und 365 Tage im Jahr auf Sommergrüns bespielbar.</p>
+                    </div>
                 </div>
-                
-                <div class="rule-box">
-                    <div class="rule-icon">✉️</div>
-                    <h4>Kündigung</h4>
-                    <p>Fristgerecht kündigen mit 3 Monaten Frist zum Laufzeitende – ganz unkompliziert in Textform per E-Mail.</p>
-                </div>
-                
-                <div class="rule-box">
-                    <div class="rule-icon">🔄</div>
-                    <h4>Verlängerung</h4>
-                    <p>Kündigen Sie nicht, läuft die Mitgliedschaft um ein weiteres Jahr weiter. Etwaige Beitragsanpassungen erfahren Sie immer rechtzeitig vorher.</p>
-                </div>
-                
-                <div class="rule-box">
-                    <div class="rule-icon">🤝</div>
-                    <h4>Sonderfälle</h4>
-                    <p>Umzug, Krankheit oder veränderte Lebensumstände: Sprechen Sie mit uns. Wir finden faire, menschliche Lösungen (z. B. Ruhestellung).</p>
-                </div>
-            </div>
 
-            <!-- Download Links Box -->
-            <div class="downloads-panel">
-                <div class="downloads-header">
-                    <h3>Vertragsunterlagen zum Download</h3>
-                    <p>Offen, transparent und jederzeit vorab für Sie zum Nachlesen bereitgestellt:</p>
+                <div class="resort-card">
+                    <div class="resort-img-wrapper">
+                        <img src="assets/resort_hotel.jpg" alt="Hotel und Gastronomie Wissmannshof">
+                    </div>
+                    <div class="resort-card-content">
+                        <h3 data-t="resort2Title">Hotel &amp; Sonnenterrasse</h3>
+                        <p data-t="resort2Desc">Wohnen in Rundhäusern direkt am Platz und nach der Runde auf der Seeterrasse regionale und mediterrane Köstlichkeiten genießen.</p>
+                    </div>
                 </div>
-                <div class="downloads-btn-row">
-                    <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/MGL-ANTRAG-ausfuellbar-1-1-05-26.html" target="_blank" rel="noopener" class="btn btn-outline-dark">
-                        <span class="btn-icon">📥</span> Aufnahmeantrag &amp; Vertragsunterlagen (Online / PDF)
-                    </a>
+
+                <div class="resort-card">
+                    <div class="resort-img-wrapper">
+                        <img src="assets/resort_academy.jpg" alt="Golfakademie und Driving Range">
+                    </div>
+                    <div class="resort-card-content">
+                        <h3 data-t="resort3Title">Golfakademie &amp; Übungsareal</h3>
+                        <p data-t="resort3Desc">25 überdachte Abschlagplätze, Chipping Green, Putting Green und moderne Fitting- und Trainingsmethoden.</p>
+                    </div>
+                </div>
+
+                <div class="resort-card">
+                    <div class="resort-img-wrapper">
+                        <img src="assets/resort_community.jpg" alt="Gemeinschaft & Clubleben">
+                    </div>
+                    <div class="resort-card-content">
+                        <h3 data-t="resort4Title">Gemeinschaft &amp; Clubleben</h3>
+                        <p data-t="resort4Desc">Herzliche Willkommenskultur, Turniere für jede Spielstärke und regelmäßige Club-Events unter Freunden.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==========================================================================
-         Mehr als 18 Löcher (Resort-Mehrwerte)
+         FAQ Accordion
          ========================================================================== -->
-    <section class="section section-white" id="resort">
+    <section class="section section-white" id="faq">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">Das Gut-Wissmannshof-Erlebnis</span>
-                <h2 class="section-title">Mehr als 18 Löcher</h2>
-                <p class="section-subtitle">
-                    Die Mitgliedschaft öffnet Ihnen das gesamte Resort – nicht nur den ersten Abschlag. 
-                    Genießen Sie eine der landschaftlich reizvollsten Golfanlagen Deutschlands.
-                </p>
+                <span class="section-tag" data-t="tagFaq">Häufige Fragen</span>
+                <h2 class="section-title" data-t="faqHeading">Fragen zur Mitgliedschaft? Hier sind die Antworten.</h2>
             </div>
 
-            <div class="resort-features-grid">
-                <div class="resort-card">
-                    <div class="resort-img-wrapper">
-                        <img src="assets/resort_course.jpg" alt="18-Loch Meisterschaftsplatz Gut Wissmannshof" class="resort-img">
-                    </div>
-                    <div class="resort-body">
-                        <h3>18-Loch Meisterschaftsplatz &amp; Canyon Course</h3>
-                        <p>Herausfordernde Architektur, Panoramablicke über das Kasseler Land, exzellente Fairways und moderne Ganzjahres-Bespielbarkeit.</p>
-                    </div>
-                </div>
-
-                <div class="resort-card">
-                    <div class="resort-img-wrapper">
-                        <img src="assets/resort_hotel.jpg" alt="Hotel &amp; Restaurant Gut Wissmannshof" class="resort-img">
-                    </div>
-                    <div class="resort-body">
-                        <h3>Hotel &amp; Golf-Restaurant Wissmannshof</h3>
-                        <p>53 stilvolle Zimmer in einzigartigen Rundhäusern, mediterrane &amp; regionale Küche, Sonnenterrasse und exklusive Mitgliederkonditionen.</p>
-                    </div>
-                </div>
-
-                <div class="resort-card">
-                    <div class="resort-img-wrapper">
-                        <img src="assets/resort_academy.jpg" alt="Golf-Akademie &amp; Übungsbereich" class="resort-img">
-                    </div>
-                    <div class="resort-body">
-                        <h3>Golf-Akademie &amp; Übungsbereich</h3>
-                        <p>Unsere Golf-Professionals begleiten Sie vom ersten Schwung bis zur einstelligen Vorgabe mit moderner Analyse und individuellem Coaching.</p>
-                    </div>
-                </div>
-
-                <div class="resort-card">
-                    <div class="resort-img-wrapper">
-                        <img src="assets/resort_community.jpg" alt="Clubgemeinschaft, Turniere &amp; Clubleben" class="resort-img">
-                    </div>
-                    <div class="resort-body">
-                        <h3>Gemeinschaft, Turniere &amp; Clubleben</h3>
-                        <p>Vom geselligen After-Work-Turnier bis zu sportlichen Clubmeisterschaften. Wer Anschluss sucht, ist herzlich willkommen – wer in Ruhe spielen möchte, ebenso.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-         Häufige Fragen (FAQ Accordion)
-         ========================================================================== -->
-    <section class="section section-cream" id="faq">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag">Antworten auf Ihre Fragen</span>
-                <h2 class="section-title">Häufig gestellte Fragen</h2>
-                <p class="section-subtitle">
-                    Wir antworten direkt und ohne Umschweife. Hier sind die wichtigsten Details im Überblick.
-                </p>
-            </div>
-
-            <div class="faq-accordion-container">
-                
-                <!-- FAQ 1 -->
+            <div class="faq-container">
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Gibt es wirklich keine Aufnahmegebühr oder Einstandszahlung?</span>
+                        <span data-t="faq1Q">Gibt es wirklich keine Aufnahmegebühr oder versteckten Kosten?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Nein. Weder offen noch versteckt. Ihr Mitgliedsbeitrag ist der einzige Betrag, den Sie für die Mitgliedschaft zahlen. Es fallen keine Aufnahmegebühren, keine Pflichtanteile und keine Einstandszahlungen an.</p>
+                        <p data-t="faq1A">Ja, absolut. Bei uns zahlen Sie ausschließlich den im Vertrag vereinbarten Jahres- bzw. Monatsbeitrag. Es gibt weder Aufnahmegebühren, noch Bausteine, Investitionsumlagen oder sonstige Nachforderungen.</p>
                     </div>
                 </div>
 
-                <!-- FAQ 2 -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Was ist mit Umlagen, wenn auf dem Platz investiert wird?</span>
+                        <span data-t="faq2Q">Kostet die monatliche Zahlweise einen Aufpreis?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Investitionen in den Fuhrpark, die Beregnungsanlage, das Clubhaus oder die Bahnen sind reine Sache des Betreibers. Unsere Mitglieder finanzieren keine Bauvorhaben nach – weder in guten noch in schlechten Jahren.</p>
+                        <p data-t="faq2A">Nein. Sie können Ihren Jahresbeitrag bequem in 12 gleichen Monatsraten per SEPA-Lastschrift zahlen – ohne jeden Ratenzuschlag.</p>
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Kann sich mein Beitrag unterjährig ändern?</span>
+                        <span data-t="faq3Q">Was passiert nach dem Schnupperjahr?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Nein. Der Beitrag gilt fest für die vereinbarte Laufzeit. Eine Beitragsanpassung ist ausschließlich zum Beginn einer neuen Laufzeit möglich und wird Ihnen immer so rechtzeitig mitgeteilt, dass Sie in aller Ruhe reagieren oder kündigen können.</p>
+                        <p data-t="faq3A">Die Schnuppermitgliedschaft dient dem risikolosen Kennenlernen. Nach Ablauf der 12 Monate können Sie frei wählen, in welches reguläre Mitgliedschaftsmodell (z. B. Vollmitgliedschaft oder 9-Loch) Sie wechseln möchten.</p>
                     </div>
                 </div>
 
-                <!-- FAQ 4 -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Muss ich zwingend erst Schnuppermitglied werden?</span>
+                        <span data-t="faq4Q">Ist der Platz wirklich das ganze Jahr über bespielbar?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Nein. Wer Gut Wissmannshof bereits kennt oder sofort alle Vorteile der Vollmitgliedschaft (inklusive der 5 kostenlosen Runden auf Gut Hardenberg) nutzen möchte, kann direkt reguläres Vollmitglied werden. Die Schnuppermitgliedschaft ist ein unverbindliches Angebot, keine Pflicht.</p>
+                        <p data-t="faq4A">Ja! Durch unsere hervorragende Platzpflege und erstklassige Drainage spielen Sie bei uns an 365 Tagen auf regulären Sommergrüns – ohne Wintergrüns oder monatelange Platzsperren.</p>
                     </div>
                 </div>
 
-                <!-- FAQ 5 -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Wie schnell kann ich nach Antragstellung auf dem Platz spielen?</span>
+                        <span data-t="faq5Q">Welche Vorteile bietet die Partnerschaft mit dem Golfresort Hardenberg?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Sehr schnell! Nach dem Ausfüllen des Mitgliedsantrags und kurzer Rücksprache mit unserem Büro spielen Sie in der Regel innerhalb weniger Tage als vollwertiges Mitglied auf unserer Anlage.</p>
+                        <p data-t="faq5A">Als Vollmitglied auf Gut Wissmannshof erhalten Sie jedes Jahr 5 Greenfeegutscheine für das renommierte Golfresort Hardenberg kostenfrei dazu. Das bedeutet maximalen Spielgenuss auf mehreren Spitzenplätzen!</p>
                     </div>
                 </div>
-
-                <!-- FAQ 6 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Was passiert, wenn ich umziehe oder länger erkranke?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Sprechen Sie uns einfach direkt an. Bei berufsbedingtem Umzug (über 100 km) können Sie flexibel in unsere Fernmitgliedschaft wechseln. Bei längerer Krankheit oder Verletzung bieten wir unbürokratische Lösungen wie die Ruhestellung oder die passive Mitgliedschaft an.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 7 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Gibt es ein Kleingedrucktes oder Allgemeine Geschäftsbedingungen (AGB)?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Ja. Zu jeder Mitgliedschaft gehören ein Spielrechtsvertrag und Allgemeine Geschäftsbedingungen, damit das gegenseitige Verhältnis sauber geregelt ist. Was sie jedoch <em>nicht</em> enthalten, sind versteckte Kosten oder überraschende Klauseln. Sie können alle Dokumente vorab transparent auf dieser Seite herunterladen und lesen.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- ==========================================================================
-         Lernen Sie uns kennen & Kontakt / Lead-Formular
+         Kontakt & Persönliches Kennenlernen
          ========================================================================== -->
     <section class="section section-dark" id="kontakt">
         <div class="container">
             <div class="contact-grid">
-                
-                <!-- Left: Info & Personal Contact -->
-                <div class="contact-info-panel">
-                    <span class="section-tag section-tag-gold">Persönlich & Unverbindlich</span>
-                    <h2 class="contact-title">Lernen Sie uns kennen</h2>
-                    <p class="contact-lead">
-                        Der beste Weg, Gut Wissmannshof zu verstehen, ist eine Runde auf dem Platz und ein Gespräch im Clubhaus. 
-                        Wir nehmen uns Zeit für Sie, beantworten alle Fragen und rechnen Ihnen die Mitgliedschaft transparent vor. Ohne Verkaufsdruck, ohne Überraschungen.
+                <div class="contact-info">
+                    <span class="section-tag section-tag-gold" data-t="tagContact">Persönlicher Draht</span>
+                    <h2 class="section-title" data-t="contactHeading">Lernen wir uns kennen.</h2>
+                    <p class="contact-lead" data-t="contactLead">
+                        Golfen beginnt mit dem ersten Gespräch. Kommen Sie auf einen Kaffee vorbei, spielen Sie eine Runde zur Probe oder lassen Sie sich unverbindlich beraten.
                     </p>
                     
-                    <div class="contact-person-card">
+                    <div class="contact-person">
                         <div class="person-avatar">⛳</div>
-                        <div class="person-details">
-                            <strong>Team Wissmannshof</strong>
-                            <span>Golf &amp; Mitgliedschaft</span>
-                            <p class="person-quote">„Wir freuen uns darauf, Sie persönlich bei uns auf Gut Wissmannshof zu begrüßen.“</p>
+                        <div class="person-info">
+                            <strong data-t="contactName">Team Wissmannshof</strong>
+                            <span data-t="contactRole">Mitgliederbetreuung &amp; Clubmanagement</span>
+                            <p class="person-quote" data-t="contactQuote">„Wir nehmen uns Zeit für Sie. Transparent, ehrlich und auf Augenhöhe.“</p>
                         </div>
                     </div>
 
-                    <div class="contact-meta-list">
-                        <div class="meta-item">
-                            <span class="meta-icon">📞</span>
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📍</span>
                             <div>
-                                <span class="meta-label">Telefon</span>
+                                <strong data-t="labelAddress">Adresse</strong>
+                                <span>Wissmannshof 1, 34355 Staufenberg</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📞</span>
+                            <div>
+                                <strong data-t="labelPhone">Telefon</strong>
                                 <a href="tel:+495543999335" class="meta-val">+49 (0) 55 43 / 999 335</a>
                             </div>
                         </div>
-                        <div class="meta-item">
-                            <span class="meta-icon">✉️</span>
+                        <div class="detail-item">
+                            <span class="detail-icon">✉️</span>
                             <div>
-                                <span class="meta-label">E-Mail</span>
+                                <strong data-t="labelEmail">E-Mail</strong>
                                 <a href="mailto:info@wissmannshof.de" class="meta-val">info@wissmannshof.de</a>
                             </div>
                         </div>
-                        <div class="meta-item">
-                            <span class="meta-icon">📍</span>
-                            <div>
-                                <span class="meta-label">Adresse</span>
-                                <span class="meta-val">Wissmannshof 1, 34355 Staufenberg</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Right: Interactive Contact & Inquiry Form -->
-                <div class="contact-form-panel">
+                <div class="contact-form-wrapper">
                     <div class="form-header">
-                        <h3>Mitgliedschaft anfragen / Kennenlernen vereinbaren</h3>
-                        <p>Füllen Sie einfach kurz dieses Formular aus. Wir melden uns umgehend bei Ihnen!</p>
+                        <h3 data-t="formTitle">Unverbindliche Anfrage senden</h3>
+                        <p data-t="formSub">Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen zurück.</p>
                     </div>
-
-                    <form id="membership-inquiry-form">
+                    
+                    <form id="membership-form">
                         <div class="form-group">
-                            <label for="mgl-type">Interesse an Mitgliedschaftsform *</label>
+                            <label for="mgl-type" data-t="lblInterest">Interesse an Mitgliedschaft</label>
                             <select id="mgl-type" class="form-control" required>
-                                <option value="schnupper" selected>Schnuppermitgliedschaft (85 €/Monat)</option>
-                                <option value="voll">Vollmitgliedschaft (153 €/Monat)</option>
-                                <option value="woche">Wochenmitgliedschaft (Mo.–Fr.)</option>
-                                <option value="zweit">Zweitmitgliedschaft</option>
-                                <option value="greenfee">Greenfee-Mitgliedschaft (Pay & Play)</option>
-                                <option value="student">Studenten / Azubis (bis 27 J.)</option>
-                                <option value="training">Trainingsmitgliedschaft</option>
-                                <option value="fern">Fernmitgliedschaft (> 100 km)</option>
-                                <option value="firma">Firmenmitgliedschaft (B2B)</option>
-                                <option value="beratung">Noch unentschlossen / Beratungsgespräch</option>
+                                <option value="schnupper" data-t="optTrial">Schnuppermitgliedschaft (85 € / Monat)</option>
+                                <option value="voll" data-t="optFull">Vollmitgliedschaft (153 € / Monat)</option>
+                                <option value="woche" data-t="optWeek">Wochenmitgliedschaft Mo.–Fr. (128 € / Monat)</option>
+                                <option value="9loch" data-t="opt9">9-Loch Mitgliedschaft (102 € / Monat)</option>
+                                <option value="zweit" data-t="optSecond">Zweitmitgliedschaft (95 € / Monat)</option>
+                                <option value="fern" data-t="optRemote">Fernmitgliedschaft (38 € / Monat)</option>
+                                <option value="student" data-t="optStudent">Ausbildung / Studenten (60 € / Monat)</option>
+                                <option value="jugend" data-t="optYouth">Kinder / Jugendliche (20 € / Monat)</option>
+                                <option value="beratung" data-t="optGeneral">Allgemeine Beratung &amp; Probespielen</option>
                             </select>
                         </div>
-
+                        
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="mgl-name">Ihr Name *</label>
-                                <input type="text" id="mgl-name" class="form-control" placeholder="z. B. Dr. Michael Schmidt" required>
+                                <label for="mgl-name" data-t="lblName">Ihr vollständiger Name *</label>
+                                <input type="text" id="mgl-name" class="form-control" placeholder="Vor- und Nachname" data-t-placeholder="phName" required>
                             </div>
                             <div class="form-group">
-                                <label for="mgl-phone">Telefonnummer</label>
-                                <input type="tel" id="mgl-phone" class="form-control" placeholder="Für eventuelle Rückfragen">
+                                <label for="mgl-phone" data-t="lblPhone">Telefonnummer *</label>
+                                <input type="tel" id="mgl-phone" class="form-control" placeholder="Für Rückfragen" data-t-placeholder="phPhone" required>
                             </div>
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="mgl-email">Ihre E-Mail-Adresse *</label>
-                            <input type="email" id="mgl-email" class="form-control" placeholder="name@beispiel.de" required>
+                            <label for="mgl-email" data-t="lblEmail">Ihre E-Mail-Adresse *</label>
+                            <input type="email" id="mgl-email" class="form-control" placeholder="name@beispiel.de" data-t-placeholder="phEmail" required>
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="mgl-experience">Aktueller Golf-Status</label>
-                            <select id="mgl-experience" class="form-control">
-                                <option value="handicap">Bereits Golfer mit Handicap</option>
-                                <option value="platzreife">Platzreife vorhanden (noch kein Club)</option>
-                                <option value="einsteiger">Kompletter Einsteiger / Platzreifekurs gesucht</option>
-                                <option value="wechsler">Aktuell Mitglied in anderem Club (Wechselinteresse)</option>
+                            <label for="mgl-hcp" data-t="lblHcp">Aktueller Golf-Status / Handicap</label>
+                            <select id="mgl-hcp" class="form-control">
+                                <option value="einsteiger" data-t="optBeginner">Golf-Einsteiger (noch keine Platzreife)</option>
+                                <option value="platzreife" data-t="optPR">Platzreife vorhanden</option>
+                                <option value="hcp" data-t="optHcp">Aktives Handicap (Mitglied in anderem Club)</option>
+                                <option value="wiedereinsteiger" data-t="optReturner">Wiedereinsteiger</option>
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="mgl-msg">Ihre Nachricht oder Terminwunsch</label>
-                            <textarea id="mgl-msg" class="form-control" rows="3" placeholder="Haben Sie spezielle Fragen oder einen Wunschtermin für ein Kennenlernen vor Ort?"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-gold btn-block btn-lg">Unverbindlich anfragen & Kennenlernen sichern</button>
                         
-                        <p class="form-disclaimer">
-                            🔒 Ihre Daten werden vertraulich behandelt und ausschließlich zur Beantwortung Ihrer Anfrage genutzt.
+                        <div class="form-group">
+                            <label for="mgl-message" data-t="lblMessage">Ihre Nachricht oder Wunschtermin (optional)</label>
+                            <textarea id="mgl-message" class="form-control" rows="3" placeholder="Wann können wir Sie am besten erreichen? Haben Sie spezielle Fragen?" data-t-placeholder="phMessage"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-gold btn-block btn-lg" data-t="btnSubmitForm">Jetzt unverbindlich anfragen</button>
+                        
+                        <p class="form-privacy-note" data-t="privacyNote">
+                            🔒 Ihre Angaben werden vertraulich behandelt und ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
                         </p>
                     </form>
                 </div>
-
             </div>
         </div>
     </section>
@@ -775,35 +676,35 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h4>Navigation</h4>
+                    <h4 data-t="footerCol1">Resort &amp; Golf</h4>
                     <ul class="footer-links">
-                        <li><a href="https://www.wissmannshof.de/" target="_blank">Hauptwebseite Wissmannshof</a></li>
-                        <li><a href="https://adventure.wissmannshof.golf/" target="_blank">Adventure Golf Parcours</a></li>
-                        <li><a href="https://www.wissmannshof.de/golfcourse/" target="_blank">18-Loch Golfplatz</a></li>
-                        <li><a href="https://www.wissmannshof.de/golf-akademie/" target="_blank">Golf-Akademie & Platzreife</a></li>
+                        <li><a href="https://www.wissmannshof.de/" target="_blank" data-t="fLinkHome">Hauptwebseite Wissmannshof</a></li>
+                        <li><a href="gast-info.html" data-t="fLinkGuest">Gäste &amp; Greenfee</a></li>
+                        <li><a href="https://adventure.wissmannshof.golf/" target="_blank" data-t="fLinkAdv">Adventure Golf</a></li>
+                        <li><a href="https://www.wissmannshof.de/golf-akademie/" target="_blank" data-t="fLinkAcad">Golfakademie &amp; Pros</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Direktkontakt</h4>
-                    <p>Telefon: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
-                    <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
-                    <p>Bürozeiten: Täglich 08:00 – 18:00 Uhr</p>
+                    <h4 data-t="footerCol2">Direktkontakt</h4>
+                    <p data-t="fPhone">Telefon: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
+                    <p data-t="fEmail">E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
+                    <p data-t="fHours">Sekretariat: Mo.–So. 08:00 – 18:00 Uhr</p>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Rechtliches</h4>
+                    <h4 data-t="footerCol3">Rechtliches</h4>
                     <ul class="footer-links">
-                        <li><a href="https://www.wissmannshof.de/impressum/" target="_blank">Impressum</a></li>
-                        <li><a href="https://www.wissmannshof.de/datenschutz/" target="_blank">Datenschutz</a></li>
-                        <li><a href="https://www.wissmannshof.de/informationen/" target="_blank">AGB & Platzordnung</a></li>
+                        <li><a href="https://www.wissmannshof.de/impressum/" target="_blank" data-t="fImprint">Impressum</a></li>
+                        <li><a href="https://www.wissmannshof.de/datenschutz/" target="_blank" data-t="fPrivacy">Datenschutz</a></li>
+                        <li><a href="https://www.wissmannshof.de/informationen/" target="_blank" data-t="fTerms">AGB &amp; Platzordnung</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
-                <p class="footer-tagline">Ein Preis. Ein Versprechen.</p>
+                <p data-t="fCopyright">&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                <p class="footer-tagline" data-t="fTagline">Ein Preis. Ein Versprechen. Golfen auf Gut Wissmannshof.</p>
             </div>
         </div>
     </footer>
