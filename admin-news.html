@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Redaktion & Backend | Gut Wissmannshof</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Admin Specific Stylesheet -->
+    <style>
+        :root {
+            --color-primary: #0D2218;
+            --color-primary-light: #163828;
+            --color-gold: #B8963E;
+            --color-gold-hover: #9E7F30;
+            --color-gold-light: #F4EDE0;
+            --color-cream: #F8F5EE;
+            --color-cream-dark: #EDE7DA;
+            --color-charcoal: #2A2E2B;
+            --color-text-muted: #5E6660;
+            --color-white: #FFFFFF;
+            --color-card-border: #E2DBD0;
+            --color-danger: #C82333;
+            --color-success: #28A745;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-pill: 9999px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        /* Top Admin Bar */
+        .admin-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .admin-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-badge {
+            background: var(--color-gold);
+            color: var(--color-primary);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .admin-header-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+        .admin-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-view-live {
+            background: rgba(255,255,255,0.12);
+            color: var(--color-white);
+            padding: 7px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        .btn-view-live:hover {
+            background: var(--color-gold);
+            color: var(--color-primary);
+            border-color: var(--color-gold);
+        }
+
+        /* Main Container */
+        .admin-container {
+            max-width: 1400px;
+            margin: 24px auto 0;
+            padding: 0 24px;
+        }
+
+        /* Studio Grid (Editor + Live Preview) */
+        .admin-studio {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .admin-studio {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .admin-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-cream-dark);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+        .form-label span.req {
+            color: var(--color-danger);
+        }
+        .form-hint {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid #D5CEBD;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #FAFAF7;
+            transition: all 0.2s;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.15);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* Character Counter Badge */
+        .teaser-counter-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .char-counter {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            background: #EAE6DB;
+            color: var(--color-text-muted);
+        }
+        .char-counter.optimal {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        .char-counter.warning {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        .char-counter.too-long {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        /* Preset Photo Selector Grid */
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+            max-height: 230px;
+            overflow-y: auto;
+            padding: 4px;
+            border: 1.5px solid #EAE6DB;
+            border-radius: var(--radius-md);
+            background: #FAF8F5;
+        }
+        .preset-thumb {
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 2px solid transparent;
+            position: relative;
+            aspect-ratio: 16/10;
+            transition: all 0.2s;
+        }
+        .preset-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preset-thumb:hover {
+            transform: scale(1.03);
+            border-color: var(--color-gold);
+        }
+        .preset-thumb.active {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-gold);
+        }
+        .preset-thumb.active::after {
+            content: '✓';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+
+        /* Rich Editor Toolbar */
+        .editor-toolbar {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+            background: #EAE6DB;
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
+        }
+        .toolbar-btn {
+            background: var(--color-white);
+            border: 1px solid #D5CEBD;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .toolbar-btn:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .btn-save {
+            background: var(--color-gold-gradient, linear-gradient(135deg, #D4AF37 0%, #AA771C 100%));
+            color: var(--color-white);
+            border: none;
+            padding: 12px 28px;
+            border-radius: var(--radius-pill);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(184, 150, 62, 0.35);
+            transition: all 0.2s;
+        }
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 150, 62, 0.45);
+        }
+        .btn-secondary {
+            background: #EAE6DB;
+            border: 1px solid #D5CEBD;
+            color: var(--color-primary);
+            padding: 12px 20px;
+            border-radius: var(--radius-pill);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: #DCD6C7;
+        }
+
+        /* Right Column: Sticky Live Preview */
+        .preview-sticky {
+            position: sticky;
+            top: 80px;
+        }
+        .preview-card-wrap {
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--color-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+        .preview-img-container {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            background: #EAE6DB;
+        }
+        .preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--color-primary);
+            color: var(--color-gold-light);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+        }
+        .preview-content {
+            padding: 18px;
+        }
+        .preview-meta {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+        }
+        .preview-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+        .preview-teaser {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .preview-btn {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Existing Articles Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .articles-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .articles-table th {
+            text-align: left;
+            padding: 10px 12px;
+            background: var(--color-cream-dark);
+            color: var(--color-primary);
+            font-weight: 700;
+            border-bottom: 2px solid #D5CEBD;
+        }
+        .articles-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--color-card-border);
+            vertical-align: middle;
+        }
+        .articles-table tr:hover {
+            background: #FAF8F3;
+        }
+        .table-thumb {
+            width: 50px;
+            height: 34px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .action-icon-btn {
+            background: transparent;
+            border: 1px solid #D5CEBD;
+            padding: 5px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 4px;
+            transition: all 0.15s;
+        }
+        .action-icon-btn.edit:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .action-icon-btn.delete {
+            color: var(--color-danger);
+            border-color: #F5C6CB;
+        }
+        .action-icon-btn.delete:hover {
+            background: var(--color-danger);
+            color: var(--color-white);
+        }
+
+        /* Success / Alert Toast */
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 24px;
+            border-radius: var(--radius-pill);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: none;
+            z-index: 9999;
+            border: 1px solid var(--color-gold);
+        }
+        .toast-msg.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Top Bar -->
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <div class="admin-brand">
+                <span class="admin-badge">Admin Studio</span>
+                <span class="admin-header-title">Gut Wissmannshof &mdash; News Redaktion</span>
+            </div>
+            <div class="admin-header-actions">
+                <a href="news.html" target="_blank" class="btn-view-live">
+                    Öffentliche News-Seite öffnen ↗
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- Toast Notification -->
+        <div id="toast" class="toast-msg">Beitrag erfolgreich gespeichert! ✓</div>
+
+        <div class="admin-studio">
+            <!-- Left: Editor Form -->
+            <div class="admin-editor-column">
+                <div class="admin-card">
+                    <div class="card-header-bar">
+                        <h2 class="card-title" id="form-title-heading">
+                            <span>✍</span> Neuen News-Beitrag erstellen
+                        </h2>
+                        <button type="button" class="btn-secondary" style="padding: 5px 12px; font-size: 0.8rem;" onclick="resetForm()">
+                            Formular leeren
+                        </button>
+                    </div>
+
+                    <form id="news-form">
+                        <input type="hidden" id="edit-article-id" value="">
+
+                        <!-- Titel -->
+                        <div class="form-group">
+                            <label class="form-label" for="article-title">
+                                Überschrift / Titel <span class="req">*</span>
+                            </label>
+                            <input type="text" id="article-title" class="form-input" placeholder="z. B. Großes Herbstturnier & Gala 2026" required>
+                        </div>
+
+                        <!-- Row: Kategorie & Datum -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="article-category">Kategorie <span class="req">*</span></label>
+                                <select id="article-category" class="form-select">
+                                    <option value="turniere">Turniere & Events</option>
+                                    <option value="platz">Golfplatz & Natur</option>
+                                    <option value="resort">Resort & Gastronomie</option>
+                                    <option value="angebote">Angebote & Training</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="article-date">Veröffentlichungsdatum <span class="req">*</span></label>
+                                <input type="date" id="article-date" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Row: Verfasser & Lesezeit -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="article-author">Verfasser / Abteilung</label>
+                                <input type="text" id="article-author" class="form-input" placeholder="z. B. Clubsekretariat, Head-Greenkeeper" value="Clubsekretariat Gut Wissmannshof">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="article-readtime">Lesezeit</label>
+                                <input type="text" id="article-readtime" class="form-input" placeholder="z. B. 3 Min." value="3 Min.">
+                            </div>
+                        </div>
+
+                        <!-- Titelfoto Auswahl -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                Titelfoto auswählen <span class="req">*</span>
+                            </label>
+                            <div class="form-hint">Klicken Sie auf ein Bild aus der Resort-Mediathek oder geben Sie einen Bildpfad ein:</div>
+                            
+                            <!-- Preset Grid -->
+                            <div id="presets-grid" class="preset-grid">
+                                <!-- Populated dynamically -->
+                            </div>
+
+                            <div style="margin-top: 8px;">
+                                <input type="text" id="article-image" class="form-input" placeholder="assets/gallery_golden_hour_tree_lake.jpg" required>
+                            </div>
+                        </div>
+
+                        <!-- Anreißertext (~200 Zeichen) -->
+                        <div class="form-group">
+                            <label class="form-label" for="article-teaser">
+                                Anreißertext (Teaser für Vorschaukarte) <span class="req">*</span>
+                            </label>
+                            <textarea id="article-teaser" class="form-textarea" rows="3" placeholder="Kurze, packende Zusammenfassung für die Übersichtskarte..." required></textarea>
+                            <div class="teaser-counter-wrap">
+                                <span class="form-hint">Empfohlene Länge: ca. 160 – 220 Zeichen</span>
+                                <span id="teaser-counter" class="char-counter">0 Zeichen</span>
+                            </div>
+                        </div>
+
+                        <!-- Ausführlicher Artikeltext -->
+                        <div class="form-group">
+                            <label class="form-label" for="article-content">
+                                Vollständiger Artikeltext (HTML / Absätze) <span class="req">*</span>
+                            </label>
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" onclick="insertTag('p', 'Absatz-Text hier eingeben...')">+ Absatz</button>
+                                <button type="button" class="toolbar-btn" onclick="insertTag('h3', 'Zwischenüberschrift')">+ Zwischenüberschrift</button>
+                                <button type="button" class="toolbar-btn" onclick="insertQuote()">+ Zitat-Box</button>
+                                <button type="button" class="toolbar-btn" onclick="insertList()">+ Aufzählung</button>
+                                <button type="button" class="toolbar-btn" onclick="wrapSelection('strong')"><strong>Fett</strong></button>
+                                <button type="button" class="toolbar-btn" onclick="wrapSelection('em')"><em>Kursiv</em></button>
+                            </div>
+                            <textarea id="article-content" class="form-textarea" rows="8" placeholder="<p>Ausführlicher Bericht...</p>" required></textarea>
+                            <div class="form-hint">HTML-Tags wie &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;, &lt;blockquote&gt; werden unterstützt.</div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="btn-group">
+                            <button type="submit" class="btn-save" id="btn-submit-article">
+                                💾 Artikel jetzt veröffentlichen
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="resetForm()">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right: Live Preview -->
+            <div class="admin-preview-column">
+                <div class="preview-sticky">
+                    <div class="admin-card">
+                        <div class="card-header-bar">
+                            <h2 class="card-title"><span>👁</span> Live-Vorschau (Karte)</h2>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Echtzeit-Ansicht</span>
+                        </div>
+
+                        <!-- Visual Card Preview -->
+                        <div class="preview-card-wrap">
+                            <div class="preview-img-container">
+                                <img id="prev-image" src="assets/gallery_golden_hour_tree_lake.jpg" alt="Vorschau" class="preview-img">
+                                <span id="prev-category" class="preview-badge">Turniere & Events</span>
+                            </div>
+                            <div class="preview-content">
+                                <div class="preview-meta">
+                                    <span id="prev-date">18. Okt 2026</span> &bull; <span id="prev-readtime">3 Min. Lesezeit</span>
+                                </div>
+                                <h3 id="prev-title" class="preview-title">Überschrift des Artikels</h3>
+                                <p id="prev-teaser" class="preview-teaser">Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...</p>
+                                <span class="preview-btn">Weiterlesen →</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backup & Tools Card -->
+                    <div class="admin-card" style="padding: 16px 20px;">
+                        <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 8px;">Daten-Tools & Backup</h3>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button type="button" class="action-icon-btn" onclick="exportNewsJSON()">📥 News als JSON exportieren</button>
+                            <button type="button" class="action-icon-btn delete" onclick="confirmResetDefaults()">↺ Auf Standard-News zurücksetzen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Existing Articles List -->
+        <div class="admin-card" style="margin-top: 10px;">
+            <div class="card-header-bar">
+                <h2 class="card-title">
+                    <span>📰</span> Alle veröffentlichten News-Beiträge (<span id="article-count">0</span>)
+                </h2>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="articles-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Foto</th>
+                            <th>Titel & Anreißer</th>
+                            <th>Kategorie</th>
+                            <th>Datum</th>
+                            <th style="width: 150px; text-align: right;">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articles-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="news-data.js"></script>
+    <script>
+        // Admin Application Controller
+        let currentArticles = [];
+        let selectedPresetUrl = '';
+
+        const categoryLabels = {
+            turniere: 'Turniere & Events',
+            platz: 'Golfplatz & Natur',
+            resort: 'Resort & Gastronomie',
+            angebote: 'Angebote & Training'
+        };
+
+        function initAdmin() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('article-date').value = today;
+
+            // Load articles
+            currentArticles = NewsRepository.getAll();
+
+            renderPresetGrid();
+            renderArticlesTable();
+            setupLiveListeners();
+            updateLivePreview();
+        }
+
+        // Render Preset Photos
+        function renderPresetGrid() {
+            const container = document.getElementById('presets-grid');
+            const presets = NewsRepository.getPresets();
+            let html = '';
+
+            presets.forEach((p, idx) => {
+                html += `
+                    <div class="preset-thumb ${idx === 0 ? 'active' : ''}" data-url="${p.url}" title="${p.title} (${p.category})" onclick="selectPreset('${p.url}', this)">
+                        <img src="${p.url}" alt="${p.title}" loading="lazy">
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            selectedPresetUrl = presets[0] ? presets[0].url : 'assets/gallery_golden_hour_tree_lake.jpg';
+            document.getElementById('article-image').value = selectedPresetUrl;
+        }
+
+        function selectPreset(url, element) {
+            selectedPresetUrl = url;
+            document.getElementById('article-image').value = url;
+            document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+            updateLivePreview();
+        }
+
+        // Live input listeners for preview & character counter
+        function setupLiveListeners() {
+            const titleInput = document.getElementById('article-title');
+            const categorySelect = document.getElementById('article-category');
+            const dateInput = document.getElementById('article-date');
+            const readTimeInput = document.getElementById('article-readtime');
+            const imageInput = document.getElementById('article-image');
+            const teaserInput = document.getElementById('article-teaser');
+
+            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, teaserInput].forEach(el => {
+                el.addEventListener('input', updateLivePreview);
+                el.addEventListener('change', updateLivePreview);
+            });
+
+            // Teaser char counter
+            teaserInput.addEventListener('input', function() {
+                const len = this.value.length;
+                const counter = document.getElementById('teaser-counter');
+                counter.textContent = `${len} Zeichen`;
+
+                counter.className = 'char-counter';
+                if (len >= 140 && len <= 220) {
+                    counter.classList.add('optimal');
+                } else if (len > 220) {
+                    counter.classList.add('too-long');
+                } else if (len > 0) {
+                    counter.classList.add('warning');
+                }
+            });
+
+            // Form Submit
+            document.getElementById('news-form').addEventListener('submit', handleFormSubmit);
+        }
+
+        // Live preview sync
+        function updateLivePreview() {
+            const title = document.getElementById('article-title').value.trim() || 'Überschrift des Artikels';
+            const cat = document.getElementById('article-category').value;
+            const dateVal = document.getElementById('article-date').value;
+            const readTime = document.getElementById('article-readtime').value.trim() || '3 Min.';
+            const img = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
+            const teaser = document.getElementById('article-teaser').value.trim() || 'Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...';
+
+            document.getElementById('prev-title').textContent = title;
+            document.getElementById('prev-category').textContent = categoryLabels[cat] || cat;
+            document.getElementById('prev-readtime').textContent = `${readTime} Lesezeit`;
+            document.getElementById('prev-image').src = img;
+            document.getElementById('prev-teaser').textContent = teaser;
+
+            if (dateVal) {
+                try {
+                    const d = new Date(dateVal);
+                    document.getElementById('prev-date').textContent = d.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
+                } catch(e) {
+                    document.getElementById('prev-date').textContent = dateVal;
+                }
+            }
+        }
+
+        // Form Submit (Create or Update)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const editId = document.getElementById('edit-article-id').value;
+            const title = document.getElementById('article-title').value.trim();
+            const category = document.getElementById('article-category').value;
+            const date = document.getElementById('article-date').value;
+            const author = document.getElementById('article-author').value.trim();
+            const readTime = document.getElementById('article-readtime').value.trim();
+            const image = document.getElementById('article-image').value.trim();
+            const teaser = document.getElementById('article-teaser').value.trim();
+            const content = document.getElementById('article-content').value.trim();
+
+            const articleId = editId || `news-${Date.now()}`;
+
+            const articleObj = {
+                id: articleId,
+                category: category,
+                categoryLabel: {
+                    de: categoryLabels[category] || category,
+                    en: category === 'turniere' ? 'Tournaments & Events' :
+                        category === 'platz' ? 'Course & Nature' :
+                        category === 'resort' ? 'Resort & Dining' : 'Offers & Training'
+                },
+                featured: false,
+                date: date,
+                image: image,
+                title: { de: title, en: title },
+                teaser: { de: teaser, en: teaser },
+                author: author,
+                readTime: readTime,
+                content: { de: content, en: content }
+            };
+
+            NewsRepository.saveItem(articleObj);
+            currentArticles = NewsRepository.getAll();
+            renderArticlesTable();
+            showToast(editId ? 'Beitrag erfolgreich aktualisiert! ✓' : 'Neuer Beitrag erfolgreich veröffentlicht! ✓');
+            resetForm();
+        }
+
+        // Render articles table
+        function renderArticlesTable() {
+            const tbody = document.getElementById('articles-table-body');
+            const countEl = document.getElementById('article-count');
+            countEl.textContent = currentArticles.length;
+
+            if (currentArticles.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #888; padding: 20px;">Keine Beiträge vorhanden.</td></tr>';
+                return;
+            }
+
+            let html = '';
+            currentArticles.forEach(item => {
+                const titleStr = typeof item.title === 'string' ? item.title : (item.title.de || item.title.en);
+                const teaserStr = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
+                const catStr = categoryLabels[item.category] || item.category;
+
+                html += `
+                    <tr>
+                        <td>
+                            <img src="${item.image || 'assets/hero_bg.jpg'}" alt="" class="table-thumb">
+                        </td>
+                        <td>
+                            <strong style="color: var(--color-primary);">${titleStr}</strong>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted); max-width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                ${teaserStr}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="preview-badge" style="position: static; display: inline-block;">${catStr}</span>
+                        </td>
+                        <td>${item.date || ''}</td>
+                        <td style="text-align: right;">
+                            <button type="button" class="action-icon-btn edit" onclick="editArticle('${item.id}')">Bearbeiten</button>
+                            <button type="button" class="action-icon-btn delete" onclick="deleteArticle('${item.id}')">Löschen</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        // Edit article
+        function editArticle(id) {
+            const item = NewsRepository.getById(id);
+            if (!item) return;
+
+            document.getElementById('edit-article-id').value = item.id;
+            document.getElementById('article-title').value = typeof item.title === 'string' ? item.title : (item.title.de || item.title.en);
+            document.getElementById('article-category').value = item.category || 'turniere';
+            document.getElementById('article-date').value = item.date || '';
+            document.getElementById('article-author').value = item.author || '';
+            document.getElementById('article-readtime').value = item.readTime || '';
+            document.getElementById('article-image').value = item.image || '';
+            document.getElementById('article-teaser').value = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
+            document.getElementById('article-content').value = typeof item.content === 'string' ? item.content : (item.content.de || item.content.en);
+
+            document.getElementById('form-title-heading').innerHTML = '<span>✏</span> Beitrag bearbeiten';
+            document.getElementById('btn-submit-article').textContent = '💾 Änderungen speichern';
+
+            // Scroll smoothly to form
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger preview & counter updates
+            document.getElementById('article-teaser').dispatchEvent(new Event('input'));
+            updateLivePreview();
+        }
+
+        // Delete article
+        function deleteArticle(id) {
+            if (confirm('Möchten Sie diesen News-Beitrag wirklich unwiderruflich löschen?')) {
+                NewsRepository.deleteItem(id);
+                currentArticles = NewsRepository.getAll();
+                renderArticlesTable();
+                showToast('Beitrag gelöscht.');
+            }
+        }
+
+        // Reset Form to Clean State
+        function resetForm() {
+            document.getElementById('news-form').reset();
+            document.getElementById('edit-article-id').value = '';
+            document.getElementById('article-date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('article-author').value = 'Clubsekretariat Gut Wissmannshof';
+            document.getElementById('article-readtime').value = '3 Min.';
+            document.getElementById('form-title-heading').innerHTML = '<span>✍</span> Neuen News-Beitrag erstellen';
+            document.getElementById('btn-submit-article').textContent = '💾 Artikel jetzt veröffentlichen';
+
+            // Reset preset selection
+            renderPresetGrid();
+            document.getElementById('article-teaser').dispatchEvent(new Event('input'));
+            updateLivePreview();
+        }
+
+        // Formatting Helpers for Rich Text Editor
+        function insertTag(tag, defaultText) {
+            const textarea = document.getElementById('article-content');
+            const snippet = `<${tag}>${defaultText}</${tag}>\n`;
+            insertAtCursor(textarea, snippet);
+        }
+
+        function insertQuote() {
+            const textarea = document.getElementById('article-content');
+            const snippet = `<blockquote>\n    „Hier Zitat einfügen...“\n    <cite>— Name / Quelle</cite>\n</blockquote>\n`;
+            insertAtCursor(textarea, snippet);
+        }
+
+        function insertList() {
+            const textarea = document.getElementById('article-content');
+            const snippet = `<ul>\n    <li>Punkt 1</li>\n    <li>Punkt 2</li>\n    <li>Punkt 3</li>\n</ul>\n`;
+            insertAtCursor(textarea, snippet);
+        }
+
+        function wrapSelection(tag) {
+            const textarea = document.getElementById('article-content');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end) || 'Text';
+            const wrapped = `<${tag}>${selectedText}</${tag}>`;
+            textarea.setRangeText(wrapped, start, end, 'select');
+        }
+
+        function insertAtCursor(textarea, text) {
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            textarea.setRangeText(text, start, end, 'end');
+            textarea.focus();
+        }
+
+        // Toast feedback
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        // Export JSON
+        function exportNewsJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentArticles, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `wissmannshof_news_export_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // Reset to Defaults
+        function confirmResetDefaults() {
+            if (confirm('Möchten Sie alle News auf die ursprünglichen Standard-Resort-News zurücksetzen? Benutzerdefinierte Änderungen werden überschrieben.')) {
+                NewsRepository.resetToDefault();
+                currentArticles = NewsRepository.getAll();
+                renderArticlesTable();
+                resetForm();
+                showToast('News erfolgreich auf Standard zurückgesetzt!');
+            }
+        }
+
+        // Start
+        window.addEventListener('DOMContentLoaded', initAdmin);
+    </script>
+</body>
+</html>

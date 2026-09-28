@@ -1,0 +1,434 @@
+/**
+ * Gut Wissmannshof - News Frontend Controller
+ * Handles article rendering, category filtering, search, reader modal, and language toggle.
+ */
+
+(function () {
+    'use strict';
+
+    // State
+    let currentLang = localStorage.getItem('sgr_lang') || 'de';
+    let currentCategory = 'all';
+    let currentSearchTerm = '';
+    let allNews = [];
+
+    // UI Translations
+    const I18N = {
+        de: {
+            heroBadge: 'Resort Neuigkeiten & Einblicke',
+            heroTitle: 'Aktuelles aus dem <span>Gut Wissmannshof</span>',
+            heroLead: 'Entdecken Sie die neuesten Nachrichten, Turnier-Highlights, Platz-Updates und exklusive Angebote unseres 27-Loch Golf Resorts.',
+            allCategories: 'Alle',
+            catTurniere: 'Turniere & Events',
+            catPlatz: 'Platz & Natur',
+            catResort: 'Resort & Genuss',
+            catAngebote: 'Angebote & Training',
+            searchPlaceholder: 'Nachrichten durchsuchen…',
+            readMore: 'Weiterlesen',
+            featuredBadge: 'Top-Meldung',
+            minRead: 'Min. Lesezeit',
+            noNewsTitle: 'Keine Neuigkeiten gefunden',
+            noNewsText: 'Zu Ihren Suchkriterien wurden leider keine passenden Beiträge gefunden.',
+            resetFilter: 'Filter zurücksetzen',
+            closeModal: 'Schließen',
+            shareArticle: 'Artikel teilen',
+            copiedNotification: 'Link in die Zwischenablage kopiert!',
+            backToOverview: '← Zurück zur Übersicht',
+            adminBtn: 'News-Backend ⚙'
+        },
+        en: {
+            heroBadge: 'Resort News & Insights',
+            heroTitle: 'Latest News from <span>Gut Wissmannshof</span>',
+            heroLead: 'Discover the latest updates, tournament highlights, course renovations, and exclusive offers from our 27-hole golf resort.',
+            allCategories: 'All',
+            catTurniere: 'Tournaments & Events',
+            catPlatz: 'Course & Nature',
+            catResort: 'Resort & Dining',
+            catAngebote: 'Offers & Training',
+            searchPlaceholder: 'Search news…',
+            readMore: 'Read Article',
+            featuredBadge: 'Featured Story',
+            minRead: 'min read',
+            noNewsTitle: 'No news found',
+            noNewsText: 'We could not find any articles matching your search criteria.',
+            resetFilter: 'Reset filters',
+            closeModal: 'Close',
+            shareArticle: 'Share Article',
+            copiedNotification: 'Link copied to clipboard!',
+            backToOverview: '← Back to Overview',
+            adminBtn: 'Staff Admin ⚙'
+        }
+    };
+
+    /**
+     * Format Date string (YYYY-MM-DD to "18. Okt 2026" or "Oct 18, 2026")
+     */
+    function formatDate(dateStr, lang) {
+        if (!dateStr) return '';
+        try {
+            const date = new Date(dateStr);
+            if (isNaN(date.getTime())) return dateStr;
+            return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'de-DE', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        } catch (e) {
+            return dateStr;
+        }
+    }
+
+    /**
+     * Helper to get localized string from string or object {de, en}
+     */
+    function getLoc(obj, lang) {
+        if (!obj) return '';
+        if (typeof obj === 'string') return obj;
+        return obj[lang] || obj['de'] || obj['en'] || '';
+    }
+
+    /**
+     * Initialize News application
+     */
+    function init() {
+        if (typeof NewsRepository === 'undefined') {
+            console.error('NewsRepository not found. Please make sure news-data.js is loaded before news.js.');
+            return;
+        }
+
+        allNews = NewsRepository.getAll();
+
+        setupDOMReferences();
+        setupEventListeners();
+        applyLanguage(currentLang);
+        renderNewsGrid();
+
+        // Check if URL has #news-ID hash to open directly
+        handleUrlHash();
+    }
+
+    // DOM Elements
+    let elements = {};
+
+    function setupDOMReferences() {
+        elements = {
+            grid: document.getElementById('news-grid'),
+            searchInput: document.getElementById('news-search-input'),
+            filterPills: document.querySelectorAll('.filter-pill'),
+            modal: document.getElementById('article-modal'),
+            modalBackdrop: document.getElementById('article-modal-backdrop'),
+            modalClose: document.getElementById('article-modal-close'),
+            modalImage: document.getElementById('modal-image'),
+            modalCategory: document.getElementById('modal-category'),
+            modalDate: document.getElementById('modal-date'),
+            modalReadTime: document.getElementById('modal-read-time'),
+            modalTitle: document.getElementById('modal-title'),
+            modalAuthor: document.getElementById('modal-author'),
+            modalContent: document.getElementById('modal-content'),
+            modalShareBtn: document.getElementById('modal-share-btn'),
+            langBtns: document.querySelectorAll('.lang-btn')
+        };
+    }
+
+    function setupEventListeners() {
+        // Search Input
+        if (elements.searchInput) {
+            elements.searchInput.addEventListener('input', function (e) {
+                currentSearchTerm = e.target.value.toLowerCase().trim();
+                renderNewsGrid();
+            });
+        }
+
+        // Filter Pills
+        if (elements.filterPills) {
+            elements.filterPills.forEach(pill => {
+                pill.addEventListener('click', function () {
+                    elements.filterPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.getAttribute('data-category') || 'all';
+                    renderNewsGrid();
+                });
+            });
+        }
+
+        // Language Switcher Buttons
+        if (elements.langBtns) {
+            elements.langBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const lang = this.getAttribute('data-lang');
+                    if (lang && lang !== currentLang) {
+                        setLanguage(lang);
+                    }
+                });
+            });
+        }
+
+        // Modal Close
+        if (elements.modalClose) {
+            elements.modalClose.addEventListener('click', closeModal);
+        }
+        if (elements.modalBackdrop) {
+            elements.modalBackdrop.addEventListener('click', closeModal);
+        }
+
+        // Modal Share
+        if (elements.modalShareBtn) {
+            elements.modalShareBtn.addEventListener('click', function () {
+                const articleId = this.getAttribute('data-article-id');
+                const shareUrl = `${window.location.origin}${window.location.pathname}#${articleId}`;
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        const originalText = elements.modalShareBtn.innerHTML;
+                        const t = I18N[currentLang];
+                        elements.modalShareBtn.innerHTML = `✓ ${t.copiedNotification}`;
+                        setTimeout(() => {
+                            elements.modalShareBtn.innerHTML = originalText;
+                        }, 2500);
+                    });
+                }
+            });
+        }
+
+        // Keyboard navigation (Escape closes modal)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && elements.modal && elements.modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Listen for browser back/forward with hash
+        window.addEventListener('hashchange', handleUrlHash);
+    }
+
+    /**
+     * Handle direct URL linking via hash (e.g. #news-001)
+     */
+    function handleUrlHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            const article = NewsRepository.getById(hash);
+            if (article) {
+                openArticleModal(article);
+            }
+        }
+    }
+
+    /**
+     * Switch language & persist
+     */
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('sgr_lang', lang);
+        applyLanguage(lang);
+        renderNewsGrid();
+
+        // If modal is open, re-render modal
+        if (elements.modal && elements.modal.classList.contains('active') && elements.modalShareBtn) {
+            const currentArticleId = elements.modalShareBtn.getAttribute('data-article-id');
+            const article = NewsRepository.getById(currentArticleId);
+            if (article) {
+                fillModalContent(article);
+            }
+        }
+    }
+
+    /**
+     * Update all static UI elements with active translation
+     */
+    function applyLanguage(lang) {
+        const t = I18N[lang] || I18N.de;
+
+        // Update active class on lang switcher buttons
+        if (elements.langBtns) {
+            elements.langBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Translate generic elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                el.innerHTML = t[key];
+            }
+        });
+
+        // Search placeholder
+        if (elements.searchInput) {
+            elements.searchInput.placeholder = t.searchPlaceholder;
+        }
+    }
+
+    /**
+     * Filter & Render News Grid
+     */
+    function renderNewsGrid() {
+        if (!elements.grid) return;
+
+        const t = I18N[currentLang] || I18N.de;
+
+        // Reload data in case it changed in admin
+        allNews = NewsRepository.getAll();
+
+        // Filter by category and search
+        const filtered = allNews.filter(item => {
+            const matchCategory = (currentCategory === 'all' || item.category === currentCategory);
+            
+            if (!matchCategory) return false;
+
+            if (!currentSearchTerm) return true;
+
+            const title = getLoc(item.title, currentLang).toLowerCase();
+            const teaser = getLoc(item.teaser, currentLang).toLowerCase();
+            const author = (item.author || '').toLowerCase();
+
+            return title.includes(currentSearchTerm) || 
+                   teaser.includes(currentSearchTerm) || 
+                   author.includes(currentSearchTerm);
+        });
+
+        if (filtered.length === 0) {
+            elements.grid.innerHTML = `
+                <div class="news-empty-state">
+                    <div class="empty-icon">🔍</div>
+                    <h3>${t.noNewsTitle}</h3>
+                    <p>${t.noNewsText}</p>
+                    <button class="btn-reset-filter" onclick="window.NewsController.resetFilter()">${t.resetFilter}</button>
+                </div>
+            `;
+            return;
+        }
+
+        let html = '';
+
+        filtered.forEach((item, index) => {
+            const title = getLoc(item.title, currentLang);
+            const teaser = getLoc(item.teaser, currentLang);
+            const categoryBadge = getLoc(item.categoryLabel, currentLang) || item.category;
+            const dateStr = formatDate(item.date, currentLang);
+            const isFeatured = item.featured && index === 0 && currentCategory === 'all' && !currentSearchTerm;
+
+            html += `
+                <article class="news-card ${isFeatured ? 'featured' : ''}" data-id="${item.id}" onclick="window.NewsController.openArticle('${item.id}')">
+                    <div class="news-card-image-wrap">
+                        <img src="${item.image || 'assets/hero_bg.jpg'}" alt="${title}" class="news-card-image" loading="lazy">
+                        <div class="card-badges">
+                            <span class="category-badge cat-${item.category}">${categoryBadge}</span>
+                            ${isFeatured ? `<span class="featured-badge">${t.featuredBadge}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="news-card-body">
+                        <div class="news-card-meta">
+                            <span class="news-date"><i class="icon-calendar"></i> ${dateStr}</span>
+                            ${item.readTime ? `<span class="news-read-time"><i class="icon-clock"></i> ${item.readTime}</span>` : ''}
+                        </div>
+                        <h3 class="news-card-title">${title}</h3>
+                        <p class="news-card-teaser">${teaser}</p>
+                        <div class="news-card-footer">
+                            <span class="read-more-link">
+                                ${t.readMore} <span class="arrow">→</span>
+                            </span>
+                            ${item.author ? `<span class="news-author-mini">${item.author}</span>` : ''}
+                        </div>
+                    </div>
+                </article>
+            `;
+        });
+
+        elements.grid.innerHTML = html;
+    }
+
+    /**
+     * Open Full Article Reader Modal
+     */
+    function openArticleModal(article) {
+        if (!elements.modal) return;
+
+        fillModalContent(article);
+
+        elements.modal.classList.add('active');
+        document.body.classList.add('modal-open');
+
+        // Update URL hash without reload
+        history.replaceState(null, null, `#${article.id}`);
+    }
+
+    /**
+     * Fill modal details from article object
+     */
+    function fillModalContent(article) {
+        const title = getLoc(article.title, currentLang);
+        const categoryBadge = getLoc(article.categoryLabel, currentLang) || article.category;
+        const dateStr = formatDate(article.date, currentLang);
+        const contentHtml = getLoc(article.content, currentLang);
+        const t = I18N[currentLang];
+
+        if (elements.modalImage) elements.modalImage.src = article.image || 'assets/hero_bg.jpg';
+        if (elements.modalCategory) {
+            elements.modalCategory.textContent = categoryBadge;
+            elements.modalCategory.className = `modal-category-badge cat-${article.category}`;
+        }
+        if (elements.modalDate) elements.modalDate.textContent = dateStr;
+        if (elements.modalReadTime) elements.modalReadTime.textContent = article.readTime || `3 ${t.minRead}`;
+        if (elements.modalTitle) elements.modalTitle.textContent = title;
+        if (elements.modalAuthor) elements.modalAuthor.textContent = article.author ? `Verfasser: ${article.author}` : '';
+        if (elements.modalContent) elements.modalContent.innerHTML = contentHtml;
+        if (elements.modalShareBtn) elements.modalShareBtn.setAttribute('data-article-id', article.id);
+    }
+
+    /**
+     * Close modal
+     */
+    function closeModal() {
+        if (!elements.modal) return;
+        elements.modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+
+        // Clear hash from URL cleanly
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+    }
+
+    /**
+     * Reset search & category filters
+     */
+    function resetFilter() {
+        currentCategory = 'all';
+        currentSearchTerm = '';
+        if (elements.searchInput) elements.searchInput.value = '';
+        if (elements.filterPills) {
+            elements.filterPills.forEach(p => {
+                if (p.getAttribute('data-category') === 'all') {
+                    p.classList.add('active');
+                } else {
+                    p.classList.remove('active');
+                }
+            });
+        }
+        renderNewsGrid();
+    }
+
+    // Expose global methods
+    window.NewsController = {
+        init: init,
+        setLanguage: setLanguage,
+        openArticle: function (id) {
+            const article = NewsRepository.getById(id);
+            if (article) openArticleModal(article);
+        },
+        closeModal: closeModal,
+        resetFilter: resetFilter
+    };
+
+    // Auto-init on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

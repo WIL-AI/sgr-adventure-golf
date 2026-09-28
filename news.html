@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktuelles & News | Gut Wissmannshof 27-Loch Golf Resort</title>
+    <meta name="description" content="Aktuelle Neuigkeiten, Turniere, Platz-Updates und exklusive Angebote aus dem Gut Wissmannshof Golf & Hotel Resort.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo" title="Gut Wissmannshof">
+                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link" data-i18n="navAdventure">Adventure Golf</a>
+                <a href="golfcourse.html" class="nav-link" data-i18n="navGolf">Golfplatz</a>
+                <a href="gast-info.html" class="nav-link" data-i18n="navGast">Gast-Info</a>
+                <a href="mitglied-werden.html" class="nav-link" data-i18n="navMitglied">Mitgliedschaft</a>
+                <a href="news.html" class="nav-link active" data-i18n="navNews">Aktuelles</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="admin-news.html" class="nav-btn-admin" title="News-Redaktionssystem für Mitarbeiter">
+                    <span>⚙</span> <span data-i18n="adminBtn">Mitarbeiter-Backend</span>
+                </a>
+                
+                <div class="lang-switcher" aria-label="Sprachauswahl">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <svg class="flag-icon" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
+                        <span>DE</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="news-hero">
+            <div class="container">
+                <div class="news-hero-content">
+                    <span class="hero-badge" data-i18n="heroBadge">Resort Neuigkeiten & Einblicke</span>
+                    <h1 class="hero-title" data-i18n="heroTitle">Aktuelles aus dem <span>Gut Wissmannshof</span></h1>
+                    <p class="hero-lead" data-i18n="heroLead">
+                        Entdecken Sie die neuesten Nachrichten, Turnier-Highlights, Platz-Updates und exklusive Angebote unseres 27-Loch Golf Resorts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter & Search Bar -->
+        <section class="container">
+            <div class="news-toolbar">
+                <div class="filter-pills" role="tablist">
+                    <button class="filter-pill active" data-category="all" data-i18n="allCategories">Alle</button>
+                    <button class="filter-pill" data-category="turniere" data-i18n="catTurniere">Turniere & Events</button>
+                    <button class="filter-pill" data-category="platz" data-i18n="catPlatz">Platz & Natur</button>
+                    <button class="filter-pill" data-category="resort" data-i18n="catResort">Resort & Genuss</button>
+                    <button class="filter-pill" data-category="angebote" data-i18n="catAngebote">Angebote & Training</button>
+                </div>
+
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="news-search-input" class="search-input" placeholder="Nachrichten durchsuchen…" aria-label="Nachrichten suchen">
+                </div>
+            </div>
+
+            <!-- News Grid Section -->
+            <div id="news-grid" class="news-grid" aria-live="polite">
+                <!-- Injected via news.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Article Reader Modal -->
+    <div id="article-modal-backdrop" class="modal-backdrop" tabindex="-1"></div>
+    <div id="article-modal" class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-dialog">
+            <button id="article-modal-close" class="modal-close-btn" aria-label="Schließen">&times;</button>
+            
+            <div class="modal-hero-image-wrap">
+                <img id="modal-image" src="" alt="" class="modal-hero-image">
+            </div>
+
+            <div class="modal-body-content">
+                <div class="modal-meta-top">
+                    <span id="modal-category" class="modal-category-badge">Kategorie</span>
+                    <span id="modal-date" class="modal-date">Datum</span>
+                    <span id="modal-read-time" class="modal-read-time">3 Min. Lesezeit</span>
+                </div>
+
+                <h2 id="modal-title" class="modal-title">Artikel-Überschrift</h2>
+
+                <div id="modal-author" class="modal-author">Verfasser: Gut Wissmannshof</div>
+
+                <div id="modal-content" class="modal-article-text prose">
+                    <!-- Article HTML injected here -->
+                </div>
+
+                <div class="modal-footer-action">
+                    <button id="modal-share-btn" class="modal-share-btn" data-article-id="">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        <span data-i18n="shareArticle">Artikel teilen</span>
+                    </button>
+                    <button class="modal-back-btn" onclick="window.NewsController.closeModal()" data-i18n="backToOverview">
+                        ← Zurück zur Übersicht
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof" class="footer-logo">
+                <p>27-Loch Meisterschaftsplatz, Adventure Golf & Resort Hotel in traumhafter Naturkulisse.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Adventure Golf</a></li>
+                    <li><a href="golfcourse.html">27-Loch Golfplatz</a></li>
+                    <li><a href="gast-info.html">Gästeinformation & Hotel</a></li>
+                    <li><a href="mitglied-werden.html">Mitgliedschaft</a></li>
+                    <li><a href="news.html">Aktuelles & News</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt & Anreise</h4>
+                <p>Gut Wissmannshof<br>Wissmannshof 1<br>34355 Staufenberg</p>
+                <p>Tel: +49 (0) 5543 9999<br>Email: info@wissmannshof.de</p>
+            </div>
+            <div class="footer-col">
+                <h4>Mitarbeiter</h4>
+                <p>Redaktionssystem für schnelle News-Veröffentlichungen:</p>
+                <a href="admin-news.html" class="btn-footer-admin">News-Backend öffnen →</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="gast-info.html#impressum">Impressum</a>
+                    <a href="gast-info.html#datenschutz">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="news-data.js"></script>
+    <script src="news.js"></script>
+</body>
+</html>
