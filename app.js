@@ -529,14 +529,20 @@ function initLanguage() {
     updateLanguageUI();
 }
 
-function setLanguage(lang) {
+window.setLanguage = function(lang) {
     if (currentLang === lang) return;
     currentLang = lang;
-    localStorage.setItem('sgr_lang', lang);
+    try {
+        localStorage.setItem('sgr_lang', lang);
+    } catch (e) {}
     updateLanguageUI();
     
     // Update the currently displayed hole texts to match the selected language
     renderActiveHole();
+};
+
+function setLanguage(lang) {
+    window.setLanguage(lang);
 }
 
 function updateLanguageUI() {
