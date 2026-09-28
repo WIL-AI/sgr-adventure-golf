@@ -2,3 +2,5 @@
 .DS_Store
 Thumbs.db
 *.log
+desktop.ini
+**/desktop.ini
