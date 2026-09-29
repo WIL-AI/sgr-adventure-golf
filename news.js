@@ -315,8 +315,8 @@
 
             html += `
                 <article class="news-card ${isFeatured ? 'featured' : ''}" data-id="${item.id}" onclick="window.NewsController.openArticle('${item.id}')">
-                    <div class="news-card-image-wrap">
-                        <img src="${item.image || 'assets/hero_bg.jpg'}" alt="${title}" class="news-card-image" loading="lazy">
+                    <div class="news-card-image-wrap" style="overflow: hidden; position: relative;">
+                        <img src="${item.image || 'assets/hero_bg.jpg'}" alt="${title}" class="news-card-image" loading="lazy" style="object-position: ${item.cropPosX !== undefined ? item.cropPosX : 50}% ${item.cropPosY !== undefined ? item.cropPosY : 50}%; transform: scale(${item.cropZoom !== undefined ? item.cropZoom : 1}); transform-origin: center center;">
                         <div class="card-badges">
                             <span class="category-badge cat-${item.category}">${categoryBadge}</span>
                             ${isFeatured ? `<span class="featured-badge">${t.featuredBadge}</span>` : ''}
