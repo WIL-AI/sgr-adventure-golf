@@ -527,22 +527,26 @@ img {
     .modal-body-content, .article-content {
         padding: 24px 18px;
     }
-    .article-header-img, .modal-hero-image {
-        height: 220px;
+    .modal-hero-image-wrap, .article-header-img-wrap {
+        height: 220px !important;
     }
+}
+
+.modal-hero-image-wrap, .article-header-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: #0D2218;
 }
 
 .article-header-img, .modal-hero-image {
     width: 100%;
-    height: 360px;
+    height: 100%;
     object-fit: cover;
     display: block;
-}
-
-.modal-hero-image-wrap {
-    position: relative;
-    width: 100%;
-    background: #0D2218;
+    transform-origin: center center;
+    transition: transform 0.2s ease, object-position 0.2s ease;
 }
 
 .modal-image-caption {

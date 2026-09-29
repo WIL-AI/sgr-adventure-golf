@@ -1600,12 +1600,23 @@
             const objectPos = `${cropPosX}% ${cropPosY}%`;
 
             const targetImg = document.getElementById('crop-img-target');
-            targetImg.style.objectPosition = objectPos;
-            targetImg.style.transform = transformStyle;
+            if (targetImg) {
+                targetImg.style.objectPosition = objectPos;
+                targetImg.style.transform = transformStyle;
+            }
 
             const prevCardImg = document.getElementById('prev-image');
-            prevCardImg.style.objectPosition = objectPos;
-            prevCardImg.style.transform = transformStyle;
+            if (prevCardImg) {
+                prevCardImg.style.objectPosition = objectPos;
+                prevCardImg.style.transform = transformStyle;
+            }
+
+            const prevFullImg = document.getElementById('prev-full-img');
+            if (prevFullImg) {
+                prevFullImg.style.objectPosition = objectPos;
+                prevFullImg.style.transform = transformStyle;
+                prevFullImg.style.transformOrigin = 'center center';
+            }
         }
 
         // Automated Teaser Generation from Content

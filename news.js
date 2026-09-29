@@ -393,7 +393,15 @@
         const contentHtml = getLoc(article.content, currentLang);
         const t = I18N[currentLang];
 
-        if (elements.modalImage) elements.modalImage.src = article.image || 'assets/hero_bg.jpg';
+        if (elements.modalImage) {
+            elements.modalImage.src = article.image || 'assets/hero_bg.jpg';
+            const posX = article.cropPosX !== undefined ? article.cropPosX : 50;
+            const posY = article.cropPosY !== undefined ? article.cropPosY : 50;
+            const zoom = article.cropZoom !== undefined ? article.cropZoom : 1.0;
+            elements.modalImage.style.objectPosition = `${posX}% ${posY}%`;
+            elements.modalImage.style.transform = `scale(${zoom})`;
+            elements.modalImage.style.transformOrigin = 'center center';
+        }
         
         const imageCaption = getLoc(article.imageCaption, currentLang);
         if (elements.modalImageCaption) {
