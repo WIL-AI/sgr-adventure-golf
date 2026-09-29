@@ -35,8 +35,7 @@
             closeModal: 'Schließen',
             shareArticle: 'Artikel teilen',
             copiedNotification: 'Link in die Zwischenablage kopiert!',
-            backToOverview: '← Zurück zur Übersicht',
-            adminBtn: 'News-Backend ⚙'
+            backToOverview: '← Zurück zur Übersicht'
         },
         en: {
             heroBadge: 'Resort News & Insights',
@@ -59,8 +58,7 @@
             closeModal: 'Close',
             shareArticle: 'Share Article',
             copiedNotification: 'Link copied to clipboard!',
-            backToOverview: '← Back to Overview',
-            adminBtn: 'Staff Admin ⚙'
+            backToOverview: '← Back to Overview'
         }
     };
 
