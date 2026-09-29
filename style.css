@@ -206,7 +206,7 @@ header {
     padding-top: 80px; /* Header spacing */
     display: flex;
     align-items: center;
-    background-image: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.95)), url('assets/hero_bg.jpg');
+    background-image: linear-gradient(rgba(27, 67, 50, 0.45), rgba(27, 67, 50, 0.65)), url('assets/hero_bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--color-white);

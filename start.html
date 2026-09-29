@@ -22,6 +22,63 @@
             window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
         }
     </script>
+    <!-- Schema.org JSON-LD Structured Data for AI & Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "GolfCourse",
+          "@id": "https://wissmannshof.golf/#golfcourse",
+          "name": "Sport- und Golf-Resort Gut Wissmannshof",
+          "alternateName": "Gut Wissmannshof Golf",
+          "url": "https://wissmannshof.golf",
+          "telephone": "+49 5543 999335",
+          "email": "info@wissmannshof.de",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Wissmannshof 1",
+            "addressLocality": "Staufenberg",
+            "postalCode": "34355",
+            "addressRegion": "Niedersachsen",
+            "addressCountry": "DE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.3486,
+            "longitude": 9.6153
+          },
+          "description": "Exklusives 18-Loch Golfresort mit Meisterschaftsplatz, 9-Loch Canyon Academy Kurs, Driving Range, 4-Sterne Resorthotel, Gastronomie und 18-Loch Adventure Golf in Staufenberg bei Kassel / Göttingen.",
+          "priceRange": "€€",
+          "openingHours": "Mo-Su 08:00-18:00",
+          "amenityFeature": [
+            { "@type": "LocationFeatureSpecification", "name": "18-Loch Meisterschaftsplatz", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Canyon Academy Kurs", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Driving Range mit 25 überdachten Abschlägen", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Golfakademie & Schnupperkurse", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Adventure Golf Anlage", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "4-Sterne Resorthotel mit 57 Zimmern", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Restaurant mit Sonnenterrasse", "value": true }
+          ]
+        },
+        {
+          "@type": "Resort",
+          "@id": "https://wissmannshof.golf/#resort",
+          "name": "Sport- & Golf-Resort Gut Wissmannshof",
+          "url": "https://wissmannshof.golf",
+          "telephone": "+49 5543 9992239",
+          "email": "info@hotel-wissmannshof.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Wissmannshof 1",
+            "addressLocality": "Staufenberg",
+            "postalCode": "34355",
+            "addressCountry": "DE"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -37,8 +94,8 @@
                 <a href="adventure-golf.html" class="nav-link" data-i18n="navAdvGolf">Adventure Golf</a>
                 <a href="mitglied-werden.html" class="nav-link" data-i18n="navMember">Mitglied werden</a>
                 <a href="gast-info.html" class="nav-link" data-i18n="navGuest">Gast-Info</a>
-                <a href="#" class="nav-link" title="Seite wird in Kürze erstellt" data-i18n="navAcademy">Golf Akademie</a>
-                <a href="news.html" class="nav-link" data-i18n="navNews">Gut NEWS</a>
+                <a href="golfakademie.html" class="nav-link" data-i18n="navAcademy">Golf Akademie</a>
+                <a href="news.html" class="nav-link" data-i18n="navNews">WiHo-News</a>
                 <a href="karriere.html" class="nav-link" data-i18n="navCareer">Karriere</a>
                 <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link" data-i18n="navWebcam">WEBCAM</a>
             </nav>
@@ -74,7 +131,6 @@
         <section class="home-hero">
             <div class="container">
                 <div class="home-hero-content">
-                    <span class="hero-super-badge" data-i18n="heroBadge">Willkommen im Golfresort</span>
                     <h1 class="hero-main-title" data-i18n="heroTitle">
                         <span class="hero-main-sub">Sport &amp; Golf Resort</span>
                         <span class="hero-title-highlight">Gut Wissmannshof</span>
@@ -85,22 +141,6 @@
                         <h4 data-i18n="heroMemberTitle">Mitgliedschaft, wie sie sein sollte.</h4>
                         <p data-i18n="heroMemberText">Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten</p>
                         <a href="mitglied-werden.html" class="membership-callout-link" data-i18n="heroMemberLink">Jetzt Mitglied werden →</a>
-                    </div>
-
-                    <!-- Quick Action Buttons -->
-                    <div class="hero-actions-grid">
-                        <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn-hero-action highlight">
-                            <span data-i18n="heroBtnTee">Startzeit reservieren</span>
-                        </a>
-                        <a href="golfcourse.html" class="btn-hero-action">
-                            <span data-i18n="heroBtnGolf">Golfplatz &amp; Bahnen</span>
-                        </a>
-                        <a href="https://hotel-wissmannshof.com/hotel/" target="_blank" rel="noopener" class="btn-hero-action">
-                            <span data-i18n="heroBtnHotel">Hotel &amp; Zimmer buchen ↗</span>
-                        </a>
-                        <a href="news.html" class="btn-hero-action">
-                            <span data-i18n="heroBtnNews">Aktuelles &amp; News</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -209,7 +249,7 @@
                         <div class="quick-card-number">02</div>
                         <h3 data-i18n="quickIntroTitle">Schnupperkurs buchen</h3>
                         <p data-i18n="quickIntroText">Entdecken Sie Golf mit unseren PGA-Profis auf erstklassigen Übungsanlagen.</p>
-                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt" data-i18n="quickIntroBtn">Mehr erfahren</a>
+                        <a href="golfakademie.html" class="btn-quick-card" data-i18n="quickIntroBtn">Mehr erfahren</a>
                     </div>
 
                     <!-- 3. Trainerstunde buchen -->
@@ -217,7 +257,7 @@
                         <div class="quick-card-number">03</div>
                         <h3 data-i18n="quickLessonTitle">Trainerstunde buchen</h3>
                         <p data-i18n="quickLessonText">Verbessern Sie Ihr Spiel individuell mit modernster Analysetechnik.</p>
-                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt" data-i18n="quickLessonBtn">Mehr erfahren</a>
+                        <a href="golfakademie.html" class="btn-quick-card" data-i18n="quickLessonBtn">Mehr erfahren</a>
                     </div>
 
                     <!-- 4. Mitglied werden -->
@@ -267,7 +307,7 @@
                         <img src="assets/gallery_lavender_fairway.jpg" alt="Golf & Natur Gut Wissmannshof" class="golf-slide-img">
                         <div class="golf-slide-caption">
                             <h4 data-i18n="slide3Title">Golfen im Einklang mit der Natur</h4>
-                            <p data-i18n="slide3Text">Ausgezeichnet mit Golf &amp; Natur in Gold – ein Paradies für Golfer und Tierwelt.</p>
+                            <p data-i18n="slide3Text">Ausgezeichnet mit Golf &amp; Natur – ein Paradies für Golfer und Tierwelt.</p>
                         </div>
                     </div>
 

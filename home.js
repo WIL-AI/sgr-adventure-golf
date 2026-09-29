@@ -26,7 +26,7 @@
             navMember: 'Mitglied werden',
             navGuest: 'Gast-Info',
             navAcademy: 'Golf Akademie',
-            navNews: 'Gut NEWS',
+            navNews: 'WiHo-News',
             navCareer: 'Karriere',
             navWebcam: 'WEBCAM',
             navBookTeeTime: 'Startzeit buchen',
@@ -96,7 +96,7 @@
             slide2Title: 'Wasserhindernisse &amp; Panorama',
             slide2Text: 'Anspruchsvolle Bahnen und kristallklare Seen fügen sich harmonisch in die Landschaft ein.',
             slide3Title: 'Golfen im Einklang mit der Natur',
-            slide3Text: 'Ausgezeichnet mit Golf &amp; Natur in Gold – ein Paradies für Golfer und Tierwelt.',
+            slide3Text: 'Ausgezeichnet mit Golf &amp; Natur – ein Paradies für Golfer und Tierwelt.',
             slide4Title: 'Goldene Abendstunden',
             slide4Text: 'Unvergessliche Momente bei Sonnenuntergang direkt auf der Golfanlage.',
 
@@ -153,7 +153,7 @@
             formLabelMsg: 'Ihre Nachricht *',
             formPlaceholderMsg: 'Wie können wir Ihnen weiterhelfen?',
             formSubmitBtn: 'Nachricht absenden',
-            formSuccessMsg: 'Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt.',
+            formSuccessMsg: 'Vielen Dank! Ihre Nachricht wurde an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.',
 
             // Footer
             footerSubtext: '18-Loch Meisterschaftsplatz, Canyon Academy Kurs, Adventure Golf &amp; 4-Sterne Golfresort.',
@@ -181,7 +181,7 @@
             navMember: 'Membership',
             navGuest: 'Guest Info',
             navAcademy: 'Golf Academy',
-            navNews: 'Resort NEWS',
+            navNews: 'WiHo-News',
             navCareer: 'Careers',
             navWebcam: 'WEBCAM',
             navBookTeeTime: 'Book Tee Time',
@@ -251,7 +251,7 @@
             slide2Title: 'Water Hazards &amp; Panoramic Views',
             slide2Text: 'Challenging holes and crystal-clear lakes blend seamlessly into the picturesque landscape.',
             slide3Title: 'Golf in Harmony with Nature',
-            slide3Text: 'Certified Gold by Golf &amp; Nature – a sanctuary for wildlife and golfers alike.',
+            slide3Text: 'Certified by Golf &amp; Nature – a sanctuary for wildlife and golfers alike.',
             slide4Title: 'Golden Hour Splendor',
             slide4Text: 'Unforgettable moments watching the sunset right across the golf estate.',
 
@@ -308,7 +308,7 @@
             formLabelMsg: 'Your Message *',
             formPlaceholderMsg: 'How can we help you?',
             formSubmitBtn: 'Send Message',
-            formSuccessMsg: 'Thank you! Your message has been sent successfully.',
+            formSuccessMsg: 'Thank you! Your message has been sent to info@wissmannshof.de. We will get back to you as soon as possible.',
 
             // Footer
             footerSubtext: '18-Hole Championship Golf Course, Canyon Academy Course, Adventure Golf &amp; 4-Star Resort.',

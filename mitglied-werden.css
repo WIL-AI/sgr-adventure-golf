@@ -1816,3 +1816,290 @@ img {
         width: 100%;
     }
 }
+
+/* ==========================================================================
+   User Enhancements: Logo Spacing, Hero Lift, Sync Pillars, Steps & Resort Cards
+   ========================================================================== */
+.brand-logo {
+    margin-right: 42px;
+}
+
+.hero-section {
+    padding: 135px 0 85px !important;
+}
+
+/* Synchronized 3 Pillars */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+    margin-bottom: 45px;
+}
+
+.pillar-card {
+    background-color: var(--color-white);
+    padding: 34px 28px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-luxury);
+    border-color: var(--color-border-gold);
+}
+
+.pillar-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-cream-dark);
+}
+
+.pillar-number {
+    position: static !important;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.pillar-badge-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    background: rgba(20, 51, 36, 0.06);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.pillar-title {
+    font-family: var(--font-heading);
+    font-size: 1.32rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.pillar-desc {
+    color: var(--color-text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    flex-grow: 1;
+}
+
+/* Modern Steps Grid (Einfach ausprobieren) */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+.step-card {
+    background-color: var(--color-white);
+    padding: 30px 22px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-luxury);
+    border-color: var(--color-border-gold);
+}
+
+.step-card.featured-step {
+    border-color: var(--color-gold);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 100%);
+    box-shadow: 0 8px 24px rgba(184, 150, 62, 0.12);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.step-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.step-card.featured-step .step-badge {
+    background-color: var(--color-gold);
+}
+
+.step-phase {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    background: rgba(0,0,0,0.04);
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.step-phase.highlight {
+    color: var(--color-gold);
+    background: rgba(184, 150, 62, 0.12);
+}
+
+.step-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 14px;
+    line-height: 1.35;
+}
+
+.step-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.step-bullets li {
+    position: relative;
+    padding-left: 18px;
+}
+
+.step-bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--color-gold);
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Transparenz / Vertragsklarheit Button Group Spacing */
+.contract-btn-group {
+    display: flex;
+    gap: 20px !important;
+    margin-top: 36px !important;
+    margin-bottom: 24px !important;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Upgraded Resort Experience 2x2 Grid */
+.resort-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.resort-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.resort-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-luxury);
+    border-color: var(--color-border-gold);
+}
+
+.resort-img-wrapper {
+    height: 230px !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.resort-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.resort-card:hover .resort-img-wrapper img {
+    transform: scale(1.04);
+}
+
+.resort-card-content {
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.resort-tag-badge {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gold);
+    margin-bottom: 8px;
+}
+
+.resort-card-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+}
+
+.resort-card-content p {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .resort-grid { grid-template-columns: 1fr; }
+    .brand-logo { margin-right: 20px; }
+}
+
+@media (max-width: 600px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .resort-img-wrapper { height: 180px !important; }
+}

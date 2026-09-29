@@ -35,7 +35,7 @@ const translations = {
  trust1Sub: "Kurs Blau-Gelb · 365 Tage bespielbar",
  trust2Title: "Moderne E-Cart Flotte",
  trust2Sub: "9-Loch, 18-Loch & exklusive VIP-Carts",
- trust3Title: "Sundowner-Tarif ab 88 €",
+ trust3Title: "Sundowner ab 80 €",
  trust3Sub: "Früh morgens & am späten Nachmittag",
  trust4Title: "Vom Zimmer aufs Fairway",
  trust4Sub: "Hotel & Gastronomie direkt am Platz",
@@ -61,7 +61,7 @@ const translations = {
  card18Desc: "Die volle Distanz: Atemberaubende Aussichten, anspruchsvolle Grüns und gepflegte Fairways.",
  rowWeekday: "Montag – Freitag <small>(werktags)</small>",
  rowWeekend: "Samstag, Sonntag & Feiertage",
- rowSundowner: "Sundowner-Special",
+ rowSundowner: "Sundowner Special",
  rowSundownerSub: "Bis 09:00 Uhr & ab 17:00 Uhr",
  btnBook18: "18-Loch Startzeit buchen",
 
