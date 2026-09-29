@@ -711,6 +711,75 @@
             color: var(--color-text-muted);
         }
 
+        /* Inline Images In-Text Manager */
+        .inline-images-manager {
+            background: #FAF8F3;
+            border: 1.5px solid var(--color-gold);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            margin-top: 10px;
+        }
+        .inline-img-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: #FFFFFF;
+            border: 1px solid #D5CEBD;
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: all 0.15s;
+        }
+        .inline-img-item:hover {
+            border-color: var(--color-gold);
+        }
+        .inline-img-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            overflow: hidden;
+        }
+        .inline-img-item-thumb {
+            width: 52px;
+            height: 36px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #D5CEBD;
+            flex-shrink: 0;
+        }
+        .inline-img-tag-badge {
+            background: var(--color-primary);
+            color: var(--color-gold-light);
+            font-size: 0.76rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+        }
+        .inline-img-item-info {
+            font-size: 0.82rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .inline-img-layout-badge {
+            font-size: 0.74rem;
+            background: #EAE6DB;
+            color: var(--color-primary);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .inline-img-caption-text {
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
         /* Buttons */
         .btn-group {
             display: flex;
@@ -1098,8 +1167,23 @@
                                 <button type="button" class="toolbar-btn" onclick="wrapSelection('em')"><em>Kursiv</em></button>
                             </div>
 
-                            <textarea id="article-content" class="form-textarea" rows="9" placeholder="<p>Ausführlicher Bericht...</p>" required></textarea>
-                            <div class="form-hint">Tipp: Nutzen Sie den Button <strong>„+ Foto in Text einfügen“</strong>, um Bilder passgenau und mit eigenem Kommentar / Bildunterschrift im Text zu platzieren.</div>
+                            <textarea id="article-content" class="form-textarea" rows="9" placeholder="Hier den Text eingeben..." required></textarea>
+                            <div class="form-hint">Tipp: Nutzen Sie den Button <strong>„+ Foto in Text einfügen“</strong>, um Bilder sauber mit lesbaren Platzhaltern wie <code>[FOTO_1]</code> im Text zu platzieren.</div>
+
+                            <!-- Inline Images Visual Manager Widget -->
+                            <div id="inline-images-manager" class="inline-images-manager" style="display: none;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 6px;">
+                                        <span>📸</span> <span>Im Text platzierte Fotos (<span id="inline-images-count">0</span>):</span>
+                                    </span>
+                                    <span style="font-size: 0.72rem; color: var(--color-text-muted);">
+                                        Verschieben Sie den Platzhalter (z. B. <code>[FOTO_1]</code>) im Text an die gewünschte Stelle
+                                    </span>
+                                </div>
+                                <div id="inline-images-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Buttons -->
@@ -1820,26 +1904,148 @@
             document.getElementById('inline-img-modal').classList.remove('show');
         }
 
+        // Inline Images State & Placeholder Manager
+        let inlineImagesMap = {};
+        const layoutLabels = {
+            'full-width': '↔️ Volle Breite',
+            'float-right': '👉 Rechts umflossen',
+            'float-left': '👈 Links umflossen',
+            'centered': '🎯 Zentriert',
+            'mini': '🔍 Miniatur'
+        };
+
+        function getNextInlineImageId() {
+            let i = 1;
+            while (inlineImagesMap[i]) {
+                i++;
+            }
+            return String(i);
+        }
+
         function insertConfiguredInlineImage() {
             const caption = document.getElementById('inline-img-caption').value.trim();
             const altText = caption || 'Gut Wissmannshof Impression';
             const imgSrc = inlineSelectedImage || 'assets/gallery_golden_hour_tree_lake.jpg';
             const layout = inlineSelectedLayout || 'full-width';
 
-            let captionHtml = '';
-            if (caption) {
-                captionHtml = `\n    <figcaption>${caption}</figcaption>`;
+            const imgId = getNextInlineImageId();
+            inlineImagesMap[imgId] = {
+                id: imgId,
+                src: imgSrc,
+                layout: layout,
+                caption: caption,
+                alt: altText
+            };
+
+            const placeholder = `\n[FOTO_${imgId}]\n`;
+            const textarea = document.getElementById('article-content');
+            insertAtCursor(textarea, placeholder);
+
+            closeInlineImageModal();
+            renderInlineImagesManager();
+            updateLivePreview();
+            showToast(`Foto als lesbarer Platzhalter [FOTO_${imgId}] im Text platziert! ✨`);
+            switchPreviewMode('full');
+        }
+
+        function removeInlineImage(id) {
+            delete inlineImagesMap[id];
+            const textarea = document.getElementById('article-content');
+            const tagRegex = new RegExp(`\\[(FOTO|BILD)[_:\\s]+${id}[^\\]]*\\]\\n?`, 'gi');
+            textarea.value = textarea.value.replace(tagRegex, '');
+            renderInlineImagesManager();
+            updateLivePreview();
+            showToast(`[FOTO_${id}] entfernt.`);
+        }
+
+        function renderInlineImagesManager() {
+            const manager = document.getElementById('inline-images-manager');
+            const list = document.getElementById('inline-images-list');
+            const countEl = document.getElementById('inline-images-count');
+            const keys = Object.keys(inlineImagesMap);
+
+            countEl.textContent = keys.length;
+
+            if (keys.length === 0) {
+                manager.style.display = 'none';
+                list.innerHTML = '';
+                return;
             }
 
-            const snippet = `\n<figure class="article-figure ${layout}">\n    <img src="${imgSrc}" alt="${altText}" loading="lazy">${captionHtml}\n</figure>\n`;
+            manager.style.display = 'block';
+            let html = '';
 
-            const textarea = document.getElementById('article-content');
-            insertAtCursor(textarea, snippet);
-            closeInlineImageModal();
-            updateLivePreview();
-            showToast('Foto erfolgreich in den Text eingefügt! ✨');
+            keys.forEach(k => {
+                const img = inlineImagesMap[k];
+                const layoutName = layoutLabels[img.layout] || img.layout;
+                const captionStr = img.caption ? `„${img.caption}“` : 'Keine Bildunterschrift';
 
-            switchPreviewMode('full');
+                html += `
+                    <div class="inline-img-item" id="inline-img-item-${k}">
+                        <div class="inline-img-item-left">
+                            <span class="inline-img-tag-badge">[FOTO_${k}]</span>
+                            <img src="${img.src}" alt="${img.caption || ''}" class="inline-img-item-thumb">
+                            <div class="inline-img-item-info">
+                                <span class="inline-img-layout-badge">${layoutName}</span>
+                                <span class="inline-img-caption-text">${captionStr}</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 6px; align-items: center;">
+                            <button type="button" class="action-icon-btn delete" onclick="removeInlineImage('${k}')" title="Bild entfernen" style="padding: 3px 8px; font-size: 0.75rem;">✕ Entfernen</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            list.innerHTML = html;
+        }
+
+        // Compiles clean text with [FOTO_1] tags into complete HTML figure elements
+        function compileContentWithImages(rawContent) {
+            if (!rawContent) return '';
+            let content = rawContent;
+
+            // Replace [FOTO_1], [FOTO: 1], [BILD_1], [BILD: 1 ...]
+            content = content.replace(/\[(FOTO|BILD)[_:\s]+(\d+)[^\]]*\]/gi, (match, prefix, id) => {
+                const img = inlineImagesMap[id];
+                if (!img) return '';
+                const layout = img.layout || 'full-width';
+                const alt = img.alt || img.caption || 'Gut Wissmannshof';
+                const captionHtml = img.caption ? `\n    <figcaption>${img.caption}</figcaption>` : '';
+                return `\n<figure class="article-figure ${layout}">\n    <img src="${img.src}" alt="${alt}" loading="lazy">${captionHtml}\n</figure>\n`;
+            });
+
+            return content;
+        }
+
+        // Extracts existing <figure> elements from HTML into inlineImagesMap and replaces them with clean [FOTO_X] placeholders
+        function extractFiguresToInlineImages(htmlContent) {
+            if (!htmlContent) return '';
+            inlineImagesMap = {};
+            let counter = 1;
+
+            const figureRegex = /<figure\s+class="article-figure\s+([^"]*)"[^>]*>[\s\S]*?<img\s+src="([^"]+)"(?:\s+alt="([^"]*)")?[^>]*>(?:[\s\S]*?<figcaption>([\s\S]*?)<\/figcaption>)?[\s\S]*?<\/figure>/gi;
+
+            let cleanContent = htmlContent.replace(figureRegex, (match, layoutClasses, src, alt, caption) => {
+                const id = String(counter++);
+                let layout = 'full-width';
+                if (layoutClasses.includes('float-right')) layout = 'float-right';
+                else if (layoutClasses.includes('float-left')) layout = 'float-left';
+                else if (layoutClasses.includes('centered')) layout = 'centered';
+                else if (layoutClasses.includes('mini')) layout = 'mini';
+
+                inlineImagesMap[id] = {
+                    id: id,
+                    src: src,
+                    layout: layout,
+                    caption: (caption || '').trim(),
+                    alt: (alt || '').trim()
+                };
+
+                return `\n[FOTO_${id}]\n`;
+            });
+
+            return cleanContent;
         }
 
         function setupLiveListeners() {
@@ -1889,7 +2095,8 @@
             const img = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
             const imgCaption = document.getElementById('article-image-caption').value.trim();
             const teaser = document.getElementById('article-teaser').value.trim() || 'Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...';
-            const content = document.getElementById('article-content').value.trim() || '<p>Hier erscheint der vollständige Artikeltext...</p>';
+            const rawContent = document.getElementById('article-content').value.trim() || '<p>Hier erscheint der vollständige Artikeltext...</p>';
+            const compiledContent = compileContentWithImages(rawContent);
 
             // 1. Update Card Preview
             document.getElementById('prev-title').textContent = title;
@@ -1911,7 +2118,7 @@
             document.getElementById('prev-full-cat').textContent = categoryLabels[cat] || cat;
             document.getElementById('prev-full-title').textContent = title;
             document.getElementById('prev-full-meta').textContent = `${formattedDate} • Verfasser: ${author}`;
-            document.getElementById('prev-full-content').innerHTML = content;
+            document.getElementById('prev-full-content').innerHTML = compiledContent;
             document.getElementById('prev-full-img').src = img;
             
             const prevCaptionEl = document.getElementById('prev-full-img-caption');
@@ -1948,7 +2155,8 @@
             const image = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
             const imageCaption = document.getElementById('article-image-caption').value.trim();
             const teaser = document.getElementById('article-teaser').value.trim();
-            const content = document.getElementById('article-content').value.trim();
+            const rawContent = document.getElementById('article-content').value.trim();
+            const compiledContent = compileContentWithImages(rawContent);
 
             const articleId = editId || `news-${Date.now()}`;
 
@@ -1975,7 +2183,7 @@
                 teaser: { de: teaser, en: teaser },
                 author: author,
                 readTime: readTime,
-                content: { de: content, en: content }
+                content: { de: compiledContent, en: compiledContent }
             };
 
             NewsRepository.saveItem(articleObj);
@@ -2120,7 +2328,11 @@
             document.getElementById('crop-zoom-range').value = Math.round(cropZoom * 100);
 
             document.getElementById('article-teaser').value = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
-            document.getElementById('article-content').value = typeof item.content === 'string' ? item.content : (item.content.de || item.content.en);
+            
+            let contentRaw = typeof item.content === 'string' ? item.content : (item.content.de || item.content.en || '');
+            contentRaw = extractFiguresToInlineImages(contentRaw);
+            document.getElementById('article-content').value = contentRaw;
+            renderInlineImagesManager();
 
             document.getElementById('form-title-heading').innerHTML = '<span>✏</span> Beitrag bearbeiten';
             document.getElementById('btn-submit-article').textContent = '💾 Änderungen speichern';
@@ -2160,6 +2372,10 @@
             document.getElementById('crop-posx-range').value = 50;
             document.getElementById('crop-posy-range').value = 50;
             document.getElementById('crop-zoom-range').value = 100;
+
+            // Reset inline images
+            inlineImagesMap = {};
+            renderInlineImagesManager();
 
             document.getElementById('form-title-heading').innerHTML = '<span>✍</span> Neuen News-Beitrag erstellen';
             document.getElementById('btn-submit-article').textContent = '💾 Artikel jetzt veröffentlichen';
