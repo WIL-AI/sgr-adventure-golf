@@ -147,7 +147,7 @@
     /**
      * Initialize News application
      */
-    function init() {
+    async function init() {
         if (typeof NewsRepository === 'undefined') {
             console.error('NewsRepository not found. Please make sure news-data.js is loaded before news.js.');
             return;
@@ -162,6 +162,18 @@
 
         // Check if URL has #news-ID hash to open directly
         handleUrlHash();
+
+        // Seamless server-side sync in background
+        try {
+            const syncedNews = await NewsRepository.syncFromServer();
+            if (syncedNews && syncedNews.length > 0 && JSON.stringify(syncedNews) !== JSON.stringify(allNews)) {
+                allNews = syncedNews;
+                renderNewsGrid();
+                handleUrlHash();
+            }
+        } catch (e) {
+            console.log('Using local news cache.');
+        }
     }
 
     // DOM Elements

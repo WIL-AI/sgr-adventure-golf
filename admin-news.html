@@ -1462,11 +1462,29 @@
                     </div>
 
                     <!-- Backup & Tools Card -->
-                    <div class="admin-card" style="padding: 16px 20px;">
-                        <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 8px;">Daten-Tools & Backup</h3>
+                    <div class="admin-card" style="padding: 18px 20px; background: #FAF8F5; border: 1.5px solid var(--color-gold);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 8px;">
+                                <span>💾</span> Datenbank-Tools, Backup &amp; Synchronisation
+                            </h3>
+                            <span id="server-sync-indicator" style="font-size: 0.75rem; color: #155724; background: #D4EDDA; padding: 2px 8px; border-radius: var(--radius-pill); font-weight: 700;">🟢 Server-Sync aktiv</span>
+                        </div>
+                        <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 12px; line-height: 1.4;">
+                            Sichern Sie Ihre erstellten News-Beiträge als Backup, exportieren Sie eine fertige <code>news-data.js</code> Datei oder importieren Sie Daten von einer anderen Domain/lokalen Umgebung.
+                        </p>
                         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <button type="button" class="action-icon-btn" onclick="exportNewsJSON()">📥 News als JSON exportieren</button>
-                            <button type="button" class="action-icon-btn delete" onclick="confirmResetDefaults()">↺ Auf Standard-News zurücksetzen</button>
+                            <button type="button" class="action-icon-btn" style="background: #FFFFFF; font-weight: 700; color: var(--color-primary); border-color: var(--color-gold);" onclick="exportNewsJSON()">
+                                📥 JSON-Backup herunterladen
+                            </button>
+                            <button type="button" class="action-icon-btn" style="background: var(--color-primary); color: var(--color-gold-light); font-weight: 700;" onclick="exportNewsDataJS()">
+                                💾 news-data.js Datei exportieren
+                            </button>
+                            <button type="button" class="action-icon-btn" style="background: #FFFFFF; color: #0056b3; border-color: #0056b3; font-weight: 700;" onclick="openImportModal()">
+                                📤 Backup importieren / Wiederherstellen
+                            </button>
+                            <button type="button" class="action-icon-btn delete" onclick="confirmResetDefaults()">
+                                ↺ Auf Standard zurücksetzen
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1610,6 +1628,57 @@
         </div>
     </div>
 
+    <!-- Modal Dialog: Import / Restore News Database -->
+    <div id="import-news-modal" class="inline-modal-backdrop">
+        <div class="inline-modal-card" style="max-width: 650px;">
+            <div class="inline-modal-header">
+                <h3><span>📤</span> News-Datenbank importieren / wiederherstellen</h3>
+                <button type="button" class="inline-modal-close" onclick="closeImportModal()">&times;</button>
+            </div>
+            <div class="inline-modal-body">
+                <p style="font-size: 0.88rem; color: var(--color-charcoal); margin-bottom: 14px; line-height: 1.5;">
+                    Laden Sie eine zuvor exportierte JSON-Datei hoch oder fügen Sie den JSON-Inhalt ein, um Beiträge aus einer anderen Domain oder einem Backup wiederherzustellen.
+                </p>
+
+                <!-- File Dropzone -->
+                <div class="upload-dropzone" id="import-dropzone" style="padding: 24px 16px; margin-bottom: 16px;">
+                    <input type="file" id="import-file-input" accept=".json,application/json" onchange="handleImportFileSelect(event)">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text-main">JSON-Backup hierher ziehen</div>
+                    <div class="upload-text-sub">oder klicken, um eine Datei auszuwählen</div>
+                </div>
+
+                <!-- Text Area Paste Alternative -->
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label class="form-label" for="import-json-text">Oder JSON-Code direkt hier einfügen:</label>
+                    <textarea id="import-json-text" class="form-textarea" rows="5" placeholder='[ { "id": "news-001", "title": { "de": "..." }, ... } ]' style="font-family: monospace; font-size: 0.8rem;"></textarea>
+                </div>
+
+                <!-- Mode Selection -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label class="form-label">Import-Modus:</label>
+                    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.88rem; cursor: pointer;">
+                            <input type="radio" name="import-mode" value="replace" checked>
+                            <strong>Bestehende ersetzen</strong> (Vollständige Wiederherstellung)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.88rem; cursor: pointer;">
+                            <input type="radio" name="import-mode" value="merge">
+                            <strong>Zusammenführen</strong> (Neue hinzufügen, bestehende behalten)
+                        </label>
+                    </div>
+                </div>
+
+                <div id="import-status-msg" style="display: none; padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 16px; font-size: 0.85rem; font-weight: 600;"></div>
+
+                <div class="btn-group" style="justify-content: flex-end; margin-top: 10px;">
+                    <button type="button" class="btn-secondary" style="padding: 9px 18px;" onclick="closeImportModal()">Abbrechen</button>
+                    <button type="button" class="btn-save" style="padding: 9px 24px;" onclick="executeNewsImport()">🚀 Jetzt importieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="news-data.js"></script>
     <script>
@@ -1691,7 +1760,7 @@
             angebote: 'Angebote & Training'
         };
 
-        function initAdmin() {
+        async function initAdmin() {
             // Verify Authentication
             checkAuth();
 
@@ -1699,7 +1768,7 @@
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('article-date').value = today;
 
-            // Load articles
+            // Load local articles first
             currentArticles = NewsRepository.getAll();
 
             renderPresetGrid();
@@ -1709,7 +1778,25 @@
             setupFileUpload();
             setupInlineFileUpload();
             setupCropTool();
+            setupImportDropzone();
             updateLivePreview();
+
+            // Background sync with server
+            try {
+                const serverData = await NewsRepository.syncFromServer();
+                if (serverData && serverData.length > 0) {
+                    currentArticles = serverData;
+                    renderArticlesTable();
+                    const syncInd = document.getElementById('server-sync-indicator');
+                    if (syncInd) {
+                        syncInd.textContent = '🟢 Server-Sync aktiv (' + serverData.length + ' Artikel)';
+                        syncInd.style.background = '#D4EDDA';
+                        syncInd.style.color = '#155724';
+                    }
+                }
+            } catch (e) {
+                console.log('Local mode active');
+            }
         }
 
         // Helper to calculate exact article status
@@ -2911,14 +2998,286 @@
             downloadAnchor.remove();
         }
 
-        // Reset to Defaults
-        function confirmResetDefaults() {
-            if (confirm('Möchten Sie alle News auf die ursprünglichen Standard-Resort-News zurücksetzen? Benutzerdefinierte Änderungen werden überschrieben.')) {
-                NewsRepository.resetToDefault();
-                currentArticles = NewsRepository.getAll();
+        // Export complete news-data.js code file
+        function exportNewsDataJS() {
+            const presetsJson = JSON.stringify(NEWS_IMAGE_PRESETS, null, 4);
+            const articlesJson = JSON.stringify(currentArticles, null, 4);
+
+            const fileContent = `/**
+ * Gut Wissmannshof - News Database & Data Layer
+ * Automatically generated by Wissmannshof Admin Studio on ${new Date().toISOString()}
+ */
+
+const NEWS_IMAGE_PRESETS = ${presetsJson};
+
+const DEFAULT_NEWS = ${articlesJson};
+
+// Storage key
+const NEWS_STORAGE_KEY = 'sgr_resort_news';
+
+/**
+ * News Repository API
+ * Synchronous local access with async server sync, JSON backup & code export.
+ */
+const NewsRepository = {
+    _cached: null,
+
+    getAll: function() {
+        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
+            return this._cached;
+        }
+        try {
+            const stored = localStorage.getItem(NEWS_STORAGE_KEY);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    this._cached = parsed;
+                    return parsed;
+                }
+            }
+        } catch (e) {
+            console.warn('Could not read news from localStorage, using defaults:', e);
+        }
+        this._cached = DEFAULT_NEWS;
+        return DEFAULT_NEWS;
+    },
+
+    syncFromServer: async function() {
+        const endpoints = ['data/news.json', 'api/news.php'];
+        for (const url of endpoints) {
+            try {
+                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        this._cached = data;
+                        try {
+                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(data));
+                        } catch (e) {}
+                        return data;
+                    }
+                }
+            } catch (err) {}
+        }
+        return this.getAll();
+    },
+
+    saveAll: function(newsList) {
+        if (!Array.isArray(newsList)) return false;
+        this._cached = newsList;
+        try {
+            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(newsList));
+        } catch (e) {
+            console.error('Failed to save news to localStorage:', e);
+        }
+
+        try {
+            fetch('api/news.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newsList)
+            }).then(r => r.json()).then(res => {
+                if (res.success) {
+                    console.log('✅ News successfully synchronized with server storage (data/news.json)');
+                }
+            }).catch(() => {});
+        } catch (e) {}
+
+        return true;
+    },
+
+    getById: function(id) {
+        const list = this.getAll();
+        return list.find(item => item.id === id) || null;
+    },
+
+    saveItem: function(item) {
+        const list = [...this.getAll()];
+        const index = list.findIndex(n => n.id === item.id);
+        if (index >= 0) {
+            list[index] = item;
+        } else {
+            list.unshift(item);
+        }
+        this.saveAll(list);
+        return item;
+    },
+
+    deleteItem: function(id) {
+        const list = this.getAll();
+        const filtered = list.filter(item => item.id !== id);
+        this.saveAll(filtered);
+        return filtered;
+    },
+
+    resetToDefault: function() {
+        this.saveAll(DEFAULT_NEWS);
+        return DEFAULT_NEWS;
+    },
+
+    getPresets: function() {
+        return NEWS_IMAGE_PRESETS;
+    },
+
+    importData: function(data, overwrite = true) {
+        let items = data;
+        if (typeof data === 'string') {
+            try {
+                items = JSON.parse(data);
+            } catch (e) {
+                throw new Error('Ungültiges JSON-Format: ' + e.message);
+            }
+        }
+        if (!Array.isArray(items)) {
+            throw new Error('Import-Daten müssen ein Array von News-Artikeln sein.');
+        }
+
+        let result;
+        if (overwrite) {
+            result = items;
+        } else {
+            const current = this.getAll();
+            const existingIds = new Set(current.map(i => i.id));
+            const newItems = items.filter(i => !existingIds.has(i.id));
+            result = [...newItems, ...current];
+        }
+
+        this.saveAll(result);
+        return result;
+    }
+};
+
+window.NewsRepository = NewsRepository;
+window.DEFAULT_NEWS = DEFAULT_NEWS;
+window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
+`;
+
+            const blob = new Blob([fileContent], { type: 'text/javascript;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.href = url;
+            downloadAnchor.download = 'news-data.js';
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            URL.revokeObjectURL(url);
+            showToast('news-data.js erfolgreich generiert & heruntergeladen! 💾');
+        }
+
+        // Import Modal & Handlers
+        let pendingImportData = null;
+
+        function openImportModal() {
+            pendingImportData = null;
+            document.getElementById('import-json-text').value = '';
+            document.getElementById('import-file-input').value = '';
+            const statusMsg = document.getElementById('import-status-msg');
+            statusMsg.style.display = 'none';
+            document.getElementById('import-news-modal').classList.add('show');
+        }
+
+        function closeImportModal() {
+            document.getElementById('import-news-modal').classList.remove('show');
+        }
+
+        function setupImportDropzone() {
+            const dropzone = document.getElementById('import-dropzone');
+            if (!dropzone) return;
+
+            ['dragenter', 'dragover'].forEach(name => {
+                dropzone.addEventListener(name, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(name => {
+                dropzone.addEventListener(name, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('dragover');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                const files = e.dataTransfer.files;
+                if (files && files.length > 0) {
+                    handleImportFile(files[0]);
+                }
+            });
+        }
+
+        function handleImportFileSelect(e) {
+            if (e.target.files && e.target.files.length > 0) {
+                handleImportFile(e.target.files[0]);
+            }
+        }
+
+        function handleImportFile(file) {
+            const reader = new FileReader();
+            const statusMsg = document.getElementById('import-status-msg');
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (Array.isArray(parsed)) {
+                        pendingImportData = parsed;
+                        statusMsg.style.display = 'block';
+                        statusMsg.style.background = '#D4EDDA';
+                        statusMsg.style.color = '#155724';
+                        statusMsg.textContent = `✓ Datei „${file.name}“ bereit: ${parsed.length} News-Artikel gefunden. Klicken Sie auf „Jetzt importieren“.`;
+                    } else {
+                        throw new Error('Datei enthält kein Array von News-Artikeln.');
+                    }
+                } catch (err) {
+                    statusMsg.style.display = 'block';
+                    statusMsg.style.background = '#F8D7DA';
+                    statusMsg.style.color = '#721C24';
+                    statusMsg.textContent = `❌ Fehler beim Lesen der JSON-Datei: ${err.message}`;
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function executeNewsImport() {
+            const statusMsg = document.getElementById('import-status-msg');
+            const textVal = document.getElementById('import-json-text').value.trim();
+            const mode = document.querySelector('input[name="import-mode"]:checked').value;
+            const overwrite = (mode === 'replace');
+
+            let dataToImport = pendingImportData;
+
+            if (!dataToImport && textVal) {
+                try {
+                    dataToImport = JSON.parse(textVal);
+                } catch (err) {
+                    statusMsg.style.display = 'block';
+                    statusMsg.style.background = '#F8D7DA';
+                    statusMsg.style.color = '#721C24';
+                    statusMsg.textContent = `❌ Ungültiger JSON-Text: ${err.message}`;
+                    return;
+                }
+            }
+
+            if (!dataToImport || !Array.isArray(dataToImport) || dataToImport.length === 0) {
+                statusMsg.style.display = 'block';
+                statusMsg.style.background = '#F8D7DA';
+                statusMsg.style.color = '#721C24';
+                statusMsg.textContent = '❌ Keine gültigen News-Daten zum Importieren gefunden. Bitte Datei auswählen oder JSON einfügen.';
+                return;
+            }
+
+            try {
+                const updated = NewsRepository.importData(dataToImport, overwrite);
+                currentArticles = updated;
                 renderArticlesTable();
-                resetForm();
-                showToast('News erfolgreich auf Standard zurückgesetzt!');
+                closeImportModal();
+                showToast(`🚀 Erfolgreich ${dataToImport.length} Artikel importiert und synchronisiert!`);
+            } catch (err) {
+                statusMsg.style.display = 'block';
+                statusMsg.style.background = '#F8D7DA';
+                statusMsg.style.color = '#721C24';
+                statusMsg.textContent = `❌ Import fehlgeschlagen: ${err.message}`;
             }
         }
 

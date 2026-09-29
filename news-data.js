@@ -343,31 +343,83 @@ const NEWS_STORAGE_KEY = 'sgr_resort_news';
 
 /**
  * News Repository API
+ * Synchronous local access with async server sync, JSON backup & code export.
  */
 const NewsRepository = {
+    _cached: null,
+
     getAll: function() {
+        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
+            return this._cached;
+        }
         try {
             const stored = localStorage.getItem(NEWS_STORAGE_KEY);
             if (stored) {
                 const parsed = JSON.parse(stored);
                 if (Array.isArray(parsed) && parsed.length > 0) {
+                    this._cached = parsed;
                     return parsed;
                 }
             }
         } catch (e) {
             console.warn('Could not read news from localStorage, using defaults:', e);
         }
+        this._cached = DEFAULT_NEWS;
         return DEFAULT_NEWS;
     },
 
+    /**
+     * Attempts to fetch the latest news dataset from data/news.json or api/news.php
+     * Returns a Promise resolving to the news array.
+     */
+    syncFromServer: async function() {
+        // First try api/news.php, then fallback to data/news.json
+        const endpoints = ['data/news.json', 'api/news.php'];
+        for (const url of endpoints) {
+            try {
+                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        this._cached = data;
+                        try {
+                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(data));
+                        } catch (e) {}
+                        return data;
+                    }
+                }
+            } catch (err) {
+                // Endpoint unavailable (e.g. static/local environment)
+            }
+        }
+        return this.getAll();
+    },
+
     saveAll: function(newsList) {
+        if (!Array.isArray(newsList)) return false;
+        this._cached = newsList;
         try {
             localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(newsList));
-            return true;
         } catch (e) {
             console.error('Failed to save news to localStorage:', e);
-            return false;
         }
+
+        // Asynchronously push to server API if reachable
+        try {
+            fetch('api/news.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newsList)
+            }).then(r => r.json()).then(res => {
+                if (res.success) {
+                    console.log('✅ News successfully synchronized with server storage (data/news.json)');
+                }
+            }).catch(() => {
+                // PHP API not reachable or static host
+            });
+        } catch (e) {}
+
+        return true;
     },
 
     getById: function(id) {
@@ -376,7 +428,7 @@ const NewsRepository = {
     },
 
     saveItem: function(item) {
-        const list = this.getAll();
+        const list = [...this.getAll()];
         const index = list.findIndex(n => n.id === item.id);
         if (index >= 0) {
             list[index] = item;
@@ -401,6 +453,36 @@ const NewsRepository = {
 
     getPresets: function() {
         return NEWS_IMAGE_PRESETS;
+    },
+
+    /**
+     * Import JSON string or array, merge/overwrite and persist.
+     */
+    importData: function(data, overwrite = true) {
+        let items = data;
+        if (typeof data === 'string') {
+            try {
+                items = JSON.parse(data);
+            } catch (e) {
+                throw new Error('Ungültiges JSON-Format: ' + e.message);
+            }
+        }
+        if (!Array.isArray(items)) {
+            throw new Error('Import-Daten müssen ein Array von News-Artikeln sein.');
+        }
+
+        let result;
+        if (overwrite) {
+            result = items;
+        } else {
+            const current = this.getAll();
+            const existingIds = new Set(current.map(i => i.id));
+            const newItems = items.filter(i => !existingIds.has(i.id));
+            result = [...newItems, ...current];
+        }
+
+        this.saveAll(result);
+        return result;
     }
 };
 
