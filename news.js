@@ -16,7 +16,7 @@
     const I18N = {
         de: {
             heroBadge: 'Resort Neuigkeiten & Einblicke',
-            heroTitle: 'Aktuelles aus dem <span>Gut Wissmannshof</span>',
+            heroTitle: 'Aktuelles aus dem<br><span class="hero-title-highlight">Gut Wissmannshof</span>',
             heroLead: 'Entdecken Sie die neuesten Nachrichten, Turnier-Highlights, Platz-Updates und exklusive Angebote unseres 27-Loch Golf Resorts.',
             allCategories: 'Alle',
             catTurniere: 'Turniere & Events',
@@ -38,7 +38,7 @@
         },
         en: {
             heroBadge: 'Resort News & Insights',
-            heroTitle: 'Latest News from <span>Gut Wissmannshof</span>',
+            heroTitle: 'Latest News from<br><span class="hero-title-highlight">Gut Wissmannshof</span>',
             heroLead: 'Discover the latest updates, tournament highlights, course renovations, and exclusive offers from our 27-hole golf resort.',
             allCategories: 'All',
             catTurniere: 'Tournaments & Events',
@@ -124,6 +124,22 @@
         });
 
         return formattedBlocks.filter(Boolean).join('\n\n');
+    }
+
+    /**
+     * Automatically calculates estimated read time based on word count (~190 words/min)
+     */
+    function calculateReadTime(textOrHtml, lang) {
+        const t = I18N[lang] || I18N.de;
+        if (!textOrHtml) return `2 ${t.minRead}`;
+        const cleanText = String(textOrHtml)
+            .replace(/<[^>]*>/g, ' ')
+            .replace(/\[(FOTO|BILD)[^\]]*\]/gi, ' ')
+            .replace(/[#*_~`]/g, ' ')
+            .trim();
+        const words = cleanText.split(/\s+/).filter(w => w.length > 0).length;
+        const minutes = Math.max(1, Math.ceil(words / 190));
+        return `${minutes} ${t.minRead}`;
     }
 
     /**
@@ -358,6 +374,13 @@
                    author.includes(currentSearchTerm);
         });
 
+        // Sort articles chronologically (newest date first)
+        filtered.sort((a, b) => {
+            const timeA = a.date ? new Date(a.date).getTime() : 0;
+            const timeB = b.date ? new Date(b.date).getTime() : 0;
+            return timeB - timeA;
+        });
+
         if (filtered.length === 0) {
             elements.grid.innerHTML = `
                 <div class="news-empty-state">
@@ -378,6 +401,10 @@
             const categoryBadge = getLoc(item.categoryLabel, currentLang) || item.category;
             const dateStr = formatDate(item.date, currentLang);
             const isFeatured = item.featured && index === 0 && currentCategory === 'all' && !currentSearchTerm;
+            
+            const contentText = getLoc(item.content, currentLang);
+            const autoReadTime = calculateReadTime((contentText ? contentText + ' ' : '') + teaser, currentLang);
+            const readTimeStr = item.readTime ? item.readTime : autoReadTime;
 
             html += `
                 <article class="news-card ${isFeatured ? 'featured' : ''}" data-id="${item.id}" onclick="window.NewsController.openArticle('${item.id}')">
@@ -389,7 +416,7 @@
                     <div class="news-card-body">
                         <div class="news-card-meta">
                             <span class="news-date">📅 ${dateStr}</span>
-                            ${item.readTime ? `<span class="news-read-time">⏱️ ${item.readTime}</span>` : ''}
+                            <span class="news-read-time">⏱️ ${readTimeStr}</span>
                         </div>
                         <h3 class="news-card-title">${title}</h3>
                         <p class="news-card-teaser">${teaser}</p>
@@ -457,7 +484,8 @@
             elements.modalCategory.className = `modal-category-badge cat-${article.category}`;
         }
         if (elements.modalDate) elements.modalDate.textContent = dateStr;
-        if (elements.modalReadTime) elements.modalReadTime.textContent = article.readTime || `3 ${t.minRead}`;
+        const autoModalReadTime = calculateReadTime((contentHtml ? contentHtml + ' ' : '') + getLoc(article.teaser, currentLang), currentLang);
+        if (elements.modalReadTime) elements.modalReadTime.textContent = article.readTime || autoModalReadTime;
         if (elements.modalTitle) elements.modalTitle.textContent = title;
         if (elements.modalAuthor) elements.modalAuthor.textContent = article.author ? `Verfasser: ${article.author}` : '';
         if (elements.modalContent) elements.modalContent.innerHTML = formatArticleContent(contentHtml);

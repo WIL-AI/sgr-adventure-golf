@@ -1026,8 +1026,12 @@
                                 <input type="text" id="article-author" class="form-input" placeholder="z. B. Clubsekretariat, Head-Greenkeeper" value="Clubsekretariat Gut Wissmannshof">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="article-readtime">Lesezeit</label>
-                                <input type="text" id="article-readtime" class="form-input" placeholder="z. B. 3 Min." value="3 Min.">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                    <label class="form-label" for="article-readtime" style="margin-bottom: 0;">Lesezeit</label>
+                                    <span id="readtime-calc-badge" style="font-size: 0.72rem; color: #155724; background: #D4EDDA; padding: 2px 7px; border-radius: var(--radius-pill); font-weight: 700;">⚡ Automatisch berechnet</span>
+                                </div>
+                                <input type="text" id="article-readtime" class="form-input" placeholder="z. B. 2 Min." value="2 Min.">
+                                <div class="form-hint">Wird dynamisch anhand der Wortanzahl (~190 Wörter/Min.) geschätzt.</div>
                             </div>
                         </div>
 
@@ -2186,6 +2190,21 @@
             return cleanContent;
         }
 
+        let isReadTimeManuallyEdited = false;
+
+        // Calculates estimated read time from text (~190 words per minute)
+        function calculateReadTime(text) {
+            if (!text) return '1 Min.';
+            const clean = String(text)
+                .replace(/<[^>]*>/g, ' ')
+                .replace(/\[(FOTO|BILD)[^\]]*\]/gi, ' ')
+                .replace(/[#*_~`]/g, ' ')
+                .trim();
+            const words = clean.split(/\s+/).filter(w => w.length > 0).length;
+            const minutes = Math.max(1, Math.ceil(words / 190));
+            return `${minutes} Min.`;
+        }
+
         function setupLiveListeners() {
             const titleInput = document.getElementById('article-title');
             const categorySelect = document.getElementById('article-category');
@@ -2205,6 +2224,37 @@
                     el.addEventListener('change', updateLivePreview);
                 }
             });
+
+            // Auto calculate read time based on teaser + content
+            function autoCalculateReadTime() {
+                if (!isReadTimeManuallyEdited && readTimeInput) {
+                    const teaserVal = teaserInput.value.trim();
+                    const contentVal = contentTextarea.value.trim();
+                    const computed = calculateReadTime((teaserVal ? teaserVal + ' ' : '') + contentVal);
+                    readTimeInput.value = computed;
+                    const badge = document.getElementById('readtime-calc-badge');
+                    if (badge) {
+                        badge.textContent = '⚡ Automatisch berechnet';
+                        badge.style.background = '#D4EDDA';
+                        badge.style.color = '#155724';
+                    }
+                }
+            }
+
+            if (readTimeInput) {
+                readTimeInput.addEventListener('input', function() {
+                    isReadTimeManuallyEdited = true;
+                    const badge = document.getElementById('readtime-calc-badge');
+                    if (badge) {
+                        badge.textContent = '✏️ Manuell angepasst';
+                        badge.style.background = '#EAE6DB';
+                        badge.style.color = 'var(--color-primary)';
+                    }
+                });
+            }
+
+            teaserInput.addEventListener('input', autoCalculateReadTime);
+            contentTextarea.addEventListener('input', autoCalculateReadTime);
 
             teaserInput.addEventListener('input', function() {
                 const len = this.value.length;
@@ -2437,7 +2487,26 @@
             document.getElementById('article-publish-from').value = item.publishFrom || '';
             document.getElementById('article-publish-until').value = item.publishUntil || '';
             document.getElementById('article-author').value = item.author || '';
-            document.getElementById('article-readtime').value = item.readTime || '';
+            if (item.readTime) {
+                isReadTimeManuallyEdited = true;
+                document.getElementById('article-readtime').value = item.readTime;
+                const badge = document.getElementById('readtime-calc-badge');
+                if (badge) {
+                    badge.textContent = '✏️ Gespeichert';
+                    badge.style.background = '#EAE6DB';
+                    badge.style.color = 'var(--color-primary)';
+                }
+            } else {
+                isReadTimeManuallyEdited = false;
+                const autoT = calculateReadTime((item.teaser?.de || item.teaser || '') + ' ' + (item.content?.de || item.content || ''));
+                document.getElementById('article-readtime').value = autoT;
+                const badge = document.getElementById('readtime-calc-badge');
+                if (badge) {
+                    badge.textContent = '⚡ Automatisch berechnet';
+                    badge.style.background = '#D4EDDA';
+                    badge.style.color = '#155724';
+                }
+            }
             
             const imgVal = item.image || '';
             document.getElementById('article-image').value = imgVal;
@@ -2500,7 +2569,16 @@
             document.getElementById('article-publish-from').value = '';
             document.getElementById('article-publish-until').value = '';
             document.getElementById('article-author').value = 'Clubsekretariat Gut Wissmannshof';
-            document.getElementById('article-readtime').value = '3 Min.';
+            
+            isReadTimeManuallyEdited = false;
+            document.getElementById('article-readtime').value = '2 Min.';
+            const badge = document.getElementById('readtime-calc-badge');
+            if (badge) {
+                badge.textContent = '⚡ Automatisch berechnet';
+                badge.style.background = '#D4EDDA';
+                badge.style.color = '#155724';
+            }
+
             document.getElementById('article-image-caption').value = '';
             
             // Reset crop
