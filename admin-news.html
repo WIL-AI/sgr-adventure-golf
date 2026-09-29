@@ -1302,7 +1302,7 @@
     <div id="inline-img-modal" class="inline-modal-backdrop">
         <div class="inline-modal-card">
             <div class="inline-modal-header">
-                <h3><span>🖼️</span> Bild in den Artikeltext einfügen</h3>
+                <h3 id="inline-modal-title"><span>🖼️</span> Bild in den Artikeltext einfügen</h3>
                 <button type="button" class="inline-modal-close" onclick="closeInlineImageModal()">&times;</button>
             </div>
             <div class="inline-modal-body">
@@ -1391,7 +1391,7 @@
 
                 <div class="btn-group" style="margin-top: 18px; justify-content: flex-end;">
                     <button type="button" class="btn-secondary" style="padding: 9px 18px;" onclick="closeInlineImageModal()">Abbrechen</button>
-                    <button type="button" class="btn-save" style="padding: 9px 24px;" onclick="insertConfiguredInlineImage()">✨ In den Artikel einfügen</button>
+                    <button type="button" class="btn-save" id="btn-save-inline-img" style="padding: 9px 24px;" onclick="saveConfiguredInlineImage()">✨ In den Artikel einfügen</button>
                 </div>
             </div>
         </div>
@@ -1895,13 +1895,51 @@
             if (element) element.classList.add('active');
         }
 
-        function openInlineImageModal() {
-            document.getElementById('inline-img-modal').classList.add('show');
-            document.getElementById('inline-preview-img').src = inlineSelectedImage;
+        let currentEditingInlineImageId = null;
+
+        function openInlineImageModal(editId = null) {
+            currentEditingInlineImageId = editId;
+            const modal = document.getElementById('inline-img-modal');
+            const titleEl = document.getElementById('inline-modal-title');
+            const btnSave = document.getElementById('btn-save-inline-img');
+            const captionInput = document.getElementById('inline-img-caption');
+
+            if (editId && inlineImagesMap[editId]) {
+                const img = inlineImagesMap[editId];
+                titleEl.innerHTML = `<span>✏️</span> Foto <strong>[FOTO_${editId}]</strong> &amp; Bildunterschrift bearbeiten`;
+                btnSave.textContent = `💾 Änderungen für [FOTO_${editId}] speichern`;
+                
+                captionInput.value = img.caption || '';
+                document.getElementById('inline-preview-caption-text').textContent = img.caption || 'Bildkommentar / Unterschrift';
+                
+                inlineSelectedImage = img.src;
+                document.getElementById('inline-preview-img').src = img.src;
+                document.getElementById('inline-image-src').value = img.src;
+
+                inlineSelectedLayout = img.layout || 'full-width';
+                document.querySelectorAll('.layout-option-card').forEach(el => {
+                    el.classList.toggle('active', el.getAttribute('data-layout') === inlineSelectedLayout);
+                });
+            } else {
+                currentEditingInlineImageId = null;
+                titleEl.innerHTML = `<span>🖼️</span> Bild in den Artikeltext einfügen`;
+                btnSave.textContent = `✨ In den Artikel einfügen`;
+                
+                captionInput.value = '';
+                document.getElementById('inline-preview-caption-text').textContent = 'Bildkommentar / Unterschrift';
+                
+                inlineSelectedLayout = 'full-width';
+                document.querySelectorAll('.layout-option-card').forEach(el => {
+                    el.classList.toggle('active', el.getAttribute('data-layout') === 'full-width');
+                });
+            }
+
+            modal.classList.add('show');
         }
 
         function closeInlineImageModal() {
             document.getElementById('inline-img-modal').classList.remove('show');
+            currentEditingInlineImageId = null;
         }
 
         // Inline Images State & Placeholder Manager
@@ -1922,29 +1960,44 @@
             return String(i);
         }
 
-        function insertConfiguredInlineImage() {
+        function saveConfiguredInlineImage() {
             const caption = document.getElementById('inline-img-caption').value.trim();
             const altText = caption || 'Gut Wissmannshof Impression';
             const imgSrc = inlineSelectedImage || 'assets/gallery_golden_hour_tree_lake.jpg';
             const layout = inlineSelectedLayout || 'full-width';
 
-            const imgId = getNextInlineImageId();
-            inlineImagesMap[imgId] = {
-                id: imgId,
-                src: imgSrc,
-                layout: layout,
-                caption: caption,
-                alt: altText
-            };
+            if (currentEditingInlineImageId && inlineImagesMap[currentEditingInlineImageId]) {
+                // Update existing inline image
+                inlineImagesMap[currentEditingInlineImageId].caption = caption;
+                inlineImagesMap[currentEditingInlineImageId].alt = altText;
+                inlineImagesMap[currentEditingInlineImageId].src = imgSrc;
+                inlineImagesMap[currentEditingInlineImageId].layout = layout;
 
-            const placeholder = `\n[FOTO_${imgId}]\n`;
-            const textarea = document.getElementById('article-content');
-            insertAtCursor(textarea, placeholder);
+                closeInlineImageModal();
+                renderInlineImagesManager();
+                updateLivePreview();
+                showToast(`Bildunterschrift & Format für [FOTO_${currentEditingInlineImageId}] aktualisiert! ✓`);
+            } else {
+                // Insert new inline image
+                const imgId = getNextInlineImageId();
+                inlineImagesMap[imgId] = {
+                    id: imgId,
+                    src: imgSrc,
+                    layout: layout,
+                    caption: caption,
+                    alt: altText
+                };
 
-            closeInlineImageModal();
-            renderInlineImagesManager();
-            updateLivePreview();
-            showToast(`Foto als lesbarer Platzhalter [FOTO_${imgId}] im Text platziert! ✨`);
+                const placeholder = `\n[FOTO_${imgId}]\n`;
+                const textarea = document.getElementById('article-content');
+                insertAtCursor(textarea, placeholder);
+
+                closeInlineImageModal();
+                renderInlineImagesManager();
+                updateLivePreview();
+                showToast(`Foto als lesbarer Platzhalter [FOTO_${imgId}] im Text platziert! ✨`);
+            }
+
             switchPreviewMode('full');
         }
 
@@ -1978,7 +2031,7 @@
             keys.forEach(k => {
                 const img = inlineImagesMap[k];
                 const layoutName = layoutLabels[img.layout] || img.layout;
-                const captionStr = img.caption ? `„${img.caption}“` : 'Keine Bildunterschrift';
+                const captionStr = img.caption ? `„${img.caption}“` : '<em>Keine Bildunterschrift</em>';
 
                 html += `
                     <div class="inline-img-item" id="inline-img-item-${k}">
@@ -1991,6 +2044,7 @@
                             </div>
                         </div>
                         <div style="display: flex; gap: 6px; align-items: center;">
+                            <button type="button" class="action-icon-btn edit" onclick="openInlineImageModal('${k}')" title="Bildunterschrift & Format bearbeiten" style="padding: 3px 9px; font-size: 0.75rem;">✏️ Bearbeiten</button>
                             <button type="button" class="action-icon-btn delete" onclick="removeInlineImage('${k}')" title="Bild entfernen" style="padding: 3px 8px; font-size: 0.75rem;">✕ Entfernen</button>
                         </div>
                     </div>
