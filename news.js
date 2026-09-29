@@ -342,17 +342,15 @@
 
             html += `
                 <article class="news-card ${isFeatured ? 'featured' : ''}" data-id="${item.id}" onclick="window.NewsController.openArticle('${item.id}')">
-                    <div class="news-card-image-wrap" style="overflow: hidden; position: relative;">
+                    <div class="news-card-image-wrap">
                         <img src="${item.image || 'assets/hero_bg.jpg'}" alt="${title}" class="news-card-image" loading="lazy" style="object-position: ${item.cropPosX !== undefined ? item.cropPosX : 50}% ${item.cropPosY !== undefined ? item.cropPosY : 50}%; transform: scale(${item.cropZoom !== undefined ? item.cropZoom : 1}); transform-origin: center center;">
-                        <div class="card-badges">
-                            <span class="category-badge cat-${item.category}">${categoryBadge}</span>
-                            ${isFeatured ? `<span class="featured-badge">${t.featuredBadge}</span>` : ''}
-                        </div>
+                        <span class="category-badge cat-${item.category}">${categoryBadge}</span>
+                        ${isFeatured ? `<span class="featured-badge">${t.featuredBadge}</span>` : ''}
                     </div>
                     <div class="news-card-body">
                         <div class="news-card-meta">
-                            <span class="news-date"><i class="icon-calendar"></i> ${dateStr}</span>
-                            ${item.readTime ? `<span class="news-read-time"><i class="icon-clock"></i> ${item.readTime}</span>` : ''}
+                            <span class="news-date">📅 ${dateStr}</span>
+                            ${item.readTime ? `<span class="news-read-time">⏱️ ${item.readTime}</span>` : ''}
                         </div>
                         <h3 class="news-card-title">${title}</h3>
                         <p class="news-card-teaser">${teaser}</p>
