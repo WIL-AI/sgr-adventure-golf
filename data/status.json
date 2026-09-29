@@ -1,0 +1,24 @@
+{
+  "openingHours": {
+    "title": "Öffnungszeiten Shop & Sekretariat",
+    "text": "täglich 08:00 – 18:00 Uhr"
+  },
+  "trolleys": {
+    "status": "erlaubt",
+    "label": "Erlaubt",
+    "note": ""
+  },
+  "carts": {
+    "status": "erlaubt",
+    "label": "Erlaubt",
+    "note": ""
+  },
+  "courseStatus": {
+    "status": "open",
+    "course": "27-Loch regulär geöffnet",
+    "greens": "Sommergrüns",
+    "note": ""
+  },
+  "lastUpdated": "2026-09-29T14:48:00.000Z",
+  "updatedBy": "Admin Studio"
+}

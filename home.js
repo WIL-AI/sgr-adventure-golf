@@ -352,6 +352,11 @@
                 el.placeholder = t[key];
             }
         });
+
+        // Apply live dynamic status on top of i18n
+        if (typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
+            window.StatusRepository.applyToDOM();
+        }
     }
 
     // Set Language handler

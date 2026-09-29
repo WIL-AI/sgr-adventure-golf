@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790682904921">
+    <link rel="stylesheet" href="news.css?v=1790686335215">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -1066,10 +1066,117 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .btn-logout:hover {
-            background: var(--color-danger);
-            color: #FFFFFF;
-            border-color: var(--color-danger);
+        /* ==========================================================================
+           Resort & Course Status Live Management Card
+           ========================================================================== */
+        .status-admin-card {
+            background: #FCFBF7;
+            border: 2px solid var(--color-gold);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+        .status-admin-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        @media (max-width: 1200px) {
+            .status-admin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .status-admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .status-admin-box {
+            background: #FFFFFF;
+            border: 1.5px solid var(--color-card-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+        .status-admin-box:focus-within {
+            border-color: var(--color-gold);
+            box-shadow: 0 4px 12px rgba(184, 150, 62, 0.12);
+        }
+        .preset-chip {
+            background: #F4EDE0;
+            border: 1px solid #D5CEBD;
+            color: var(--color-primary);
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 4px 9px;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .preset-chip:hover {
+            background: var(--color-gold);
+            color: var(--color-primary);
+            border-color: var(--color-gold);
+        }
+        .status-pill-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #D4EDDA;
+            color: #155724;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+        .status-pill-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #FFF3CD;
+            color: #856404;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+        .status-pill-red {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #F8D7DA;
+            color: #721C24;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+        .status-preview-box {
+            background: #FFFFFF;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #EAE6DB;
+        }
+        .status-preview-label {
+            display: block;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #8C827A;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .status-preview-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
     </style>
     <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
@@ -1133,6 +1240,156 @@
     <div class="admin-container">
         <!-- Toast Notification -->
         <div id="toast" class="toast-msg">Beitrag erfolgreich gespeichert! ✓</div>
+
+        <!-- Resort & Course Live Status Management Section -->
+        <div class="status-admin-card" id="status-management-card">
+            <div class="card-header-bar" style="margin-bottom: 16px;">
+                <h2 class="card-title" style="font-size: 1.25rem;">
+                    <span>⛳</span> Live Resort- &amp; Platzstatus (Startseite)
+                </h2>
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span id="status-live-indicator" class="status-pill-green">🟢 Live synchronisiert</span>
+                    <button type="button" class="btn-save" onclick="saveResortStatus()" style="padding: 7px 18px; font-size: 0.88rem;">
+                        💾 Status speichern &amp; veröffentlichen
+                    </button>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;">
+                Verwalten Sie hier die tagesaktuellen Angaben für die 4 Infoboxen auf der Startseite. Änderungen werden sofort gespeichert und live auf der Startseite angezeigt.
+            </p>
+
+            <div class="status-admin-grid">
+                <!-- 1. Öffnungszeiten -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🕒</span> Öffnungszeiten Shop
+                            </label>
+                            <span style="font-size: 0.74rem; color: var(--color-text-muted);">Freitext</span>
+                        </div>
+                        <input type="text" id="status-input-hours" class="form-input" placeholder="z. B. täglich 08:00 – 18:00 Uhr" value="täglich 08:00 – 18:00 Uhr" oninput="updateStatusPreview()">
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 08–18 Uhr')">08–18 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 09–17 Uhr')">09–17 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 07–12 Uhr')">07–12 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('Heute geschlossen')">Geschlossen</button>
+                    </div>
+                </div>
+
+                <!-- 2. Trolleys -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🛞</span> Trolleys
+                            </label>
+                            <span id="trolley-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
+                        </div>
+                        <select id="status-select-trolleys" class="form-select" onchange="updateStatusPreview()">
+                            <option value="erlaubt">🟢 Erlaubt</option>
+                            <option value="eingeschraenkt">🟡 Eingeschränkt</option>
+                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-note-trolleys" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur mit Winterrädern)" oninput="updateStatusPreview()">
+                </div>
+
+                <!-- 3. Carts -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🚗</span> Carts (E-Carts)
+                            </label>
+                            <span id="cart-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
+                        </div>
+                        <select id="status-select-carts" class="form-select" onchange="updateStatusPreview()">
+                            <option value="erlaubt">🟢 Erlaubt</option>
+                            <option value="eingeschraenkt">🟡 Eingeschränkt (90°-Regel)</option>
+                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-note-carts" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur auf Wegen)" oninput="updateStatusPreview()">
+                </div>
+
+                <!-- 4. Platzstatus -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>⛳</span> Platzstatus
+                            </label>
+                            <span id="course-badge-preview" class="status-pill-green">🟢 Geöffnet</span>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px;">
+                            <select id="status-select-course-state" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
+                                <option value="open">🟢 Geöffnet</option>
+                                <option value="partial">🟡 Eingeschränkt</option>
+                                <option value="closed">🔴 Gesperrt</option>
+                            </select>
+                            <select id="status-select-greens" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
+                                <option value="Sommergrüns">Sommergrüns</option>
+                                <option value="Wintergrüns">Wintergrüns</option>
+                                <option value="Bespielbar">Bespielbar</option>
+                            </select>
+                        </div>
+
+                        <select id="status-preset-course" class="form-select" onchange="onCoursePresetSelect()" style="margin-bottom: 8px; font-size: 0.82rem; background: #FAF8F3;">
+                            <option value="">-- Schnellvorlage wählen --</option>
+                            <option value="geöffnet">geöffnet</option>
+                            <option value="27-Loch regulär geöffnet">27-Loch regulär geöffnet</option>
+                            <option value="18-Loch geöffnet (Kurs Gelb & Blau)">18-Loch geöffnet (Gelb & Blau)</option>
+                            <option value="9-Loch geöffnet (Kurs Gelb)">9-Loch geöffnet (Kurs Gelb)</option>
+                            <option value="9-Loch geöffnet (Kurs Blau)">9-Loch geöffnet (Kurs Blau)</option>
+                            <option value="Canyon-Kurs geöffnet">Canyon-Kurs geöffnet</option>
+                            <option value="Aktuell Wintergrüns">Aktuell Wintergrüns</option>
+                            <option value="Witterungsbedingt gesperrt">Witterungsbedingt gesperrt</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-input-course-text" class="form-input" style="font-size: 0.85rem;" placeholder="Anzeigetext Platz (z. B. geöffnet oder 9-Loch...)" value="geöffnet" oninput="updateStatusPreview()">
+                </div>
+            </div>
+
+            <!-- Live Preview Bar of the 4 boxes -->
+            <div style="margin-top: 18px; padding: 14px 18px; background: #F4EDE0; border-radius: var(--radius-md); border: 1px dashed rgba(184, 150, 62, 0.6);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                    <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary);">
+                        🔍 Live-Vorschau der Startseiten-Infoboxen
+                    </span>
+                    <span id="status-last-updated-text" style="font-size: 0.75rem; color: var(--color-text-muted);">
+                        Stand: Zuletzt synchronisiert
+                    </span>
+                </div>
+                <div class="status-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Öffnungszeiten Shop</span>
+                        <span id="prev-val-hours" class="status-preview-val">täglich 08–18 Uhr</span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Trolleys</span>
+                        <span id="prev-val-trolleys" class="status-preview-val">
+                            <span class="status-dot-green"></span> erlaubt
+                        </span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Carts</span>
+                        <span id="prev-val-carts" class="status-preview-val">
+                            <span class="status-dot-green"></span> erlaubt
+                        </span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Platzstatus</span>
+                        <span id="prev-val-course" class="status-preview-val">
+                            <span class="status-dot-green"></span> geöffnet
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="admin-studio">
             <!-- Left: Editor Form -->
@@ -1689,7 +1946,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="news-data.js?v=1790682904921"></script>
+    <script src="status-data.js?v=1790686335215"></script>
+    <script src="news-data.js?v=1790686335215"></script>
     <script>
         // Security Password Protection
         const BACKEND_PASSWORD = 'Sgr2026#';
@@ -1780,6 +2038,9 @@
             // Load local articles first
             currentArticles = NewsRepository.getAll();
 
+            // Initialize Resort & Course Live Status Module
+            initResortStatusAdmin();
+
             renderPresetGrid();
             renderInlinePresetGrid();
             renderArticlesTable();
@@ -1806,6 +2067,235 @@
             } catch (e) {
                 console.log('Local mode active');
             }
+        }
+
+        // ==========================================================================
+        // Resort & Course Live Status Administration Controller
+        // ==========================================================================
+        function initResortStatusAdmin() {
+            if (typeof StatusRepository === 'undefined') return;
+            const s = StatusRepository.getStatus();
+            if (s) {
+                populateStatusForm(s);
+            }
+
+            // Sync with server
+            StatusRepository.syncFromServer().then(serverStatus => {
+                if (serverStatus) {
+                    populateStatusForm(serverStatus);
+                    const ind = document.getElementById('status-live-indicator');
+                    if (ind) {
+                        ind.textContent = '🟢 Server-Sync aktiv';
+                        ind.className = 'status-pill-green';
+                    }
+                }
+            }).catch(() => {});
+        }
+
+        function populateStatusForm(s) {
+            if (!s) return;
+            if (s.openingHours && s.openingHours.text) {
+                const el = document.getElementById('status-input-hours');
+                if (el) el.value = s.openingHours.text;
+            }
+            if (s.trolleys) {
+                const sel = document.getElementById('status-select-trolleys');
+                if (sel && s.trolleys.status) sel.value = s.trolleys.status;
+                const note = document.getElementById('status-note-trolleys');
+                if (note) note.value = s.trolleys.note || '';
+            }
+            if (s.carts) {
+                const sel = document.getElementById('status-select-carts');
+                if (sel && s.carts.status) sel.value = s.carts.status;
+                const note = document.getElementById('status-note-carts');
+                if (note) note.value = s.carts.note || '';
+            }
+            if (s.courseStatus) {
+                const state = document.getElementById('status-select-course-state');
+                if (state && s.courseStatus.status) state.value = s.courseStatus.status;
+                const greens = document.getElementById('status-select-greens');
+                if (greens && s.courseStatus.greens) greens.value = s.courseStatus.greens;
+                const txt = document.getElementById('status-input-course-text');
+                if (txt && s.courseStatus.course) txt.value = s.courseStatus.course;
+            }
+            if (s.lastUpdated) {
+                const dateEl = document.getElementById('status-last-updated-text');
+                if (dateEl) {
+                    try {
+                        const d = new Date(s.lastUpdated);
+                        dateEl.textContent = 'Stand: ' + d.toLocaleDateString('de-DE') + ', ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+                    } catch (e) {
+                        dateEl.textContent = 'Stand: ' + s.lastUpdated;
+                    }
+                }
+            }
+            updateStatusPreview();
+        }
+
+        function setStatusHours(txt) {
+            const el = document.getElementById('status-input-hours');
+            if (el) {
+                el.value = txt;
+                updateStatusPreview();
+            }
+        }
+
+        function onCoursePresetSelect() {
+            const preset = document.getElementById('status-preset-course').value;
+            if (!preset) return;
+            const txt = document.getElementById('status-input-course-text');
+            if (txt) txt.value = preset;
+
+            const state = document.getElementById('status-select-course-state');
+            const greens = document.getElementById('status-select-greens');
+
+            if (preset.includes('gesperrt')) {
+                if (state) state.value = 'closed';
+            } else if (preset.includes('9-Loch') || preset.includes('Wintergrüns')) {
+                if (state) state.value = 'partial';
+                if (preset.includes('Wintergrüns') && greens) greens.value = 'Wintergrüns';
+            } else {
+                if (state) state.value = 'open';
+                if (greens) greens.value = 'Sommergrüns';
+            }
+            updateStatusPreview();
+        }
+
+        function updateStatusPreview() {
+            // Hours
+            const hoursVal = (document.getElementById('status-input-hours') || {}).value || 'täglich 08–18 Uhr';
+            const prevHours = document.getElementById('prev-val-hours');
+            if (prevHours) prevHours.textContent = hoursVal;
+
+            // Trolleys
+            const trolleyStatus = (document.getElementById('status-select-trolleys') || {}).value || 'erlaubt';
+            const trolleyNote = (document.getElementById('status-note-trolleys') || {}).value || '';
+            const trolleyBadge = document.getElementById('trolley-badge-preview');
+            const prevTrolleys = document.getElementById('prev-val-trolleys');
+
+            let trolleyPill = 'status-pill-green';
+            let trolleyDot = 'status-dot-green';
+            let trolleyLabel = 'Erlaubt';
+
+            if (trolleyStatus === 'eingeschraenkt') {
+                trolleyPill = 'status-pill-orange';
+                trolleyDot = 'status-dot-orange';
+                trolleyLabel = 'Eingeschränkt';
+            } else if (trolleyStatus === 'nicht_gestattet') {
+                trolleyPill = 'status-pill-red';
+                trolleyDot = 'status-dot-red';
+                trolleyLabel = 'Nicht gestattet';
+            }
+
+            if (trolleyBadge) {
+                trolleyBadge.className = trolleyPill;
+                trolleyBadge.textContent = trolleyLabel;
+            }
+            if (prevTrolleys) {
+                const noteHtml = trolleyNote ? ` <small style="font-size:0.8em;opacity:0.85">(${trolleyNote})</small>` : '';
+                prevTrolleys.innerHTML = `<span class="${trolleyDot}"></span> ${trolleyLabel.toLowerCase()}${noteHtml}`;
+            }
+
+            // Carts
+            const cartStatus = (document.getElementById('status-select-carts') || {}).value || 'erlaubt';
+            const cartNote = (document.getElementById('status-note-carts') || {}).value || '';
+            const cartBadge = document.getElementById('cart-badge-preview');
+            const prevCarts = document.getElementById('prev-val-carts');
+
+            let cartPill = 'status-pill-green';
+            let cartDot = 'status-dot-green';
+            let cartLabel = 'Erlaubt';
+
+            if (cartStatus === 'eingeschraenkt') {
+                cartPill = 'status-pill-orange';
+                cartDot = 'status-dot-orange';
+                cartLabel = 'Eingeschränkt';
+            } else if (cartStatus === 'nicht_gestattet') {
+                cartPill = 'status-pill-red';
+                cartDot = 'status-dot-red';
+                cartLabel = 'Nicht gestattet';
+            }
+
+            if (cartBadge) {
+                cartBadge.className = cartPill;
+                cartBadge.textContent = cartLabel;
+            }
+            if (prevCarts) {
+                const noteHtml = cartNote ? ` <small style="font-size:0.8em;opacity:0.85">(${cartNote})</small>` : '';
+                prevCarts.innerHTML = `<span class="${cartDot}"></span> ${cartLabel.toLowerCase()}${noteHtml}`;
+            }
+
+            // Course
+            const courseState = (document.getElementById('status-select-course-state') || {}).value || 'open';
+            const courseText = (document.getElementById('status-input-course-text') || {}).value || 'geöffnet';
+            const greensText = (document.getElementById('status-select-greens') || {}).value || 'Sommergrüns';
+            const courseBadge = document.getElementById('course-badge-preview');
+            const prevCourse = document.getElementById('prev-val-course');
+
+            let coursePill = 'status-pill-green';
+            let courseDot = 'status-dot-green';
+            let courseLabel = 'Geöffnet';
+
+            if (courseState === 'partial') {
+                coursePill = 'status-pill-orange';
+                courseDot = 'status-dot-orange';
+                courseLabel = 'Eingeschränkt';
+            } else if (courseState === 'closed') {
+                coursePill = 'status-pill-red';
+                courseDot = 'status-dot-red';
+                courseLabel = 'Gesperrt';
+            }
+
+            if (courseBadge) {
+                courseBadge.className = coursePill;
+                courseBadge.textContent = courseLabel;
+            }
+            if (prevCourse) {
+                prevCourse.innerHTML = `<span class="${courseDot}"></span> ${courseText}`;
+            }
+        }
+
+        function saveResortStatus() {
+            if (typeof StatusRepository === 'undefined') return;
+
+            const trolleySel = document.getElementById('status-select-trolleys');
+            const cartSel = document.getElementById('status-select-carts');
+            const courseStateSel = document.getElementById('status-select-course-state');
+
+            const statusObj = {
+                openingHours: {
+                    title: "Öffnungszeiten Shop",
+                    text: (document.getElementById('status-input-hours').value || '').trim() || 'täglich 08–18 Uhr'
+                },
+                trolleys: {
+                    status: trolleySel ? trolleySel.value : 'erlaubt',
+                    label: StatusRepository.getStatusLabel(trolleySel ? trolleySel.value : 'erlaubt'),
+                    note: (document.getElementById('status-note-trolleys').value || '').trim()
+                },
+                carts: {
+                    status: cartSel ? cartSel.value : 'erlaubt',
+                    label: StatusRepository.getStatusLabel(cartSel ? cartSel.value : 'erlaubt'),
+                    note: (document.getElementById('status-note-carts').value || '').trim()
+                },
+                courseStatus: {
+                    status: courseStateSel ? courseStateSel.value : 'open',
+                    course: (document.getElementById('status-input-course-text').value || '').trim() || 'geöffnet',
+                    greens: document.getElementById('status-select-greens').value,
+                    note: ''
+                },
+                lastUpdated: new Date().toISOString(),
+                updatedBy: 'Admin Studio'
+            };
+
+            StatusRepository.saveStatus(statusObj);
+
+            const dateEl = document.getElementById('status-last-updated-text');
+            if (dateEl) {
+                const now = new Date();
+                dateEl.textContent = 'Stand: ' + now.toLocaleDateString('de-DE') + ', ' + now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+            }
+
+            showToast('⛳ Resort- & Platzstatus erfolgreich gespeichert & live geschaltet!');
         }
 
         // Helper to calculate exact article status
