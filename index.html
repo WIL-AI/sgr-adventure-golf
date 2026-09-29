@@ -28,23 +28,23 @@
     <div class="top-bar">
         <div class="top-bar-container">
             <div class="top-bar-left">
-                <span class="top-bar-item">
+                <span class="top-bar-item" data-i18n="topBarCourseStatus">
                     <span class="badge-live-dot"></span>
                     <strong>Platz geöffnet</strong> · Sommergrüns
                 </span>
-                <span class="top-bar-item">
+                <span class="top-bar-item" data-i18n="topBarGolfSec">
                     📞 Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a>
                 </span>
-                <span class="top-bar-item">
+                <span class="top-bar-item" data-i18n="topBarHotel">
                     🏨 Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a>
                 </span>
             </div>
             <div class="top-bar-right">
-                <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="top-bar-item" style="color: var(--color-gold-light); font-weight: 700;">
+                <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="top-bar-item" style="color: var(--color-gold-light); font-weight: 700;" data-i18n="topBarPcCad">
                     ⚡ PC CADDIE Startzeiten ↗
                 </a>
-                <a href="gast-info.html" class="top-bar-item">Gast-Info</a>
-                <a href="mitglied-werden.html" class="top-bar-item">Mitglied werden</a>
+                <a href="gast-info.html" class="top-bar-item" data-i18n="topBarGuest">Gast-Info</a>
+                <a href="mitglied-werden.html" class="top-bar-item" data-i18n="topBarMember">Mitglied werden</a>
             </div>
         </div>
     </div>
@@ -57,20 +57,32 @@
             </a>
 
             <nav class="main-nav" id="main-nav">
-                <a href="index.html" class="nav-link active">HOME</a>
-                <a href="golfcourse.html" class="nav-link">Golf Course</a>
-                <a href="adventure-golf.html" class="nav-link">Adventure Golf</a>
-                <a href="mitglied-werden.html" class="nav-link">Mitglied werden</a>
-                <a href="gast-info.html" class="nav-link">Gast-Info</a>
-                <a href="#" class="nav-link" title="Seite wird in Kürze erstellt">Golf Akademie</a>
-                <a href="news.html" class="nav-link">Gut NEWS</a>
-                <a href="karriere.html" class="nav-link">Karriere</a>
-                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link">WEBCAM ↗</a>
+                <a href="index.html" class="nav-link active" data-i18n="navHome">HOME</a>
+                <a href="golfcourse.html" class="nav-link" data-i18n="navCourse">Golf Course</a>
+                <a href="adventure-golf.html" class="nav-link" data-i18n="navAdvGolf">Adventure Golf</a>
+                <a href="mitglied-werden.html" class="nav-link" data-i18n="navMember">Mitglied werden</a>
+                <a href="gast-info.html" class="nav-link" data-i18n="navGuest">Gast-Info</a>
+                <a href="#" class="nav-link" title="Seite wird in Kürze erstellt" data-i18n="navAcademy">Golf Akademie</a>
+                <a href="news.html" class="nav-link" data-i18n="navNews">Gut NEWS</a>
+                <a href="karriere.html" class="nav-link" data-i18n="navCareer">Karriere</a>
+                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link" data-i18n="navWebcam">WEBCAM ↗</a>
             </nav>
 
             <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- Language Switcher -->
+                <div class="lang-switcher" aria-label="Sprachauswahl">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <svg class="flag-icon" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
+                        <span>DE</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+
                 <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="nav-btn-cta">
-                    <span>Startzeit buchen</span>
+                    <span data-i18n="navBookTeeTime">Startzeit buchen</span>
                 </a>
                 <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menü öffnen">
                     <span></span>
@@ -87,31 +99,31 @@
         <section class="home-hero">
             <div class="container">
                 <div class="home-hero-content">
-                    <span class="hero-super-badge">Willkommen im Golfresort</span>
-                    <h1 class="hero-main-title">
+                    <span class="hero-super-badge" data-i18n="heroBadge">Willkommen im Golfresort</span>
+                    <h1 class="hero-main-title" data-i18n="heroTitle">
                         Sport &amp; Golf Resort<br><span class="hero-title-highlight">Gut Wissmannshof</span>
                     </h1>
 
                     <!-- Membership Promo Banner -->
                     <div class="membership-callout-card">
-                        <h4>Mitgliedschaft, wie sie sein sollte.</h4>
-                        <p>Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten</p>
-                        <a href="mitglied-werden.html" class="membership-callout-link">Jetzt Mitglied werden →</a>
+                        <h4 data-i18n="heroMemberTitle">Mitgliedschaft, wie sie sein sollte.</h4>
+                        <p data-i18n="heroMemberText">Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten</p>
+                        <a href="mitglied-werden.html" class="membership-callout-link" data-i18n="heroMemberLink">Jetzt Mitglied werden →</a>
                     </div>
 
                     <!-- Quick Action Buttons -->
                     <div class="hero-actions-grid">
                         <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn-hero-action highlight">
-                            <span>⛳ Startzeit reservieren</span>
+                            <span data-i18n="heroBtnTee">⛳ Startzeit reservieren</span>
                         </a>
                         <a href="golfcourse.html" class="btn-hero-action">
-                            <span>🏌️ Golf spielen</span>
+                            <span data-i18n="heroBtnGolf">🏌️ Golf spielen</span>
                         </a>
                         <a href="https://hotel-wissmannshof.com/hotel/" target="_blank" rel="noopener" class="btn-hero-action">
-                            <span>🏨 Hotel buchen ↗</span>
+                            <span data-i18n="heroBtnHotel">🏨 Hotel buchen ↗</span>
                         </a>
                         <a href="news.html" class="btn-hero-action">
-                            <span>📰 Gut News</span>
+                            <span data-i18n="heroBtnNews">📰 Gut News</span>
                         </a>
                     </div>
                 </div>
@@ -123,13 +135,13 @@
             <div class="container">
                 <div class="news-ticker-inner">
                     <div class="news-ticker-label">
-                        <span class="news-ticker-badge">Aktuell</span>
-                        <span>News aus dem Resort:</span>
+                        <span class="news-ticker-badge" data-i18n="newsTickerBadge">Aktuell</span>
+                        <span data-i18n="newsTickerLabel">News aus dem Resort:</span>
                     </div>
-                    <div class="news-ticker-headline">
+                    <div class="news-ticker-headline" data-i18n="newsTickerHeadline">
                         <a href="news.html">Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof</a>
                     </div>
-                    <a href="news.html" class="news-ticker-all-link">Alle Neuigkeiten &amp; Turniere ansehen →</a>
+                    <a href="news.html" class="news-ticker-all-link" data-i18n="newsTickerLink">Alle Neuigkeiten &amp; Turniere ansehen →</a>
                 </div>
             </div>
         </section>
@@ -138,18 +150,18 @@
         <section class="section-welcome">
             <div class="container">
                 <div class="welcome-inner">
-                    <span class="section-tag">Sport- und Golf-Resort Gut Wissmannshof</span>
-                    <h2 class="section-title">Herzlich Willkommen</h2>
-                    <h3 class="welcome-lead">Golf. Hotel. Genuss. An einem Ort.</h3>
+                    <span class="section-tag" data-i18n="welcomeTag">Sport- und Golf-Resort Gut Wissmannshof</span>
+                    <h2 class="section-title" data-i18n="welcomeTitle">Herzlich Willkommen</h2>
+                    <h3 class="welcome-lead" data-i18n="welcomeLead">Golf. Hotel. Genuss. An einem Ort.</h3>
                     
-                    <p class="welcome-prose">
+                    <p class="welcome-prose" data-i18n="welcomeText">
                         Manche Orte bieten einen Platz. Wir bieten mehr.<br><br>
                         Das <strong>Sport- und Golf-Resort Gut Wissmannshof</strong> verbindet erstklassigen Golfsport mit echtem Hotelkomfort und einer Gastronomie, die den Abend nach der Runde zu einem eigenen Erlebnis macht. Eingebettet in eine Landschaft, die schon beim Anblick entspannt.<br><br>
                         Wer hier ankommt, merkt schnell: Das ist kein gewöhnlicher Golfclub. Das ist ein Ort, an dem alles zusammenpasst.<br><br>
                         Ob Sie Mitglied sind, als Gast vorbeikommen oder Golf gerade erst für sich entdecken – Sie sind willkommen. Immer. Ohne Vorbedingungen.
                     </p>
 
-                    <a href="gast-info.html" class="btn-welcome-cta">Informationen für Gäste →</a>
+                    <a href="gast-info.html" class="btn-welcome-cta" data-i18n="welcomeCta">Informationen für Gäste →</a>
                 </div>
             </div>
         </section>
@@ -161,44 +173,44 @@
                     <!-- Golfshop -->
                     <div class="status-item-card">
                         <span class="status-icon">🕒</span>
-                        <span class="status-title">Öffnungszeiten Shop</span>
-                        <span class="status-val">täglich 08–18 Uhr</span>
+                        <span class="status-title" data-i18n="shopTitle">Öffnungszeiten Shop</span>
+                        <span class="status-val" data-i18n="shopVal">täglich 08–18 Uhr</span>
                     </div>
 
                     <!-- Trolleys -->
                     <div class="status-item-card">
                         <span class="status-icon">🛞</span>
-                        <span class="status-title">Trolleys</span>
-                        <span class="status-val"><span class="status-dot-green"></span> erlaubt</span>
+                        <span class="status-title" data-i18n="trolleyTitle">Trolleys</span>
+                        <span class="status-val" data-i18n="trolleyVal"><span class="status-dot-green"></span> erlaubt</span>
                     </div>
 
                     <!-- Carts -->
                     <div class="status-item-card">
                         <span class="status-icon">🚗</span>
-                        <span class="status-title">Carts</span>
-                        <span class="status-val"><span class="status-dot-green"></span> erlaubt</span>
+                        <span class="status-title" data-i18n="cartTitle">Carts</span>
+                        <span class="status-val" data-i18n="cartVal"><span class="status-dot-green"></span> erlaubt</span>
                     </div>
 
                     <!-- Platzstatus -->
                     <div class="status-item-card">
                         <span class="status-icon">🚩</span>
-                        <span class="status-title">Platzstatus</span>
-                        <span class="status-val"><span class="status-dot-green"></span> geöffnet</span>
+                        <span class="status-title" data-i18n="courseStatusTitle">Platzstatus</span>
+                        <span class="status-val" data-i18n="courseStatusVal"><span class="status-dot-green"></span> geöffnet</span>
                     </div>
 
                     <!-- Wettspielkalender -->
                     <div class="status-item-card">
                         <span class="status-icon">📅</span>
-                        <span class="status-title">Wettspielkalender</span>
-                        <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/2026-Wettspielkalender-SGR-WIHO.pdf" target="_blank" class="status-link-btn">Kalender 2026 ↗</a>
+                        <span class="status-title" data-i18n="calendarTitle">Wettspielkalender</span>
+                        <a href="https://www.wissmannshof.de/wp-content/uploads/2026/05/2026-Wettspielkalender-SGR-WIHO.pdf" target="_blank" class="status-link-btn" data-i18n="calendarLink">Kalender 2026 ↗</a>
                     </div>
 
                     <!-- Restaurant & Wochenkarte -->
                     <div class="status-item-card">
                         <span class="status-icon">🍽️</span>
-                        <span class="status-title">Restaurant</span>
-                        <a href="https://hotel-wissmannshof.com/restaurant/" target="_blank" class="status-val">Tisch reservieren</a>
-                        <a href="https://hotel-wissmannshof.com/wp-content/uploads/restaurant/wochenkarte.pdf" target="_blank" class="status-link-btn">Wochenkarte ↗</a>
+                        <span class="status-title" data-i18n="restaurantTitle">Restaurant</span>
+                        <a href="https://hotel-wissmannshof.com/restaurant/" target="_blank" class="status-val" data-i18n="restaurantVal">Tisch reservieren</a>
+                        <a href="https://hotel-wissmannshof.com/wp-content/uploads/restaurant/wochenkarte.pdf" target="_blank" class="status-link-btn" data-i18n="menuLink">Wochenkarte ↗</a>
                     </div>
                 </div>
             </div>
@@ -208,42 +220,42 @@
         <section class="section-quick-services">
             <div class="container">
                 <div class="section-header-center">
-                    <span class="section-tag">Direkter Service</span>
-                    <h2 class="section-title">Schnellzugriffe</h2>
-                    <p style="color: var(--color-text-muted);">Direkt zum gewünschten Resort-Service</p>
+                    <span class="section-tag" data-i18n="quickTag">Direkter Service</span>
+                    <h2 class="section-title" data-i18n="quickTitle">Schnellzugriffe</h2>
+                    <p style="color: var(--color-text-muted);" data-i18n="quickSubtitle">Direkt zum gewünschten Resort-Service</p>
                 </div>
 
                 <div class="quick-services-grid">
                     <!-- 1. Startzeit reservieren -->
                     <div class="quick-card">
                         <div class="quick-card-icon-wrap">⛳</div>
-                        <h3>Startzeit reservieren</h3>
-                        <p>Reservieren Sie Ihre Abschlagszeit ganz bequem online.</p>
-                        <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn-quick-card">Jetzt reservieren ↗</a>
+                        <h3 data-i18n="quickTeeTitle">Startzeit reservieren</h3>
+                        <p data-i18n="quickTeeText">Reservieren Sie Ihre Abschlagszeit ganz bequem online.</p>
+                        <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn-quick-card" data-i18n="quickTeeBtn">Jetzt reservieren ↗</a>
                     </div>
 
                     <!-- 2. Schnupperkurs buchen -->
                     <div class="quick-card">
                         <div class="quick-card-icon-wrap">🏌️</div>
-                        <h3>Schnupperkurs buchen</h3>
-                        <p>Entdecken Sie Golf mit unseren PGA-Profis auf erstklassigen Übungsanlagen.</p>
-                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt">Mehr erfahren</a>
+                        <h3 data-i18n="quickIntroTitle">Schnupperkurs buchen</h3>
+                        <p data-i18n="quickIntroText">Entdecken Sie Golf mit unseren PGA-Profis auf erstklassigen Übungsanlagen.</p>
+                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt" data-i18n="quickIntroBtn">Mehr erfahren</a>
                     </div>
 
                     <!-- 3. Trainerstunde buchen -->
                     <div class="quick-card">
                         <div class="quick-card-icon-wrap">🎯</div>
-                        <h3>Trainerstunde buchen</h3>
-                        <p>Verbessern Sie Ihr Spiel individuell mit modernster Analysetechnik.</p>
-                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt">Mehr erfahren</a>
+                        <h3 data-i18n="quickLessonTitle">Trainerstunde buchen</h3>
+                        <p data-i18n="quickLessonText">Verbessern Sie Ihr Spiel individuell mit modernster Analysetechnik.</p>
+                        <a href="#" class="btn-quick-card" title="Seite wird in Kürze erstellt" data-i18n="quickLessonBtn">Mehr erfahren</a>
                     </div>
 
                     <!-- 4. Mitglied werden -->
                     <div class="quick-card">
                         <div class="quick-card-icon-wrap">🤝</div>
-                        <h3>Mitglied werden</h3>
-                        <p>Werden Sie Teil der Wissmannshof-Golffamilie ohne Aufnahmegebühr.</p>
-                        <a href="mitglied-werden.html" class="btn-quick-card">Mehr erfahren</a>
+                        <h3 data-i18n="quickMemberTitle">Mitglied werden</h3>
+                        <p data-i18n="quickMemberText">Werden Sie Teil der Wissmannshof-Golffamilie ohne Aufnahmegebühr.</p>
+                        <a href="mitglied-werden.html" class="btn-quick-card" data-i18n="quickMemberBtn">Mehr erfahren</a>
                     </div>
                 </div>
             </div>
@@ -253,9 +265,9 @@
         <section id="golf" class="section-golfcourse">
             <div class="container">
                 <div class="section-header-center">
-                    <span class="section-tag">27-Loch Meisterschaftsanlage</span>
-                    <h2 class="section-title">Unser Golfplatz</h2>
-                    <p style="color: var(--color-text-muted); max-width: 760px; margin: 0 auto;">
+                    <span class="section-tag" data-i18n="courseTag">27-Loch Meisterschaftsanlage</span>
+                    <h2 class="section-title" data-i18n="courseTitle">Unser Golfplatz</h2>
+                    <p style="color: var(--color-text-muted); max-width: 760px; margin: 0 auto;" data-i18n="courseLead">
                         Ein Championship-Platz, der Golferherzen höher schlagen lässt. Perfekt gepflegt, strategisch anspruchsvoll und landschaftlich beeindruckend.
                     </p>
                 </div>
@@ -268,32 +280,32 @@
                     <div class="golf-slide-item active">
                         <img src="assets/gallery_curved_bunker_dunes.jpg" alt="Championship Fairway Gut Wissmannshof" class="golf-slide-img">
                         <div class="golf-slide-caption">
-                            <h4>Spektakuläres Course-Design</h4>
-                            <p>Strategisch platzierte Bunker und wellige Fairways inmitten herrlicher Natur.</p>
+                            <h4 data-i18n="slide1Title">Spektakuläres Course-Design</h4>
+                            <p data-i18n="slide1Text">Strategisch platzierte Bunker und wellige Fairways inmitten herrlicher Natur.</p>
                         </div>
                     </div>
 
                     <div class="golf-slide-item">
                         <img src="assets/gallery_canyon_lake_reflection.jpg" alt="Wasserhindernis Canyon Kurs" class="golf-slide-img">
                         <div class="golf-slide-caption">
-                            <h4>Canyon Kurs &amp; Seen</h4>
-                            <p>Anspruchsvolle Wasserhindernisse und kristallklare Seen spiegeln den Himmel wider.</p>
+                            <h4 data-i18n="slide2Title">Canyon Kurs &amp; Seen</h4>
+                            <p data-i18n="slide2Text">Anspruchsvolle Wasserhindernisse und kristallklare Seen spiegeln den Himmel wider.</p>
                         </div>
                     </div>
 
                     <div class="golf-slide-item">
                         <img src="assets/gallery_lavender_fairway.jpg" alt="Lavender Fairway" class="golf-slide-img">
                         <div class="golf-slide-caption">
-                            <h4>Golfen im Einklang mit der Natur</h4>
-                            <p>Ausgezeichnet mit Golf &amp; Natur in Gold – ein Paradies für Golfer und Tierwelt.</p>
+                            <h4 data-i18n="slide3Title">Golfen im Einklang mit der Natur</h4>
+                            <p data-i18n="slide3Text">Ausgezeichnet mit Golf &amp; Natur in Gold – ein Paradies für Golfer und Tierwelt.</p>
                         </div>
                     </div>
 
                     <div class="golf-slide-item">
                         <img src="assets/gallery_sunset_canyon_lake.jpg" alt="Sonnenuntergang am 18. Grün" class="golf-slide-img">
                         <div class="golf-slide-caption">
-                            <h4>Goldene Abendstunden</h4>
-                            <p>Unvergessliche Momente bei Sonnenuntergang direkt vor der Resortterrasse.</p>
+                            <h4 data-i18n="slide4Title">Goldene Abendstunden</h4>
+                            <p data-i18n="slide4Text">Unvergessliche Momente bei Sonnenuntergang direkt vor der Resortterrasse.</p>
                         </div>
                     </div>
                 </div>
@@ -301,21 +313,21 @@
                 <!-- 3 Key Course Features -->
                 <div class="course-highlights-grid">
                     <div class="course-highlight-card">
-                        <h4>18-Loch Championship Course</h4>
-                        <p>Ein anspruchsvolles Layout mit spektakulären Bahnen, die jedem Handicap Freude bereiten.</p>
-                        <a href="golfcourse.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;">Zum Platzüberblick →</a>
+                        <h4 data-i18n="courseHl1Title">18-Loch Championship Course</h4>
+                        <p data-i18n="courseHl1Text">Ein anspruchsvolles Layout mit spektakulären Bahnen, die jedem Handicap Freude bereiten.</p>
+                        <a href="golfcourse.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;" data-i18n="courseHl1Link">Zum Platzüberblick →</a>
                     </div>
 
                     <div class="course-highlight-card">
-                        <h4>Putting &amp; Chipping Green</h4>
-                        <p>Perfekte Trainingsmöglichkeiten für Ihr kurzes Spiel auf originalgetreuen Grüns.</p>
-                        <a href="gast-info.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;">Übungsanlagen ansehen →</a>
+                        <h4 data-i18n="courseHl2Title">Putting &amp; Chipping Green</h4>
+                        <p data-i18n="courseHl2Text">Perfekte Trainingsmöglichkeiten für Ihr kurzes Spiel auf originalgetreuen Grüns.</p>
+                        <a href="gast-info.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;" data-i18n="courseHl2Link">Übungsanlagen ansehen →</a>
                     </div>
 
                     <div class="course-highlight-card">
-                        <h4>Turniere &amp; Events</h4>
-                        <p>Regelmäßige Club-Turniere, hochkarätige Meisterschaften und gesellige After-Work-Runden.</p>
-                        <a href="news.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;">Turniere &amp; News →</a>
+                        <h4 data-i18n="courseHl3Title">Turniere &amp; Events</h4>
+                        <p data-i18n="courseHl3Text">Regelmäßige Club-Turniere, hochkarätige Meisterschaften und gesellige After-Work-Runden.</p>
+                        <a href="news.html" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold); display: inline-block; margin-top: 10px;" data-i18n="courseHl3Link">Turniere &amp; News →</a>
                     </div>
                 </div>
             </div>
@@ -326,19 +338,19 @@
             <div class="container">
                 <div class="practice-grid">
                     <div class="practice-content">
-                        <span class="section-tag">Training &amp; Akademie</span>
-                        <h2>Driving Range &amp; Practice</h2>
-                        <p>
+                        <span class="section-tag" data-i18n="practiceTag">Training &amp; Akademie</span>
+                        <h2 data-i18n="practiceTitle">Driving Range &amp; Practice</h2>
+                        <p data-i18n="practiceText">
                             Unsere moderne Driving Range bietet optimale Bedingungen für Ihr Training. 25 überdachte Abschlagplätze, Zielgrüns auf verschiedenen Distanzen und hochwertige Übungsbälle garantieren effektives Training bei jedem Wetter.
                         </p>
                         <ul class="practice-checklist">
-                            <li>Überdachte Abschlagplätze mit Ballautomaten</li>
-                            <li>Putting Green mit verschiedenen Breaks</li>
-                            <li>Chipping-Bereich mit Bunkern</li>
+                            <li data-i18n="practiceItem1">Überdachte Abschlagplätze mit Ballautomaten</li>
+                            <li data-i18n="practiceItem2">Putting Green mit verschiedenen Breaks</li>
+                            <li data-i18n="practiceItem3">Chipping-Bereich mit Bunkern</li>
                         </ul>
                         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                            <a href="assets/Scorekarte_Wissmannshof.pdf" target="_blank" class="btn-welcome-cta">Scorecard (PDF) ↗</a>
-                            <a href="golfcourse.html" class="btn-welcome-cta" style="background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary) !important;">Bahn für Bahn</a>
+                            <a href="assets/Scorekarte_Wissmannshof.pdf" target="_blank" class="btn-welcome-cta" data-i18n="practiceScorecardBtn">Scorecard (PDF) ↗</a>
+                            <a href="golfcourse.html" class="btn-welcome-cta" style="background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary) !important;" data-i18n="practiceHoleByHoleBtn">Bahn für Bahn</a>
                         </div>
                     </div>
 
@@ -353,9 +365,9 @@
         <section id="hotel" class="section-hotel-resort">
             <div class="container">
                 <div class="section-header-center">
-                    <span class="section-tag">Wohnen &amp; Genießen</span>
-                    <h2 class="section-title">Resort &amp; Hotel</h2>
-                    <p style="color: var(--color-text-muted); max-width: 760px; margin: 0 auto;">
+                    <span class="section-tag" data-i18n="hotelTag">Wohnen &amp; Genießen</span>
+                    <h2 class="section-title" data-i18n="hotelTitle">Resort &amp; Hotel</h2>
+                    <p style="color: var(--color-text-muted); max-width: 760px; margin: 0 auto;" data-i18n="hotelLead">
                         Genießen Sie erstklassigen Komfort und Gastfreundschaft in unserem Resort. Perfekt für Golf-Urlaube, Events und erholsame Auszeiten.
                     </p>
                 </div>
@@ -367,13 +379,13 @@
                             <img src="assets/resort_hotel.jpg" alt="Hotel Gut Wissmannshof" class="resort-card-img">
                         </div>
                         <div class="resort-card-body">
-                            <h3>Komfortable Zimmer &amp; Suiten</h3>
-                            <p>
+                            <h3 data-i18n="cardRoomTitle">Komfortable Zimmer &amp; Suiten</h3>
+                            <p data-i18n="cardRoomText">
                                 57 individuell gestaltete Zimmer &amp; Suiten mit Blick auf den Golfplatz. Jedes Zimmer mit eigenem Charakter – kostenfreies WLAN und Parkplätze inklusive.
                             </p>
                             <div class="resort-card-actions">
-                                <a href="https://hotel-wissmannshof.com/hotel/" target="_blank" class="btn-card-primary">Zimmer buchen ↗</a>
-                                <a href="https://hotel-wissmannshof.com/hotel/zimmer/" target="_blank" class="btn-card-secondary">Details</a>
+                                <a href="https://hotel-wissmannshof.com/hotel/" target="_blank" class="btn-card-primary" data-i18n="cardRoomBtnBook">Zimmer buchen ↗</a>
+                                <a href="https://hotel-wissmannshof.com/hotel/zimmer/" target="_blank" class="btn-card-secondary" data-i18n="cardRoomBtnDetails">Details</a>
                             </div>
                         </div>
                     </div>
@@ -384,13 +396,13 @@
                             <img src="assets/restaurant_indoor.webp" alt="Restaurant Gut Wissmannshof" class="resort-card-img">
                         </div>
                         <div class="resort-card-body">
-                            <h3>Gastronomie &amp; Kulinarik</h3>
-                            <p>
+                            <h3 data-i18n="cardGastroTitle">Gastronomie &amp; Kulinarik</h3>
+                            <p data-i18n="cardGastroText">
                                 Regionale Spezialitäten, saisonale Menüs und erlesene Weine. Herrliche Sonnenterrasse mit 120 Sitzplätzen mit Panoramablick auf das 18. Grün.
                             </p>
                             <div class="resort-card-actions">
-                                <a href="https://hotel-wissmannshof.com/restaurant/" target="_blank" class="btn-card-primary">Tisch reservieren ↗</a>
-                                <a href="https://hotel-wissmannshof.com/restaurant/speisen-getraenke/" target="_blank" class="btn-card-secondary">Speisekarte</a>
+                                <a href="https://hotel-wissmannshof.com/restaurant/" target="_blank" class="btn-card-primary" data-i18n="cardGastroBtnBook">Tisch reservieren ↗</a>
+                                <a href="https://hotel-wissmannshof.com/restaurant/speisen-getraenke/" target="_blank" class="btn-card-secondary" data-i18n="cardGastroBtnMenu">Speisekarte</a>
                             </div>
                         </div>
                     </div>
@@ -401,12 +413,12 @@
                             <img src="assets/adventure_golf_map.jpg" alt="Adventure Golf Wissmannshof" class="resort-card-img">
                         </div>
                         <div class="resort-card-body">
-                            <h3>Adventure Golf &amp; Familie</h3>
-                            <p>
+                            <h3 data-i18n="cardAdvTitle">Adventure Golf &amp; Familie</h3>
+                            <p data-i18n="cardAdvText">
                                 18 spektakuläre Adventure-Golf-Bahnen mit Piratenschiff, Safaripfad und Wasserhindernissen – der Riesenspaß für die ganze Familie und Firmenevents.
                             </p>
                             <div class="resort-card-actions">
-                                <a href="adventure-golf.html" class="btn-card-primary">Adventure Golf entdecken</a>
+                                <a href="adventure-golf.html" class="btn-card-primary" data-i18n="cardAdvBtn">Adventure Golf entdecken</a>
                             </div>
                         </div>
                     </div>
@@ -418,58 +430,58 @@
         <section id="kontakt" class="section-contact-area">
             <div class="container">
                 <div class="section-header-center">
-                    <span class="section-tag">Wir sind für Sie da</span>
-                    <h2 class="section-title">Kontakt &amp; Anreise</h2>
-                    <p style="color: var(--color-text-muted);">Haben Sie Fragen oder Wünsche? Kontaktieren Sie uns gerne jederzeit.</p>
+                    <span class="section-tag" data-i18n="contactTag">Wir sind für Sie da</span>
+                    <h2 class="section-title" data-i18n="contactTitle">Kontakt &amp; Anreise</h2>
+                    <p style="color: var(--color-text-muted);" data-i18n="contactLead">Haben Sie Fragen oder Wünsche? Kontaktieren Sie uns gerne jederzeit.</p>
                 </div>
 
                 <div class="contact-area-grid">
                     <!-- Direct Contacts -->
                     <div class="contact-channels-card">
                         <div class="contact-channel-item">
-                            <h4>Sport- &amp; Golf-Resort Sekretariat</h4>
+                            <h4 data-i18n="contactSecTitle">Sport- &amp; Golf-Resort Sekretariat</h4>
                             <p>Tel.: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
                             <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
                         </div>
 
                         <div class="contact-channel-item">
-                            <h4>Hotel &amp; Restaurant</h4>
+                            <h4 data-i18n="contactHotelTitle">Hotel &amp; Restaurant</h4>
                             <p>Tel.: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
                             <p>E-Mail: <a href="mailto:info@hotel-wissmannshof.com">info@hotel-wissmannshof.com</a></p>
                         </div>
 
                         <div class="contact-channel-item">
-                            <h4>Golfakademie</h4>
+                            <h4 data-i18n="contactAcadTitle">Golfakademie</h4>
                             <p>Tel.: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
                             <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
                         </div>
 
                         <div class="contact-channel-item">
-                            <h4>Adresse</h4>
+                            <h4 data-i18n="contactAddressTitle">Adresse</h4>
                             <p><strong>Sport- und Golf-Resort Gut Wissmannshof</strong><br>Wissmannshof 1, 34355 Staufenberg</p>
                         </div>
                     </div>
 
                     <!-- Quick Message Form -->
                     <div class="contact-form-card">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-primary); margin-bottom: 6px;">Lassen Sie eine Nachricht da!</h3>
-                        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;">Wir antworten Ihnen schnellstmöglich.</p>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-primary); margin-bottom: 6px;" data-i18n="contactFormHeading">Lassen Sie eine Nachricht da!</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;" data-i18n="contactFormSub">Wir antworten Ihnen schnellstmöglich.</p>
 
                         <form id="home-contact-form">
                             <div class="form-group">
-                                <label class="form-label" for="contact-name">Ihr Name *</label>
-                                <input type="text" id="contact-name" class="form-input" required placeholder="Vor- und Nachname">
+                                <label class="form-label" for="contact-name" data-i18n="formLabelName">Ihr Name *</label>
+                                <input type="text" id="contact-name" class="form-input" required placeholder="Vor- und Nachname" data-i18n-placeholder="formPlaceholderName">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="contact-email">Ihre E-Mail-Adresse *</label>
-                                <input type="email" id="contact-email" class="form-input" required placeholder="name@beispiel.de">
+                                <label class="form-label" for="contact-email" data-i18n="formLabelEmail">Ihre E-Mail-Adresse *</label>
+                                <input type="email" id="contact-email" class="form-input" required placeholder="name@beispiel.de" data-i18n-placeholder="formPlaceholderEmail">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="contact-msg">Ihre Nachricht *</label>
-                                <textarea id="contact-msg" class="form-textarea" rows="4" required placeholder="Wie können wir Ihnen weiterhelfen?"></textarea>
+                                <label class="form-label" for="contact-msg" data-i18n="formLabelMsg">Ihre Nachricht *</label>
+                                <textarea id="contact-msg" class="form-textarea" rows="4" required placeholder="Wie können wir Ihnen weiterhelfen?" data-i18n-placeholder="formPlaceholderMsg"></textarea>
                             </div>
-                            <button type="submit" class="btn-contact-submit">Nachricht absenden</button>
-                            <div id="contact-success" style="display: none; margin-top: 15px; padding: 12px; background: #EAF6EE; color: #175430; border-radius: var(--radius-sm); text-align: center; font-size: 0.9rem;">
+                            <button type="submit" class="btn-contact-submit" data-i18n="formSubmitBtn">Nachricht absenden</button>
+                            <div id="contact-success" style="display: none; margin-top: 15px; padding: 12px; background: #EAF6EE; color: #175430; border-radius: var(--radius-sm); text-align: center; font-size: 0.9rem;" data-i18n="formSuccessMsg">
                                 Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt.
                             </div>
                         </form>
@@ -495,13 +507,13 @@
                         Wissmannshof 1<br>
                         34355 Staufenberg
                     </p>
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;">
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;" data-i18n="footerSubtext">
                         27-Loch Meisterschaftsplatz, Adventure Golf &amp; 4-Sterne Golfresort.
                     </p>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Direktkontakt &amp; Anreise</h4>
+                    <h4 data-i18n="footerContactHeading">Direktkontakt &amp; Anreise</h4>
                     <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
                     <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
                     <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
@@ -511,20 +523,20 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Rechtliches &amp; Information</h4>
+                    <h4 data-i18n="footerLegalHeading">Rechtliches &amp; Information</h4>
                     <ul class="footer-links">
-                        <li><a href="https://www.wissmannshof.de/impressum/" target="_blank">Impressum ↗</a></li>
-                        <li><a href="https://www.wissmannshof.de/datenschutz/" target="_blank">Datenschutz ↗</a></li>
-                        <li><a href="gast-info.html">AGB &amp; Platzordnung</a></li>
-                        <li><a href="karriere.html">Karriere im Resort</a></li>
+                        <li><a href="impressum.html" data-i18n="footerImprint">Impressum</a></li>
+                        <li><a href="https://www.wissmannshof.de/datenschutz/" target="_blank" data-i18n="footerPrivacy">Datenschutz ↗</a></li>
+                        <li><a href="gast-info.html" data-i18n="footerTerms">AGB &amp; Platzordnung</a></li>
+                        <li><a href="karriere.html" data-i18n="footerCareer">Karriere im Resort</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <div class="footer-bottom-inner">
-                    <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
-                    <p class="footer-tagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
+                    <p data-i18n="footerCopyright">&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline" data-i18n="footerTagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
                 </div>
             </div>
         </div>
