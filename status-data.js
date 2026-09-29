@@ -20,7 +20,7 @@ const DEFAULT_STATUS = {
     },
     courseStatus: {
         status: "open",
-        course: "27-Loch regulär geöffnet",
+        course: "18-Loch regulär geöffnet",
         greens: "Sommergrüns",
         note: ""
     },

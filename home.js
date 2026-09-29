@@ -88,7 +88,7 @@
             quickMemberBtn: 'Mehr erfahren',
 
             // Course Section & Slider
-            courseTag: '27-Loch Meisterschaftsanlage',
+            courseTag: '18-Loch Meisterschaftsanlage & Canyon Academy Kurs',
             courseTitle: 'Unser Golfplatz',
             courseLead: 'Ein Championship-Platz, der Golferherzen höher schlagen lässt. Perfekt gepflegt, strategisch anspruchsvoll und landschaftlich beeindruckend.',
             slide1Title: 'Spektakuläre Meisterschaftsbahnen',
@@ -98,7 +98,7 @@
             slide3Title: 'Golfen im Einklang mit der Natur',
             slide3Text: 'Ausgezeichnet mit Golf &amp; Natur in Gold – ein Paradies für Golfer und Tierwelt.',
             slide4Title: 'Goldene Abendstunden',
-            slide4Text: 'Unvergessliche Momente bei Sonnenuntergang direkt auf der 27-Loch-Golfanlage.',
+            slide4Text: 'Unvergessliche Momente bei Sonnenuntergang direkt auf der Golfanlage.',
 
             courseHl1Title: '18-Loch Championship Course',
             courseHl1Text: 'Ein anspruchsvolles Layout mit spektakulären Bahnen, die jedem Handicap Freude bereiten.',
@@ -156,7 +156,7 @@
             formSuccessMsg: 'Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt.',
 
             // Footer
-            footerSubtext: '27-Loch Meisterschaftsplatz, Adventure Golf &amp; 4-Sterne Golfresort.',
+            footerSubtext: '18-Loch Meisterschaftsplatz, Canyon Academy Kurs, Adventure Golf &amp; 4-Sterne Golfresort.',
             footerContactHeading: 'Direktkontakt &amp; Anreise',
             footerLegalHeading: 'Rechtliches &amp; Information',
             footerImprint: 'Impressum',
@@ -243,7 +243,7 @@
             quickMemberBtn: 'Learn More',
 
             // Course Section & Slider
-            courseTag: '27-Hole Championship Resort',
+            courseTag: '18-Hole Championship Course & Canyon Academy Course',
             courseTitle: 'Our Golf Course',
             courseLead: 'A championship golf course designed to inspire players of every handicap. Pristine conditioning, strategic variety, and breathtaking countryside vistas.',
             slide1Title: 'Spectacular Championship Course',
@@ -253,7 +253,7 @@
             slide3Title: 'Golf in Harmony with Nature',
             slide3Text: 'Certified Gold by Golf &amp; Nature – a sanctuary for wildlife and golfers alike.',
             slide4Title: 'Golden Hour Splendor',
-            slide4Text: 'Unforgettable moments watching the sunset right across the 27-hole golf estate.',
+            slide4Text: 'Unforgettable moments watching the sunset right across the golf estate.',
 
             courseHl1Title: '18-Hole Championship Course',
             courseHl1Text: 'A captivating layout featuring signature holes that delight all skill levels.',
@@ -311,7 +311,7 @@
             formSuccessMsg: 'Thank you! Your message has been sent successfully.',
 
             // Footer
-            footerSubtext: '27-Hole Championship Golf Course, Adventure Golf &amp; 4-Star Resort.',
+            footerSubtext: '18-Hole Championship Golf Course, Canyon Academy Course, Adventure Golf &amp; 4-Star Resort.',
             footerContactHeading: 'Contact &amp; Arrival',
             footerLegalHeading: 'Legal &amp; Information',
             footerImprint: 'Imprint',

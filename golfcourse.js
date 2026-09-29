@@ -360,19 +360,19 @@ const HOLE_DATA = [
     }
 ];
 
-// Canyon Course Extra Card Info
+/// Canyon Course Extra Card Info
 const CANYON_COURSE_DATA = {
- image: 'assets/course_holes/canyon_course.jpg',
- name: { de: 'Canyon-Kurs (6-Loch Kurzplatz / Academy)', en: 'Canyon Course (6-Hole Academy Course)' },
- desc: {
- de: 'Unser anspruchsvoller 6-Loch Kurzplatz (in Kürze erweitert auf 9 Loch) bietet sowohl Anfängern als auch Meisterschaftsspielern das ideale Terrain für präzises Kurzspiel, Pitchen und Chippen unter realen Platzbedingungen. Auch ohne Platzreife bespielbar!',
- en: 'Our challenging 6-hole short course (expanding to 9 holes shortly) offers beginners and champions alike the perfect venue to dial in short game, pitching, and chipping. Playable without handicap certificate!'
- }
+	image: 'assets/course_holes/canyon_course.jpg',
+	name: { de: 'Canyon Academy Kurs', en: 'Canyon Academy Course' },
+	desc: {
+		de: 'Unser anspruchsvoller Canyon Academy Kurs (6 Loch, in Kürze auf 9 Loch erweitert) bietet sowohl Einsteigern als auch passionierten Golfern das ideale Terrain für präzises Spiel, Training und Platzreife unter realen Platzbedingungen. Auch ohne Platzreife bespielbar!',
+		en: 'Our challenging Canyon Academy Course (6 holes, expanding to 9 holes shortly) provides beginners and passionate golfers with the ideal setting for accurate ball striking, scoring practice, and course qualification under real-world conditions. Playable without handicap certificate!'
+	}
 };
 
 /* ==========================================================================
- State & Translation Dictionary
- ========================================================================== */
+	State & Translation Dictionary
+   ========================================================================== */
 let currentHoleIndex = 0; // 0 -> Hole 1 (Blau 1)
 let currentLoopFilter = 'blau'; // 'blau', 'gelb', 'canyon'
 let currentLang = localStorage.getItem('sgr_lang') || 'de';
@@ -387,13 +387,13 @@ const TRANSLATIONS = {
         navDownloads: 'Downloads',
         navPractice: 'Übungsanlagen',
         navBtnBooking: 'Startzeit buchen',
-        heroBadge: '27-Loch Meisterschaftsanlage &amp; Canyon-Kurs',
+        heroBadge: '18-Loch Meisterschaftsanlage &amp; Canyon Academy Kurs',
         heroTitle: 'Die <span>Golfbahnen</span> auf Gut Wissmannshof.',
         heroLead: 'Erleben Sie spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways, anspruchsvolle Greens und Course-Architektur auf absolutem PGA-Niveau – 365 Tage im Jahr bespielbar.',
         btnHeroExplore: 'Hole 1–18 erkunden ↓',
         btnHeroBook: 'Startzeit reservieren',
-        fact1Number: '27',
-        fact1Label: 'Loch Golf-Erlebnis',
+        fact1Number: '18',
+        fact1Label: 'Loch Meisterschaftsplatz (+ 9 Loch in Planung)',
         fact2Number: '18',
         fact2Label: 'Meisterschaftskurs Blau-Gelb',
         fact3Number: '4',
@@ -403,7 +403,7 @@ const TRANSLATIONS = {
         
         tagLoops: 'Platzarchitektur',
         loopsHeading: 'Unsere Kurs-Kombinationen',
-        loopsSub: 'Die Anlage von Gut Wissmannshof besticht durch drei unverwechselbare 9-Loch Schleifen und den Canyon Kurzplatz.',
+        loopsSub: 'Die Anlage von Gut Wissmannshof begeistert mit einem anspruchsvollen 18-Loch Meisterschaftsplatz (Kurs Gelb & Kurs Blau), dem Canyon Academy Kurs sowie 9 weiteren Meisterschaftslöchern in Planung.',
         
         lblDistance: 'Distanz:',
         lblParCourse: 'Par:',
@@ -426,18 +426,18 @@ const TRANSLATIONS = {
         loopGelbDesc: 'Flüssig eingebettet in das sanfte Gelände mit spektakulärem Finale vor der Resorthotel-Sonnenterrasse.',
         btnViewGelb: 'Hole 10–18 ansehen',
         
-        loopCanyonTitle: 'Canyon-Kurs (Kurzplatz)',
-        loopCanyonBadge: '6 Loch (in Kürze 9 Loch)',
-        loopCanyonFormat: '6 anspruchsvolle Bahnen (in Kürze 9 Loch)',
+        loopCanyonTitle: 'Canyon Academy Kurs',
+        loopCanyonBadge: '6 Loch (Ausbau auf 9 Loch)',
+        loopCanyonFormat: '6 anspruchsvolle Academy-Bahnen (in Kürze 9 Loch)',
         loopCanyonAccess: 'Ohne Platzerlaubnis / PE bespielbar',
-        loopCanyonDesc: 'Perfekt für die schnelle Runde nach Feierabend, Training des kurzen Spiels und für Einsteiger. In Kürze auf 9 Loch erweitert!',
-        btnViewCanyon: 'Canyon-Kurs ansehen',
+        loopCanyonDesc: 'Perfekt für effektives Training, schnelles Spiel nach Feierabend und fundierte Platzreifeausbildung. In Kürze auf 9 Loch erweitert!',
+        btnViewCanyon: 'Canyon Academy Kurs ansehen',
 
         loopRotTitle: 'Kurs Rot (Ausblick)',
         loopRotBadge: 'In Entwicklung',
         loopRotSpec1: '9 weitere Meisterschaftsbahnen',
-        loopRotSpec2: 'Erweiterung auf 27 vollwertige Meisterschaftslöcher',
-        loopRotDesc: 'Die dritte 9-Loch-Schleife vervollständigt künftig das 27-Loch Meisterschaftsresort Wissmannshof.',
+        loopRotSpec2: 'Erweiterung der Meisterschaftsanlage um 9 Bahnen',
+        loopRotDesc: 'Die dritte 9-Loch-Schleife (in Planung) erweitert künftig unsere Meisterschaftsanlage um 9 weitere spektakuläre Bahnen.',
         btnViewRot: 'In Planung',
 
         tagGuide: 'Interaktiver Course-Guide',
@@ -446,7 +446,7 @@ const TRANSLATIONS = {
         
         tabBlau: '🔵 Kurs Blau (Hole 1–9)',
         tabGelb: '🟡 Kurs Gelb (Hole 10–18)',
-        tabCanyon: '🟢 Canyon-Kurs (Kurzplatz)',
+        tabCanyon: '🟢 Canyon Academy Kurs',
         selectorTitle: 'Bahn wählen:',
         zoomHint: 'Klick zum Vergrößern',
         
@@ -464,7 +464,7 @@ const TRANSLATIONS = {
         btnNextHole: 'Nächste Bahn →',
 
         tagGallery: 'Atmosphäre &amp; Natur',
-        galleryHeading: 'Impressionen unserer 27-Loch-Anlage',
+        galleryHeading: 'Impressionen unserer Golfanlage',
         gallerySub: 'Perfekt modellierte Fairways, kristallklare Wasserhindernisse, schneeweiße Sandbunker und blühende Naturlandschaften im Herzen des Kasseler Landes.',
         
         tagSpecs: 'DGV Course Rating &amp; Slope',
@@ -525,13 +525,13 @@ const TRANSLATIONS = {
         navDownloads: 'Downloads',
         navPractice: 'Practice Facilities',
         navBtnBooking: 'Book Tee Time',
-        heroBadge: '27-Hole Championship Resort &amp; Canyon Course',
+        heroBadge: '18-Hole Championship Resort &amp; Canyon Academy Course',
         heroTitle: 'The <span>Golf Course</span> at Gut Wissmannshof.',
         heroLead: 'Experience spectacular vistas across the Kassel countryside, pristine fairways, challenging greens and world-class course architecture – playable 365 days a year.',
         btnHeroExplore: 'Explore Holes 1–18 ↓',
         btnHeroBook: 'Reserve Tee Time',
-        fact1Number: '27',
-        fact1Label: 'Holes Golf Destination',
+        fact1Number: '18',
+        fact1Label: 'Championship Holes (+ 9 in planning)',
         fact2Number: '18',
         fact2Label: 'Championship Blue-Yellow',
         fact3Number: '4',
@@ -541,7 +541,7 @@ const TRANSLATIONS = {
 
         tagLoops: 'Course Layout',
         loopsHeading: 'Our Course Loops',
-        loopsSub: 'Gut Wissmannshof features three distinctive 9-hole loops plus the Canyon short course.',
+        loopsSub: 'Gut Wissmannshof features an 18-hole championship layout (Course Yellow & Course Blue), the Canyon Academy Course, plus 9 championship holes in planning.',
 
         lblDistance: 'Distance:',
         lblParCourse: 'Par:',
@@ -564,18 +564,18 @@ const TRANSLATIONS = {
         loopGelbDesc: 'Seamlessly carved into the rolling landscape with a spectacular grand finale in front of the resort sun terrace.',
         btnViewGelb: 'View Holes 10–18',
 
-        loopCanyonTitle: 'Canyon Course (Short Course)',
+        loopCanyonTitle: 'Canyon Academy Course',
         loopCanyonBadge: '6 Holes (9 Holes shortly)',
-        loopCanyonFormat: '6 challenging holes (9 holes shortly)',
+        loopCanyonFormat: '6 challenging Academy holes (9 holes shortly)',
         loopCanyonAccess: 'Playable without handicap certificate',
-        loopCanyonDesc: 'Perfect for a quick round after work, short game practice, and beginners. Expanding to 9 holes shortly!',
-        btnViewCanyon: 'View Canyon Course',
+        loopCanyonDesc: 'Perfect for effective training, a quick round after work, and course license qualification. Expanding to 9 holes shortly!',
+        btnViewCanyon: 'View Canyon Academy Course',
 
         loopRotTitle: 'Course Red (Outlook)',
         loopRotBadge: 'In Development',
         loopRotSpec1: '9 additional championship holes',
-        loopRotSpec2: 'Expansion to 27 tournament holes',
-        loopRotDesc: 'The third 9-hole loop will complete the premier 27-hole tournament destination.',
+        loopRotSpec2: 'Expansion of championship layout by 9 holes',
+        loopRotDesc: 'The third 9-hole loop (in planning) will expand our championship facilities with 9 additional spectacular holes.',
         btnViewRot: 'In Planning',
 
         tagGuide: 'Interactive Course Guide',
@@ -584,7 +584,7 @@ const TRANSLATIONS = {
 
         tabBlau: '🔵 Course Blue (Holes 1–9)',
         tabGelb: '🟡 Course Yellow (Holes 10–18)',
-        tabCanyon: '🟢 Canyon Course (Short Course)',
+        tabCanyon: '🟢 Canyon Academy Course',
         selectorTitle: 'Select Hole:',
         zoomHint: 'Click to zoom',
 
@@ -602,7 +602,8 @@ const TRANSLATIONS = {
         btnNextHole: 'Next Hole →',
 
         tagGallery: 'Atmosphere &amp; Scenery',
-        galleryHeading: 'Impressions of our 27-Hole Destination',
+        galleryHeading: 'Impressions of our Golf Destination',
+        gallerySub: 'Pristine fairways, shimmering water hazards, quartz sand dunes, and rolling greenery in the Kassel countryside.',
         gallerySub: 'Pristine fairways, shimmering water hazards, quartz sand dunes, and rolling greenery in the Kassel countryside.',
 
         tagSpecs: 'DGV Course Rating &amp; Slope',

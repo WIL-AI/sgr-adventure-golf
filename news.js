@@ -17,7 +17,7 @@
         de: {
             heroBadge: 'Resort Neuigkeiten & Einblicke',
             heroTitle: 'Aktuelles aus dem<br><span class="hero-title-highlight">Gut Wissmannshof</span>',
-            heroLead: 'Entdecken Sie die neuesten Nachrichten, Turnier-Highlights, Platz-Updates und exklusive Angebote unseres 27-Loch Golf Resorts.',
+            heroLead: 'Entdecken Sie die neuesten Nachrichten, Turnier-Highlights, Platz-Updates und exklusive Angebote unseres Golf Resorts.',
             allCategories: 'Alle',
             catTurniere: 'Turniere & Events',
             catPlatz: 'Platz & Natur',
@@ -40,7 +40,7 @@
         en: {
             heroBadge: 'Resort News & Insights',
             heroTitle: 'Latest News from<br><span class="hero-title-highlight">Gut Wissmannshof</span>',
-            heroLead: 'Discover the latest updates, tournament highlights, course renovations, and exclusive offers from our 27-hole golf resort.',
+            heroLead: 'Discover the latest updates, tournament highlights, course updates, and exclusive offers from our golf resort.',
             allCategories: 'All',
             catTurniere: 'Tournaments & Events',
             catPlatz: 'Course & Nature',
