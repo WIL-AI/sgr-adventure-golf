@@ -159,9 +159,8 @@
             footerSubtext: '27-Loch Meisterschaftsplatz, Adventure Golf &amp; 4-Sterne Golfresort.',
             footerContactHeading: 'Direktkontakt &amp; Anreise',
             footerLegalHeading: 'Rechtliches &amp; Information',
-            footerImprint: 'Impressum ↗',
-            footerPrivacy: 'Datenschutz ↗',
-            footerTerms: 'AGB &amp; Platzordnung',
+            footerImprint: 'Impressum',
+            footerPrivacy: 'Datenschutz',
             footerCareer: 'Karriere im Resort',
             footerCopyright: '&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.',
             footerTagline: 'Besser als gut. Ihr Premium-Golf-Erlebnis.'
@@ -315,9 +314,8 @@
             footerSubtext: '27-Hole Championship Golf Course, Adventure Golf &amp; 4-Star Resort.',
             footerContactHeading: 'Contact &amp; Arrival',
             footerLegalHeading: 'Legal &amp; Information',
-            footerImprint: 'Imprint ↗',
-            footerPrivacy: 'Privacy Policy ↗',
-            footerTerms: 'Terms &amp; Course Rules',
+            footerImprint: 'Imprint',
+            footerPrivacy: 'Privacy Policy',
             footerCareer: 'Careers at Resort',
             footerCopyright: '&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. All rights reserved.',
             footerTagline: 'Better than good. Your premier golf experience.'
