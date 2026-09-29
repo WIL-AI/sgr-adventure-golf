@@ -14,6 +14,12 @@
  
  <!-- CSS Stylesheet -->
  <link rel="stylesheet" href="gast-info.css?v=1790677084418">
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
 </head>
 <body>
 
@@ -377,7 +383,7 @@
  Automatische Schläger- und Ballausgabe vor Ort am Ticketautomaten (täglich 07:00 – 21:00 Uhr bespielbar, tageslichtabhängig bis Einbruch der Dunkelheit; eine Platzbeleuchtung ist für die Zukunft in Planung). 10er-, 20er- und Familienkarten verfügbar.
  </p>
  
- <a href="https://adventure.wissmannshof.golf/" target="_blank" rel="noopener" class="btn btn-gold" data-t="btnAdvPage">Zur Adventure Golf Infoseite ↗</a>
+ <a href="adventure-golf.html" class="btn btn-gold" data-t="btnAdvPage">Zur Adventure Golf Infoseite →</a>
  </div>
 
  <div class="adv-image">

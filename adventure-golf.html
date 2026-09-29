@@ -9,6 +9,12 @@
  <link rel="stylesheet" href="style.css?v=1790677084418">
  <!-- Favicon (Fallback to high-quality SVG) -->
  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22> ï¸</text></svg>">
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
 </head>
 <body>
  <!-- ==========================================================================

@@ -1072,6 +1072,12 @@
             border-color: var(--color-danger);
         }
     </style>
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
 </head>
 <body>
 

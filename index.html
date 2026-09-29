@@ -15,10 +15,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="home.css?v=1790677084418">
 
-    <!-- Subdomain routing for adventure.wissmannshof.golf -->
+    
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
     <script>
-        if (window.location.hostname.startsWith('adventure.') && !window.location.pathname.includes('adventure')) {
-            window.location.replace('adventure-golf.html' + window.location.search + window.location.hash);
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
         }
     </script>
 </head>

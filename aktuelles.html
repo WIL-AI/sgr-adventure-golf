@@ -5,6 +5,12 @@
     <meta http-equiv="refresh" content="0; url=news.html">
     <script>window.location.replace("news.html" + window.location.hash);</script>
     <title>Aktuelles & News | Gut Wissmannshof</title>
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
 </head>
 <body>
     <p>Weiterleitung zu <a href="news.html">Aktuelles & News</a>...</p>

@@ -13,6 +13,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="karriere.css?v=1790677084418">
+    <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
 </head>
 <body>
 
