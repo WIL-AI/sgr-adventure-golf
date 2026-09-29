@@ -6,20 +6,12 @@
     'use strict';
 
     const state = {
-        lang: localStorage.getItem('sgr_career_lang') || 'de',
-        activeDept: 'all',
-        searchQuery: '',
-        activeJobModal: null
+        lang: localStorage.getItem('sgr_career_lang') || 'de'
     };
 
     // DOM Elements
     const elements = {
-        benefitsGrid: document.getElementById('benefits-grid'),
-        filterPills: document.getElementById('filter-pills'),
-        jobsGrid: document.getElementById('jobs-grid'),
-        jobsSearchInput: document.getElementById('jobs-search-input'),
-        jobsCountNum: document.getElementById('jobs-count-num'),
-        jobsCountText: document.getElementById('jobs-count-text'),
+        jobsContainer: document.getElementById('jobs-container'),
         applicantJobSelect: document.getElementById('applicant-job'),
         careerForm: document.getElementById('career-apply-form'),
         formSuccessAlert: document.getElementById('form-success-alert'),
@@ -27,159 +19,72 @@
         fileChosenName: document.getElementById('file-chosen-name'),
         fileDropzone: document.getElementById('file-dropzone-box'),
         langButtons: document.querySelectorAll('.lang-btn'),
-
-        // Modal Elements
-        jobModal: document.getElementById('job-modal'),
-        jobModalBackdrop: document.getElementById('job-modal-backdrop'),
-        jobModalClose: document.getElementById('job-modal-close'),
-        modalImg: document.getElementById('modal-img'),
-        modalDept: document.getElementById('modal-dept'),
-        modalType: document.getElementById('modal-type'),
-        modalDate: document.getElementById('modal-date'),
-        modalTitle: document.getElementById('modal-title'),
-        modalLead: document.getElementById('modal-lead'),
-        modalTasksList: document.getElementById('modal-tasks-list'),
-        modalReqList: document.getElementById('modal-req-list'),
-        modalBenefitsList: document.getElementById('modal-benefits-list'),
-        modalApplyBtn: document.getElementById('modal-apply-btn')
+        heroLeadText: document.getElementById('hero-lead-text'),
+        applyNoteText: document.getElementById('apply-note-text'),
+        heroHeading: document.getElementById('hero-heading')
     };
 
-    // Initialize application
+    // Initialize
     function init() {
-        renderBenefits();
-        renderDepartmentFilters();
-        populateJobSelectOptions();
         renderJobs();
         setupEventListeners();
         applyLanguage(state.lang);
     }
 
-    // Render Benefits Cards
-    function renderBenefits() {
-        if (!elements.benefitsGrid || !CAREER_DATA.benefits) return;
-        const isDe = state.lang === 'de';
-
-        elements.benefitsGrid.innerHTML = CAREER_DATA.benefits.map(b => `
-            <div class="benefit-card">
-                <div class="benefit-icon-wrapper">
-                    ${b.icon}
-                </div>
-                <h3>${isDe ? b.title_de : b.title_en}</h3>
-                <p>${isDe ? b.desc_de : b.desc_en}</p>
-            </div>
-        `).join('');
-    }
-
-    // Render Department Filter Pills
-    function renderDepartmentFilters() {
-        if (!elements.filterPills || !CAREER_DATA.departments) return;
-        const isDe = state.lang === 'de';
-
-        elements.filterPills.innerHTML = CAREER_DATA.departments.map(dept => `
-            <button class="filter-pill ${dept.id === state.activeDept ? 'active' : ''}" 
-                    data-dept="${dept.id}">
-                ${isDe ? dept.label_de : dept.label_en}
-            </button>
-        `).join('');
-    }
-
-    // Populate Job Options in Application Form
-    function populateJobSelectOptions() {
-        if (!elements.applicantJobSelect || !CAREER_DATA.jobs) return;
-        const isDe = state.lang === 'de';
-
-        let html = `<option value="">${isDe ? '-- Bitte Position auswählen --' : '-- Please choose a position --'}</option>`;
-        
-        CAREER_DATA.jobs.forEach(job => {
-            html += `<option value="${job.id}">${isDe ? job.title_de : job.title_en}</option>`;
-        });
-
-        html += `<option value="initiativ">${isDe ? '✨ Initiativbewerbung (Alle Bereiche)' : '✨ Open Application (All Departments)'}</option>`;
-        elements.applicantJobSelect.innerHTML = html;
-    }
-
-    // Filter and Search Jobs
-    function getFilteredJobs() {
-        if (!CAREER_DATA.jobs) return [];
-        const query = state.searchQuery.trim().toLowerCase();
-        const isDe = state.lang === 'de';
-
-        return CAREER_DATA.jobs.filter(job => {
-            const matchesDept = state.activeDept === 'all' || job.dept === state.activeDept;
-            if (!matchesDept) return false;
-
-            if (!query) return true;
-
-            const title = (isDe ? job.title_de : job.title_en).toLowerCase();
-            const summary = (isDe ? job.summary_de : job.summary_en).toLowerCase();
-            const dept = (isDe ? job.dept_name_de : job.dept_name_en).toLowerCase();
-            const tasks = (isDe ? job.tasks_de : job.tasks_en).join(' ').toLowerCase();
-            const reqs = (isDe ? job.requirements_de : job.requirements_en).join(' ').toLowerCase();
-
-            return title.includes(query) || summary.includes(query) || dept.includes(query) || tasks.includes(query) || reqs.includes(query);
-        });
-    }
-
-    // Render Job Cards
+    // Render the 3 exact job postings
     function renderJobs() {
-        if (!elements.jobsGrid) return;
-        const filtered = getFilteredJobs();
+        if (!elements.jobsContainer || !CAREER_DATA.jobs) return;
         const isDe = state.lang === 'de';
         const dict = CAREER_DATA.i18n[state.lang];
 
-        if (elements.jobsCountNum) elements.jobsCountNum.textContent = filtered.length;
-        if (elements.jobsCountText) elements.jobsCountText.textContent = isDe ? 'Stellen gefunden' : 'positions available';
-
-        if (filtered.length === 0) {
-            elements.jobsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--color-card-border);">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🔍</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-primary); margin-bottom: 8px;">
-                        ${isDe ? 'Keine passenden Stellen gefunden' : 'No matching positions found'}
-                    </h3>
-                    <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-                        ${isDe ? 'Versuchen Sie einen anderen Suchbegriff oder bewerben Sie sich einfach initiativ!' : 'Try another keyword or send us an open application!'}
-                    </p>
-                    <button onclick="window.CareerApp.resetFilters()" style="padding: 10px 24px; border-radius: var(--radius-pill); background: var(--color-primary); color: #fff; border: none; cursor: pointer; font-weight: 700;">
-                        ${isDe ? 'Filter zurücksetzen' : 'Reset Filters'}
-                    </button>
-                </div>
-            `;
-            return;
-        }
-
-        elements.jobsGrid.innerHTML = filtered.map(job => {
+        elements.jobsContainer.innerHTML = CAREER_DATA.jobs.map(job => {
             const title = isDe ? job.title_de : job.title_en;
-            const deptName = isDe ? job.dept_name_de : job.dept_name_en;
+            const subtitle = isDe ? job.subtitle_de : job.subtitle_en;
             const empType = isDe ? job.employment_type_de : job.employment_type_en;
-            const entryDate = isDe ? job.entry_date_de : job.entry_date_en;
-            const summary = isDe ? job.summary_de : job.summary_en;
+            const p1 = isDe ? job.text_p1_de : job.text_p1_en;
+            const p2 = isDe ? job.text_p2_de : job.text_p2_en;
+            const mitbringen = isDe ? job.mitbringen_de : job.mitbringen_en;
+            const erwartet = isDe ? job.erwartet_de : job.erwartet_en;
+            const conclusion = isDe ? job.conclusion_de : job.conclusion_en;
 
             return `
-                <article class="job-card" data-job-id="${job.id}">
-                    <div class="job-card-image-wrap">
-                        <img src="${job.image}" alt="${title}" class="job-card-image" loading="lazy">
-                        <span class="job-card-badge-dept">${deptName}</span>
-                        <span class="job-card-badge-type">${empType}</span>
-                    </div>
-
-                    <div class="job-card-body">
-                        <h3 class="job-card-title">${title}</h3>
-                        <p class="job-card-summary">${summary}</p>
-
-                        <div class="job-card-highlights">
-                            <span class="job-tag">📅 ${entryDate}</span>
-                            <span class="job-tag">⛳ 27-Loch Resort</span>
-                            <span class="job-tag">🏡 Unterkunft mgl.</span>
+                <article class="job-detail-card" id="${job.id}">
+                    <div class="job-detail-grid">
+                        <div class="job-image-column">
+                            <img src="${job.image}" alt="${title}" class="job-featured-image" loading="lazy">
                         </div>
 
-                        <div class="job-card-footer">
-                            <button class="btn-card-details" onclick="window.CareerApp.openModal('${job.id}')">
-                                ${dict.viewDetailsBtn}
-                            </button>
-                            <button class="btn-card-apply" onclick="window.CareerApp.applyForJob('${job.id}')">
-                                ${dict.applyNowBtn}
-                            </button>
+                        <div class="job-content-column">
+                            <div class="job-header-meta">
+                                <h2 class="job-heading-title">${title}</h2>
+                                <div class="job-badges-line">
+                                    <span class="job-badge-sub">${subtitle}</span>
+                                    ${empType ? `<span class="job-badge-type">${empType}</span>` : ''}
+                                </div>
+                            </div>
+
+                            <div class="job-text-body">
+                                <p class="job-prose">${p1}</p>
+                                <p class="job-prose">${p2}</p>
+
+                                <div class="job-criteria-block">
+                                    <h4 class="criteria-title">${dict.mitbringenHeading}</h4>
+                                    <p class="criteria-text">${mitbringen}</p>
+                                </div>
+
+                                <div class="job-criteria-block">
+                                    <h4 class="criteria-title">${dict.erwartetHeading}</h4>
+                                    <p class="criteria-text">${erwartet}</p>
+                                </div>
+
+                                <p class="job-conclusion">${conclusion}</p>
+                            </div>
+
+                            <div class="job-action-wrap">
+                                <button class="btn-job-apply" onclick="window.CareerApp.applyForJob('${job.id}')">
+                                    ${dict.directApplyBtn} →
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -187,49 +92,8 @@
         }).join('');
     }
 
-    // Open Job Details Modal
-    function openModal(jobId) {
-        const job = CAREER_DATA.jobs.find(j => j.id === jobId);
-        if (!job) return;
-
-        state.activeJobModal = job;
-        const isDe = state.lang === 'de';
-
-        elements.modalImg.src = job.image;
-        elements.modalImg.alt = isDe ? job.title_de : job.title_en;
-        elements.modalDept.textContent = isDe ? job.dept_name_de : job.dept_name_en;
-        elements.modalType.textContent = isDe ? job.employment_type_de : job.employment_type_en;
-        elements.modalDate.textContent = isDe ? `Eintritt: ${job.entry_date_de}` : `Start: ${job.entry_date_en}`;
-        elements.modalTitle.textContent = isDe ? job.title_de : job.title_en;
-        elements.modalLead.textContent = isDe ? job.summary_de : job.summary_en;
-
-        const tasks = isDe ? job.tasks_de : job.tasks_en;
-        elements.modalTasksList.innerHTML = tasks.map(t => `<li>${t}</li>`).join('');
-
-        const reqs = isDe ? job.requirements_de : job.requirements_en;
-        elements.modalReqList.innerHTML = reqs.map(r => `<li>${r}</li>`).join('');
-
-        const benefits = isDe ? job.benefits_de : job.benefits_en;
-        elements.modalBenefitsList.innerHTML = benefits.map(b => `<li>${b}</li>`).join('');
-
-        elements.modalApplyBtn.setAttribute('data-job-id', job.id);
-
-        elements.jobModalBackdrop.classList.add('open');
-        elements.jobModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Close Job Details Modal
-    function closeModal() {
-        elements.jobModalBackdrop.classList.remove('open');
-        elements.jobModal.classList.remove('open');
-        document.body.style.overflow = '';
-        state.activeJobModal = null;
-    }
-
-    // Quick Apply for a specific Job
+    // Scroll to Apply section and prefill job
     function applyForJob(jobId) {
-        closeModal();
         if (elements.applicantJobSelect) {
             elements.applicantJobSelect.value = jobId;
         }
@@ -239,7 +103,7 @@
             setTimeout(() => {
                 const nameInput = document.getElementById('applicant-name');
                 if (nameInput) nameInput.focus();
-            }, 600);
+            }, 500);
         }
     }
 
@@ -266,7 +130,7 @@
             }
         });
 
-        // Translate placeholder elements
+        // Translate placeholders
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.dataset.i18nPlaceholder;
             if (dict[key]) {
@@ -274,61 +138,29 @@
             }
         });
 
-        // Re-render components with new language strings
-        renderBenefits();
-        renderDepartmentFilters();
-        populateJobSelectOptions();
-        renderJobs();
-
-        if (state.activeJobModal) {
-            openModal(state.activeJobModal.id);
+        // Update intro & contact notes
+        if (elements.heroHeading && CAREER_DATA.intro) {
+            elements.heroHeading.innerHTML = lang === 'de' ? CAREER_DATA.intro.title_de : CAREER_DATA.intro.title_en;
         }
+        if (elements.heroLeadText && CAREER_DATA.intro) {
+            elements.heroLeadText.innerHTML = lang === 'de' ? CAREER_DATA.intro.lead_de : CAREER_DATA.intro.lead_en;
+        }
+        if (elements.applyNoteText && CAREER_DATA.contact) {
+            elements.applyNoteText.textContent = lang === 'de' ? CAREER_DATA.contact.note_de : CAREER_DATA.contact.note_en;
+        }
+
+        // Re-render the jobs list
+        renderJobs();
     }
 
-    // Event Listeners
+    // Setup Event Listeners
     function setupEventListeners() {
-        // Department filter clicks
-        if (elements.filterPills) {
-            elements.filterPills.addEventListener('click', e => {
-                const btn = e.target.closest('.filter-pill');
-                if (!btn) return;
-                state.activeDept = btn.dataset.dept;
-                renderDepartmentFilters();
-                renderJobs();
-            });
-        }
-
-        // Search input
-        if (elements.jobsSearchInput) {
-            elements.jobsSearchInput.addEventListener('input', e => {
-                state.searchQuery = e.target.value;
-                renderJobs();
-            });
-        }
-
         // Language toggle
         elements.langButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 applyLanguage(btn.dataset.lang);
             });
         });
-
-        // Modal Close handlers
-        if (elements.jobModalClose) elements.jobModalClose.addEventListener('click', closeModal);
-        if (elements.jobModalBackdrop) elements.jobModalBackdrop.addEventListener('click', closeModal);
-        window.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && elements.jobModal.classList.contains('open')) {
-                closeModal();
-            }
-        });
-
-        // Modal Apply Button
-        if (elements.modalApplyBtn) {
-            elements.modalApplyBtn.addEventListener('click', () => {
-                const jobId = elements.modalApplyBtn.getAttribute('data-job-id');
-                applyForJob(jobId);
-            });
-        }
 
         // File dropzone
         if (elements.fileInput) {
@@ -360,7 +192,7 @@
                 // Simulate successful submission
                 elements.formSuccessAlert.style.display = 'block';
                 elements.careerForm.reset();
-                elements.fileChosenName.textContent = '';
+                if (elements.fileChosenName) elements.fileChosenName.textContent = '';
 
                 setTimeout(() => {
                     elements.formSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -369,21 +201,12 @@
         }
     }
 
-    // Public API on window
+    // Public API
     window.CareerApp = {
-        openModal,
-        closeModal,
-        applyForJob,
-        resetFilters: function () {
-            state.activeDept = 'all';
-            state.searchQuery = '';
-            if (elements.jobsSearchInput) elements.jobsSearchInput.value = '';
-            renderDepartmentFilters();
-            renderJobs();
-        }
+        applyForJob
     };
 
-    // Auto init on DOM ready
+    // Auto init
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
