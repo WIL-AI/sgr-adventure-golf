@@ -632,12 +632,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(13, 34, 24, 0.75);
+            background: rgba(13, 34, 24, 0.78);
             backdrop-filter: blur(6px);
             z-index: 9999;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: 20px;
+            padding: 30px 16px;
+            overflow-y: auto;
         }
         .inline-modal-backdrop.show {
             display: flex;
@@ -646,11 +647,15 @@
             background: #FFFFFF;
             width: 100%;
             max-width: 680px;
+            max-height: calc(100vh - 60px);
             border-radius: var(--radius-lg);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
             border: 1px solid var(--color-gold);
             overflow: hidden;
-            animation: slideDown 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-20px); }
@@ -663,6 +668,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-shrink: 0;
         }
         .inline-modal-header h3 {
             font-size: 1.1rem;
@@ -670,6 +676,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin: 0;
+            color: var(--color-white);
         }
         .inline-modal-close {
             background: transparent;
@@ -681,8 +689,8 @@
         }
         .inline-modal-body {
             padding: 20px;
-            max-height: 75vh;
             overflow-y: auto;
+            flex: 1;
         }
 
         /* Layout Size Radio Selector Cards */
@@ -1335,11 +1343,12 @@
 
                 <!-- 1. Inline Upload -->
                 <div id="itab-panel-iupload" class="photo-panel active">
-                    <div class="upload-dropzone" id="inline-dropzone" style="padding: 18px 12px;">
+                    <div class="upload-dropzone" id="inline-dropzone" style="padding: 22px 14px; border: 2px dashed var(--color-gold); background: #FAF8F3;">
                         <input type="file" id="inline-file-input" accept="image/*">
-                        <div class="upload-icon" style="font-size: 1.6rem; margin-bottom: 2px;">📷</div>
-                        <div class="upload-text-main" style="font-size: 0.88rem;">Foto hierher ziehen oder auswählen</div>
-                        <div class="upload-text-sub" style="font-size: 0.75rem;">Wird automatisch für den Artikeltext optimiert</div>
+                        <div class="upload-icon" style="font-size: 2rem; margin-bottom: 4px;">📸</div>
+                        <div class="upload-text-main" style="font-size: 0.95rem;">Foto hierher ziehen (Drag &amp; Drop)</div>
+                        <div class="upload-text-sub" style="font-size: 0.8rem; margin-bottom: 6px;">JPG, PNG oder WEBP • Automatische Artikel-Optimierung</div>
+                        <span class="btn-choose-file" style="font-size: 0.8rem; padding: 5px 14px;">📁 Foto auf dem Computer auswählen</span>
                     </div>
                 </div>
 
@@ -1925,6 +1934,7 @@
         function openInlineImageModal(editId = null) {
             currentEditingInlineImageId = editId;
             const modal = document.getElementById('inline-img-modal');
+            const modalBody = modal.querySelector('.inline-modal-body');
             const titleEl = document.getElementById('inline-modal-title');
             const btnSave = document.getElementById('btn-save-inline-img');
             const captionInput = document.getElementById('inline-img-caption');
@@ -1945,6 +1955,12 @@
                 document.querySelectorAll('.layout-option-card').forEach(el => {
                     el.classList.toggle('active', el.getAttribute('data-layout') === inlineSelectedLayout);
                 });
+
+                if (img.src && img.src.startsWith('data:image')) {
+                    switchInlineTab('iupload');
+                } else {
+                    switchInlineTab('ipresets');
+                }
             } else {
                 currentEditingInlineImageId = null;
                 titleEl.innerHTML = `<span>🖼️</span> Bild in den Artikeltext einfügen`;
@@ -1957,13 +1973,23 @@
                 document.querySelectorAll('.layout-option-card').forEach(el => {
                     el.classList.toggle('active', el.getAttribute('data-layout') === 'full-width');
                 });
+
+                switchInlineTab('iupload');
             }
 
             modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            // Explicitly scroll modal container and modal body to top
+            modal.scrollTop = 0;
+            if (modalBody) {
+                modalBody.scrollTop = 0;
+            }
         }
 
         function closeInlineImageModal() {
             document.getElementById('inline-img-modal').classList.remove('show');
+            document.body.style.overflow = '';
             currentEditingInlineImageId = null;
         }
 
