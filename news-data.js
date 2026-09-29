@@ -135,8 +135,8 @@ const DEFAULT_NEWS = [
     },
     {
         id: 'news-002',
-        category: 'platz',
-        categoryLabel: { de: 'Golfplatz & Natur', en: 'Golf Course & Nature' },
+        category: 'resort',
+        categoryLabel: { de: 'Neues aus dem Golfresort', en: 'Golfresort News' },
         featured: false,
         date: '2026-09-22',
         image: 'assets/gallery_sunset_canyon_lake.jpg',
@@ -185,8 +185,8 @@ const DEFAULT_NEWS = [
     },
     {
         id: 'news-003',
-        category: 'resort',
-        categoryLabel: { de: 'Resort & Gastronomie', en: 'Resort & Dining' },
+        category: 'hotel_gastro',
+        categoryLabel: { de: 'Hotel & Gastronomie', en: 'Hotel & Gastronomy' },
         featured: false,
         date: '2026-09-15',
         image: 'assets/restaurant_indoor.webp',
@@ -225,7 +225,7 @@ const DEFAULT_NEWS = [
     {
         id: 'news-004',
         category: 'angebote',
-        categoryLabel: { de: 'Events & Angebote', en: 'Events & Offers' },
+        categoryLabel: { de: 'Angebote & Training', en: 'Offers & Training' },
         featured: false,
         date: '2026-09-08',
         image: 'assets/gallery_lavender_fairway.jpg',
@@ -269,7 +269,7 @@ const DEFAULT_NEWS = [
     {
         id: 'news-005',
         category: 'platz',
-        categoryLabel: { de: 'Golfplatz & Greenkeeping', en: 'Course & Greenkeeping' },
+        categoryLabel: { de: 'Platz & Natur', en: 'Course & Nature' },
         featured: false,
         date: '2026-08-28',
         image: 'assets/gallery_bunker_stonewall_water.jpg',
@@ -303,8 +303,8 @@ const DEFAULT_NEWS = [
     },
     {
         id: 'news-006',
-        category: 'angebote',
-        categoryLabel: { de: 'Akademie & Training', en: 'Academy & Training' },
+        category: 'golfschule',
+        categoryLabel: { de: 'Golfschule', en: 'Golf Academy' },
         featured: false,
         date: '2026-08-14',
         image: 'assets/resort_academy.jpg',

@@ -971,8 +971,10 @@
                                 <label class="form-label" for="article-category">Kategorie <span class="req">*</span></label>
                                 <select id="article-category" class="form-select">
                                     <option value="turniere">Turniere & Events</option>
-                                    <option value="platz">Golfplatz & Natur</option>
-                                    <option value="resort">Resort & Gastronomie</option>
+                                    <option value="platz">Platz & Natur</option>
+                                    <option value="resort">Neues aus dem Golfresort</option>
+                                    <option value="golfschule">Golfschule</option>
+                                    <option value="hotel_gastro">Hotel & Gastronomie</option>
                                     <option value="angebote">Angebote & Training</option>
                                 </select>
                             </div>
@@ -1442,8 +1444,10 @@
 
         const categoryLabels = {
             turniere: 'Turniere & Events',
-            platz: 'Golfplatz & Natur',
-            resort: 'Resort & Gastronomie',
+            platz: 'Platz & Natur',
+            resort: 'Neues aus dem Golfresort',
+            golfschule: 'Golfschule',
+            hotel_gastro: 'Hotel & Gastronomie',
             angebote: 'Angebote & Training'
         };
 
@@ -2358,7 +2362,9 @@
                     de: categoryLabels[category] || category,
                     en: category === 'turniere' ? 'Tournaments & Events' :
                         category === 'platz' ? 'Course & Nature' :
-                        category === 'resort' ? 'Resort & Dining' : 'Offers & Training'
+                        category === 'resort' ? 'Golfresort News' :
+                        category === 'golfschule' ? 'Golf Academy' :
+                        category === 'hotel_gastro' ? 'Hotel & Gastronomy' : 'Offers & Training'
                 },
                 featured: false,
                 date: date,
