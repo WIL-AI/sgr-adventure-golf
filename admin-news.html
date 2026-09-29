@@ -1264,22 +1264,27 @@
                         <div class="layout-option-card active" data-layout="full-width" onclick="selectLayout('full-width', this)">
                             <div class="layout-icon">↔️</div>
                             <div class="layout-title">Volle Breite</div>
-                            <div class="layout-desc">100% Breite (Standard)</div>
+                            <div class="layout-desc">100% Textbreite</div>
                         </div>
                         <div class="layout-option-card" data-layout="float-right" onclick="selectLayout('float-right', this)">
                             <div class="layout-icon">👉</div>
                             <div class="layout-title">Rechts umflossen</div>
-                            <div class="layout-desc">Text fließt links vorbei</div>
+                            <div class="layout-desc">38% Breite, rechts</div>
                         </div>
                         <div class="layout-option-card" data-layout="float-left" onclick="selectLayout('float-left', this)">
                             <div class="layout-icon">👈</div>
                             <div class="layout-title">Links umflossen</div>
-                            <div class="layout-desc">Text fließt rechts vorbei</div>
+                            <div class="layout-desc">38% Breite, links</div>
                         </div>
                         <div class="layout-option-card" data-layout="centered" onclick="selectLayout('centered', this)">
                             <div class="layout-icon">🎯</div>
                             <div class="layout-title">Zentriert</div>
-                            <div class="layout-desc">75% Breite kompakt</div>
+                            <div class="layout-desc">65% Breite kompakt</div>
+                        </div>
+                        <div class="layout-option-card" data-layout="mini" onclick="selectLayout('mini', this)">
+                            <div class="layout-icon">🔍</div>
+                            <div class="layout-title">Miniatur</div>
+                            <div class="layout-desc">24% Breite, rechts</div>
                         </div>
                     </div>
                 </div>
@@ -1650,7 +1655,7 @@
             reader.onload = function(event) {
                 const img = new Image();
                 img.onload = function() {
-                    const maxDim = 1000;
+                    const maxDim = 800;
                     let width = img.width;
                     let height = img.height;
 
@@ -1670,7 +1675,7 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    inlineSelectedImage = canvas.toDataURL('image/jpeg', 0.82);
+                    inlineSelectedImage = canvas.toDataURL('image/jpeg', 0.80);
                     document.getElementById('inline-preview-img').src = inlineSelectedImage;
                     document.getElementById('inline-image-src').value = inlineSelectedImage;
                 };

@@ -155,6 +155,10 @@ const DEFAULT_NEWS = [
                 <p class="lead-text">Gut Wissmannshof wächst weiter zu einer der vielseitigsten 27-Loch-Golfanlagen Deutschlands heran: Die Arbeiten an den 9 Bahnen des neuen Canyon Course befinden sich voll im Zeitplan.</p>
                 
                 <h3>Einzigartiges Platzdesign in hügeliger Topografie</h3>
+                <figure class="article-figure float-right">
+                    <img src="assets/gallery_bunker_stonewall_water.jpg" alt="Canyon Course Bauarbeiten" loading="lazy">
+                    <figcaption>Moderne Natursteinmauern und Wasserflächen am Canyon Course.</figcaption>
+                </figure>
                 <p>Der Canyon Course nutzt die natürlichen Schluchten und bewaldeten Hänge der nordhessischen Hügellandschaft optimal aus. Geplant sind herausfordernde Tees mit Blick über das Tal, strategisch platzierte Wasserhindernisse und ondulierende Grüns, die jedem Handicap taktisches Geschick abverlangen.</p>
 
                 <p>Besonderes Augenmerk liegt auf der ökologischen Einbettung: Mehr als 5 Hektar neue Blühwiesen und heimische Gehölze wurden bereits angepflanzt, um Lebensräume für Vögel und Insekten zu schaffen.</p>
@@ -166,6 +170,10 @@ const DEFAULT_NEWS = [
                 <p class="lead-text">Gut Wissmannshof continues its evolution into one of Germany’s most diverse 27-hole golf resorts: Works on the 9 holes of the new Canyon Course remain perfectly on schedule.</p>
                 
                 <h3>Dramatic Course Architecture</h3>
+                <figure class="article-figure float-right">
+                    <img src="assets/gallery_bunker_stonewall_water.jpg" alt="Canyon Course construction" loading="lazy">
+                    <figcaption>Natural stone retaining walls and water hazards on the new course.</figcaption>
+                </figure>
                 <p>The Canyon Course embraces the natural ravines and forested slopes of the Hessian hills. Highlights include elevated tees with panoramic valley views, strategic water hazards, and undulating green complexes.</p>
 
                 <p>Ecological sustainability is paramount: Over 5 hectares of wildflower meadows and native trees have been planted alongside the fairways.</p>
