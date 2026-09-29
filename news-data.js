@@ -12,13 +12,13 @@ const NEWS_IMAGE_PRESETS = [
     },
     {
         id: 'sunset_canyon',
-        title: 'Canyon Course Sonnenuntergang',
-        category: 'Platz / Canyon',
+        title: 'Sonnenuntergang über den Fairways',
+        category: 'Platz / Atmosphäre',
         url: 'assets/gallery_sunset_canyon_lake.jpg'
     },
     {
         id: 'island_green',
-        title: 'Inselgrün mit Kiefernwald',
+        title: 'Inselgrün mit Waldkulisse',
         category: 'Platz / Signature Hole',
         url: 'assets/gallery_island_green_pineforest.jpg'
     },
@@ -250,21 +250,19 @@ const NewsRepository = {
     },
 
     getAll: function() {
-        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
+        if (this._cached && Array.isArray(this._cached)) {
             return this._cached;
         }
 
         // Try primary v2 key
         try {
             const stored = localStorage.getItem(NEWS_STORAGE_KEY);
-            if (stored) {
+            if (stored !== null) {
                 const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed) && parsed.length > 0) {
+                if (Array.isArray(parsed)) {
                     const clean = this._sanitize(parsed);
-                    if (clean.length > 0) {
-                        this._cached = clean;
-                        return clean;
-                    }
+                    this._cached = clean;
+                    return clean;
                 }
             }
         } catch (e) {
@@ -286,7 +284,7 @@ const NewsRepository = {
 
     /**
      * Attempts to fetch the latest authentic news dataset from data/news.json or api/news.php
-     * Returns a Promise resolving to the news array.
+     * Always retrieves fresh server data when online, updates local cache and returns the news array.
      */
     syncFromServer: async function() {
         const endpoints = ['data/news.json', 'api/news.php'];

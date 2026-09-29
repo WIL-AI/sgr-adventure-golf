@@ -24,7 +24,7 @@
     --tee-blue: #2563EB;
     --tee-red: #DC2626;
 
-    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -254,7 +254,7 @@ img {
 .hero-course {
     position: relative;
     padding: 165px 0 95px;
-    background: linear-gradient(180deg, rgba(13, 34, 24, 0.50) 0%, rgba(13, 34, 24, 0.82) 100%), url('assets/hero_sgr_image_01.jpg') center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(13, 34, 24, 0.28) 0%, rgba(13, 34, 24, 0.44) 100%), url('assets/hero_sgr_image_01.jpg') center/cover no-repeat;
     color: var(--color-white);
     text-align: center;
     overflow: hidden;
@@ -269,7 +269,7 @@ img {
 
 .hero-badge {
     display: inline-block;
-    background: rgba(184, 150, 62, 0.25);
+    background: rgba(13, 34, 24, 0.55);
     border: 1px solid var(--color-gold);
     color: var(--color-gold-light);
     padding: 6px 20px;
@@ -279,27 +279,29 @@ img {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 20px;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
 }
 
 .hero-title {
     font-family: var(--font-heading);
     font-size: clamp(2.4rem, 5vw, 4.2rem);
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.15;
     margin-bottom: 20px;
-    color: var(--color-white);
+    color: #FFFFFF;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.95);
 }
 
 .hero-title span {
-    background: var(--color-gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F3E5AB;
+    -webkit-text-fill-color: initial;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.95);
 }
 
 .hero-lead {
     font-size: clamp(1.05rem, 2vw, 1.25rem);
-    color: rgba(255, 255, 255, 0.92);
+    color: #FFFFFF;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
     max-width: 840px;
     margin: 0 auto 36px;
     line-height: 1.7;

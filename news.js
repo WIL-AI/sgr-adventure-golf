@@ -166,7 +166,7 @@
         // Seamless server-side sync in background
         try {
             const syncedNews = await NewsRepository.syncFromServer();
-            if (syncedNews && syncedNews.length > 0 && JSON.stringify(syncedNews) !== JSON.stringify(allNews)) {
+            if (syncedNews && Array.isArray(syncedNews) && syncedNews.length > 0) {
                 allNews = syncedNews;
                 renderNewsGrid();
                 handleUrlHash();
@@ -429,8 +429,8 @@
                     </div>
                     <div class="news-card-body">
                         <div class="news-card-meta">
-                            <span class="news-date">📅 ${dateStr}</span>
-                            <span class="news-read-time">⏱️ ${readTimeStr}</span>
+                            <span class="news-date">${dateStr}</span>
+                            <span class="news-read-time">${readTimeStr}</span>
                         </div>
                         <h3 class="news-card-title">${title}</h3>
                         <p class="news-card-teaser">${teaser}</p>
@@ -486,7 +486,7 @@
         const imageCaption = getLoc(article.imageCaption, currentLang);
         if (elements.modalImageCaption) {
             if (imageCaption) {
-                elements.modalImageCaption.innerHTML = `<span class="caption-icon">📷</span> ${imageCaption}`;
+                elements.modalImageCaption.innerHTML = `<span class="caption-label">Foto:</span> ${imageCaption}`;
                 elements.modalImageCaption.style.display = 'flex';
             } else {
                 elements.modalImageCaption.style.display = 'none';

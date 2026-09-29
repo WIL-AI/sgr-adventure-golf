@@ -448,7 +448,7 @@ const TRANSLATIONS = {
         tabGelb: '🟡 Kurs Gelb (Hole 10–18)',
         tabCanyon: '🟢 Canyon-Kurs (Kurzplatz)',
         selectorTitle: 'Bahn wählen:',
-        zoomHint: '🔍 Klick zum Vergrößern',
+        zoomHint: 'Klick zum Vergrößern',
         
         lblPar: 'Par',
         lblHcp: 'HCP / Index',
@@ -501,7 +501,7 @@ const TRANSLATIONS = {
         tagBooking: 'Abschlag sichern',
         ctaBookHeading: 'Bereit für Ihre Runde auf Gut Wissmannshof?',
         ctaBookSub: 'Buchen Sie Ihre gewünschte Startzeit bequem online über PC CADDIE oder telefonisch im Clubsekretariat.',
-        btnPCCaddieBook: '📱 Startzeit online via PC CADDIE buchen ↗',
+        btnPCCaddieBook: 'Startzeit online via PC CADDIE buchen ↗',
         ctaCallDirect: 'Oder anrufen unter +49 (0) 5543 999 333',
 
         tagMap: 'Lage &amp; Anreise',
@@ -514,7 +514,7 @@ const TRANSLATIONS = {
         tip1Desc: 'Ausfahrt Kassel-Nord oder Hedemünden / Hann. Münden – von dort bequem ausgeschildert.',
         tip2Title: 'Kostenfreie Parkplätze &amp; E-Ladestationen:',
         tip2Desc: 'Großzügige Parkmöglichkeiten direkt am Clubhaus und Resorthotel vorhanden.',
-        btnGoogleRoute: '🗺️ Schnelle Route mit Google Maps berechnen ↗'
+        btnGoogleRoute: 'Schnelle Route mit Google Maps berechnen ↗'
     },
     en: {
         navHome: 'Home',
@@ -586,7 +586,7 @@ const TRANSLATIONS = {
         tabGelb: '🟡 Course Yellow (Holes 10–18)',
         tabCanyon: '🟢 Canyon Course (Short Course)',
         selectorTitle: 'Select Hole:',
-        zoomHint: '🔍 Click to zoom',
+        zoomHint: 'Click to zoom',
 
         lblPar: 'Par',
         lblHcp: 'HCP / Index',
@@ -639,7 +639,7 @@ const TRANSLATIONS = {
         tagBooking: 'Reserve Your Game',
         ctaBookHeading: 'Ready for Your Round at Gut Wissmannshof?',
         ctaBookSub: 'Book your tee time conveniently online via PC CADDIE or contact the clubhouse reception desk.',
-        btnPCCaddieBook: '📱 Book Tee Time via PC CADDIE ↗',
+        btnPCCaddieBook: 'Book Tee Time via PC CADDIE ↗',
         ctaCallDirect: 'Or call directly: +49 (0) 5543 999 333',
 
         tagMap: 'Location &amp; Directions',
@@ -652,7 +652,7 @@ const TRANSLATIONS = {
         tip1Desc: 'Exit at Kassel-Nord or Hedemünden / Hann. Münden – well signposted from there.',
         tip2Title: 'Free Parking &amp; EV Charging:',
         tip2Desc: 'Spacious parking available directly adjacent to the clubhouse and resort hotel.',
-        btnGoogleRoute: '🗺️ Calculate Fast Route with Google Maps ↗'
+        btnGoogleRoute: 'Calculate Fast Route with Google Maps ↗'
     }
 };
 

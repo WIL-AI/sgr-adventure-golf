@@ -190,7 +190,7 @@ const translations = {
  lblMessage: "Ihre Nachricht oder Wunschtermin (optional)",
  phMessage: "Wann können wir Sie am besten erreichen? Haben Sie spezielle Fragen?",
  btnSubmitForm: "Jetzt unverbindlich anfragen",
- privacyNote: "🔒 Ihre Angaben werden vertraulich behandelt und ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.",
+ privacyNote: "Ihre Angaben werden vertraulich behandelt und ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.",
 
  footerCol1: "Resort & Golf",
  fLinkHome: "Hauptwebseite Wissmannshof",
@@ -393,7 +393,7 @@ const translations = {
  lblMessage: "Your Message or Preferred Date (Optional)",
  phMessage: "When is the best time to reach you? Do you have specific questions?",
  btnSubmitForm: "Submit Inquiry Now",
- privacyNote: "🔒 Your information will be handled confidentially and used solely to process your inquiry.",
+ privacyNote: "Your information will be handled confidentially and used solely to process your inquiry.",
 
  footerCol1: "Resort & Golf",
  fLinkHome: "Main Website Wissmannshof",
