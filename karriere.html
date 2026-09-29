@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karriere & Jobs | Sport- & Golf-Resort Gut Wissmannshof</title>
+    <meta name="description" content="Werden Sie Teil unseres Teams im 4-Sterne Sport- & Golf-Resort Gut Wissmannshof. Offene Stellen in Greenkeeping, Golfschule, Gastronomie, Rezeption & Hotel.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="karriere.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo" title="Gut Wissmannshof">
+                <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof Logo">
+            </a>
+
+            <div class="nav-actions">
+                <a href="#bewerben" class="nav-btn-highlight">
+                    <span>✍</span> <span data-i18n="directApplyBtn">Direkt bewerben</span>
+                </a>
+                
+                <div class="lang-switcher" aria-label="Sprachauswahl">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <svg class="flag-icon" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
+                        <span>DE</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="career-hero">
+            <div class="container">
+                <div class="career-hero-content">
+                    <span class="hero-badge" data-i18n="heroBadge">Karriere & Stellenangebote</span>
+                    <h1 class="hero-title" data-i18n="heroTitle">
+                        Arbeiten, wo andere<br><span class="hero-title-highlight">Urlaub machen.</span>
+                    </h1>
+                    <p class="hero-lead" data-i18n="heroLead">
+                        Werden Sie Teil eines engagierten Teams auf einer der schönsten 27-Loch Golfanlagen Deutschlands. Entdecken Sie erstklassige Perspektiven in Greenkeeping, Golfschule, Gastronomie, Hotellerie und Club-Service.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#stellen" class="btn-hero-primary" data-i18n="openPositionsBtn">Offene Stellen ansehen ↓</a>
+                        <a href="#bewerben" class="btn-hero-secondary" data-i18n="directApplyBtn">Direkt bewerben</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section ("Warum Gut Wissmannshof?") -->
+        <section class="section-benefits">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="brandName">Sport- & Golf-Resort Gut Wissmannshof</span>
+                    <h2 class="section-title" data-i18n="whyTitle">Warum Gut Wissmannshof?</h2>
+                    <p class="section-subtitle" data-i18n="whySubtitle">Ihre Vorteile als Mitarbeiter in unserem 4-Sterne Golf- & Hotelresort</p>
+                </div>
+
+                <div id="benefits-grid" class="benefits-grid">
+                    <!-- Benefits injected via karriere.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Jobs & Open Positions Section -->
+        <section id="stellen" class="section-jobs">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 35px;">
+                    <span class="section-tag">Offene Positionen</span>
+                    <h2 class="section-title">Werden Sie Teil unseres Teams</h2>
+                    <p class="section-subtitle">Finden Sie die Position, die perfekt zu Ihren Stärken passt</p>
+                </div>
+
+                <!-- Toolbar (Department Filters & Search) -->
+                <div class="jobs-toolbar">
+                    <div id="filter-pills" class="filter-pills-wrap" role="tablist">
+                        <!-- Department filter buttons injected dynamically -->
+                    </div>
+
+                    <div class="jobs-toolbar-bottom">
+                        <div class="jobs-search-box">
+                            <span class="jobs-search-icon">🔍</span>
+                            <input type="text" id="jobs-search-input" placeholder="Stelle oder Stichwort suchen..." data-i18n-placeholder="searchPlaceholder" aria-label="Jobs suchen">
+                        </div>
+                        <div class="jobs-counter">
+                            <span id="jobs-count-num">0</span> <span id="jobs-count-text" data-i18n="showingJobsCount">Stellen gefunden</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Grid -->
+                <div id="jobs-grid" class="jobs-grid" aria-live="polite">
+                    <!-- Job cards injected via karriere.js -->
+                </div>
+
+                <!-- Initiativbewerbung VIP Banner -->
+                <div class="initiativ-banner">
+                    <div class="initiativ-content">
+                        <h3 data-i18n="initiativBannerTitle">Nicht die passende Stelle gefunden?</h3>
+                        <p data-i18n="initiativBannerText">Wir sind stets auf der Suche nach motivierten Talenten für unser Resort. Senden Sie uns gerne eine aussagekräftige Initiativbewerbung!</p>
+                    </div>
+                    <a href="#bewerben" class="btn-initiativ" data-i18n="initiativBannerBtn">Initiativ bewerben</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Application & Contact Section -->
+        <section id="bewerben" class="section-apply">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Unkompliziert & Direkt</span>
+                    <h2 class="section-title" data-i18n="quickApplyTitle">Jetzt direkt bewerben</h2>
+                    <p class="section-subtitle" data-i18n="quickApplySub">Herr Hubert Landefeld freut sich auf Ihre Kontaktaufnahme.</p>
+                </div>
+
+                <div class="apply-grid">
+                    <!-- Contact Card -->
+                    <div class="apply-contact-card">
+                        <div class="apply-contact-header">
+                            <div class="contact-avatar-wrap">HL</div>
+                            <h3>Hubert Landefeld</h3>
+                            <span data-i18n-contact-title>Geschäftsführung &amp; Bewerbermanagement</span>
+                        </div>
+
+                        <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.6;">
+                            Haben Sie vorab Fragen zu unseren Stellenangeboten oder möchten Sie direkt einen persönlichen Kennenlern-Termin vereinbaren? Rufen Sie gerne an oder schreiben Sie uns!
+                        </p>
+
+                        <div class="contact-links-list">
+                            <a href="tel:+491717540471" class="contact-link-item" title="Direkt anrufen">
+                                <div class="contact-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <strong data-i18n="callDirectly">Direkt anrufen</strong>
+                                    <span>0171 / 75 404 71</span>
+                                </div>
+                            </a>
+
+                            <a href="mailto:hubert@landefeld.de" class="contact-link-item" title="E-Mail senden">
+                                <div class="contact-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <strong data-i18n="emailDirectly">E-Mail senden</strong>
+                                    <span>hubert@landefeld.de</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="contact-address-note">
+                            <strong>Sport- und Golf-Resort Gut Wissmannshof</strong><br>
+                            Wissmannshof 1, 34355 Staufenberg
+                        </div>
+                    </div>
+
+                    <!-- Application Form Card -->
+                    <div class="apply-form-card">
+                        <div class="apply-form-header">
+                            <h3 data-i18n="quickApplyTitle">Online-Kurzbewerbung</h3>
+                            <p data-i18n="quickApplySub">In nur 2 Minuten ausgefüllt – wir melden uns umgehend bei Ihnen.</p>
+                        </div>
+
+                        <form id="career-apply-form" novalidate>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="applicant-name" data-i18n="formName">Vollständiger Name *</label>
+                                    <input type="text" id="applicant-name" class="form-input" required placeholder="z.B. Max Mustermann">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="applicant-phone" data-i18n="formPhone">Telefonnummer *</label>
+                                    <input type="tel" id="applicant-phone" class="form-input" required placeholder="z.B. 0170 1234567">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="applicant-email" data-i18n="formEmail">E-Mail-Adresse *</label>
+                                <input type="email" id="applicant-email" class="form-input" required placeholder="name@beispiel.de">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="applicant-job" data-i18n="formJobSelect">Gewünschte Stelle / Bereich *</label>
+                                <select id="applicant-job" class="form-select" required>
+                                    <option value="" data-i18n="formJobPlaceholder">-- Bitte Position auswählen --</option>
+                                    <!-- Job options populated via JS -->
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="applicant-message" data-i18n="formMessage">Ihr kurzes Anschreiben / Ihre Nachricht</label>
+                                <textarea id="applicant-message" class="form-textarea" placeholder="Erzählen Sie uns kurz über Ihre Erfahrungen und ab wann Sie starten könnten..." data-i18n-placeholder="formMessagePlaceholder"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="formFile">Lebenslauf / Dokumente (optional, PDF bis 10 MB)</label>
+                                <div class="file-dropzone" id="file-dropzone-box">
+                                    <input type="file" id="applicant-file" accept=".pdf,.doc,.docx,.jpg,.png">
+                                    <div class="file-dropzone-icon">📁</div>
+                                    <div class="file-dropzone-text">Datei hierher ziehen oder klicken zum Auswählen</div>
+                                    <div class="file-dropzone-sub">PDF, DOCX, JPG bis 10 MB</div>
+                                    <div id="file-chosen-name" class="file-selected-name"></div>
+                                </div>
+                            </div>
+
+                            <label class="form-checkbox-label">
+                                <input type="checkbox" id="applicant-privacy" required>
+                                <span data-i18n="formPrivacy">Ich stimme der Speicherung und Verarbeitung meiner Daten zur Bearbeitung der Bewerbung zu.</span>
+                            </label>
+
+                            <button type="submit" class="btn-form-submit" data-i18n="formSubmit">Bewerbung absenden</button>
+
+                            <div id="form-success-alert" class="form-success-banner">
+                                <h4 data-i18n="formSuccessTitle">Vielen Dank für Ihre Bewerbung!</h4>
+                                <p data-i18n="formSuccessMsg">Wir haben Ihre Nachricht erhalten. Herr Hubert Landefeld wird sich in Kürze persönlich mit Ihnen in Verbindung setzen.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Job Details Modal -->
+    <div id="job-modal-backdrop" class="modal-backdrop" tabindex="-1"></div>
+    <div id="job-modal" class="job-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="job-modal-close" class="modal-close-btn" aria-label="Schließen">&times;</button>
+        
+        <div class="modal-hero-wrap">
+            <img id="modal-img" src="" alt="" class="modal-hero-image">
+        </div>
+
+        <div class="modal-content-inner">
+            <div class="modal-meta-bar">
+                <span id="modal-dept" class="modal-dept-badge">Abteilung</span>
+                <span id="modal-type" class="modal-type-badge">Vollzeit</span>
+                <span id="modal-date" style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Ab sofort</span>
+            </div>
+
+            <h2 id="modal-title" class="modal-job-title">Stellenbezeichnung</h2>
+            <p id="modal-lead" class="modal-summary-lead"></p>
+
+            <div class="modal-section-block">
+                <h4 data-i18n="tasksHeading">Ihre Aufgaben &amp; Verantwortungen:</h4>
+                <ul id="modal-tasks-list" class="modal-list"></ul>
+            </div>
+
+            <div class="modal-section-block">
+                <h4 data-i18n="reqHeading">Das bringen Sie mit:</h4>
+                <ul id="modal-req-list" class="modal-list"></ul>
+            </div>
+
+            <div class="modal-section-block">
+                <h4 data-i18n="benefitsHeading">Das bieten wir Ihnen:</h4>
+                <ul id="modal-benefits-list" class="modal-list"></ul>
+            </div>
+
+            <div class="modal-footer-cta">
+                <button class="modal-close-btn-secondary" onclick="window.CareerApp.closeModal()" style="border: 1px solid var(--color-card-border); background: var(--color-cream); padding: 10px 22px; border-radius: var(--radius-pill); font-weight: 700; cursor: pointer;">
+                    <span data-i18n="modalClose">Schließen</span>
+                </button>
+                <button id="modal-apply-btn" class="modal-btn-apply" data-job-id="">
+                    <span data-i18n="applyNowBtn">Jetzt bewerben</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Resort CI Standard) -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof" class="footer-logo">
+                    <p class="footer-address">
+                        Sport- und Golf-Resort Gut Wissmannshof<br>
+                        Wissmannshof 1<br>
+                        34355 Staufenberg
+                    </p>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;">
+                        27-Loch Meisterschaftsplatz, Adventure Golf &amp; 4-Sterne Golfresort.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Direktkontakt &amp; Anreise</h4>
+                    <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
+                    <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
+                    <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
+                    <p style="font-size: 0.84rem; margin-top: 8px; color: var(--color-gold-light);">
+                        Navi-Adresse: Wissmannshof 1, 34355 Staufenberg
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Rechtliches &amp; Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.wissmannshof.de/impressum/" target="_blank">Impressum ↗</a></li>
+                        <li><a href="https://www.wissmannshof.de/datenschutz/" target="_blank">Datenschutz ↗</a></li>
+                        <li><a href="https://www.wissmannshof.de/informationen/" target="_blank">AGB &amp; Platzordnung ↗</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p data-i18n="footerCopyright">&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline" data-i18n="footerTagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="karriere-data.js"></script>
+    <script src="karriere.js"></script>
+</body>
+</html>
