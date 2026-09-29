@@ -275,8 +275,35 @@
         // Reload data in case it changed in admin
         allNews = NewsRepository.getAll();
 
-        // Filter by category and search
+        const now = new Date();
+
+        // Helper: Check if article is currently active and publicly visible
+        function isArticleActive(item) {
+            if (item.status === 'draft') return false;
+
+            // Check Scheduled Release Date / Time
+            if (item.publishFrom) {
+                const fromDate = new Date(item.publishFrom);
+                if (!isNaN(fromDate.getTime()) && now < fromDate) {
+                    return false; // Future release
+                }
+            }
+
+            // Check Expiry Date / Time
+            if (item.publishUntil) {
+                const untilDate = new Date(item.publishUntil);
+                if (!isNaN(untilDate.getTime()) && now > untilDate) {
+                    return false; // Expired
+                }
+            }
+
+            return true;
+        }
+
+        // Filter by visibility, category and search
         const filtered = allNews.filter(item => {
+            if (!isArticleActive(item)) return false;
+
             const matchCategory = (currentCategory === 'all' || item.category === currentCategory);
             
             if (!matchCategory) return false;

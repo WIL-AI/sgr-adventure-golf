@@ -512,6 +512,61 @@
             transform: translateY(-1px);
         }
 
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: var(--radius-pill);
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+        .status-badge.badge-live {
+            background: #D4EDDA;
+            color: #155724;
+            border: 1px solid #C3E6CB;
+        }
+        .status-badge.badge-scheduled {
+            background: #CCE5FF;
+            color: #004085;
+            border: 1px solid #B8DAFF;
+        }
+        .status-badge.badge-draft {
+            background: #FFF3CD;
+            color: #856404;
+            border: 1px solid #FFEEBA;
+        }
+        .status-badge.badge-expired {
+            background: #E2E3E5;
+            color: #383D41;
+            border: 1px solid #D6D8DB;
+        }
+
+        /* Table Filter Toolbar */
+        .table-filter-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .tbl-filter-pill {
+            background: #FAF8F3;
+            border: 1px solid #D5CEBD;
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tbl-filter-pill:hover, .tbl-filter-pill.active {
+            background: var(--color-primary);
+            color: var(--color-gold-light);
+            border-color: var(--color-primary);
+        }
+
         /* Preview Tab Controls */
         .preview-tab-controls {
             display: flex;
@@ -832,8 +887,44 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="article-date">Veröffentlichungsdatum <span class="req">*</span></label>
+                                <label class="form-label" for="article-date">Anzeigedatum <span class="req">*</span></label>
                                 <input type="date" id="article-date" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Scheduling & Status Control Box -->
+                        <div style="background: #FAF8F5; border: 1.5px solid var(--color-card-border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <label class="form-label" style="margin-bottom: 0; font-size: 0.84rem; display: flex; align-items: center; gap: 6px;">
+                                    <span>⏰</span> <strong>Veröffentlichungs-Status & Zeitsteuerung (Termin & Ablauf):</strong>
+                                </label>
+                            </div>
+
+                            <!-- Row: Status & Publish From -->
+                            <div class="form-row" style="margin-bottom: 10px;">
+                                <div>
+                                    <label class="form-label" for="article-status" style="font-size: 0.8rem;">Status:</label>
+                                    <select id="article-status" class="form-select">
+                                        <option value="published">🟢 Sofort veröffentlichen (Aktiv)</option>
+                                        <option value="draft">🟡 Als Entwurf speichern (Nicht öffentlich)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="article-publish-from" style="font-size: 0.8rem;">
+                                        Gültig ab / Geplanter Start (optional):
+                                    </label>
+                                    <input type="datetime-local" id="article-publish-from" class="form-input">
+                                    <div class="form-hint">Erscheint erst ab diesem Datum/Uhrzeit automatisch.</div>
+                                </div>
+                            </div>
+
+                            <!-- Row: Publish Until (Expiry) -->
+                            <div>
+                                <label class="form-label" for="article-publish-until" style="font-size: 0.8rem;">
+                                    Gültig bis / Automatisches Verschwinden (optional):
+                                </label>
+                                <input type="datetime-local" id="article-publish-until" class="form-input">
+                                <div class="form-hint">Verschwindet nach diesem Datum/Uhrzeit automatisch von der Live-Seite.</div>
                             </div>
                         </div>
 
@@ -1016,6 +1107,9 @@
                             <button type="submit" class="btn-save" id="btn-submit-article">
                                 💾 Artikel jetzt veröffentlichen
                             </button>
+                            <button type="button" class="btn-secondary" style="background: #FFF3CD; border-color: #FFEEBA; color: #856404; font-weight: 700;" onclick="saveAsDraft()">
+                                📝 Als Entwurf speichern
+                            </button>
                             <button type="button" class="btn-secondary" onclick="resetForm()">
                                 Abbrechen
                             </button>
@@ -1087,8 +1181,17 @@
         <div class="admin-card" style="margin-top: 10px;">
             <div class="card-header-bar">
                 <h2 class="card-title">
-                    <span>📰</span> Alle veröffentlichten News-Beiträge (<span id="article-count">0</span>)
+                    <span>📰</span> Alle News-Beiträge (<span id="article-count">0</span>)
                 </h2>
+            </div>
+
+            <!-- Table Filter Toolbar -->
+            <div class="table-filter-bar">
+                <button type="button" class="tbl-filter-pill active" data-tfilter="all" onclick="filterTableByStatus('all')">Alle (<span id="count-all">0</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="live" onclick="filterTableByStatus('live')">🟢 Live / Aktiv (<span id="count-live">0</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="scheduled" onclick="filterTableByStatus('scheduled')">🔵 Geplant (<span id="count-scheduled">0</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="draft" onclick="filterTableByStatus('draft')">🟡 Entwürfe (<span id="count-draft">0</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="expired" onclick="filterTableByStatus('expired')">⚪ Abgelaufen (<span id="count-expired">0</span>)</button>
             </div>
             
             <div class="table-responsive">
@@ -1098,6 +1201,7 @@
                             <th style="width: 60px;">Foto</th>
                             <th>Titel & Anreißer</th>
                             <th>Kategorie</th>
+                            <th>Status & Zeitsteuerung</th>
                             <th>Datum</th>
                             <th style="width: 150px; text-align: right;">Aktionen</th>
                         </tr>
@@ -1213,6 +1317,7 @@
         let uploadedImageDataUrl = '';
         let inlineSelectedImage = 'assets/gallery_golden_hour_tree_lake.jpg';
         let inlineSelectedLayout = 'full-width';
+        let currentTableFilter = 'all';
 
         // Crop, Pan & Zoom State
         let cropPosX = 50;
@@ -1242,6 +1347,50 @@
             setupInlineFileUpload();
             setupCropTool();
             updateLivePreview();
+        }
+
+        // Helper to calculate exact article status
+        function calculateArticleStatus(item) {
+            if (item.status === 'draft') {
+                return { code: 'draft', label: 'Entwurf', badgeClass: 'badge-draft', icon: '🟡', detail: 'Nicht öffentlich' };
+            }
+
+            const now = new Date();
+
+            if (item.publishFrom) {
+                const fromDate = new Date(item.publishFrom);
+                if (!isNaN(fromDate.getTime()) && now < fromDate) {
+                    const dateStr = fromDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                    return { code: 'scheduled', label: 'Geplant', badgeClass: 'badge-scheduled', icon: '🔵', detail: `Erscheint: ${dateStr}` };
+                }
+            }
+
+            if (item.publishUntil) {
+                const untilDate = new Date(item.publishUntil);
+                if (!isNaN(untilDate.getTime()) && now > untilDate) {
+                    const dateStr = untilDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
+                    return { code: 'expired', label: 'Abgelaufen', badgeClass: 'badge-expired', icon: '⚪', detail: `Seit: ${dateStr}` };
+                }
+            }
+
+            let detailStr = 'Öffentlich sichtbar';
+            if (item.publishUntil) {
+                const uDate = new Date(item.publishUntil);
+                if (!isNaN(uDate.getTime())) {
+                    detailStr = `Bis: ${uDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' })}`;
+                }
+            }
+
+            return { code: 'live', label: 'Live / Aktiv', badgeClass: 'badge-live', icon: '🟢', detail: detailStr };
+        }
+
+        // Filter Table by Status
+        function filterTableByStatus(status) {
+            currentTableFilter = status;
+            document.querySelectorAll('.tbl-filter-pill').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tfilter') === status);
+            });
+            renderArticlesTable();
         }
 
         // Switch Preview Mode in Sidebar (Card vs Full Article)
@@ -1300,7 +1449,6 @@
                 const deltaX = clientX - startX;
                 const deltaY = clientY - startY;
 
-                // Sensitivity factor
                 const rect = viewport.getBoundingClientRect();
                 const changeX = -(deltaX / rect.width) * 80;
                 const changeY = -(deltaY / rect.height) * 80;
@@ -1325,7 +1473,6 @@
             window.addEventListener('touchmove', onPointerMove, { passive: true });
             window.addEventListener('touchend', onPointerUp);
 
-            // Slider Listeners
             zoomRange.addEventListener('input', function() {
                 cropZoom = parseFloat(this.value) / 100;
                 applyCropTransforms();
@@ -1363,12 +1510,10 @@
             const transformStyle = `scale(${cropZoom})`;
             const objectPos = `${cropPosX}% ${cropPosY}%`;
 
-            // Update Target in Cropper Box
             const targetImg = document.getElementById('crop-img-target');
             targetImg.style.objectPosition = objectPos;
             targetImg.style.transform = transformStyle;
 
-            // Update Preview Card Target
             const prevCardImg = document.getElementById('prev-image');
             prevCardImg.style.objectPosition = objectPos;
             prevCardImg.style.transform = transformStyle;
@@ -1382,11 +1527,8 @@
                 return;
             }
 
-            // Create temp DOM element to parse HTML
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = contentHtml;
-
-            // Remove figures, blockquotes, headings, images to extract pure prose
             tempDiv.querySelectorAll('figure, img, blockquote, script, style, h1, h2, h3, h4').forEach(el => el.remove());
 
             let cleanText = (tempDiv.textContent || tempDiv.innerText || '').replace(/\s+/g, ' ').trim();
@@ -1402,7 +1544,6 @@
             if (cleanText.length <= maxChars) {
                 teaser = cleanText;
             } else {
-                // Cut at clean word boundary
                 const truncated = cleanText.substring(0, maxChars);
                 const lastSpace = truncated.lastIndexOf(' ');
                 if (lastSpace > 120) {
@@ -1486,7 +1627,6 @@
                 }
             });
 
-            // Live caption preview listener
             document.getElementById('inline-img-caption').addEventListener('input', function() {
                 const text = this.value.trim() || 'Bildkommentar / Unterschrift';
                 document.getElementById('inline-preview-caption-text').textContent = text;
@@ -1539,9 +1679,6 @@
             reader.readAsDataURL(file);
         }
 
-        /**
-         * Process and compress header image file
-         */
         function processImageFile(file) {
             if (!file.type.match('image.*')) {
                 alert('Bitte wählen Sie eine gültige Bilddatei aus (JPG, PNG, WEBP).');
@@ -1588,7 +1725,6 @@
 
                     document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
 
-                    // Update cropper image
                     document.getElementById('crop-img-target').src = uploadedImageDataUrl;
 
                     updateLivePreview();
@@ -1610,7 +1746,6 @@
             }
         }
 
-        // Render Preset Photos for Header
         function renderPresetGrid() {
             const container = document.getElementById('presets-grid');
             const presets = NewsRepository.getPresets();
@@ -1629,7 +1764,6 @@
             document.getElementById('article-image').value = selectedPresetUrl;
         }
 
-        // Render Preset Photos for Inline Modal
         function renderInlinePresetGrid() {
             const container = document.getElementById('inline-presets-grid');
             const presets = NewsRepository.getPresets();
@@ -1654,7 +1788,6 @@
             if (element) element.classList.add('active');
             document.getElementById('upload-status').classList.remove('show');
             
-            // Update Cropper image
             document.getElementById('crop-img-target').src = url;
             updateLivePreview();
         }
@@ -1673,7 +1806,6 @@
             if (element) element.classList.add('active');
         }
 
-        // Open & Close Inline Image Dialog
         function openInlineImageModal() {
             document.getElementById('inline-img-modal').classList.add('show');
             document.getElementById('inline-preview-img').src = inlineSelectedImage;
@@ -1683,7 +1815,6 @@
             document.getElementById('inline-img-modal').classList.remove('show');
         }
 
-        // Insert configured figure HTML into textarea
         function insertConfiguredInlineImage() {
             const caption = document.getElementById('inline-img-caption').value.trim();
             const altText = caption || 'Gut Wissmannshof Impression';
@@ -1706,7 +1837,6 @@
             switchPreviewMode('full');
         }
 
-        // Live input listeners for preview & character counter
         function setupLiveListeners() {
             const titleInput = document.getElementById('article-title');
             const categorySelect = document.getElementById('article-category');
@@ -1716,13 +1846,17 @@
             const imageCaptionInput = document.getElementById('article-image-caption');
             const teaserInput = document.getElementById('article-teaser');
             const contentTextarea = document.getElementById('article-content');
+            const statusSelect = document.getElementById('article-status');
+            const pubFromInput = document.getElementById('article-publish-from');
+            const pubUntilInput = document.getElementById('article-publish-until');
 
-            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, imageCaptionInput, teaserInput, contentTextarea].forEach(el => {
-                el.addEventListener('input', updateLivePreview);
-                el.addEventListener('change', updateLivePreview);
+            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, imageCaptionInput, teaserInput, contentTextarea, statusSelect, pubFromInput, pubUntilInput].forEach(el => {
+                if (el) {
+                    el.addEventListener('input', updateLivePreview);
+                    el.addEventListener('change', updateLivePreview);
+                }
             });
 
-            // Teaser char counter
             teaserInput.addEventListener('input', function() {
                 const len = this.value.length;
                 const counter = document.getElementById('teaser-counter');
@@ -1738,11 +1872,9 @@
                 }
             });
 
-            // Form Submit
             document.getElementById('news-form').addEventListener('submit', handleFormSubmit);
         }
 
-        // Live preview sync
         function updateLivePreview() {
             const title = document.getElementById('article-title').value.trim() || 'Überschrift des Artikels';
             const cat = document.getElementById('article-category').value;
@@ -1785,9 +1917,14 @@
                 prevCaptionEl.style.display = 'none';
             }
 
-            // Sync Cropper target image
             document.getElementById('crop-img-target').src = img;
             applyCropTransforms();
+        }
+
+        // Save explicitly as Draft
+        function saveAsDraft() {
+            document.getElementById('article-status').value = 'draft';
+            document.getElementById('news-form').requestSubmit();
         }
 
         // Form Submit (Create or Update)
@@ -1798,6 +1935,9 @@
             const title = document.getElementById('article-title').value.trim();
             const category = document.getElementById('article-category').value;
             const date = document.getElementById('article-date').value;
+            const status = document.getElementById('article-status').value;
+            const publishFrom = document.getElementById('article-publish-from').value;
+            const publishUntil = document.getElementById('article-publish-until').value;
             const author = document.getElementById('article-author').value.trim();
             const readTime = document.getElementById('article-readtime').value.trim();
             const image = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
@@ -1809,6 +1949,9 @@
 
             const articleObj = {
                 id: articleId,
+                status: status,
+                publishFrom: publishFrom || null,
+                publishUntil: publishUntil || null,
                 category: category,
                 categoryLabel: {
                     de: categoryLabels[category] || category,
@@ -1833,7 +1976,11 @@
             NewsRepository.saveItem(articleObj);
             currentArticles = NewsRepository.getAll();
             renderArticlesTable();
-            showToast(editId ? 'Beitrag erfolgreich aktualisiert! ✓' : 'Neuer Beitrag erfolgreich veröffentlicht! ✓');
+            
+            const msg = (status === 'draft') 
+                ? 'Beitrag erfolgreich als Entwurf gespeichert! 🟡' 
+                : (editId ? 'Beitrag erfolgreich aktualisiert! ✓' : 'Neuer Beitrag erfolgreich gespeichert! 🟢');
+            showToast(msg);
             resetForm();
         }
 
@@ -1843,13 +1990,32 @@
             const countEl = document.getElementById('article-count');
             countEl.textContent = currentArticles.length;
 
-            if (currentArticles.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #888; padding: 20px;">Keine Beiträge vorhanden.</td></tr>';
+            // Calculate counts for filter pills
+            let counts = { all: currentArticles.length, live: 0, scheduled: 0, draft: 0, expired: 0 };
+            currentArticles.forEach(item => {
+                const st = calculateArticleStatus(item);
+                if (counts[st.code] !== undefined) counts[st.code]++;
+            });
+
+            document.getElementById('count-all').textContent = counts.all;
+            document.getElementById('count-live').textContent = counts.live;
+            document.getElementById('count-scheduled').textContent = counts.scheduled;
+            document.getElementById('count-draft').textContent = counts.draft;
+            document.getElementById('count-expired').textContent = counts.expired;
+
+            const filtered = currentArticles.filter(item => {
+                if (currentTableFilter === 'all') return true;
+                const st = calculateArticleStatus(item);
+                return st.code === currentTableFilter;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #888; padding: 20px;">Keine Beiträge in dieser Ansicht vorhanden.</td></tr>';
                 return;
             }
 
             let html = '';
-            currentArticles.forEach(item => {
+            filtered.forEach(item => {
                 const titleStr = typeof item.title === 'string' ? item.title : (item.title.de || item.title.en);
                 const teaserStr = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
                 const catStr = categoryLabels[item.category] || item.category;
@@ -1857,6 +2023,8 @@
                 const posX = item.cropPosX !== undefined ? item.cropPosX : 50;
                 const posY = item.cropPosY !== undefined ? item.cropPosY : 50;
                 const zoom = item.cropZoom !== undefined ? item.cropZoom : 1;
+
+                const st = calculateArticleStatus(item);
 
                 html += `
                     <tr>
@@ -1867,23 +2035,42 @@
                         </td>
                         <td>
                             <strong style="color: var(--color-primary);">${titleStr}</strong>
-                            <div style="font-size: 0.8rem; color: var(--color-text-muted); max-width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted); max-width: 380px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 ${teaserStr}
                             </div>
                         </td>
                         <td>
                             <span class="preview-badge" style="position: static; display: inline-block;">${catStr}</span>
                         </td>
+                        <td>
+                            <span class="status-badge ${st.badgeClass}">${st.icon} ${st.label}</span>
+                            <div style="font-size: 0.74rem; color: var(--color-text-muted); margin-top: 2px;">
+                                ${st.detail}
+                            </div>
+                        </td>
                         <td>${item.date || ''}</td>
                         <td style="text-align: right;">
-                            <button type="button" class="action-icon-btn edit" onclick="editArticle('${item.id}')">Bearbeiten</button>
-                            <button type="button" class="action-icon-btn delete" onclick="deleteArticle('${item.id}')">Löschen</button>
+                            <button type="button" class="action-icon-btn edit" onclick="editArticle('${item.id}')" title="Bearbeiten">✏ Bearbeiten</button>
+                            <button type="button" class="action-icon-btn" onclick="toggleStatus('${item.id}')" title="Status wechseln">${item.status === 'draft' ? '🟢 Aktivieren' : '🟡 Entwurf'}</button>
+                            <button type="button" class="action-icon-btn delete" onclick="deleteArticle('${item.id}')" title="Löschen">🗑</button>
                         </td>
                     </tr>
                 `;
             });
 
             tbody.innerHTML = html;
+        }
+
+        // Toggle Status between published & draft
+        function toggleStatus(id) {
+            const item = NewsRepository.getById(id);
+            if (!item) return;
+
+            item.status = (item.status === 'draft') ? 'published' : 'draft';
+            NewsRepository.saveItem(item);
+            currentArticles = NewsRepository.getAll();
+            renderArticlesTable();
+            showToast(`Status auf "${item.status === 'draft' ? 'Entwurf' : 'Veröffentlicht'}" geändert!`);
         }
 
         // Edit article
@@ -1895,6 +2082,9 @@
             document.getElementById('article-title').value = typeof item.title === 'string' ? item.title : (item.title.de || item.title.en);
             document.getElementById('article-category').value = item.category || 'turniere';
             document.getElementById('article-date').value = item.date || '';
+            document.getElementById('article-status').value = item.status || 'published';
+            document.getElementById('article-publish-from').value = item.publishFrom || '';
+            document.getElementById('article-publish-until').value = item.publishUntil || '';
             document.getElementById('article-author').value = item.author || '';
             document.getElementById('article-readtime').value = item.readTime || '';
             
@@ -1951,6 +2141,9 @@
             document.getElementById('news-form').reset();
             document.getElementById('edit-article-id').value = '';
             document.getElementById('article-date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('article-status').value = 'published';
+            document.getElementById('article-publish-from').value = '';
+            document.getElementById('article-publish-until').value = '';
             document.getElementById('article-author').value = 'Clubsekretariat Gut Wissmannshof';
             document.getElementById('article-readtime').value = '3 Min.';
             document.getElementById('article-image-caption').value = '';
