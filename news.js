@@ -88,6 +88,45 @@
     }
 
     /**
+     * Formats raw text or HTML with proper paragraph tags and markdown heading support
+     */
+    function formatArticleContent(htmlOrText) {
+        if (!htmlOrText) return '';
+        let text = htmlOrText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+
+        // Split on 2 or more newlines into logical paragraph blocks
+        const blocks = text.split(/\n\s*\n+/);
+
+        const formattedBlocks = blocks.map(block => {
+            block = block.trim();
+            if (!block) return '';
+
+            // If it already starts with an HTML block-level tag, keep as is
+            if (/^<(p|h[1-6]|figure|blockquote|ul|ol|hr|div|table|section|header|footer)[\s>]/i.test(block)) {
+                return block;
+            }
+
+            // Markdown headings
+            if (/^###\s+(.+)$/m.test(block)) {
+                block = block.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+            }
+            if (/^##\s+(.+)$/m.test(block)) {
+                block = block.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+            }
+
+            // If not wrapped in a block element, wrap in <p>
+            if (!/^<(p|h[1-6]|figure|blockquote|ul|ol|hr|div)/i.test(block)) {
+                const inner = block.replace(/\n/g, '<br>');
+                return `<p>${inner}</p>`;
+            }
+
+            return block;
+        });
+
+        return formattedBlocks.filter(Boolean).join('\n\n');
+    }
+
+    /**
      * Initialize News application
      */
     function init() {
@@ -421,7 +460,7 @@
         if (elements.modalReadTime) elements.modalReadTime.textContent = article.readTime || `3 ${t.minRead}`;
         if (elements.modalTitle) elements.modalTitle.textContent = title;
         if (elements.modalAuthor) elements.modalAuthor.textContent = article.author ? `Verfasser: ${article.author}` : '';
-        if (elements.modalContent) elements.modalContent.innerHTML = contentHtml;
+        if (elements.modalContent) elements.modalContent.innerHTML = formatArticleContent(contentHtml);
         if (elements.modalShareBtn) elements.modalShareBtn.setAttribute('data-article-id', article.id);
     }
 

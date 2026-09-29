@@ -609,6 +609,20 @@
         .preview-reader-box.active {
             display: block;
         }
+        .preview-reader-box p {
+            margin-bottom: 16px;
+            line-height: 1.75;
+            color: #2F3532;
+        }
+        .preview-reader-box p:last-child {
+            margin-bottom: 0;
+        }
+        .preview-reader-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin: 20px 0 10px;
+        }
 
         /* Modal Dialog for Inline Image Insertion */
         .inline-modal-backdrop {
@@ -2065,6 +2079,39 @@
             list.innerHTML = html;
         }
 
+        // Formats raw text or HTML with proper paragraph tags and markdown heading support
+        function formatArticleContent(htmlOrText) {
+            if (!htmlOrText) return '';
+            let text = htmlOrText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+
+            const blocks = text.split(/\n\s*\n+/);
+
+            const formattedBlocks = blocks.map(block => {
+                block = block.trim();
+                if (!block) return '';
+
+                if (/^<(p|h[1-6]|figure|blockquote|ul|ol|hr|div|table|section|header|footer)[\s>]/i.test(block)) {
+                    return block;
+                }
+
+                if (/^###\s+(.+)$/m.test(block)) {
+                    block = block.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+                }
+                if (/^##\s+(.+)$/m.test(block)) {
+                    block = block.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+                }
+
+                if (!/^<(p|h[1-6]|figure|blockquote|ul|ol|hr|div)/i.test(block)) {
+                    const inner = block.replace(/\n/g, '<br>');
+                    return `<p>${inner}</p>`;
+                }
+
+                return block;
+            });
+
+            return formattedBlocks.filter(Boolean).join('\n\n');
+        }
+
         // Compiles clean text with [FOTO_1] tags into complete HTML figure elements
         function compileContentWithImages(rawContent) {
             if (!rawContent) return '';
@@ -2080,7 +2127,7 @@
                 return `\n<figure class="article-figure ${layout}">\n    <img src="${img.src}" alt="${alt}" loading="lazy">${captionHtml}\n</figure>\n`;
             });
 
-            return content;
+            return formatArticleContent(content);
         }
 
         // Extracts existing <figure> elements from HTML into inlineImagesMap and replaces them with clean [FOTO_X] placeholders
