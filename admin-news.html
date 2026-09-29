@@ -457,7 +457,7 @@
             border-color: var(--color-primary);
         }
         .toolbar-btn.btn-insert-photo {
-            background: var(--color-gold-gradient, linear-gradient(135deg, #D4AF37 0%, #AA771C 100%));
+            background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
             color: #FFFFFF;
             border: none;
             font-weight: 700;
@@ -506,7 +506,7 @@
             border: 1px solid var(--color-card-border);
             border-radius: var(--radius-md);
             padding: 24px;
-            max-height: 520px;
+            max-height: 540px;
             overflow-y: auto;
         }
         .preview-reader-box.active {
@@ -859,6 +859,15 @@
                                 <input type="text" id="article-image" class="form-input" placeholder="assets/gallery_golden_hour_tree_lake.jpg" required>
                                 <div class="form-hint">Dateipfad relativ oder vollständige Bild-URL.</div>
                             </div>
+
+                            <!-- Image Caption / Kommentar Input -->
+                            <div style="margin-top: 10px;">
+                                <label class="form-label" for="article-image-caption" style="font-size: 0.82rem;">
+                                    Kommentar / Bildunterschrift zum Titelfoto (optional):
+                                </label>
+                                <input type="text" id="article-image-caption" class="form-input" placeholder="z. B. Sonnenuntergang über dem Canyon Course See / Foto: Gut Wissmannshof">
+                                <div class="form-hint">Erscheint als dezenter Bildnachweis / Kommentar direkt unter dem Titelfoto im Artikel.</div>
+                            </div>
                         </div>
 
                         <!-- Anreißertext (~200 Zeichen) -->
@@ -893,7 +902,7 @@
                             </div>
 
                             <textarea id="article-content" class="form-textarea" rows="9" placeholder="<p>Ausführlicher Bericht...</p>" required></textarea>
-                            <div class="form-hint">Tipp: Nutzen Sie den Button <strong>„+ Foto in Text einfügen“</strong>, um Bilder passgenau und mit Bildunterschrift im Fließtext zu platzieren.</div>
+                            <div class="form-hint">Tipp: Nutzen Sie den Button <strong>„+ Foto in Text einfügen“</strong>, um Bilder passgenau und mit eigenem Kommentar / Bildunterschrift im Text zu platzieren.</div>
                         </div>
 
                         <!-- Buttons -->
@@ -941,6 +950,10 @@
 
                         <!-- 2. Full Article Reader Preview -->
                         <div id="preview-mode-full" class="preview-reader-box">
+                            <div class="modal-hero-image-wrap" style="border-radius: 8px; overflow: hidden; margin-bottom: 16px;">
+                                <img id="prev-full-img" src="assets/gallery_golden_hour_tree_lake.jpg" alt="" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                                <div id="prev-full-img-caption" class="modal-image-caption" style="display:none; padding: 6px 14px; font-size: 0.78rem;"></div>
+                            </div>
                             <div style="font-size: 0.76rem; font-weight: 800; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;" id="prev-full-cat">Turniere & Events</div>
                             <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--color-primary); line-height: 1.3; margin-bottom: 12px;" id="prev-full-title">Überschrift</h2>
                             <div style="font-size: 0.8rem; color: var(--color-text-muted); padding-bottom: 12px; border-bottom: 1px solid #EDE8DC; margin-bottom: 16px;" id="prev-full-meta">
@@ -1061,10 +1074,11 @@
                     </div>
                 </div>
 
-                <!-- Caption Input -->
+                <!-- Caption / Kommentar Input -->
                 <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label" for="inline-img-caption">Bildunterschrift (optional):</label>
-                    <input type="text" id="inline-img-caption" class="form-input" placeholder="z. B. Blick auf Bahn 7 bei Abendsonne">
+                    <label class="form-label" for="inline-img-caption">Kommentar / Bildunterschrift darunter (optional):</label>
+                    <input type="text" id="inline-img-caption" class="form-input" placeholder="z. B. Neuer Grünbunker an Bahn 12 / Foto: Greenkeeping Team">
+                    <div class="form-hint">Erscheint als formatiertes Textfeld direkt unter dem Bild im Artikel.</div>
                 </div>
 
                 <!-- Live Preview of the Figure -->
@@ -1072,7 +1086,7 @@
                     <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">Vorschau im Text:</div>
                     <div style="max-height: 160px; overflow: hidden; border-radius: 6px; border: 1px solid #DDD;">
                         <img id="inline-preview-img" src="assets/gallery_golden_hour_tree_lake.jpg" alt="Vorschau" style="width: 100%; height: 120px; object-fit: cover; display: block;">
-                        <div id="inline-preview-caption-text" style="font-size: 0.75rem; font-style: italic; color: #666; padding: 4px 8px; background: #FFF;">Bildunterschrift</div>
+                        <div id="inline-preview-caption-text" style="font-size: 0.75rem; font-style: italic; color: #666; padding: 5px 10px; background: #FFF; border-top: 1px solid #EDE8DC;">Bildkommentar / Unterschrift</div>
                     </div>
                 </div>
 
@@ -1217,7 +1231,7 @@
 
             // Live caption preview listener
             document.getElementById('inline-img-caption').addEventListener('input', function() {
-                const text = this.value.trim() || 'Bildunterschrift';
+                const text = this.value.trim() || 'Bildkommentar / Unterschrift';
                 document.getElementById('inline-preview-caption-text').textContent = text;
             });
 
@@ -1437,10 +1451,11 @@
             const dateInput = document.getElementById('article-date');
             const readTimeInput = document.getElementById('article-readtime');
             const imageInput = document.getElementById('article-image');
+            const imageCaptionInput = document.getElementById('article-image-caption');
             const teaserInput = document.getElementById('article-teaser');
             const contentTextarea = document.getElementById('article-content');
 
-            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, teaserInput, contentTextarea].forEach(el => {
+            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, imageCaptionInput, teaserInput, contentTextarea].forEach(el => {
                 el.addEventListener('input', updateLivePreview);
                 el.addEventListener('change', updateLivePreview);
             });
@@ -1473,6 +1488,7 @@
             const author = document.getElementById('article-author').value.trim() || 'Clubsekretariat';
             const readTime = document.getElementById('article-readtime').value.trim() || '3 Min.';
             const img = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
+            const imgCaption = document.getElementById('article-image-caption').value.trim();
             const teaser = document.getElementById('article-teaser').value.trim() || 'Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...';
             const content = document.getElementById('article-content').value.trim() || '<p>Hier erscheint der vollständige Artikeltext...</p>';
 
@@ -1497,6 +1513,15 @@
             document.getElementById('prev-full-title').textContent = title;
             document.getElementById('prev-full-meta').textContent = `${formattedDate} • Verfasser: ${author}`;
             document.getElementById('prev-full-content').innerHTML = content;
+            document.getElementById('prev-full-img').src = img;
+            
+            const prevCaptionEl = document.getElementById('prev-full-img-caption');
+            if (imgCaption) {
+                prevCaptionEl.innerHTML = `<span class="caption-icon">📷</span> ${imgCaption}`;
+                prevCaptionEl.style.display = 'flex';
+            } else {
+                prevCaptionEl.style.display = 'none';
+            }
         }
 
         // Form Submit (Create or Update)
@@ -1510,6 +1535,7 @@
             const author = document.getElementById('article-author').value.trim();
             const readTime = document.getElementById('article-readtime').value.trim();
             const image = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
+            const imageCaption = document.getElementById('article-image-caption').value.trim();
             const teaser = document.getElementById('article-teaser').value.trim();
             const content = document.getElementById('article-content').value.trim();
 
@@ -1527,6 +1553,7 @@
                 featured: false,
                 date: date,
                 image: image,
+                imageCaption: { de: imageCaption, en: imageCaption },
                 title: { de: title, en: title },
                 teaser: { de: teaser, en: teaser },
                 author: author,
@@ -1610,6 +1637,9 @@
                 });
             }
 
+            const capVal = typeof item.imageCaption === 'string' ? item.imageCaption : (item.imageCaption?.de || item.imageCaption?.en || '');
+            document.getElementById('article-image-caption').value = capVal;
+
             document.getElementById('article-teaser').value = typeof item.teaser === 'string' ? item.teaser : (item.teaser.de || item.teaser.en);
             document.getElementById('article-content').value = typeof item.content === 'string' ? item.content : (item.content.de || item.content.en);
 
@@ -1639,6 +1669,7 @@
             document.getElementById('article-date').value = new Date().toISOString().split('T')[0];
             document.getElementById('article-author').value = 'Clubsekretariat Gut Wissmannshof';
             document.getElementById('article-readtime').value = '3 Min.';
+            document.getElementById('article-image-caption').value = '';
             document.getElementById('form-title-heading').innerHTML = '<span>✍</span> Neuen News-Beitrag erstellen';
             document.getElementById('btn-submit-article').textContent = '💾 Artikel jetzt veröffentlichen';
 

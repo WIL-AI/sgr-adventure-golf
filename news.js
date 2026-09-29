@@ -119,6 +119,7 @@
             modalBackdrop: document.getElementById('article-modal-backdrop'),
             modalClose: document.getElementById('article-modal-close'),
             modalImage: document.getElementById('modal-image'),
+            modalImageCaption: document.getElementById('modal-image-caption'),
             modalCategory: document.getElementById('modal-category'),
             modalDate: document.getElementById('modal-date'),
             modalReadTime: document.getElementById('modal-read-time'),
@@ -368,6 +369,17 @@
         const t = I18N[currentLang];
 
         if (elements.modalImage) elements.modalImage.src = article.image || 'assets/hero_bg.jpg';
+        
+        const imageCaption = getLoc(article.imageCaption, currentLang);
+        if (elements.modalImageCaption) {
+            if (imageCaption) {
+                elements.modalImageCaption.innerHTML = `<span class="caption-icon">📷</span> ${imageCaption}`;
+                elements.modalImageCaption.style.display = 'flex';
+            } else {
+                elements.modalImageCaption.style.display = 'none';
+            }
+        }
+
         if (elements.modalCategory) {
             elements.modalCategory.textContent = categoryBadge;
             elements.modalCategory.className = `modal-category-badge cat-${article.category}`;
