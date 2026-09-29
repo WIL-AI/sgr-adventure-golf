@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- News Stylesheet for identical live typography & figure styling -->
+    <link rel="stylesheet" href="news.css">
+
     <!-- Admin Specific Stylesheet -->
     <style>
         :root {
@@ -114,7 +117,7 @@
         /* Studio Grid (Editor + Live Preview) */
         .admin-studio {
             display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
+            grid-template-columns: 1.18fr 0.82fr;
             gap: 28px;
             align-items: start;
         }
@@ -245,7 +248,7 @@
             border: 2px dashed var(--color-gold);
             background: #FAF8F3;
             border-radius: var(--radius-md);
-            padding: 28px 20px;
+            padding: 24px 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s;
@@ -266,28 +269,28 @@
             cursor: pointer;
         }
         .upload-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
+            font-size: 2rem;
+            margin-bottom: 6px;
             display: inline-block;
         }
         .upload-text-main {
             font-weight: 700;
             color: var(--color-primary);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             margin-bottom: 4px;
         }
         .upload-text-sub {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--color-text-muted);
         }
         .btn-choose-file {
-            margin-top: 10px;
+            margin-top: 8px;
             display: inline-block;
             background: var(--color-primary);
             color: var(--color-white);
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: var(--radius-pill);
             pointer-events: none;
         }
@@ -298,7 +301,7 @@
             background: #FFFFFF;
             border: 1.5px solid var(--color-gold);
             border-radius: var(--radius-md);
-            padding: 12px 16px;
+            padding: 10px 14px;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
@@ -308,8 +311,8 @@
             display: flex;
         }
         .upload-preview-thumb {
-            width: 65px;
-            height: 45px;
+            width: 60px;
+            height: 42px;
             border-radius: 4px;
             object-fit: cover;
             border: 1px solid #D5CEBD;
@@ -344,41 +347,13 @@
             color: var(--color-white);
         }
 
-        /* Character Counter Badge */
-        .teaser-counter-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 4px;
-        }
-        .char-counter {
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: var(--radius-pill);
-            background: #EAE6DB;
-            color: var(--color-text-muted);
-        }
-        .char-counter.optimal {
-            background: #D4EDDA;
-            color: #155724;
-        }
-        .char-counter.warning {
-            background: #FFF3CD;
-            color: #856404;
-        }
-        .char-counter.too-long {
-            background: #F8D7DA;
-            color: #721C24;
-        }
-
         /* Preset Photo Selector Grid */
         .preset-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
             gap: 10px;
             margin-top: 8px;
-            max-height: 220px;
+            max-height: 200px;
             overflow-y: auto;
             padding: 4px;
             border: 1.5px solid #EAE6DB;
@@ -424,6 +399,34 @@
             font-weight: 800;
         }
 
+        /* Character Counter Badge */
+        .teaser-counter-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .char-counter {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            background: #EAE6DB;
+            color: var(--color-text-muted);
+        }
+        .char-counter.optimal {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        .char-counter.warning {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        .char-counter.too-long {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
         /* Rich Editor Toolbar */
         .editor-toolbar {
             display: flex;
@@ -431,23 +434,184 @@
             flex-wrap: wrap;
             margin-bottom: 8px;
             background: #EAE6DB;
-            padding: 6px 10px;
+            padding: 8px 10px;
             border-radius: var(--radius-sm);
+            align-items: center;
         }
         .toolbar-btn {
             background: var(--color-white);
             border: 1px solid #D5CEBD;
-            padding: 4px 8px;
+            padding: 5px 9px;
             border-radius: 4px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
         .toolbar-btn:hover {
             background: var(--color-primary);
             color: var(--color-white);
             border-color: var(--color-primary);
+        }
+        .toolbar-btn.btn-insert-photo {
+            background: var(--color-gold-gradient, linear-gradient(135deg, #D4AF37 0%, #AA771C 100%));
+            color: #FFFFFF;
+            border: none;
+            font-weight: 700;
+            padding: 5px 12px;
+            box-shadow: 0 2px 6px rgba(184, 150, 62, 0.25);
+        }
+        .toolbar-btn.btn-insert-photo:hover {
+            background: var(--color-primary);
+            color: var(--color-gold-light);
+            transform: translateY(-1px);
+        }
+
+        /* Preview Tab Controls */
+        .preview-tab-controls {
+            display: flex;
+            gap: 6px;
+            background: #EAE6DB;
+            padding: 4px;
+            border-radius: var(--radius-pill);
+        }
+        .prev-tab-btn {
+            border: none;
+            background: transparent;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--color-primary);
+            transition: all 0.2s;
+        }
+        .prev-tab-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .preview-sticky {
+            position: sticky;
+            top: 75px;
+        }
+
+        /* Full Reader Preview View in Backend */
+        .preview-reader-box {
+            display: none;
+            background: #FFFFFF;
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            max-height: 520px;
+            overflow-y: auto;
+        }
+        .preview-reader-box.active {
+            display: block;
+        }
+
+        /* Modal Dialog for Inline Image Insertion */
+        .inline-modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 34, 24, 0.75);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .inline-modal-backdrop.show {
+            display: flex;
+        }
+        .inline-modal-card {
+            background: #FFFFFF;
+            width: 100%;
+            max-width: 680px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid var(--color-gold);
+            overflow: hidden;
+            animation: slideDown 0.25s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .inline-modal-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .inline-modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .inline-modal-close {
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.4rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .inline-modal-body {
+            padding: 20px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        /* Layout Size Radio Selector Cards */
+        .layout-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+        .layout-option-card {
+            border: 1.5px solid #D5CEBD;
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #FAF8F5;
+        }
+        .layout-option-card:hover {
+            border-color: var(--color-gold);
+            background: #FFFFFF;
+        }
+        .layout-option-card.active {
+            border-color: var(--color-primary);
+            background: #F4EDE0;
+            box-shadow: 0 0 0 2px var(--color-gold);
+        }
+        .layout-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+        .layout-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--color-primary);
+        }
+        .layout-desc {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
         }
 
         /* Buttons */
@@ -487,72 +651,7 @@
             background: #DCD6C7;
         }
 
-        /* Right Column: Sticky Live Preview */
-        .preview-sticky {
-            position: sticky;
-            top: 80px;
-        }
-        .preview-card-wrap {
-            border: 1px solid var(--color-card-border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: var(--color-white);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        }
-        .preview-img-container {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            background: #EAE6DB;
-        }
-        .preview-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .preview-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--color-primary);
-            color: var(--color-gold-light);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: var(--radius-pill);
-        }
-        .preview-content {
-            padding: 18px;
-        }
-        .preview-meta {
-            font-size: 0.78rem;
-            color: var(--color-text-muted);
-            margin-bottom: 6px;
-        }
-        .preview-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 8px;
-            line-height: 1.35;
-        }
-        .preview-teaser {
-            font-size: 0.88rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
-            margin-bottom: 14px;
-        }
-        .preview-btn {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--color-gold);
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Existing Articles Table */
+        /* Table */
         .table-responsive {
             overflow-x: auto;
         }
@@ -607,7 +706,7 @@
             color: var(--color-white);
         }
 
-        /* Success / Alert Toast */
+        /* Toast */
         .toast-msg {
             position: fixed;
             bottom: 24px;
@@ -620,7 +719,7 @@
             font-weight: 700;
             font-size: 0.9rem;
             display: none;
-            z-index: 9999;
+            z-index: 10000;
             border: 1px solid var(--color-gold);
         }
         .toast-msg.show {
@@ -711,7 +810,7 @@
                         <!-- Titelfoto Auswahl & Upload -->
                         <div class="form-group">
                             <label class="form-label">
-                                Titelfoto auswählen oder hochladen <span class="req">*</span>
+                                Titel- & Header-Foto auswählen oder hochladen <span class="req">*</span>
                             </label>
 
                             <!-- Mode Tabs -->
@@ -733,14 +832,14 @@
                                     <input type="file" id="file-input" accept="image/*">
                                     <div class="upload-icon">📸</div>
                                     <div class="upload-text-main">Foto vom PC oder Smartphone hierher ziehen</div>
-                                    <div class="upload-text-sub">oder klicken, um eine Datei (JPG, PNG, WEBP) auszuwählen</div>
+                                    <div class="upload-text-sub">oder klicken, um ein Titelfoto (JPG, PNG, WEBP) auszuwählen</div>
                                     <div class="btn-choose-file">Foto auswählen…</div>
                                 </div>
 
                                 <div id="upload-status" class="upload-success-box">
                                     <img id="upload-status-thumb" src="" alt="Vorschau" class="upload-preview-thumb">
                                     <div class="upload-details">
-                                        <div class="upload-details-title">✓ Foto erfolgreich geladen</div>
+                                        <div class="upload-details-title">✓ Titelfoto erfolgreich geladen</div>
                                         <div class="upload-details-meta" id="upload-status-info">Optimiert für Web</div>
                                     </div>
                                     <button type="button" class="btn-remove-upload" onclick="clearUploadedImage()">Entfernen</button>
@@ -779,7 +878,12 @@
                             <label class="form-label" for="article-content">
                                 Vollständiger Artikeltext (HTML / Absätze) <span class="req">*</span>
                             </label>
+                            
+                            <!-- Enhanced Editor Toolbar -->
                             <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn btn-insert-photo" onclick="openInlineImageModal()">
+                                    🖼️ + Foto in Text einfügen
+                                </button>
                                 <button type="button" class="toolbar-btn" onclick="insertTag('p', 'Absatz-Text hier eingeben...')">+ Absatz</button>
                                 <button type="button" class="toolbar-btn" onclick="insertTag('h3', 'Zwischenüberschrift')">+ Zwischenüberschrift</button>
                                 <button type="button" class="toolbar-btn" onclick="insertQuote()">+ Zitat-Box</button>
@@ -787,8 +891,9 @@
                                 <button type="button" class="toolbar-btn" onclick="wrapSelection('strong')"><strong>Fett</strong></button>
                                 <button type="button" class="toolbar-btn" onclick="wrapSelection('em')"><em>Kursiv</em></button>
                             </div>
-                            <textarea id="article-content" class="form-textarea" rows="8" placeholder="<p>Ausführlicher Bericht...</p>" required></textarea>
-                            <div class="form-hint">HTML-Tags wie &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;, &lt;blockquote&gt; werden unterstützt.</div>
+
+                            <textarea id="article-content" class="form-textarea" rows="9" placeholder="<p>Ausführlicher Bericht...</p>" required></textarea>
+                            <div class="form-hint">Tipp: Nutzen Sie den Button <strong>„+ Foto in Text einfügen“</strong>, um Bilder passgenau und mit Bildunterschrift im Fließtext zu platzieren.</div>
                         </div>
 
                         <!-- Buttons -->
@@ -809,23 +914,40 @@
                 <div class="preview-sticky">
                     <div class="admin-card">
                         <div class="card-header-bar">
-                            <h2 class="card-title"><span>👁</span> Live-Vorschau (Karte)</h2>
-                            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Echtzeit-Ansicht</span>
+                            <h2 class="card-title"><span>👁</span> Live-Vorschau</h2>
+                            <div class="preview-tab-controls">
+                                <button type="button" class="prev-tab-btn active" id="prev-tab-card" onclick="switchPreviewMode('card')">Karte</button>
+                                <button type="button" class="prev-tab-btn" id="prev-tab-full" onclick="switchPreviewMode('full')">Kompletter Artikel</button>
+                            </div>
                         </div>
 
-                        <!-- Visual Card Preview -->
-                        <div class="preview-card-wrap">
-                            <div class="preview-img-container">
-                                <img id="prev-image" src="assets/gallery_golden_hour_tree_lake.jpg" alt="Vorschau" class="preview-img">
-                                <span id="prev-category" class="preview-badge">Turniere & Events</span>
-                            </div>
-                            <div class="preview-content">
-                                <div class="preview-meta">
-                                    <span id="prev-date">18. Okt 2026</span> &bull; <span id="prev-readtime">3 Min. Lesezeit</span>
+                        <!-- 1. Visual Card Preview -->
+                        <div id="preview-mode-card">
+                            <div class="preview-card-wrap">
+                                <div class="preview-img-container" style="height: 180px; position: relative; background: #EAE6DB; overflow: hidden;">
+                                    <img id="prev-image" src="assets/gallery_golden_hour_tree_lake.jpg" alt="Vorschau" class="preview-img" style="width:100%; height:100%; object-fit:cover;">
+                                    <span id="prev-category" class="preview-badge">Turniere & Events</span>
                                 </div>
-                                <h3 id="prev-title" class="preview-title">Überschrift des Artikels</h3>
-                                <p id="prev-teaser" class="preview-teaser">Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...</p>
-                                <span class="preview-btn">Weiterlesen →</span>
+                                <div class="preview-content" style="padding: 16px;">
+                                    <div class="preview-meta" style="font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 6px;">
+                                        <span id="prev-date">18. Okt 2026</span> &bull; <span id="prev-readtime">3 Min. Lesezeit</span>
+                                    </div>
+                                    <h3 id="prev-title" style="font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px; line-height: 1.35;">Überschrift des Artikels</h3>
+                                    <p id="prev-teaser" style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px;">Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...</p>
+                                    <span class="preview-btn" style="font-size: 0.85rem; font-weight: 700; color: var(--color-gold);">Weiterlesen →</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Full Article Reader Preview -->
+                        <div id="preview-mode-full" class="preview-reader-box">
+                            <div style="font-size: 0.76rem; font-weight: 800; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;" id="prev-full-cat">Turniere & Events</div>
+                            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--color-primary); line-height: 1.3; margin-bottom: 12px;" id="prev-full-title">Überschrift</h2>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted); padding-bottom: 12px; border-bottom: 1px solid #EDE8DC; margin-bottom: 16px;" id="prev-full-meta">
+                                18. Okt 2026 &bull; Verfasser: Clubsekretariat
+                            </div>
+                            <div id="prev-full-content" class="modal-article-text prose" style="font-size: 0.95rem; line-height: 1.7;">
+                                <!-- Live HTML Body with embedded images -->
                             </div>
                         </div>
                     </div>
@@ -869,6 +991,99 @@
         </div>
     </div>
 
+    <!-- Modal Dialog: Insert Image Into Article Text -->
+    <div id="inline-img-modal" class="inline-modal-backdrop">
+        <div class="inline-modal-card">
+            <div class="inline-modal-header">
+                <h3><span>🖼️</span> Bild in den Artikeltext einfügen</h3>
+                <button type="button" class="inline-modal-close" onclick="closeInlineImageModal()">&times;</button>
+            </div>
+            <div class="inline-modal-body">
+                <!-- Tabs for Image Source -->
+                <div class="photo-tabs">
+                    <button type="button" class="photo-tab-btn active" data-itab="iupload" onclick="switchInlineTab('iupload')">
+                        📁 Foto hochladen
+                    </button>
+                    <button type="button" class="photo-tab-btn" data-itab="ipresets" onclick="switchInlineTab('ipresets')">
+                        🖼️ Resort-Mediathek
+                    </button>
+                    <button type="button" class="photo-tab-btn" data-itab="iurl" onclick="switchInlineTab('iurl')">
+                        🔗 Bildpfad / URL
+                    </button>
+                </div>
+
+                <!-- 1. Inline Upload -->
+                <div id="itab-panel-iupload" class="photo-panel active">
+                    <div class="upload-dropzone" id="inline-dropzone" style="padding: 18px 12px;">
+                        <input type="file" id="inline-file-input" accept="image/*">
+                        <div class="upload-icon" style="font-size: 1.6rem; margin-bottom: 2px;">📷</div>
+                        <div class="upload-text-main" style="font-size: 0.88rem;">Foto hierher ziehen oder auswählen</div>
+                        <div class="upload-text-sub" style="font-size: 0.75rem;">Wird automatisch für den Artikeltext optimiert</div>
+                    </div>
+                </div>
+
+                <!-- 2. Inline Presets -->
+                <div id="itab-panel-ipresets" class="photo-panel">
+                    <div id="inline-presets-grid" class="preset-grid" style="max-height: 150px;">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- 3. Inline URL -->
+                <div id="itab-panel-iurl" class="photo-panel">
+                    <input type="text" id="inline-image-src" class="form-input" placeholder="assets/gallery_island_green_pineforest.jpg">
+                </div>
+
+                <!-- Layout / Alignment Choice -->
+                <div style="margin-top: 18px;">
+                    <label class="form-label">Formatierung & Größe im Artikel:</label>
+                    <div class="layout-options-grid">
+                        <div class="layout-option-card active" data-layout="full-width" onclick="selectLayout('full-width', this)">
+                            <div class="layout-icon">↔️</div>
+                            <div class="layout-title">Volle Breite</div>
+                            <div class="layout-desc">100% Breite (Standard)</div>
+                        </div>
+                        <div class="layout-option-card" data-layout="float-right" onclick="selectLayout('float-right', this)">
+                            <div class="layout-icon">👉</div>
+                            <div class="layout-title">Rechts umflossen</div>
+                            <div class="layout-desc">Text fließt links vorbei</div>
+                        </div>
+                        <div class="layout-option-card" data-layout="float-left" onclick="selectLayout('float-left', this)">
+                            <div class="layout-icon">👈</div>
+                            <div class="layout-title">Links umflossen</div>
+                            <div class="layout-desc">Text fließt rechts vorbei</div>
+                        </div>
+                        <div class="layout-option-card" data-layout="centered" onclick="selectLayout('centered', this)">
+                            <div class="layout-icon">🎯</div>
+                            <div class="layout-title">Zentriert</div>
+                            <div class="layout-desc">75% Breite kompakt</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caption Input -->
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label" for="inline-img-caption">Bildunterschrift (optional):</label>
+                    <input type="text" id="inline-img-caption" class="form-input" placeholder="z. B. Blick auf Bahn 7 bei Abendsonne">
+                </div>
+
+                <!-- Live Preview of the Figure -->
+                <div style="background: #FAF8F5; border: 1px solid #EAE6DB; border-radius: 8px; padding: 12px; margin-top: 14px;">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">Vorschau im Text:</div>
+                    <div style="max-height: 160px; overflow: hidden; border-radius: 6px; border: 1px solid #DDD;">
+                        <img id="inline-preview-img" src="assets/gallery_golden_hour_tree_lake.jpg" alt="Vorschau" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+                        <div id="inline-preview-caption-text" style="font-size: 0.75rem; font-style: italic; color: #666; padding: 4px 8px; background: #FFF;">Bildunterschrift</div>
+                    </div>
+                </div>
+
+                <div class="btn-group" style="margin-top: 18px; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" style="padding: 9px 18px;" onclick="closeInlineImageModal()">Abbrechen</button>
+                    <button type="button" class="btn-save" style="padding: 9px 24px;" onclick="insertConfiguredInlineImage()">✨ In den Artikel einfügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="news-data.js"></script>
     <script>
@@ -876,6 +1091,8 @@
         let currentArticles = [];
         let selectedPresetUrl = '';
         let uploadedImageDataUrl = '';
+        let inlineSelectedImage = 'assets/gallery_golden_hour_tree_lake.jpg';
+        let inlineSelectedLayout = 'full-width';
 
         const categoryLabels = {
             turniere: 'Turniere & Events',
@@ -893,23 +1110,43 @@
             currentArticles = NewsRepository.getAll();
 
             renderPresetGrid();
+            renderInlinePresetGrid();
             renderArticlesTable();
             setupLiveListeners();
             setupFileUpload();
+            setupInlineFileUpload();
             updateLivePreview();
         }
 
-        // Photo Tab Switcher
+        // Switch Preview Mode in Sidebar (Card vs Full Article)
+        function switchPreviewMode(mode) {
+            document.getElementById('prev-tab-card').classList.toggle('active', mode === 'card');
+            document.getElementById('prev-tab-full').classList.toggle('active', mode === 'full');
+            document.getElementById('preview-mode-card').style.display = (mode === 'card') ? 'block' : 'none';
+            document.getElementById('preview-mode-full').style.display = (mode === 'full') ? 'block' : 'none';
+        }
+
+        // Header Photo Tab Switcher
         function switchPhotoTab(tabId) {
-            document.querySelectorAll('.photo-tab-btn').forEach(btn => {
+            document.querySelectorAll('.photo-tabs button[data-tab]').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
             });
-            document.querySelectorAll('.photo-panel').forEach(panel => {
+            document.querySelectorAll('#tab-panel-upload, #tab-panel-presets, #tab-panel-url').forEach(panel => {
                 panel.classList.toggle('active', panel.id === `tab-panel-${tabId}`);
             });
         }
 
-        // Setup File Upload & Compression
+        // Inline Modal Tab Switcher
+        function switchInlineTab(tabId) {
+            document.querySelectorAll('.photo-tabs button[data-itab]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-itab') === tabId);
+            });
+            document.querySelectorAll('#itab-panel-iupload, #itab-panel-ipresets, #itab-panel-iurl').forEach(panel => {
+                panel.classList.toggle('active', panel.id === `itab-panel-${tabId}`);
+            });
+        }
+
+        // Setup File Upload & Compression for Header Image
         function setupFileUpload() {
             const dropzone = document.getElementById('dropzone');
             const fileInput = document.getElementById('file-input');
@@ -944,8 +1181,95 @@
             });
         }
 
+        // Setup File Upload & Compression for Inline Text Images
+        function setupInlineFileUpload() {
+            const dropzone = document.getElementById('inline-dropzone');
+            const fileInput = document.getElementById('inline-file-input');
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('dragover');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                const files = e.dataTransfer.files;
+                if (files && files.length > 0) {
+                    processInlineImageFile(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    processInlineImageFile(e.target.files[0]);
+                }
+            });
+
+            // Live caption preview listener
+            document.getElementById('inline-img-caption').addEventListener('input', function() {
+                const text = this.value.trim() || 'Bildunterschrift';
+                document.getElementById('inline-preview-caption-text').textContent = text;
+            });
+
+            document.getElementById('inline-image-src').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    inlineSelectedImage = this.value.trim();
+                    document.getElementById('inline-preview-img').src = inlineSelectedImage;
+                }
+            });
+        }
+
+        function processInlineImageFile(file) {
+            if (!file.type.match('image.*')) {
+                alert('Bitte wählen Sie eine Bilddatei aus.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const maxDim = 1000;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    inlineSelectedImage = canvas.toDataURL('image/jpeg', 0.82);
+                    document.getElementById('inline-preview-img').src = inlineSelectedImage;
+                    document.getElementById('inline-image-src').value = inlineSelectedImage;
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
         /**
-         * Process and compress uploaded image with HTML5 Canvas
+         * Process and compress header image file
          */
         function processImageFile(file) {
             if (!file.type.match('image.*')) {
@@ -957,7 +1281,6 @@
             reader.onload = function(event) {
                 const img = new Image();
                 img.onload = function() {
-                    // Downscale to max 1280px width/height while keeping aspect ratio
                     const maxDim = 1280;
                     let width = img.width;
                     let height = img.height;
@@ -979,13 +1302,10 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    // Export as JPEG Data URL at 85% quality
                     uploadedImageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
 
-                    // Update Image input value
                     document.getElementById('article-image').value = uploadedImageDataUrl;
 
-                    // Show success box
                     const statusBox = document.getElementById('upload-status');
                     const statusThumb = document.getElementById('upload-status-thumb');
                     const statusInfo = document.getElementById('upload-status-info');
@@ -995,12 +1315,10 @@
                     statusInfo.textContent = `${file.name} (${width}×${height}px, ca. ${sizeKB} KB)`;
                     statusBox.classList.add('show');
 
-                    // Deselect presets
                     document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
 
-                    // Update Preview
                     updateLivePreview();
-                    showToast('Foto erfolgreich hochgeladen und optimiert! ✓');
+                    showToast('Titelfoto erfolgreich hochgeladen! ✓');
                 };
                 img.src = event.target.result;
             };
@@ -1012,14 +1330,13 @@
             document.getElementById('file-input').value = '';
             document.getElementById('upload-status').classList.remove('show');
             
-            // Revert to first preset
             const presets = NewsRepository.getPresets();
             if (presets.length > 0) {
                 selectPreset(presets[0].url, document.querySelector('.preset-thumb'));
             }
         }
 
-        // Render Preset Photos
+        // Render Preset Photos for Header
         function renderPresetGrid() {
             const container = document.getElementById('presets-grid');
             const presets = NewsRepository.getPresets();
@@ -1038,14 +1355,79 @@
             document.getElementById('article-image').value = selectedPresetUrl;
         }
 
+        // Render Preset Photos for Inline Modal
+        function renderInlinePresetGrid() {
+            const container = document.getElementById('inline-presets-grid');
+            const presets = NewsRepository.getPresets();
+            let html = '';
+
+            presets.forEach((p, idx) => {
+                html += `
+                    <div class="preset-thumb ${idx === 0 ? 'active' : ''}" data-iurl="${p.url}" title="${p.title}" onclick="selectInlinePreset('${p.url}', this)">
+                        <img src="${p.url}" alt="${p.title}" loading="lazy">
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
         function selectPreset(url, element) {
             selectedPresetUrl = url;
             uploadedImageDataUrl = '';
             document.getElementById('article-image').value = url;
-            document.querySelectorAll('.preset-thumb').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('#presets-grid .preset-thumb').forEach(el => el.classList.remove('active'));
             if (element) element.classList.add('active');
             document.getElementById('upload-status').classList.remove('show');
             updateLivePreview();
+        }
+
+        function selectInlinePreset(url, element) {
+            inlineSelectedImage = url;
+            document.getElementById('inline-image-src').value = url;
+            document.getElementById('inline-preview-img').src = url;
+            document.querySelectorAll('#inline-presets-grid .preset-thumb').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+        }
+
+        function selectLayout(layout, element) {
+            inlineSelectedLayout = layout;
+            document.querySelectorAll('.layout-option-card').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+        }
+
+        // Open & Close Inline Image Dialog
+        function openInlineImageModal() {
+            document.getElementById('inline-img-modal').classList.add('show');
+            document.getElementById('inline-preview-img').src = inlineSelectedImage;
+        }
+
+        function closeInlineImageModal() {
+            document.getElementById('inline-img-modal').classList.remove('show');
+        }
+
+        // Insert configured figure HTML into textarea
+        function insertConfiguredInlineImage() {
+            const caption = document.getElementById('inline-img-caption').value.trim();
+            const altText = caption || 'Gut Wissmannshof Impression';
+            const imgSrc = inlineSelectedImage || 'assets/gallery_golden_hour_tree_lake.jpg';
+            const layout = inlineSelectedLayout || 'full-width';
+
+            let captionHtml = '';
+            if (caption) {
+                captionHtml = `\n    <figcaption>${caption}</figcaption>`;
+            }
+
+            const snippet = `\n<figure class="article-figure ${layout}">\n    <img src="${imgSrc}" alt="${altText}" loading="lazy">${captionHtml}\n</figure>\n`;
+
+            const textarea = document.getElementById('article-content');
+            insertAtCursor(textarea, snippet);
+            closeInlineImageModal();
+            updateLivePreview();
+            showToast('Foto erfolgreich in den Text eingefügt! ✨');
+
+            // Switch preview to full article so staff sees the result immediately
+            switchPreviewMode('full');
         }
 
         // Live input listeners for preview & character counter
@@ -1056,8 +1438,9 @@
             const readTimeInput = document.getElementById('article-readtime');
             const imageInput = document.getElementById('article-image');
             const teaserInput = document.getElementById('article-teaser');
+            const contentTextarea = document.getElementById('article-content');
 
-            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, teaserInput].forEach(el => {
+            [titleInput, categorySelect, dateInput, readTimeInput, imageInput, teaserInput, contentTextarea].forEach(el => {
                 el.addEventListener('input', updateLivePreview);
                 el.addEventListener('change', updateLivePreview);
             });
@@ -1087,24 +1470,33 @@
             const title = document.getElementById('article-title').value.trim() || 'Überschrift des Artikels';
             const cat = document.getElementById('article-category').value;
             const dateVal = document.getElementById('article-date').value;
+            const author = document.getElementById('article-author').value.trim() || 'Clubsekretariat';
             const readTime = document.getElementById('article-readtime').value.trim() || '3 Min.';
             const img = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
             const teaser = document.getElementById('article-teaser').value.trim() || 'Hier erscheint der ca. 200 Zeichen lange Anreißertext in Echtzeit...';
+            const content = document.getElementById('article-content').value.trim() || '<p>Hier erscheint der vollständige Artikeltext...</p>';
 
+            // 1. Update Card Preview
             document.getElementById('prev-title').textContent = title;
             document.getElementById('prev-category').textContent = categoryLabels[cat] || cat;
             document.getElementById('prev-readtime').textContent = `${readTime} Lesezeit`;
             document.getElementById('prev-image').src = img;
             document.getElementById('prev-teaser').textContent = teaser;
 
+            let formattedDate = dateVal;
             if (dateVal) {
                 try {
                     const d = new Date(dateVal);
-                    document.getElementById('prev-date').textContent = d.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
-                } catch(e) {
-                    document.getElementById('prev-date').textContent = dateVal;
-                }
+                    formattedDate = d.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
+                } catch(e) {}
             }
+            document.getElementById('prev-date').textContent = formattedDate;
+
+            // 2. Update Full Reader Preview
+            document.getElementById('prev-full-cat').textContent = categoryLabels[cat] || cat;
+            document.getElementById('prev-full-title').textContent = title;
+            document.getElementById('prev-full-meta').textContent = `${formattedDate} • Verfasser: ${author}`;
+            document.getElementById('prev-full-content').innerHTML = content;
         }
 
         // Form Submit (Create or Update)
@@ -1224,10 +1616,8 @@
             document.getElementById('form-title-heading').innerHTML = '<span>✏</span> Beitrag bearbeiten';
             document.getElementById('btn-submit-article').textContent = '💾 Änderungen speichern';
 
-            // Scroll smoothly to form
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Trigger preview & counter updates
             document.getElementById('article-teaser').dispatchEvent(new Event('input'));
             updateLivePreview();
         }
@@ -1255,7 +1645,6 @@
             clearUploadedImage();
             switchPhotoTab('upload');
 
-            // Reset preset selection
             renderPresetGrid();
             document.getElementById('article-teaser').dispatchEvent(new Event('input'));
             updateLivePreview();
@@ -1266,18 +1655,21 @@
             const textarea = document.getElementById('article-content');
             const snippet = `<${tag}>${defaultText}</${tag}>\n`;
             insertAtCursor(textarea, snippet);
+            updateLivePreview();
         }
 
         function insertQuote() {
             const textarea = document.getElementById('article-content');
             const snippet = `<blockquote>\n    „Hier Zitat einfügen...“\n    <cite>— Name / Quelle</cite>\n</blockquote>\n`;
             insertAtCursor(textarea, snippet);
+            updateLivePreview();
         }
 
         function insertList() {
             const textarea = document.getElementById('article-content');
             const snippet = `<ul>\n    <li>Punkt 1</li>\n    <li>Punkt 2</li>\n    <li>Punkt 3</li>\n</ul>\n`;
             insertAtCursor(textarea, snippet);
+            updateLivePreview();
         }
 
         function wrapSelection(tag) {
@@ -1287,6 +1679,7 @@
             const selectedText = textarea.value.substring(start, end) || 'Text';
             const wrapped = `<${tag}>${selectedText}</${tag}>`;
             textarea.setRangeText(wrapped, start, end, 'select');
+            updateLivePreview();
         }
 
         function insertAtCursor(textarea, text) {
