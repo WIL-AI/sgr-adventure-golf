@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -79,6 +79,30 @@
       ]
     }
     </script>
+
+    <!-- SEO & Canonical Tags -->
+    <link rel="canonical" href="https://wissmannshof.golf/">
+    <link rel="alternate" hreflang="de" href="https://wissmannshof.golf/">
+    <link rel="alternate" hreflang="en" href="https://wissmannshof.golf/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://wissmannshof.golf/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sport- und Golf-Resort Gut Wissmannshof">
+    <meta property="og:url" content="https://wissmannshof.golf/">
+    <meta property="og:title" content="Sport- und Golf-Resort Gut Wissmannshof | 18-Loch Golfresort, Hotel & Restaurant">
+    <meta property="og:description" content="Herzlich willkommen im Sport- und Golf-Resort Gut Wissmannshof bei Kassel: 18-Loch Resort Course, Canyon Academy Kurs, moderne Driving Range, Resorthotel, Restaurant & Adventure Golf.">
+    <meta property="og:image" content="https://wissmannshof.golf/assets/gallery_golden_hour_tree_lake.jpg">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://wissmannshof.golf/">
+    <meta name="twitter:title" content="Sport- und Golf-Resort Gut Wissmannshof | 18-Loch Golfresort, Hotel & Restaurant">
+    <meta name="twitter:description" content="Herzlich willkommen im Sport- und Golf-Resort Gut Wissmannshof bei Kassel: 18-Loch Resort Course, Canyon Academy Kurs, moderne Driving Range, Resorthotel, Restaurant & Adventure Golf.">
+    <meta name="twitter:image" content="https://wissmannshof.golf/assets/gallery_golden_hour_tree_lake.jpg">
+
 </head>
 <body>
 
@@ -129,18 +153,15 @@
     <main>
         <!-- Hero Section -->
         <section class="home-hero">
+            <div class="home-hero-bg" id="home-hero-bg" aria-hidden="true"></div>
             <div class="container">
                 <div class="home-hero-content">
-                    <h1 class="hero-main-title" data-i18n="heroTitle">
-                        <span class="hero-main-sub">Sport &amp; Golf Resort</span>
-                        <span class="hero-title-highlight">Gut Wissmannshof</span>
-                    </h1>
-
-                    <!-- Membership Promo Banner -->
-                    <div class="membership-callout-card">
-                        <h4 data-i18n="heroMemberTitle">Mitgliedschaft, wie sie sein sollte.</h4>
-                        <p data-i18n="heroMemberText">Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten</p>
-                        <a href="mitglied-werden.html" class="membership-callout-link" data-i18n="heroMemberLink">Jetzt Mitglied werden →</a>
+                    <span class="hero-main-sub" data-i18n="heroBadge">Sport &amp; Golf Resort</span>
+                    <h1 class="hero-main-title" data-i18n="heroTitle">Gut Wissmannshof</h1>
+                    <p class="hero-lead-text" data-i18n="heroLead">Golf. Hotel. Natur. An einem Ort.</p>
+                    <div class="hero-actions-wrap">
+                        <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="heroBtnTee">Startzeit reservieren ↗</a>
+                        <a href="gast-info.html" class="btn btn-outline-white" data-i18n="heroBtnGuest">Resort entdecken ↓</a>
                     </div>
                 </div>
             </div>
@@ -154,8 +175,10 @@
                         <span class="news-ticker-badge" data-i18n="newsTickerBadge">Aktuell</span>
                         <span data-i18n="newsTickerLabel">News aus dem Resort:</span>
                     </div>
-                    <div class="news-ticker-headline" data-i18n="newsTickerHeadline">
-                        <a href="news.html">Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof</a>
+                    <div class="news-ticker-track-wrap" id="news-ticker-wrap">
+                        <div class="news-ticker-track" id="news-ticker-track">
+                            <!-- Dynamisch generierte Laufschrift der neuesten 3 Meldungen -->
+                        </div>
                     </div>
                     <a href="news.html" class="news-ticker-all-link" data-i18n="newsTickerLink">Alle Neuigkeiten &amp; Turniere ansehen →</a>
                 </div>
@@ -539,7 +562,8 @@
                     <ul class="footer-links">
                         <li><a href="impressum.html" data-i18n="footerImprint">Impressum</a></li>
                         <li><a href="datenschutz.html" data-i18n="footerPrivacy">Datenschutz</a></li>
-                        <li><a href="karriere.html" data-i18n="footerCareer">Karriere im Resort</a></li>`n                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;" data-i18n="footerCookies">Cookie-Einstellungen</a></li>
+                        <li><a href="karriere.html" data-i18n="footerCareer">Karriere im Resort</a></li>
+                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;" data-i18n="footerCookies">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
             </div>
@@ -554,7 +578,11 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790741500000"></script>
+    <script src="news-data.js?v=1790742500000"></script>
+    <script src="status-data.js?v=1790742500000"></script>
     <script src="home.js?v=1790741500000"></script>
-    <script src="cookie-consent.js?v=1790742000000"></script>`n</body>
+    <script src="cookie-consent.js?v=1790742000000"></script>
+    <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
+    <script src="analytics-tracker.js" defer></script>
+</body>
 </html>

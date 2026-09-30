@@ -6,7 +6,7 @@
     'use strict';
 
     const state = {
-        lang: localStorage.getItem('sgr_career_lang') || 'de'
+        lang: localStorage.getItem('sgr_lang') || 'de'
     };
 
     // DOM Elements
@@ -110,7 +110,7 @@
     // Switch Language
     function applyLanguage(lang) {
         state.lang = lang;
-        localStorage.setItem('sgr_career_lang', lang);
+        localStorage.setItem('sgr_lang', lang);
 
         const dict = CAREER_DATA.i18n[lang];
         if (!dict) return;

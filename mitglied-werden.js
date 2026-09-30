@@ -67,7 +67,8 @@ const translations = {
  fullF3: "DGV-Ausweis & weltweite Turnierteilnahme",
  fullF4: "Exklusiver Mehrwert: Jährlich 5 kostenlose Greenfee-Runden im Golfresort Hardenberg inklusive!",
  fullF5: "Vorzugskonditionen für Begleitpersonen & Gäste",
- fullF6: "Clubturniere, Mannschaftsspiel & exklusive Events",
+        fullF6: "Locker- & Garderoben-Service inklusive",
+        fullF7: "Clubturniere, Mannschaftsspiel & exklusive Events",
  btnSelectFull: "Vollmitgliedschaft anfragen",
 
  moreRatesTitle: "Weitere maßgeschneiderte Mitgliedschaftsformen",
@@ -270,7 +271,8 @@ const translations = {
  fullF3: "DGV membership card & worldwide tournament eligibility",
  fullF4: "Exclusive Perk: 5 complimentary green fee rounds per year at Golf Resort Hardenberg included!",
  fullF5: "Special guest rates for your playing partners",
- fullF6: "Club tournaments, league games & exclusive member events",
+        fullF6: "Locker room & wardrobe service included",
+        fullF7: "Club tournaments, league games & exclusive member events",
  btnSelectFull: "Request Full Membership",
 
  moreRatesTitle: "Further Tailored Membership Categories",

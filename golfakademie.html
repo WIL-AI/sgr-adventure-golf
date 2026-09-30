@@ -390,14 +390,14 @@
             </a>
 
             <nav class="main-nav" id="main-nav">
-                <a href="golfcourse.html" class="nav-link">Golf Course</a>
-                <a href="adventure-golf.html" class="nav-link">Adventure Golf</a>
-                <a href="mitglied-werden.html" class="nav-link">Mitglied werden</a>
-                <a href="gast-info.html" class="nav-link">Gast-Info</a>
-                <a href="golfakademie.html" class="nav-link active" style="color: var(--color-gold); font-weight: 700;">Golf Akademie</a>
-                <a href="news.html" class="nav-link">WiHo-News</a>
-                <a href="karriere.html" class="nav-link">Karriere</a>
-                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link">WEBCAM</a>
+                <a href="golfcourse.html" class="nav-link" data-t="navCourse">Golf Course</a>
+                <a href="adventure-golf.html" class="nav-link" data-t="navAdvGolf">Adventure Golf</a>
+                <a href="mitglied-werden.html" class="nav-link" data-t="navMember">Mitglied werden</a>
+                <a href="gast-info.html" class="nav-link" data-t="navGuest">Gast-Info</a>
+                <a href="golfakademie.html" class="nav-link active" style="color: var(--color-gold); font-weight: 700;" data-t="navAcademy">Golf Akademie</a>
+                <a href="news.html" class="nav-link" data-t="navNews">WiHo-News</a>
+                <a href="karriere.html" class="nav-link" data-t="navCareer">Karriere</a>
+                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link" data-t="navWebcam">WEBCAM</a>
             </nav>
 
             <div style="display: flex; align-items: center; gap: 12px;">
@@ -413,7 +413,7 @@
                 </div>
 
                 <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="nav-btn-cta">
-                    <span>Startzeit buchen</span>
+                    <span data-t="navBookTeeTime">Startzeit buchen</span>
                 </a>
                 <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menü öffnen">
                     <span></span>
@@ -429,15 +429,13 @@
         <section class="academy-hero">
             <div class="container">
                 <div class="academy-hero-content">
-                    <span class="academy-badge">Sport- und Golf-Resort Gut Wissmannshof</span>
-                    <h1>Golf Akademie &amp; Coaching</h1>
-                    <p>
-                        Ob erste Schwünge im Schnupperkurs, die fundierte DGV-Platzreife, individuelles Einzeltraining oder spezialisierte Clinics zu Golf-Mentalität und Regeln: Unsere PGA-Professionals begleiten Sie mit moderner Methodik zu Ihrem besten Spiel.
-                    </p>
+                    <span class="academy-badge" data-t="heroBadge">Sport- und Golf-Resort Gut Wissmannshof</span>
+                    <h1 data-t="heroTitle">Golf Akademie &amp; Coaching</h1>
+                    <p data-t="heroLead">Ob erste Schwünge im Schnupperkurs, die fundierte DGV-Platzreife, individuelles Einzeltraining oder spezialisierte Clinics zu Golf-Mentalität und Regeln: Unsere PGA-Professionals begleiten Sie mit moderner Methodik zu Ihrem besten Spiel.</p>
                     <div class="academy-hero-actions">
-                        <a href="#kurse" class="btn-welcome-cta">Kursangebote entdecken ↓</a>
-                        <a href="#termine" class="btn-welcome-cta" style="background: transparent; border: 1px solid rgba(255,255,255,0.7); color: #fff !important;">Termine Herbst 2026</a>
-                        <a href="#buchen" class="btn-welcome-cta" style="background: var(--color-gold); color: #fff !important;">Trainerstunde buchen</a>
+                        <a href="#kurse" class="btn-welcome-cta" data-t="btnHeroCourses">Kursangebote entdecken ↓</a>
+                        <a href="#termine" class="btn-welcome-cta" style="background: transparent; border: 1px solid rgba(255,255,255,0.7); color: #fff !important;" data-t="btnHeroDates">Termine Herbst 2026</a>
+                        <a href="#buchen" class="btn-welcome-cta" style="background: var(--color-gold); color: #fff !important;" data-t="btnHeroBook">Trainerstunde buchen</a>
                     </div>
                 </div>
             </div>
@@ -636,9 +634,7 @@
                 </div>
 
                 <!-- 2027 Preview Note -->
-                <div class="preview-box">
-                    <strong>📅 Hinweis zur Saison 2027:</strong> Das neue, erweiterte Kursprogramm für das Frühjahr/Sommer 2027 befindet sich derzeit in der finalen Abstimmung und wird hier in Kürze im Detail veröffentlicht.
-                </div>
+                <div class="preview-box" data-t="previewNote"><strong>📅 Hinweis zur Saison 2027:</strong> Das neue, erweiterte Kursprogramm für das Frühjahr/Sommer 2027 befindet sich derzeit in der finalen Abstimmung und wird hier in Kürze im Detail veröffentlicht.</div>
             </div>
         </section>
 
@@ -676,43 +672,43 @@
 
                         <form id="academy-contact-form" onsubmit="event.preventDefault(); sendAcademyInquiry();">
                             <div class="form-group" style="margin-bottom: 14px;">
-                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;">Gewünschtes Kursformat *</label>
+                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;" data-t="labelFormat">Gewünschtes Kursformat *</label>
                                 <select id="acad-format" class="form-input" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;" required>
-                                    <option value="Schnupperkurs">Schnupperkurs Golf</option>
-                                    <option value="Platzreife">DGV-Platzreifekurs</option>
-                                    <option value="Einzeltraining">Individuelle Trainerstunde / Einzeltraining</option>
-                                    <option value="Mitgliedertraining">Gruppentraining / Club-Clinic</option>
-                                    <option value="MentalRegeln">Spezial-Workshop (Regeln / Mental / Vortrag)</option>
-                                    <option value="Firmenevent">Firmenevent / Gruppe</option>
-                                    <option value="Allgemein">Allgemeine Trainingsberatung</option>
+                                    <option value="Schnupperkurs" data-t="optFormat1">Schnupperkurs Golf</option>
+                                    <option value="Platzreife" data-t="optFormat2">DGV-Platzreifekurs</option>
+                                    <option value="Einzeltraining" data-t="optFormat3">Individuelle Trainerstunde / Einzeltraining</option>
+                                    <option value="Mitgliedertraining" data-t="optFormat4">Gruppentraining / Club-Clinic</option>
+                                    <option value="MentalRegeln" data-t="optFormat5">Spezial-Workshop (Regeln / Mental / Vortrag)</option>
+                                    <option value="Firmenevent" data-t="optFormat6">Firmenevent / Gruppe</option>
+                                    <option value="Allgemein" data-t="optFormat7">Allgemeine Trainingsberatung</option>
                                 </select>
                             </div>
 
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
                                 <div class="form-group">
-                                    <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;">Ihr Name *</label>
+                                    <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;" data-t="labelName">Ihr Name *</label>
                                     <input type="text" id="acad-name" class="form-input" placeholder="Vor- und Nachname" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;" required>
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;">Telefonnummer *</label>
+                                    <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;" data-t="labelPhone">Telefonnummer *</label>
                                     <input type="tel" id="acad-phone" class="form-input" placeholder="Für Rückfragen" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;" required>
                                 </div>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 14px;">
-                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;">E-Mail-Adresse *</label>
+                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;" data-t="labelEmail">E-Mail-Adresse *</label>
                                 <input type="email" id="acad-email" class="form-input" placeholder="name@beispiel.de" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;" required>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 16px;">
-                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;">Ihre Nachricht oder Terminwünsche (optional)</label>
+                                <label style="display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 5px;" data-t="labelMsg">Ihre Nachricht oder Terminwünsche (optional)</label>
                                 <textarea id="acad-msg" class="form-textarea" rows="3" placeholder="Haben Sie bereits Golferfahrung oder Wunschzeiten?" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;"></textarea>
                             </div>
 
-                            <button type="submit" class="btn-welcome-cta" style="width: 100%; border: none; cursor: pointer; padding: 14px; font-weight: 700;">Anfrage absenden</button>
+                            <button type="submit" class="btn-welcome-cta" style="width: 100%; border: none; cursor: pointer; padding: 14px; font-weight: 700;" data-t="btnSubmit">Anfrage absenden</button>
 
                             <p style="font-size: 0.76rem; color: var(--color-text-muted); text-align: center; margin-top: 12px;">
-                                Ihre Anfrage wird als E-Mail an info@wissmannshof.de übermittelt.
+                                <span data-t="formPrivacyNote">Ihre Anfrage wird als E-Mail an info@wissmannshof.de übermittelt.</span>
                             </p>
                         </form>
                     </div>
@@ -735,12 +731,12 @@
                         34355 Staufenberg
                     </p>
                     <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;">
-                        18-Loch Resort Course, Canyon Academy Kurs, Driving Range &amp; Golfakademie.
+                        <span data-t="footerDesc">18-Loch Resort Course, Canyon Academy Kurs, Driving Range &amp; Golfakademie.</span>
                     </p>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Direktkontakt &amp; Anreise</h4>
+                    <h4 data-t="footerDirectHeading">Direktkontakt &amp; Anreise</h4>
                     <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
                     <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
                     <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
@@ -750,19 +746,19 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Rechtliches &amp; Information</h4>
+                    <h4 data-t="footerLegalHeading">Rechtliches &amp; Information</h4>
                     <ul class="footer-links">
-                        <li><a href="impressum.html">Impressum</a></li>
-                        <li><a href="datenschutz.html">Datenschutz</a></li>
-                        <li><a href="karriere.html">Karriere im Resort</a></li>`n                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;">Cookie-Einstellungen</a></li>
+                        <li><a href="impressum.html" data-t="footerImprint">Impressum</a></li>
+                        <li><a href="datenschutz.html" data-t="footerPrivacy">Datenschutz</a></li>
+                        <li><a href="karriere.html" data-t="footerCareer">Karriere im Resort</a></li>`n                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;" data-t="footerCookies">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <div class="footer-bottom-inner">
-                    <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
-                    <p class="footer-tagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
+                    <p data-t="footerCopyright">&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline" data-t="footerTagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
                 </div>
             </div>
         </div>
@@ -801,6 +797,7 @@ ${name}`;
             document.getElementById('academy-contact-form').reset();
         }
     </script>
+    <script src="golfakademie.js?v=1790771600000"></script>
     <script src="cookie-consent.js?v=1790742000000"></script>`n    <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
     <script src="analytics-tracker.js" defer></script>
 </body>
