@@ -198,7 +198,7 @@ img {
 .news-hero {
     position: relative;
     padding: 160px 0 75px;
-    background: linear-gradient(180deg, rgba(13, 34, 24, 0.20) 0%, rgba(13, 34, 24, 0.42) 100%), url('assets/gallery_rolling_green_hochsitz.jpg') center/cover no-repeat;
+    background: linear-gradient(180deg, rgba(13, 34, 24, 0.08) 0%, rgba(13, 34, 24, 0.0) 35%, rgba(13, 34, 24, 0.28) 100%), url('assets/gallery_rolling_green_hochsitz.jpg') center/cover no-repeat;
     color: var(--color-white);
     text-align: center;
 }
