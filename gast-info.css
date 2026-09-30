@@ -461,13 +461,19 @@ img {
 
 .trust-text strong {
     display: block;
-    font-size: 0.92rem;
-    color: var(--color-white);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #0D2218 !important;
+    margin-bottom: 3px;
+    line-height: 1.3;
 }
 
 .trust-text span {
-    font-size: 0.8rem;
-    color: #A8B8B0;
+    display: block;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #5E6660 !important;
+    line-height: 1.4;
 }
 
 /* ==========================================================================
