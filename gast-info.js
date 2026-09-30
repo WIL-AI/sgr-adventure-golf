@@ -27,7 +27,7 @@ const translations = {
         btnGoogleRoute: "Schnelle Route mit Google Maps berechnen ↗",
         heroBadge: "Gäste & Besucher herzlich willkommen",
  heroTitle: "Informationen für <span class=\"hero-gold-text\">unsere Gäste.</span>",
- heroLead: "Erleben Sie eine der faszinierendsten 18-Loch-Golfanlagen Deutschlands – mit einem ganz besonderen Vorzug: Unser Resorthotel liegt direkt auf der Anlage. Sie treten morgens aus Ihrem Zimmer und stehen praktisch sofort auf dem Fairway. Moderne E-Carts, großzügige Übungsbereiche und herzliche Gastfreundschaft machen Ihren Golftag perfekt.",
+ heroLead: "Erleben Sie eine außergewöhnlich vielseitige 18-Loch-Resort-Golfanlage in Mitteldeutschland – mit einem ganz besonderen Vorzug: Unser Resorthotel liegt direkt auf der Anlage. Sie treten morgens aus Ihrem Zimmer und stehen praktisch sofort auf dem Fairway. Moderne E-Carts, großzügige Übungsbereiche und herzliche Gastfreundschaft machen Ihren Golftag perfekt.",
  btnHeroBook: "Startzeit anfragen & reservieren",
  btnHeroPrices: "Greenfee & Preise im Überblick ↓",
 

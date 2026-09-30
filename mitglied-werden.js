@@ -150,7 +150,7 @@ const translations = {
  faq3Q: "Was passiert nach dem Schnupperjahr?",
  faq3A: "Die Schnuppermitgliedschaft bietet Ihnen 12 Monate vollen Einstieg. Anschließend geht das Spielrecht nahtlos in die reguläre Mitgliedschaft über – mit transparenter Kündigungsmöglichkeit.",
  faq4Q: "Ist der Platz wirklich das ganze Jahr über bespielbar?",
- faq4A: "Ja! Durch unsere hervorragende Platzpflege und erstklassige Drainage spielen Sie bei uns an 365 Tagen auf regulären Sommergrüns – ohne Wintergrüns oder monatelange Platzsperren.",
+ faq4A: "Ja! Durch unsere hervorragende Platzpflege und erstklassige Drainage spielen Sie bei uns ganzjährig auf regulären Sommergrüns – ohne monatelange witterungsbedingte Winterpausen (witterungsabhängig).",
  faq5Q: "Welche Vorteile bietet die Partnerschaft mit dem Golfresort Hardenberg?",
  faq5A: "Als Vollmitglied auf Gut Wissmannshof erhalten Sie jedes Jahr 5 kostenlose Greenfee-Runden im Golfresort Hardenberg inklusive. Das bedeutet maximalen Spielgenuss auf mehreren Spitzenplätzen!",
 
@@ -353,7 +353,7 @@ const translations = {
  faq3Q: "What happens after the trial year?",
  faq3A: "The trial membership provides 12 full months of exploration. Afterwards, your playing rights seamlessly transition into regular membership, with transparent cancellation terms.",
  faq4Q: "Is the course truly open and playable year-round?",
- faq4A: "Yes! Thanks to outstanding course maintenance and excellent drainage, we play 365 days a year on regular summer greens – no temporary winter greens or prolonged winter closures.",
+ faq4A: "Yes! Thanks to outstanding course maintenance and excellent drainage, our course is playable year-round on regular summer greens (subject to weather conditions).",
  faq5Q: "What benefits does the Hardenberg partnership offer?",
  faq5A: "As a Full Member at Gut Wissmannshof, you receive 5 complimentary green fee rounds every year for the renowned Golf Resort Hardenberg included – ensuring varied championship golf at top courses!",
 
