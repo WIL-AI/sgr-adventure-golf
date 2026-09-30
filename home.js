@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Sport- und Golf-Resort Gut Wissmannshof - Homepage Scripts & Bilingual Controller (DE / EN)
  */
 
@@ -162,6 +162,7 @@
             footerImprint: 'Impressum',
             footerPrivacy: 'Datenschutz',
             footerCareer: 'Karriere im Resort',
+            footerCookies: 'Cookie-Einstellungen',
             footerCopyright: '&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.',
             footerTagline: 'Besser als gut. Ihr Premium-Golf-Erlebnis.'
         },
@@ -317,6 +318,7 @@
             footerImprint: 'Imprint',
             footerPrivacy: 'Privacy Policy',
             footerCareer: 'Careers at Resort',
+            footerCookies: 'Cookie Settings',
             footerCopyright: '&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. All rights reserved.',
             footerTagline: 'Better than good. Your premier golf experience.'
         }

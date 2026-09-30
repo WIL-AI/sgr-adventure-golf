@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
  Sport- und Golf-Resort Gut Wissmannshof - Mitgliedschaft Landing Page JS
  Interactive Logic, Bilingual Translation Engine (DE / EN) & Form Handler
  ========================================================================== */
@@ -40,7 +40,7 @@ const translations = {
  pillar3Desc: "Natürlich gibt es Spielrechtsvertrag und AGB. Wir schreiben sie so, dass man sie versteht, und geben sie Ihnen vor der Unterschrift. Darin steht, was Ihre Mitgliedschaft kostet. Was dort nicht steht, kommt später auch nicht dazu.",
  calloutTitle: "Vollkommene Offenheit vor Vertragsabschluss:",
  calloutSub: "Sie können unseren Mitgliedsantrag, die Spielbedingungen und AGB jederzeit transparent einsehen.",
- btnCallout: "Mitgliedsantrag & AGB ansehen",
+ btnCallout: "Mitgliedsantrag & AGB (Stand 05/2026) ansehen",
 
  tagFair: "Kalkulierbar & Fair",
  ratesHeading: "Ein Betrag. Klar, fest, kalkulierbar.",
@@ -123,7 +123,7 @@ const translations = {
  cL2: "Klar geregelte Laufzeiten und transparente Kündigungsfristen",
  cL3: "Platz- und Spielordnung im Sinne eines respektvollen Miteinanders",
  cL4: "Datenschutz nach strengen europäischen Richtlinien",
- btnDownloadContract: "Vertragsunterlagen zum Download",
+ btnDownloadContract: "Mitgliedsantrag (Stand 05/2026) ansehen & drucken",
  btnRequestCall: "Beratungsgespräch anfragen",
  certTitle: "Gut Wissmannshof Transparenz-Garantie",
  certDesc: "„Was nicht im Spielrechtsvertrag steht, kann und wird Ihnen niemals nachträglich berechnet werden.“",
@@ -243,7 +243,7 @@ const translations = {
  pillar3Desc: "We provide clear contracts and terms that are easy to understand before you sign. They specify exact costs. What isn't listed will never be charged later.",
  calloutTitle: "Total openness before signing:",
  calloutSub: "You can review our membership application, playing terms, and club policies at any time.",
- btnCallout: "View Application & Terms",
+ btnCallout: "View Application & Terms (As of 05/2026)",
 
  tagFair: "Fair & Predictable",
  ratesHeading: "One Amount. Clear, Fixed, Predictable.",
@@ -326,7 +326,7 @@ const translations = {
  cL2: "Clearly defined terms and transparent cancellation periods",
  cL3: "Course and club etiquette fostering mutual respect",
  cL4: "Data protection adhering to strict European GDPR standards",
- btnDownloadContract: "Download Contract Documents",
+ btnDownloadContract: "Membership Application (05/2026) & Print",
  btnRequestCall: "Schedule Personal Consultation",
  certTitle: "Gut Wissmannshof Transparency Guarantee",
  certDesc: "“Whatever is not explicitly stated in your contract will never and can never be billed to you subsequently.”",
