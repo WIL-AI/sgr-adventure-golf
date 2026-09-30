@@ -588,66 +588,118 @@ function initFaqAccordion() {
  5. Membership Inquiry Form Handler (mailto generator)
  ========================================================================== */
 function initInquiryForm() {
- const form = document.getElementById('membership-form');
- if (!form) return;
+	const form = document.getElementById('membership-form');
+	if (!form) return;
 
- form.addEventListener('submit', (e) => {
- e.preventDefault();
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
 
- const type = document.getElementById('mgl-type').value;
- const name = document.getElementById('mgl-name').value.trim();
- const phone = document.getElementById('mgl-phone').value.trim();
- const email = document.getElementById('mgl-email').value.trim();
- const hcp = document.getElementById('mgl-hcp').value;
- const message = document.getElementById('mgl-message').value.trim();
+		const type = document.getElementById('mgl-type').value;
+		const name = document.getElementById('mgl-name').value.trim();
+		const phone = document.getElementById('mgl-phone').value.trim();
+		const email = document.getElementById('mgl-email').value.trim();
+		const hcp = document.getElementById('mgl-hcp').value;
+		const message = document.getElementById('mgl-message').value.trim();
+		const submitBtn = form.querySelector('button[type="submit"]');
+		const origBtnText = submitBtn ? submitBtn.textContent : '';
 
- if (!name || !phone || !email) {
- alert(currentLang === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' : 'Please fill in all required fields.');
- return;
- }
+		if (!name || !phone || !email) {
+			alert(currentLang === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' : 'Please fill in all required fields.');
+			return;
+		}
 
- const typeLabels = {
- schnupper: 'Schnuppermitgliedschaft (85 € / Monat)',
- voll: 'Vollmitgliedschaft (153 € / Monat)',
- woche: 'Wochenmitgliedschaft Mo.–Fr. (128 € / Monat)',
- '9loch': '9-Loch Mitgliedschaft (102 € / Monat)',
- zweit: 'Zweitmitgliedschaft (95 € / Monat)',
- fern: 'Fernmitgliedschaft (38 € / Monat)',
- student: 'Ausbildung / Studenten (60 € / Monat)',
- jugend: 'Kinder / Jugendliche (20 € / Monat)',
- beratung: 'Allgemeine Beratung & Probespielen'
- };
+		const typeLabels = {
+			schnupper: 'Schnuppermitgliedschaft (85 € / Monat)',
+			voll: 'Vollmitgliedschaft (153 € / Monat)',
+			woche: 'Wochenmitgliedschaft Mo.–Fr. (128 € / Monat)',
+			'9loch': '9-Loch Mitgliedschaft (102 € / Monat)',
+			zweit: 'Zweitmitgliedschaft (95 € / Monat)',
+			fern: 'Fernmitgliedschaft (38 € / Monat)',
+			student: 'Ausbildung / Studenten (60 € / Monat)',
+			jugend: 'Kinder / Jugendliche (20 € / Monat)',
+			beratung: 'Allgemeine Beratung & Probespielen'
+		};
 
- const hcpLabels = {
- einsteiger: 'Golf-Einsteiger (noch keine Platzreife)',
- platzreife: 'Platzreife vorhanden',
- hcp: 'Aktives Handicap (Mitglied in anderem Club)',
- wiedereinsteiger: 'Wiedereinsteiger'
- };
+		const hcpLabels = {
+			einsteiger: 'Golf-Einsteiger (noch keine Platzreife)',
+			platzreife: 'Platzreife vorhanden',
+			hcp: 'Aktives Handicap (Mitglied in anderem Club)',
+			wiedereinsteiger: 'Wiedereinsteiger'
+		};
 
- const subject = encodeURIComponent(`Mitgliedschafts-Anfrage: ${typeLabels[type] || type} - ${name}`);
- 
- const bodyText = 
+		const chosenType = typeLabels[type] || type;
+		const chosenHcp = hcpLabels[hcp] || hcp;
+		const subjectRaw = `[via Webseite] Mitgliedschafts-Anfrage: ${chosenType} - ${name}`;
+
+		const bodyText = 
 `Hallo Team Wissmannshof,
 
-ich interessiere mich für eine Mitgliedschaft auf Gut Wissmannshof:
+ich interessiere mich für eine Mitgliedschaft auf Gut Wissmannshof (Anfrage via Webseite):
 
-- Gewünschtes Modell: ${typeLabels[type] || type}
+- Gewünschtes Modell: ${chosenType}
 - Name: ${name}
 - Telefon: ${phone}
 - E-Mail: ${email}
-- Aktueller Golf-Status: ${hcpLabels[hcp] || hcp}
+- Aktueller Golf-Status: ${chosenHcp}
 
 ${message ? `Nachricht / Anmerkungen:
 ${message}
 
-` : ''}
-Ich freue mich über Ihre Kontaktaufnahme zur Abstimmung der weiteren Schritte.
+` : ''}Ich freue mich über Ihre Kontaktaufnahme zur Abstimmung der weiteren Schritte.
+
+====================================================
+Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
 
 Mit freundlichen Grüßen
 ${name}`;
 
- const body = encodeURIComponent(bodyText);
- window.location.href = `mailto:info@wissmannshof.de?subject=${subject}&body=${body}`;
- });
+		if (submitBtn) {
+			submitBtn.disabled = true;
+			submitBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+		}
+
+		let sentViaApi = false;
+		try {
+			const res = await fetch('api/contact.php', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					name: name,
+					email: email,
+					phone: phone,
+					subject: subjectRaw,
+					message: message,
+					source: 'Mitgliedschafts-Formular (via Webseite)',
+					details: {
+						'Mitgliedschaft': chosenType,
+						'Handicap-Status': chosenHcp
+					}
+				})
+			});
+
+			if (res.ok) {
+				const json = await res.json();
+				if (json && json.success) {
+					sentViaApi = true;
+				}
+			}
+		} catch (err) {
+			console.log('API contact endpoint error, fallback to mailto:', err);
+		}
+
+		if (!sentViaApi) {
+			const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyText)}`;
+			window.location.href = mailtoUrl;
+		}
+
+		if (submitBtn) {
+			submitBtn.disabled = false;
+			submitBtn.textContent = origBtnText;
+		}
+
+		alert(currentLang === 'de' 
+			? 'Vielen Dank! Ihre Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.' 
+			: 'Thank you! Your inquiry (via Website) has been sent to info@wissmannshof.de. We will get back to you as quickly as possible.');
+		form.reset();
+	});
 }

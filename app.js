@@ -797,91 +797,125 @@ function initModal() {
  if (e.target === modal) modal.classList.remove('open');
  });
  
- form.addEventListener('submit', (e) => {
- e.preventDefault();
- 
- // Read form values
- const type = document.getElementById('form-type').value;
- const name = document.getElementById('form-name').value;
- const email = document.getElementById('form-email').value;
- const date = document.getElementById('form-date').value;
- const players = document.getElementById('form-players').value;
- const note = document.getElementById('form-msg').value;
- 
- // Validate minimum players only for training packages
- if (type === 'training' && parseInt(players) < 6) {
- alert(currentLang === 'de' 
- ? 'Ahoi! Für dieses Angebot müsst ihr mindestens 6 Piraten sein.' 
- : 'Ahoi! You need at least 6 pirates for this offer.');
- return;
- }
- 
- // Map type values to language specific labels
- let typeLabel = '';
- if (currentLang === 'de') {
- typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Nur Adventure Golf' : 'Sonstige Anfrage');
- } else {
- typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Adventure Golf Only' : 'Other Inquiry');
- }
- 
- // Subject line
- const subject = encodeURIComponent(`${typeLabel} Anfrage - ${name}`);
- 
- // Body formatted in fun pirate slang
- let body = '';
- if (currentLang === 'de') {
- body = `Ahoi Gut Wissmannshof Crew!
+ form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		
+		// Read form values
+		const type = document.getElementById('form-type').value;
+		const name = document.getElementById('form-name').value;
+		const email = document.getElementById('form-email').value;
+		const date = document.getElementById('form-date').value;
+		const players = document.getElementById('form-players').value;
+		const note = document.getElementById('form-msg').value;
+		const submitBtn = form.querySelector('button[type="submit"]');
+		const origBtnText = submitBtn ? submitBtn.textContent : '';
+		
+		// Validate minimum players only for training packages
+		if (type === 'training' && parseInt(players) < 6) {
+			alert(currentLang === 'de' 
+				? 'Ahoi! Für dieses Angebot müsst ihr mindestens 6 Piraten sein.' 
+				: 'Ahoi! You need at least 6 pirates for this offer.');
+			return;
+		}
+		
+		// Map type values to language specific labels
+		let typeLabel = '';
+		if (currentLang === 'de') {
+			typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Nur Adventure Golf' : 'Sonstige Anfrage');
+		} else {
+			typeLabel = type === 'training' ? 'Golf Training & Adventure Golf' : (type === 'adventure' ? 'Adventure Golf Only' : 'Other Inquiry');
+		}
+		
+		const subjectRaw = `[via Webseite] ${typeLabel} Anfrage - ${name}`;
+		
+		let body = '';
+		if (currentLang === 'de') {
+			body = `Ahoi Gut Wissmannshof Crew!
 
-` +
- `Wir möchten gerne unseren nächsten Törn buchen und die Leinen losmachen:
+Wir möchten gerne unseren nächsten Törn buchen (Anfrage via Webseite):
 
-` +
- `Anfrage-Typ: ${typeLabel}
-` +
- `Kapitän: ${name}
-` +
- `Wunschtermin: ${date}
-` +
- `Anzahl der Piraten: ${players} Personen
-` +
- `Flaschenpost-Notiz: ${note}
+Anfrage-Typ: ${typeLabel}
+Kapitän: ${name}
+Wunschtermin: ${date}
+Anzahl der Piraten: ${players} Personen
+Flaschenpost-Notiz: ${note}
 
-` +
- `Yo-ho-ho! Meldet euch gerne bei uns zur Bestätigung.
+====================================================
+Hinweis: Diese Flaschenpost wurde via Webseite (wissmannshof.golf) gesendet.
 
-` +
- `Beste Grüße,
+Yo-ho-ho! Meldet euch gerne bei uns zur Bestätigung.
+
+Beste Grüße,
 ${name}
 (${email})`;
- } else {
- body = `Ahoi Gut Wissmannshof Crew!
+		} else {
+			body = `Ahoi Gut Wissmannshof Crew!
 
-` +
- `We would like to book our next voyage and set sail:
+We would like to book our next voyage (Inquiry via Website):
 
-` +
- `Inquiry Type: ${typeLabel}
-` +
- `Captain: ${name}
-` +
- `Preferred Date: ${date}
-` +
- `Number of Pirates: ${players} people
-` +
- `Message in a Bottle: ${note}
+Inquiry Type: ${typeLabel}
+Captain: ${name}
+Preferred Date: ${date}
+Number of Pirates: ${players} people
+Message in a Bottle: ${note}
 
-` +
- `Yo-ho-ho! Please get back to us to confirm the trip.
+====================================================
+Note: Message in a bottle sent via Website (wissmannshof.golf).
 
-` +
- `Best regards,
+Yo-ho-ho! Please get back to us to confirm the trip.
+
+Best regards,
 ${name}
 (${email})`;
- }
- 
- const mailtoLink = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(body)}`;
- 
- window.location.href = mailtoLink;
+		}
+		
+		if (submitBtn) {
+			submitBtn.disabled = true;
+			submitBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+		}
+
+		let sentViaApi = false;
+		try {
+			const res = await fetch('api/contact.php', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					name: name,
+					email: email,
+					subject: subjectRaw,
+					message: note,
+					source: 'Adventure Golf Buchung (via Webseite)',
+					details: {
+						'Typ': typeLabel,
+						'Wunschtermin': date,
+						'Piraten': players
+					}
+				})
+			});
+
+			if (res.ok) {
+				const json = await res.json();
+				if (json && json.success) {
+					sentViaApi = true;
+				}
+			}
+		} catch (err) {
+			console.log('API contact endpoint error, fallback to mailto:', err);
+		}
+
+		if (!sentViaApi) {
+			const mailtoLink = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(body)}`;
+			window.location.href = mailtoLink;
+		}
+
+		if (submitBtn) {
+			submitBtn.disabled = false;
+			submitBtn.textContent = origBtnText;
+		}
+
+		alert(currentLang === 'de' 
+			? 'Ahoi! Eure Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei euch!' 
+			: 'Ahoi! Your booking inquiry (via Website) has been sent to info@wissmannshof.de!');
  modal.classList.remove('open');
  form.reset();
  
