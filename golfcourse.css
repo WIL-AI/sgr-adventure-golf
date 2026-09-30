@@ -257,7 +257,7 @@ img {
     min-height: 74vh;
     display: flex;
     align-items: flex-end;
-    background: url('assets/gallery_golden_hour_tree_lake.jpg') center 40% / cover no-repeat;
+    background: url('assets/gallery_curved_bunker_dunes.jpg') center 45% / cover no-repeat;
     color: var(--color-white);
     overflow: hidden;
 }

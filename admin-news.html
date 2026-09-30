@@ -1178,6 +1178,319 @@
             align-items: center;
             gap: 6px;
         }
+    
+        /* ==========================================================================
+           Web-Analytics & Besucher-Statistik Dashboard Styles
+           ========================================================================== */
+        .analytics-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--color-card-border);
+            box-shadow: var(--shadow);
+            padding: 26px 28px;
+            margin-bottom: 24px;
+            margin-top: 10px;
+        }
+
+        .analytics-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 1.5px solid #EAE6DB;
+        }
+
+        .analytics-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+
+        .analytics-period-selector {
+            display: inline-flex;
+            align-items: center;
+            background: #F4EBD7;
+            padding: 4px;
+            border-radius: var(--radius-pill);
+            gap: 4px;
+            border: 1px solid rgba(184, 150, 62, 0.35);
+        }
+
+        .analytics-period-btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .analytics-period-btn:hover {
+            color: var(--color-gold-hover);
+        }
+
+        .analytics-period-btn.active {
+            background: var(--color-primary);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(13, 34, 24, 0.25);
+        }
+
+        .analytics-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        @media (max-width: 900px) {
+            .analytics-kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .analytics-kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .kpi-card {
+            background: #FAF8F5;
+            border: 1px solid #E5E0D3;
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+            border-color: var(--color-gold);
+        }
+
+        .kpi-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .kpi-card-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+        }
+
+        .kpi-card-icon {
+            font-size: 1.15rem;
+        }
+
+        .kpi-card-value {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1.1;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .kpi-card-footer {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+        }
+
+        .kpi-trend-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+            font-size: 0.72rem;
+            font-weight: 800;
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        /* Analytics Main Split */
+        .analytics-split-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 960px) {
+            .analytics-split-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .analytics-subcard {
+            background: #FFFFFF;
+            border: 1px solid #EAE6DB;
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .analytics-subcard-title {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .analytics-subcard-title span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Area Click Progress Bars */
+        .area-stat-item {
+            margin-bottom: 14px;
+        }
+
+        .area-stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .area-stat-labels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.84rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--color-charcoal);
+        }
+
+        .area-stat-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .area-stat-numbers {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .area-stat-numbers strong {
+            color: var(--color-primary);
+        }
+
+        .area-stat-track {
+            height: 9px;
+            background: #EDE8DC;
+            border-radius: var(--radius-pill);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .area-stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-gold) 100%);
+            border-radius: var(--radius-pill);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Top Articles Mini List */
+        .top-news-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .top-news-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 9px 0;
+            border-bottom: 1px solid #F0ECE3;
+            font-size: 0.82rem;
+        }
+
+        .top-news-item:last-child {
+            border-bottom: none;
+        }
+
+        .top-news-title {
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .top-news-badge {
+            background: #F4EBD7;
+            color: var(--color-primary);
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        /* Devices Bar */
+        .device-split-wrap {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #EAE6DB;
+        }
+
+        .device-split-bar {
+            display: flex;
+            height: 10px;
+            border-radius: var(--radius-pill);
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .device-segment-mobile { background: #B8963E; }
+        .device-segment-desktop { background: #0D2218; }
+        .device-segment-tablet { background: #9E7F30; }
+
+        .device-split-legend {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+        }
+
+        .device-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .device-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
     </style>
     <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
     <script>
@@ -1751,6 +2064,128 @@
                             <button type="button" class="action-icon-btn delete" onclick="confirmResetDefaults()">
                                 ↺ Auf Standard zurücksetzen
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Web-Analytics & Visitor Statistics Dashboard -->
+        <div class="analytics-card" id="analytics-dashboard-card">
+            <div class="analytics-header-bar">
+                <div>
+                    <h2 class="analytics-header-title">
+                        <span>📊</span> Web-Analytics &amp; Seitenaufrufe-Statistik
+                    </h2>
+                    <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">
+                        Live-Besucherströme, Klickverteilung nach Resort-Bereichen und News-Resonanz
+                    </p>
+                </div>
+                <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
+                    <button type="button" class="analytics-period-btn active" data-period="7d" onclick="switchAnalyticsPeriod('7d')">
+                        ⏱ Letzte 7 Tage
+                    </button>
+                    <button type="button" class="analytics-period-btn" data-period="30d" onclick="switchAnalyticsPeriod('30d')">
+                        📅 Letzter Monat
+                    </button>
+                    <button type="button" class="analytics-period-btn" data-period="year2026" onclick="switchAnalyticsPeriod('year2026')">
+                        🏆 Dieses Jahr (2026)
+                    </button>
+                    <button type="button" class="analytics-period-btn" data-period="year2025" onclick="switchAnalyticsPeriod('year2025')">
+                        🏛 Letztes Jahr (2025)
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4 Top KPI Cards Grid -->
+            <div class="analytics-kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <span class="kpi-card-label">Seitenaufrufe Gesamt</span>
+                        <span class="kpi-card-icon">👁️</span>
+                    </div>
+                    <div class="kpi-card-value" id="kpi-views">4.280</div>
+                    <div class="kpi-card-footer">
+                        <span class="kpi-trend-badge" id="kpi-views-trend">+14.2%</span>
+                        <span id="kpi-views-trend-label">ggü. Vorwoche</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <span class="kpi-card-label">Eindeutige Besucher</span>
+                        <span class="kpi-card-icon">👥</span>
+                    </div>
+                    <div class="kpi-card-value" id="kpi-visitors">2.640</div>
+                    <div class="kpi-card-footer">
+                        <span class="kpi-trend-badge" id="kpi-visitors-trend">+11.8%</span>
+                        <span>neue &amp; wiederkehrende Gäste</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <span class="kpi-card-label">Startzeiten-Klicks (PC CADDIE)</span>
+                        <span class="kpi-card-icon">⛳</span>
+                    </div>
+                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">1.370</div>
+                    <div class="kpi-card-footer">
+                        <span class="kpi-trend-badge" id="kpi-tee-pct">32.0%</span>
+                        <span>aller Resort-Interaktionen</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <span class="kpi-card-label">Durchschn. Verweildauer</span>
+                        <span class="kpi-card-icon">⏱️</span>
+                    </div>
+                    <div class="kpi-card-value" id="kpi-duration">2 Min. 48s</div>
+                    <div class="kpi-card-footer">
+                        <span style="color: #28A745; font-weight: 700;">🟢 Hohe Aktivität</span>
+                        <span id="kpi-bounce">· 24.5% Absprung</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Breakdown -->
+            <div class="analytics-split-grid">
+                <!-- Left: Area Interest & Clicks Breakdown -->
+                <div class="analytics-subcard">
+                    <div class="analytics-subcard-title">
+                        <span>🎯 Höchste Klicks &amp; Interessensschwerpunkte</span>
+                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted);" id="analytics-area-period-label">Letzte 7 Tage</span>
+                    </div>
+                    <div id="analytics-area-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Right: Top Articles & Devices Split -->
+                <div class="analytics-subcard">
+                    <div class="analytics-subcard-title">
+                        <span>📰 Meistgelesene WiHo-News</span>
+                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-gold);" id="analytics-news-period-label">Top Artikel</span>
+                    </div>
+                    <div class="top-news-list" id="analytics-top-news-list">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Device Split -->
+                    <div class="device-split-wrap">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">
+                            📱 Endgeräte der Besucher
+                        </div>
+                        <div class="device-split-bar">
+                            <div class="device-segment-mobile" id="dev-bar-mobile" style="width: 64%;" title="Mobile: 64%"></div>
+                            <div class="device-segment-desktop" id="dev-bar-desktop" style="width: 29%;" title="Desktop: 29%"></div>
+                            <div class="device-segment-tablet" id="dev-bar-tablet" style="width: 7%;" title="Tablet: 7%"></div>
+                        </div>
+                        <div class="device-split-legend">
+                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #B8963E;"></span> Mobile: <strong id="dev-lbl-mobile">64%</strong></span>
+                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #0D2218;"></span> Desktop: <strong id="dev-lbl-desktop">29%</strong></span>
+                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #9E7F30;"></span> Tablet: <strong id="dev-lbl-tablet">7%</strong></span>
                         </div>
                     </div>
                 </div>

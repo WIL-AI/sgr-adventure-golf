@@ -550,6 +550,52 @@
         });
     }
 
+    // Hero Section Dynamic & Sporadic Background Rotator
+    const HERO_IMAGES = [
+        'assets/gallery_golden_hour_tree_lake.jpg',
+        'assets/gallery_sunset_canyon_lake.jpg',
+        'assets/gallery_bunker_stonewall_water.jpg',
+        'assets/gallery_panorama_dunes_lake.jpg',
+        'assets/gallery_blue_lake_mirror.jpg'
+    ];
+
+    let currentHeroIndex = 0;
+    let heroRotateInterval = null;
+
+    function initHeroBackgroundRotator() {
+        const heroBg = document.getElementById('home-hero-bg');
+        if (!heroBg) return;
+
+        // Preload hero images in background
+        HERO_IMAGES.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Choose random starting image on load
+        currentHeroIndex = Math.floor(Math.random() * HERO_IMAGES.length);
+        heroBg.style.backgroundImage = "url('" + HERO_IMAGES[currentHeroIndex] + "')";
+
+        function switchHeroImage() {
+            if (document.hidden) return;
+            
+            let nextIndex = Math.floor(Math.random() * HERO_IMAGES.length);
+            if (nextIndex === currentHeroIndex) {
+                nextIndex = (currentHeroIndex + 1) % HERO_IMAGES.length;
+            }
+            currentHeroIndex = nextIndex;
+
+            heroBg.style.opacity = '0.15';
+            setTimeout(() => {
+                heroBg.style.backgroundImage = "url('" + HERO_IMAGES[currentHeroIndex] + "')";
+                heroBg.style.opacity = '1';
+            }, 650);
+        }
+
+        clearInterval(heroRotateInterval);
+        heroRotateInterval = setInterval(switchHeroImage, 14000);
+    }
+
     // Event listeners for language switcher buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -564,6 +610,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(currentLang);
         renderNewsTicker();
+        initHeroBackgroundRotator();
 
         // Background server sync for news
         if (typeof window.NewsRepository !== 'undefined' && window.NewsRepository.syncFromServer) {
@@ -576,4 +623,5 @@
     // Run immediately as well
     applyLanguage(currentLang);
     renderNewsTicker();
+    initHeroBackgroundRotator();
 })();
