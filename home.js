@@ -33,7 +33,9 @@
 
             // Hero Section
             heroBadge: 'Willkommen im Golfresort',
-            heroTitle: '<span class="hero-main-sub">Sport &amp; Golf Resort</span><span class="hero-title-highlight">Gut Wissmannshof</span>',
+            heroTitle: 'Gut Wissmannshof',
+            heroLead: 'Golf. Hotel. Natur. An einem Ort.',
+            heroBtnGuest: 'Resort entdecken ↓',
             heroMemberTitle: 'Mitgliedschaft, wie sie sein sollte.',
             heroMemberText: 'Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten',
             heroMemberLink: 'Jetzt Mitglied werden →',
@@ -189,7 +191,9 @@
 
             // Hero Section
             heroBadge: 'Welcome to the Golf Resort',
-            heroTitle: '<span class="hero-main-sub">Sport &amp; Golf Resort</span><span class="hero-title-highlight">Gut Wissmannshof</span>',
+            heroTitle: 'Gut Wissmannshof',
+            heroLead: 'Golf. Hotel. Nature. All in One Place.',
+            heroBtnGuest: 'Discover Resort ↓',
             heroMemberTitle: 'Membership as it should be.',
             heroMemberText: 'No entry fee · No assessments · Try before you commit',
             heroMemberLink: 'Become a Member →',

@@ -389,7 +389,7 @@ const TRANSLATIONS = {
         navBtnBooking: 'Startzeit buchen',
         heroBadge: '18-Loch Resort Course &amp; Canyon Academy Kurs',
         heroTitle: 'Die <span>Golfbahnen</span> auf Gut Wissmannshof.',
-        heroLead: 'Erleben Sie spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways, anspruchsvolle Greens und herausfordernde Championship-Architektur – ganzjährig auf regulären Sommergrüns bespielbar (witterungsabhängig).',
+        heroLead: 'Spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways und herausfordernde Championship-Architektur.',
         btnHeroExplore: 'Hole 1–18 erkunden ↓',
         btnHeroBook: 'Startzeit reservieren',
         fact1Number: '18',

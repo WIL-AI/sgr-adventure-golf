@@ -16,7 +16,7 @@ const translations = {
 
  heroBadge: "Sport- und Golf-Resort Gut Wissmannshof",
  heroTitle: "Ein Preis.<br><span class=\"hero-gold-text\">Ein Versprechen.</span>",
- heroLead: "Mitgliedschaft auf Gut Wissmannshof heißt: ein fester Betrag, klar benannt, von Anfang an. Keine Aufnahmegebühr, keine Umlagen, keine Nachforderungen. Was Sie sehen, ist das, was Sie zahlen. Mehr nicht.",
+ heroLead: "Mitgliedschaft auf Gut Wissmannshof: Feste Beiträge, 0 € Aufnahmegebühr, keine Umlagen und keine Nachforderungen.",
  btnHeroTrial: "Schnuppermitgliedschaft anfragen",
  btnHeroRates: "Beiträge im Überblick ↓",
 
@@ -219,7 +219,7 @@ const translations = {
 
  heroBadge: "Sport- & Golf-Resort Gut Wissmannshof",
  heroTitle: "One Price.<br><span class=\"hero-gold-text\">One Promise.</span>",
- heroLead: "Membership at Gut Wissmannshof means: one fixed fee, clearly stated from day one. No admission fee, no special levies, no hidden surcharges. What you see is what you pay. Nothing more.",
+ heroLead: "Membership at Gut Wissmannshof: Fixed dues, €0 initiation fee, zero special levies and transparent terms.",
  btnHeroTrial: "Request Trial Membership",
  btnHeroRates: "View All Rates ↓",
 
