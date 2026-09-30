@@ -183,18 +183,18 @@ const DEFAULT_NEWS = [
         "cropPosY": 0,
         "cropZoom": 1,
         "title": {
-            "de": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026!",
-            "en": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026!"
+            "de": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026! – Powered by Volksbank Kassel-Göttingen",
+            "en": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026! – Powered by Volksbank Kassel-Göttingen"
         },
         "teaser": {
-            "de": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026!Am Samstag, den 3. Oktober…",
-            "en": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026!Am Samstag, den 3. Oktober…"
+            "de": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)Am Samstag, den 3. Oktober…",
+            "en": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)Am Samstag, den 3. Oktober…"
         },
         "author": "SC",
         "readTime": "3 Min.",
         "content": {
-            "de": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026!</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_3.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>",
-            "en": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026!</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_4.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>"
+            "de": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_3.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>",
+            "en": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_4.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>"
         }
     },
     {
@@ -270,8 +270,8 @@ const DEFAULT_NEWS = [
 ];
 
 // Storage key
-const NEWS_STORAGE_KEY = 'sgr_resort_news_v3';
-const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2'];
+const NEWS_STORAGE_KEY = 'sgr_resort_news_v4';
+const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3'];
 const OBSOLETE_IDS = new Set(['news-001', 'news-002', 'news-003', 'news-004', 'news-005', 'news-006']);
 
 /**
@@ -328,27 +328,27 @@ const NewsRepository = {
      * Always retrieves fresh server data when online, updates local cache and returns the news array.
      */
     syncFromServer: async function() {
-        const endpoints = ['data/news.json', 'api/news.php'];
-        for (const url of endpoints) {
-            try {
-                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
-                if (resp.ok) {
-                    const data = await resp.json();
-                    if (Array.isArray(data) && data.length > 0) {
-                        const cleanData = this._sanitize(data);
-                        if (cleanData.length > 0) {
-                            this._cached = cleanData;
-                            try {
-                                localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanData));
-                            } catch (e) {}
-                            return cleanData;
-                        }
+        // Try live writeable server API (api/news.php)
+        try {
+            const resp = await fetch('api/news.php?t=' + Date.now(), { cache: 'no-store' });
+            if (resp.ok) {
+                const data = await resp.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    const cleanData = this._sanitize(data);
+                    if (cleanData.length > 0) {
+                        this._cached = cleanData;
+                        try {
+                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanData));
+                        } catch (e) {}
+                        return cleanData;
                     }
                 }
-            } catch (err) {
-                // Endpoint unavailable
             }
+        } catch (err) {
+            // API offline or static environment
         }
+
+        // Return current local articles (localStorage takes precedence over static fallbacks)
         return this.getAll();
     },
 
