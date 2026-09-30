@@ -88,10 +88,10 @@
             quickMemberBtn: 'Mehr erfahren',
 
             // Course Section & Slider
-            courseTag: '18-Loch Meisterschaftsanlage & Canyon Academy Kurs',
+            courseTag: '18-Loch Resort Course & Canyon Academy Kurs',
             courseTitle: 'Unser Golfplatz',
-            courseLead: 'Ein Championship-Platz, der Golferherzen höher schlagen lässt. Perfekt gepflegt, strategisch anspruchsvoll und landschaftlich beeindruckend.',
-            slide1Title: 'Spektakuläre Meisterschaftsbahnen',
+            courseLead: 'Ein erstklassiger Resort Course, der Golferherzen höher schlagen lässt. Perfekt gepflegt, strategisch anspruchsvoll und landschaftlich beeindruckend.',
+            slide1Title: 'Spektakuläre Resort-Bahnen',
             slide1Text: 'Strategisch platzierte Bunker und modellierte Fairways inmitten herrlicher Naturkulisse.',
             slide2Title: 'Wasserhindernisse &amp; Panorama',
             slide2Text: 'Anspruchsvolle Bahnen und kristallklare Seen fügen sich harmonisch in die Landschaft ein.',
@@ -100,7 +100,7 @@
             slide4Title: 'Goldene Abendstunden',
             slide4Text: 'Unvergessliche Momente bei Sonnenuntergang direkt auf der Golfanlage.',
 
-            courseHl1Title: '18-Loch Championship Course',
+            courseHl1Title: '18-Loch Resort Course',
             courseHl1Text: 'Ein anspruchsvolles Layout mit spektakulären Bahnen, die jedem Handicap Freude bereiten.',
             courseHl1Link: 'Zum Platzüberblick →',
             courseHl2Title: 'Putting &amp; Chipping Green',
@@ -156,7 +156,7 @@
             formSuccessMsg: 'Vielen Dank! Ihre Nachricht wurde an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.',
 
             // Footer
-            footerSubtext: '18-Loch Meisterschaftsplatz, Canyon Academy Kurs, Adventure Golf &amp; 4-Sterne Golfresort.',
+            footerSubtext: '18-Loch Resort Course, Canyon Academy Kurs, Adventure Golf &amp; 4-Sterne Golfresort.',
             footerContactHeading: 'Direktkontakt &amp; Anreise',
             footerLegalHeading: 'Rechtliches &amp; Information',
             footerImprint: 'Impressum',
@@ -243,10 +243,10 @@
             quickMemberBtn: 'Learn More',
 
             // Course Section & Slider
-            courseTag: '18-Hole Championship Course & Canyon Academy Course',
+            courseTag: '18-Hole Resort Course & Canyon Academy Course',
             courseTitle: 'Our Golf Course',
-            courseLead: 'A championship golf course designed to inspire players of every handicap. Pristine conditioning, strategic variety, and breathtaking countryside vistas.',
-            slide1Title: 'Spectacular Championship Course',
+            courseLead: 'A premier resort course designed to inspire players of every handicap. Pristine conditioning, strategic variety, and breathtaking countryside vistas.',
+            slide1Title: 'Spectacular Resort Course',
             slide1Text: 'Strategically placed bunkers and undulating fairways framed by majestic nature.',
             slide2Title: 'Water Hazards &amp; Panoramic Views',
             slide2Text: 'Challenging holes and crystal-clear lakes blend seamlessly into the picturesque landscape.',
@@ -255,7 +255,7 @@
             slide4Title: 'Golden Hour Splendor',
             slide4Text: 'Unforgettable moments watching the sunset right across the golf estate.',
 
-            courseHl1Title: '18-Hole Championship Course',
+            courseHl1Title: '18-Hole Resort Course',
             courseHl1Text: 'A captivating layout featuring signature holes that delight all skill levels.',
             courseHl1Link: 'Explore Course Layout →',
             courseHl2Title: 'Putting &amp; Chipping Greens',
@@ -311,7 +311,7 @@
             formSuccessMsg: 'Thank you! Your message has been sent to info@wissmannshof.de. We will get back to you as soon as possible.',
 
             // Footer
-            footerSubtext: '18-Hole Championship Golf Course, Canyon Academy Course, Adventure Golf &amp; 4-Star Resort.',
+            footerSubtext: '18-Hole Resort Course, Canyon Academy Course, Adventure Golf &amp; 4-Star Resort.',
             footerContactHeading: 'Contact &amp; Arrival',
             footerLegalHeading: 'Legal &amp; Information',
             footerImprint: 'Imprint',

@@ -291,7 +291,7 @@ const HOLE_DATA = [
         image: 'assets/course_holes/gelb_6.jpg',
         desc: {
             de: 'Ein sportliches Par 4 mit weitem Blick über die Anlage.',
-            en: 'A sporty Par 4 with grand panoramic views across the championship course.'
+            en: 'A sporty Par 4 with grand panoramic views across the resort course.'
         },
         protip: {
             de: 'Vermeiden Sie die linken Bunker und spielen Sie den zweiten Schlag mit ausreichend Schläger.',
@@ -387,15 +387,15 @@ const TRANSLATIONS = {
         navDownloads: 'Downloads',
         navPractice: 'Übungsanlagen',
         navBtnBooking: 'Startzeit buchen',
-        heroBadge: '18-Loch Meisterschaftsanlage &amp; Canyon Academy Kurs',
+        heroBadge: '18-Loch Resort Course &amp; Canyon Academy Kurs',
         heroTitle: 'Die <span>Golfbahnen</span> auf Gut Wissmannshof.',
         heroLead: 'Erleben Sie spektakuläre Ausblicke über das Kasseler Land, meisterhafte Fairways, anspruchsvolle Greens und Course-Architektur auf absolutem PGA-Niveau – 365 Tage im Jahr bespielbar.',
         btnHeroExplore: 'Hole 1–18 erkunden ↓',
         btnHeroBook: 'Startzeit reservieren',
         fact1Number: '18',
-        fact1Label: 'Loch Meisterschaftsplatz (+ 9 Loch in Planung)',
+        fact1Label: 'Loch Resort Course (+ 9 Loch in Planung)',
         fact2Number: '18',
-        fact2Label: 'Meisterschaftskurs Blau-Gelb',
+        fact2Label: 'Resort Course Blau-Gelb',
         fact3Number: '4',
         fact3Label: 'Abschläge pro Bahn (W/G/B/R)',
         fact4Number: '365',
@@ -403,7 +403,7 @@ const TRANSLATIONS = {
         
         tagLoops: 'Platzarchitektur',
         loopsHeading: 'Unsere Kurs-Kombinationen',
-        loopsSub: 'Die Anlage von Gut Wissmannshof begeistert mit einem anspruchsvollen 18-Loch Meisterschaftsplatz (Kurs Gelb & Kurs Blau), dem Canyon Academy Kurs sowie 9 weiteren Meisterschaftslöchern in Planung.',
+        loopsSub: 'Die Anlage von Gut Wissmannshof begeistert mit einem anspruchsvollen 18-Loch Resort Course (Kurs Gelb & Kurs Blau), dem Canyon Academy Kurs sowie 9 weiteren Meisterschaftslöchern in Planung.',
         
         lblDistance: 'Distanz:',
         lblParCourse: 'Par:',
@@ -435,9 +435,9 @@ const TRANSLATIONS = {
 
         loopRotTitle: 'Kurs Rot (Ausblick)',
         loopRotBadge: 'In Entwicklung',
-        loopRotSpec1: '9 weitere Meisterschaftsbahnen',
-        loopRotSpec2: 'Erweiterung der Meisterschaftsanlage um 9 Bahnen',
-        loopRotDesc: 'Die dritte 9-Loch-Schleife (in Planung) erweitert künftig unsere Meisterschaftsanlage um 9 weitere spektakuläre Bahnen.',
+        loopRotSpec1: '9 weitere Resort-Bahnen',
+        loopRotSpec2: 'Erweiterung des Resort Course um 9 Bahnen',
+        loopRotDesc: 'Die dritte 9-Loch-Schleife (in Planung) erweitert künftig unsere Resort Course um 9 weitere spektakuläre Bahnen.',
         btnViewRot: 'In Planung',
 
         tagGuide: 'Interaktiver Course-Guide',
@@ -492,7 +492,7 @@ const TRANSLATIONS = {
         pf1Title: 'Große Driving Range mit Rasen- & Mattenabschlägen',
         pf1Desc: 'Zahlreiche Zielgrüns und überdachte Abschlaghütten für ganzjähriges Training bei jeder Witterung.',
         pf2Title: 'Großes Putting- & Chipping-Grün',
-        pf2Desc: 'Originalgetreue Geschwindigkeiten und Ondulierungen wie auf den Meisterschaftsbahnen.',
+        pf2Desc: 'Originalgetreue Geschwindigkeiten und Ondulierungen wie auf den Resort-Bahnen.',
         pf3Title: 'Übungsbunker & Pitching-Areal',
         pf3Desc: 'Perfektionieren Sie Ihr Bunkerspiel und Annäherungen aus allen Distanzen und Hanglagen.',
         pf4Title: 'PGA Golfschule & Pro-Betreuer',
@@ -525,15 +525,15 @@ const TRANSLATIONS = {
         navDownloads: 'Downloads',
         navPractice: 'Practice Facilities',
         navBtnBooking: 'Book Tee Time',
-        heroBadge: '18-Hole Championship Resort &amp; Canyon Academy Course',
+        heroBadge: '18-Hole Resort Course &amp; Canyon Academy Course',
         heroTitle: 'The <span>Golf Course</span> at Gut Wissmannshof.',
         heroLead: 'Experience spectacular vistas across the Kassel countryside, pristine fairways, challenging greens and world-class course architecture – playable 365 days a year.',
         btnHeroExplore: 'Explore Holes 1–18 ↓',
         btnHeroBook: 'Reserve Tee Time',
         fact1Number: '18',
-        fact1Label: 'Championship Holes (+ 9 in planning)',
+        fact1Label: 'Resort Course Holes (+ 9 in planning)',
         fact2Number: '18',
-        fact2Label: 'Championship Blue-Yellow',
+        fact2Label: 'Resort Course Blue-Yellow',
         fact3Number: '4',
         fact3Label: 'Tee Boxes per Hole (W/Y/B/R)',
         fact4Number: '365',
@@ -541,7 +541,7 @@ const TRANSLATIONS = {
 
         tagLoops: 'Course Layout',
         loopsHeading: 'Our Course Loops',
-        loopsSub: 'Gut Wissmannshof features an 18-hole championship layout (Course Yellow & Course Blue), the Canyon Academy Course, plus 9 championship holes in planning.',
+        loopsSub: 'Gut Wissmannshof features an 18-hole resort course layout (Course Yellow & Course Blue), the Canyon Academy Course, plus 9 championship holes in planning.',
 
         lblDistance: 'Distance:',
         lblParCourse: 'Par:',
@@ -573,9 +573,9 @@ const TRANSLATIONS = {
 
         loopRotTitle: 'Course Red (Outlook)',
         loopRotBadge: 'In Development',
-        loopRotSpec1: '9 additional championship holes',
-        loopRotSpec2: 'Expansion of championship layout by 9 holes',
-        loopRotDesc: 'The third 9-hole loop (in planning) will expand our championship facilities with 9 additional spectacular holes.',
+        loopRotSpec1: '9 additional resort course holes',
+        loopRotSpec2: 'Expansion of resort course layout by 9 holes',
+        loopRotDesc: 'The third 9-hole loop (in planning) will expand our resort course facilities with 9 additional spectacular holes.',
         btnViewRot: 'In Planning',
 
         tagGuide: 'Interactive Course Guide',
@@ -631,7 +631,7 @@ const TRANSLATIONS = {
         pf1Title: 'Grand Driving Range with Turf & Covered Bays',
         pf1Desc: 'Multiple target greens and covered bays for year-round training in all weather conditions.',
         pf2Title: 'Spacious Putting & Chipping Green',
-        pf2Desc: 'True speeds and subtle breaks identical to the championship greens.',
+        pf2Desc: 'True speeds and subtle breaks identical to the resort greens.',
         pf3Title: 'Practice Bunkers & Pitching Zone',
         pf3Desc: 'Dial in your bunker game and approaches from varied lies and distance markers.',
         pf4Title: 'PGA Golf Academy & Pro Coaches',
@@ -807,7 +807,7 @@ function renderCanyonCourse() {
  <div class="protip-icon">★</div>
  <div class="protip-text">
  <h5>${t.lblProTip}</h5>
- <p>${isEn ? 'Ideal for sharpening wedge distances and short pitching shots before playing the 18-hole championship course.' : 'Ideal, um vor der großen 18-Loch-Runde das Annäherungsspiel und Distanzgefühl für die Wedges einzustellen.'}</p>
+ <p>${isEn ? 'Ideal for sharpening wedge distances and short pitching shots before playing the 18-hole resort course.' : 'Ideal, um vor der großen 18-Loch-Runde das Annäherungsspiel und Distanzgefühl für die Wedges einzustellen.'}</p>
  </div>
  </div>
 

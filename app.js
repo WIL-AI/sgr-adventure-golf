@@ -238,7 +238,7 @@ const translations = {
  btnBook: "Abenteuer buchen",
  btnExplore: "Die Bahnen erkunden",
  scrollTitle: "An Bord der Gut Wissmannshof",
- scrollMessage: "Willkommen im ultimativen Heimathafen für die ganze Crew! Bei uns tauscht ihr harte Planken gegen gemütliche Hotelbetten (53 stilvolle Zimmer & Suiten in unseren architektonisch einzigartigen Rundhäusern) und hungrige Mägen gegen feinste Küche in unserem Golf-Restaurant „Wissmannshof“ (mediterrane & regionale Spezialitäten, Sonntags-Brunch & spezielle Piratenteller und Schatzsuche-Limos für die kleinen Matrosen). Egal ob ihr die Bälle auf unserer 18-Loch-Adventure-Golfanlage einlocht oder den Abschlag auf dem großen Meisterschaftsplatz wagt – hier ist der Spaß für Groß und Klein garantiert!",
+ scrollMessage: "Willkommen im ultimativen Heimathafen für die ganze Crew! Bei uns tauscht ihr harte Planken gegen gemütliche Hotelbetten (53 stilvolle Zimmer & Suiten in unseren architektonisch einzigartigen Rundhäusern) und hungrige Mägen gegen feinste Küche in unserem Golf-Restaurant „Wissmannshof“ (mediterrane & regionale Spezialitäten, Sonntags-Brunch & spezielle Piratenteller und Schatzsuche-Limos für die kleinen Matrosen). Egal ob ihr die Bälle auf unserer 18-Loch-Adventure-Golfanlage einlocht oder den Abschlag auf dem großen Resort Course wagt – hier ist der Spaß für Groß und Klein garantiert!",
  featSleep: "Übernachten",
  featSleepDesc: "Rundhäuser & Kojen",
  featEat: "Schlemmen",
