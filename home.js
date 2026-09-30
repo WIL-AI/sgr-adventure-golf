@@ -327,6 +327,70 @@
     /**
      * Apply active language to all UI elements
      */
+    
+    /**
+     * Render the Top 3 Latest Published News into the Marquee Ticker
+     * Automatically keeps the 3 most recent published articles and drops older ones.
+     */
+    function renderNewsTicker() {
+        const track = document.getElementById('news-ticker-track');
+        if (!track) return;
+
+        let newsList = [];
+        if (typeof window.NewsRepository !== 'undefined') {
+            newsList = window.NewsRepository.getAll();
+        } else if (typeof window.DEFAULT_NEWS !== 'undefined') {
+            newsList = window.DEFAULT_NEWS;
+        }
+
+        const now = new Date();
+        // Filter only active published articles
+        const published = (newsList || []).filter(item => {
+            if (!item || item.status !== 'published') return false;
+            if (item.publishFrom && new Date(item.publishFrom) > now) return false;
+            if (item.publishUntil && new Date(item.publishUntil) < now) return false;
+            return true;
+        });
+
+        // Sort by date descending (latest first)
+        published.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+        // Always take the top 3 latest published articles
+        const latest3 = published.slice(0, 3);
+
+        if (latest3.length === 0) {
+            track.innerHTML = `<div class="ticker-item"><span class="ticker-item-title">${currentLang === 'en' ? 'No recent announcements' : 'Zurzeit keine aktuellen Meldungen'}</span></div>`;
+            return;
+        }
+
+        function formatTickerDate(dStr, lang) {
+            if (!dStr) return '';
+            try {
+                const d = new Date(dStr);
+                if (isNaN(d.getTime())) return dStr;
+                return d.toLocaleDateString(lang === 'en' ? 'en-US' : 'de-DE', {
+                    day: 'numeric',
+                    month: 'short'
+                });
+            } catch(e) {
+                return dStr;
+            }
+        }
+
+        const itemsHtml = latest3.map(item => {
+            const title = (item.title && (item.title[currentLang] || item.title.de || item.title.en)) || 'News';
+            const dateFormatted = formatTickerDate(item.date, currentLang);
+            const dateBadge = dateFormatted ? `<span class="ticker-item-date">${dateFormatted}</span>` : '';
+            return `<div class="ticker-item">${dateBadge}<a href="news.html#${encodeURIComponent(item.id)}" class="ticker-item-title">${title}</a></div>`;
+        });
+
+        const separator = `<span class="ticker-separator" aria-hidden="true">✦</span>`;
+        const singleSequence = itemsHtml.join(separator) + separator;
+
+        // Duplicate sequence for a smooth, seamless infinite marquee loop (translateX -50%)
+        track.innerHTML = singleSequence + singleSequence;
+    }
+
     function applyLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('sgr_lang', lang);
@@ -359,6 +423,9 @@
         if (typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
             window.StatusRepository.applyToDOM();
         }
+
+        // Render dynamic news ticker in active language
+        renderNewsTicker();
     }
 
     // Set Language handler
@@ -489,11 +556,20 @@
         });
     });
 
-    // Initialize Language on Page Load
+    // Initialize Language & Dynamic News on Page Load
     document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(currentLang);
+        renderNewsTicker();
+
+        // Background server sync for news
+        if (typeof window.NewsRepository !== 'undefined' && window.NewsRepository.syncFromServer) {
+            window.NewsRepository.syncFromServer().then(() => {
+                renderNewsTicker();
+            }).catch(() => {});
+        }
     });
 
     // Run immediately as well
     applyLanguage(currentLang);
+    renderNewsTicker();
 })();

@@ -154,8 +154,10 @@
                         <span class="news-ticker-badge" data-i18n="newsTickerBadge">Aktuell</span>
                         <span data-i18n="newsTickerLabel">News aus dem Resort:</span>
                     </div>
-                    <div class="news-ticker-headline" data-i18n="newsTickerHeadline">
-                        <a href="news.html">Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof</a>
+                    <div class="news-ticker-track-wrap" id="news-ticker-wrap">
+                        <div class="news-ticker-track" id="news-ticker-track">
+                            <!-- Dynamisch generierte Laufschrift der neuesten 3 Meldungen -->
+                        </div>
                     </div>
                     <a href="news.html" class="news-ticker-all-link" data-i18n="newsTickerLink">Alle Neuigkeiten &amp; Turniere ansehen →</a>
                 </div>
@@ -539,7 +541,8 @@
                     <ul class="footer-links">
                         <li><a href="impressum.html" data-i18n="footerImprint">Impressum</a></li>
                         <li><a href="datenschutz.html" data-i18n="footerPrivacy">Datenschutz</a></li>
-                        <li><a href="karriere.html" data-i18n="footerCareer">Karriere im Resort</a></li>`n                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;" data-i18n="footerCookies">Cookie-Einstellungen</a></li>
+                        <li><a href="karriere.html" data-i18n="footerCareer">Karriere im Resort</a></li>
+                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;" data-i18n="footerCookies">Cookie-Einstellungen</a></li>
                     </ul>
                 </div>
             </div>
@@ -554,7 +557,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790741500000"></script>
+    <script src="news-data.js?v=1790742500000"></script>
+    <script src="status-data.js?v=1790742500000"></script>
     <script src="home.js?v=1790741500000"></script>
-    <script src="cookie-consent.js?v=1790742000000"></script>`n</body>
+    <script src="cookie-consent.js?v=1790742000000"></script>
+</body>
 </html>
