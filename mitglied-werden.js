@@ -600,8 +600,6 @@ function initInquiryForm() {
 		const email = document.getElementById('mgl-email').value.trim();
 		const hcp = document.getElementById('mgl-hcp').value;
 		const message = document.getElementById('mgl-message').value.trim();
-		const submitBtn = form.querySelector('button[type="submit"]');
-		const origBtnText = submitBtn ? submitBtn.textContent : '';
 
 		if (!name || !phone || !email) {
 			alert(currentLang === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' : 'Please fill in all required fields.');
@@ -629,77 +627,21 @@ function initInquiryForm() {
 
 		const chosenType = typeLabels[type] || type;
 		const chosenHcp = hcpLabels[hcp] || hcp;
-		const subjectRaw = `[via Webseite] Mitgliedschafts-Anfrage: ${chosenType} - ${name}`;
 
-		const bodyText = 
-`Hallo Team Wissmannshof,
-
-ich interessiere mich für eine Mitgliedschaft auf Gut Wissmannshof (Anfrage via Webseite):
-
-- Gewünschtes Modell: ${chosenType}
-- Name: ${name}
-- Telefon: ${phone}
-- E-Mail: ${email}
-- Aktueller Golf-Status: ${chosenHcp}
-
-${message ? `Nachricht / Anmerkungen:
-${message}
-
-` : ''}Ich freue mich über Ihre Kontaktaufnahme zur Abstimmung der weiteren Schritte.
-
-====================================================
-Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
-
-Mit freundlichen Grüßen
-${name}`;
-
-		if (submitBtn) {
-			submitBtn.disabled = true;
-			submitBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
-		}
-
-		let sentViaApi = false;
-		try {
-			const res = await fetch('api/contact.php', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					name: name,
-					email: email,
-					phone: phone,
-					subject: subjectRaw,
-					message: message,
-					source: 'Mitgliedschafts-Formular (via Webseite)',
-					details: {
-						'Mitgliedschaft': chosenType,
-						'Handicap-Status': chosenHcp
-					}
-				})
-			});
-
-			if (res.ok) {
-				const json = await res.json();
-				if (json && json.success) {
-					sentViaApi = true;
+		if (window.SGRContact) {
+			await window.SGRContact.send({
+				name: name,
+				email: email,
+				phone: phone,
+				subject: `Mitgliedschafts-Anfrage: ${chosenType} - ${name}`,
+				message: message,
+				source: 'Mitgliedschafts-Formular',
+				details: {
+					'Gewähltes Modell': chosenType,
+					'Handicap-Status': chosenHcp
 				}
-			}
-		} catch (err) {
-			console.log('API contact endpoint error, fallback to mailto:', err);
+			});
 		}
-
-		if (!sentViaApi) {
-			const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyText)}`;
-			window.location.href = mailtoUrl;
-		}
-
-		if (submitBtn) {
-			submitBtn.disabled = false;
-			submitBtn.textContent = origBtnText;
-		}
-
-		alert(currentLang === 'de' 
-			? 'Vielen Dank! Ihre Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.' 
-			: 'Thank you! Your inquiry (via Website) has been sent to info@wissmannshof.de. We will get back to you as quickly as possible.');
 		form.reset();
 	});
 }

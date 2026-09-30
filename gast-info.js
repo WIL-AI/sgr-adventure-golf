@@ -619,93 +619,29 @@ function initBookingForm() {
 		const phone = document.getElementById('gf-phone').value.trim();
 		const email = document.getElementById('gf-email').value.trim();
 		const msg = document.getElementById('gf-msg').value.trim();
-		const submitBtn = form.querySelector('button[type="submit"]');
-		const origBtnText = submitBtn ? submitBtn.textContent : '';
 
 		if (!name || !phone || !email || !date) {
 			alert(currentLang === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' : 'Please fill in all required fields.');
 			return;
 		}
 
-		const subjectRaw = `[via Webseite] Startzeit / Gast-Anfrage: ${type} am ${date} - ${name}`;
-
-		const bodyText = 
-`Hallo Team Wissmannshof,
-
-ich möchte eine Startzeit / Gast-Buchung anfragen (Anfrage via Webseite):
-
-- Angebot / Runde: ${type}
-- Wunschdatum: ${date}
-- Wunsch-Uhrzeit: ${time || 'Flexibel / nach Verfügbarkeit'}
-- Anzahl Spieler: ${players}
-- E-Carts: ${carts}
-
-Kontaktdaten:
-- Name: ${name}
-- Telefon: ${phone}
-- E-Mail: ${email}
-
-${msg ? `Besondere Wünsche / Anmerkungen:
-${msg}
-
-` : ''}Ich bitte um Bestätigung der Startzeit per E-Mail oder telefonisch.
-
-====================================================
-Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
-
-Mit freundlichen Grüßen
-${name}`;
-
-		if (submitBtn) {
-			submitBtn.disabled = true;
-			submitBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
-		}
-
-		let sentViaApi = false;
-		try {
-			const res = await fetch('api/contact.php', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					name: name,
-					email: email,
-					phone: phone,
-					subject: subjectRaw,
-					message: msg,
-					source: 'Gast-Info Startzeiten Formular (via Webseite)',
-					details: {
-						'Runde': type,
-						'Wunschdatum': date,
-						'Uhrzeit': time || 'Flexibel',
-						'Spieler': players,
-						'Carts': carts
-					}
-				})
-			});
-
-			if (res.ok) {
-				const json = await res.json();
-				if (json && json.success) {
-					sentViaApi = true;
+		if (window.SGRContact) {
+			await window.SGRContact.send({
+				name: name,
+				email: email,
+				phone: phone,
+				subject: `Startzeit / Gast-Anfrage: ${type} am ${date} - ${name}`,
+				message: msg,
+				source: 'Gast-Info Startzeiten-Formular',
+				details: {
+					'Angebot / Runde': type,
+					'Wunschdatum': date,
+					'Uhrzeit': time || 'Flexibel',
+					'Spieleranzahl': players,
+					'E-Carts': carts
 				}
-			}
-		} catch (err) {
-			console.log('API contact endpoint error, fallback to mailto:', err);
+			});
 		}
-
-		if (!sentViaApi) {
-			const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyText)}`;
-			window.location.href = mailtoUrl;
-		}
-
-		if (submitBtn) {
-			submitBtn.disabled = false;
-			submitBtn.textContent = origBtnText;
-		}
-
-		alert(currentLang === 'de' 
-			? 'Vielen Dank! Ihre Startzeiten-Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.' 
-			: 'Thank you! Your inquiry (via Website) has been sent to info@wissmannshof.de. We will get back to you as quickly as possible.');
 		form.reset();
 	});
 }

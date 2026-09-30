@@ -867,65 +867,31 @@ Yo-ho-ho! Please get back to us to confirm the trip.
 Best regards,
 ${name}
 (${email})`;
-		}
-		
-		if (submitBtn) {
-			submitBtn.disabled = true;
-			submitBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
-		}
-
-		let sentViaApi = false;
-		try {
-			const res = await fetch('api/contact.php', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					name: name,
-					email: email,
-					subject: subjectRaw,
-					message: note,
-					source: 'Adventure Golf Buchung (via Webseite)',
-					details: {
-						'Typ': typeLabel,
-						'Wunschtermin': date,
-						'Piraten': players
-					}
-				})
-			});
-
-			if (res.ok) {
-				const json = await res.json();
-				if (json && json.success) {
-					sentViaApi = true;
+		if (window.SGRContact) {
+			await window.SGRContact.send({
+				name: name,
+				email: email,
+				subject: `${typeLabel} Anfrage - ${name}`,
+				message: note,
+				source: 'Adventure Golf Buchung',
+				details: {
+					'Paket / Typ': typeLabel,
+					'Wunschtermin': date,
+					'Anzahl Piraten': `${players} Personen`
 				}
-			}
-		} catch (err) {
-			console.log('API contact endpoint error, fallback to mailto:', err);
+			});
 		}
 
-		if (!sentViaApi) {
-			const mailtoLink = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(body)}`;
-			window.location.href = mailtoLink;
+		modal.classList.remove('open');
+		form.reset();
+		
+		// Reset min/label after form reset
+		if (formPlayers && formPlayersLabel && formType) {
+			formPlayers.min = 1;
+			formPlayersLabel.setAttribute('data-t', 'formPlayersLabelGeneral');
+			updateLanguageUI();
 		}
-
-		if (submitBtn) {
-			submitBtn.disabled = false;
-			submitBtn.textContent = origBtnText;
-		}
-
-		alert(currentLang === 'de' 
-			? 'Ahoi! Eure Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei euch!' 
-			: 'Ahoi! Your booking inquiry (via Website) has been sent to info@wissmannshof.de!');
- modal.classList.remove('open');
- form.reset();
- 
- // Reset min/label after form reset
- if (formPlayers && formPlayersLabel && formType) {
- formPlayers.min = 1;
- formPlayersLabel.setAttribute('data-t', 'formPlayersLabelGeneral');
- updateLanguageUI();
- }
- });
+	});
 }
 
 

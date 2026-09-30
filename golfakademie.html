@@ -744,86 +744,33 @@
         </div>
     </footer>
 
-        <script>
+            <script>
         async function sendAcademyInquiry() {
             const format = document.getElementById('acad-format').value;
             const name = document.getElementById('acad-name').value.trim();
             const phone = document.getElementById('acad-phone').value.trim();
             const email = document.getElementById('acad-email').value.trim();
             const msg = document.getElementById('acad-msg').value.trim();
-            const submitBtn = document.querySelector('#academy-contact-form button[type="submit"]');
-            const origBtnText = submitBtn ? submitBtn.textContent : '';
 
             if (!name || !phone || !email) {
                 alert('Bitte füllen Sie alle Pflichtfelder aus.');
                 return;
             }
 
-            const subject = `[via Webseite] Akademie-Anfrage: ${format} - ${name}`;
-            const bodyText = 
-`Hallo Team Wissmannshof,
-
-ich interessiere mich für ein Angebot der Golfakademie auf Gut Wissmannshof (Anfrage via Webseite):
-
-- Gewünschtes Kursformat: ${format}
-- Name: ${name}
-- Telefon: ${phone}
-- E-Mail: ${email}
-
-${msg ? `Nachricht / Terminwünsche:
-${msg}
-
-` : ''}Ich freue mich über Ihre Rückmeldung.
-
-====================================================
-Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
-
-Mit freundlichen Grüßen
-${name}`;
-
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Wird gesendet...';
-            }
-
-            let sentViaApi = false;
-            try {
-                const res = await fetch('api/contact.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        subject: subject,
-                        message: msg,
-                        source: 'Golfakademie Kontaktformular (via Webseite)',
-                        details: {
-                            'Kursformat': format
-                        }
-                    })
-                });
-
-                if (res.ok) {
-                    const json = await res.json();
-                    if (json && json.success) {
-                        sentViaApi = true;
+            if (window.SGRContact) {
+                await window.SGRContact.send({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    subject: `Akademie-Anfrage: ${format} - ${name}`,
+                    message: msg,
+                    source: 'Golfakademie Anfrage-Formular',
+                    details: {
+                        'Kursformat': format
                     }
-                }
-            } catch (err) {
-                console.log('API contact endpoint error, fallback to mailto:', err);
+                });
             }
 
-            if (!sentViaApi) {
-                window.location.href = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-            }
-
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = origBtnText;
-            }
-
-            alert('Vielen Dank! Ihre Anfrage (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.');
             document.getElementById('academy-contact-form').reset();
         }
     </script>

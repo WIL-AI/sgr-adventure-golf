@@ -446,78 +446,28 @@
             const name = document.getElementById('contact-name').value.trim();
             const email = document.getElementById('contact-email').value.trim();
             const msg = document.getElementById('contact-msg').value.trim();
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const origBtnText = submitBtn ? submitBtn.textContent : '';
 
             if (!name || !email || !msg) {
                 alert(currentLang === 'en' ? 'Please fill in all required fields (*).' : 'Bitte füllen Sie alle erforderlichen Pflichtfelder (*) aus.');
                 return;
             }
 
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = currentLang === 'en' ? 'Sending...' : 'Wird gesendet...';
-            }
-
-            const subject = `[via Webseite] Kontaktanfrage von ${name}`;
-            const bodyText = 
-`Hallo Team Wissmannshof,
-
-eine neue Nachricht wurde über das Kontaktformular auf der Startseite von wissmannshof.golf (via Webseite) gesendet:
-
-- Absender: ${name}
-- E-Mail: ${email}
-
-Nachricht:
-${msg}
-
-====================================================
-Hinweis: Gesendet via Webseite (wissmannshof.golf)`;
-
-            let sentViaApi = false;
-            try {
-                const res = await fetch('api/contact.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        subject: subject,
-                        message: msg,
-                        source: 'Startseite Kontaktformular (via Webseite)'
-                    })
+            if (window.SGRContact) {
+                await window.SGRContact.send({
+                    name: name,
+                    email: email,
+                    subject: `Kontaktanfrage von ${name}`,
+                    message: msg,
+                    source: 'Startseite Kontaktformular'
                 });
-
-                if (res.ok) {
-                    const json = await res.json();
-                    if (json && json.success) {
-                        sentViaApi = true;
-                    }
-                }
-            } catch (err) {
-                console.log('API contact endpoint not reachable, using direct mailto:', err);
-            }
-
-            if (!sentViaApi) {
-                // Client-side mailto fallback
-                const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-                window.location.href = mailtoUrl;
-            }
-
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = origBtnText;
             }
 
             if (contactSuccess) {
                 contactSuccess.style.display = 'block';
                 contactSuccess.innerHTML = currentLang === 'en' 
-                    ? 'Thank you! Your message (via Website) has been successfully transmitted to info@wissmannshof.de. We will get back to you as quickly as possible.' 
-                    : 'Vielen Dank! Ihre Nachricht (via Webseite) wurde erfolgreich an info@wissmannshof.de übermittelt. Wir melden uns schnellstmöglich bei Ihnen.';
+                    ? 'Your message has been prepared for info@wissmannshof.de (via Website).' 
+                    : 'Ihre Nachricht wurde vorbereitet und an info@wissmannshof.de (via Webseite) adressiert.';
                 contactForm.reset();
-                setTimeout(() => {
-                    contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
             }
         });
     }
