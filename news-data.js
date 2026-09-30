@@ -23,6 +23,36 @@ const NEWS_IMAGE_PRESETS = [
         url: 'assets/hero_lake_island_green.jpg'
     },
     {
+        id: 'driving_range_bays',
+        title: 'Moderne überdachte Driving Range Abschlagplätze',
+        category: 'Akademie / Training',
+        url: 'assets/gallery_driving_range_bays.jpg'
+    },
+    {
+        id: 'putting_green_fountain',
+        title: 'Putting Green, Fontänensee & Blumenbeet',
+        category: 'Platz / Training',
+        url: 'assets/gallery_putting_green_fountain.jpg'
+    },
+    {
+        id: 'summer_lake_clouds',
+        title: 'Sommerlicher Seeblick & Naturpanorama',
+        category: 'Platz / Natur',
+        url: 'assets/gallery_summer_lake_clouds.jpg'
+    },
+    {
+        id: 'sunset_fairway_trees',
+        title: 'Sonnenuntergang über den sanften Spielbahnen',
+        category: 'Platz / Atmosphäre',
+        url: 'assets/gallery_sunset_fairway_trees.jpg'
+    },
+    {
+        id: 'gut_wissmannshof_building_nature',
+        title: 'Gut Wissmannshof Holzgebäude & Sommerblumenwiese',
+        category: 'Resort / Natur',
+        url: 'assets/gallery_gut_wissmannshof_building_nature.jpg'
+    },
+    {
         id: 'fairway_sunset_glow',
         title: 'Abendsonne über den weiten Fairways',
         category: 'Platz / Atmosphäre',
@@ -87,12 +117,6 @@ const NEWS_IMAGE_PRESETS = [
         title: 'Restaurant Wissmannshof Interieur',
         category: 'Gastronomie',
         url: 'assets/restaurant_indoor.webp'
-    },
-    {
-        id: 'resort_academy',
-        title: 'Golf Akademie & Fitting',
-        category: 'Akademie / Training',
-        url: 'assets/resort_academy.jpg'
     },
     {
         id: 'hotel_room',
