@@ -257,7 +257,7 @@ img {
     min-height: 74vh;
     display: flex;
     align-items: flex-end;
-    background: url('assets/gallery_curved_bunker_dunes.jpg') center 45% / cover no-repeat;
+    background: url('assets/hero_course_crater_bunker.jpg') center 45% / cover no-repeat;
     color: var(--color-white);
     overflow: hidden;
 }

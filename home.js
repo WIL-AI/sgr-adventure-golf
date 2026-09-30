@@ -552,11 +552,11 @@
 
     // Hero Section Dynamic & Sporadic Background Rotator
     const HERO_IMAGES = [
+        'assets/hero_resort_clubhouse_sunset.jpg',
+        'assets/hero_lake_island_green.jpg',
+        'assets/hero_fairway_sunset_glow.jpg',
         'assets/gallery_golden_hour_tree_lake.jpg',
-        'assets/gallery_sunset_canyon_lake.jpg',
-        'assets/gallery_bunker_stonewall_water.jpg',
-        'assets/gallery_panorama_dunes_lake.jpg',
-        'assets/gallery_blue_lake_mirror.jpg'
+        'assets/gallery_sunset_canyon_lake.jpg'
     ];
 
     let currentHeroIndex = 0;

@@ -338,7 +338,7 @@ img {
     display: flex;
     align-items: flex-end;
     background-color: var(--color-primary-dark);
-    background-image: url('assets/hero_gast_sunset.jpg');
+    background-image: url('assets/hero_resort_clubhouse_sunset.jpg');
     background-size: cover;
     background-position: center center;
     color: var(--color-white);

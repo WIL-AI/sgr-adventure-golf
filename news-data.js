@@ -5,6 +5,30 @@
 
 const NEWS_IMAGE_PRESETS = [
     {
+        id: 'resort_clubhouse_sunset',
+        title: 'Clubhaus, 18. Grün & Resorthotel im Sonnenuntergang',
+        category: 'Resort / Abendstimmung',
+        url: 'assets/hero_resort_clubhouse_sunset.jpg'
+    },
+    {
+        id: 'course_crater_bunker',
+        title: 'Spektakuläre Krater-Bunkeranlage & Fairways (Drohne)',
+        category: 'Platz / Signature Hole',
+        url: 'assets/hero_course_crater_bunker.jpg'
+    },
+    {
+        id: 'lake_island_green',
+        title: 'Spiegelnder See mit Inselgrün & Steinmauer',
+        category: 'Platz / Signature Hole',
+        url: 'assets/hero_lake_island_green.jpg'
+    },
+    {
+        id: 'fairway_sunset_glow',
+        title: 'Abendsonne über den weiten Fairways',
+        category: 'Platz / Atmosphäre',
+        url: 'assets/hero_fairway_sunset_glow.jpg'
+    },
+    {
         id: 'golden_hour_tree',
         title: 'Sonnenuntergang am See (Golden Hour)',
         category: 'Platz / Atmosphäre',
