@@ -396,10 +396,10 @@ const TRANSLATIONS = {
         fact1Label: 'Loch Resort Course (+ 9 in Planung)',
         fact2Number: '6',
         fact2Label: 'Loch Canyon Academy Kurs (in Kürze 9)',
-        fact3Number: '6',
-        fact3Label: 'Offizielle DGV-Abschlagfarben',
+        fact3Number: '4',
+        fact3Label: 'Abschläge pro Bahn (W / G / B / R)',
         fact4Number: '365',
-        fact4Label: 'Tage ganzjährig auf Sommergrüns',
+        fact4Label: 'Tage ganzjährig bespielbar',
         
         tagLoops: 'Platzarchitektur',
         loopsHeading: 'Unsere Kurs-Kombinationen',
