@@ -1,12 +1,13 @@
 /**
  * Gut Wissmannshof - Universal Contact & Form Dispatcher
- * Ensures all inquiries reliably reach info@wissmannshof.de with "[via Webseite]" tag.
+ * Dispatches all inquiries reliably to info@wissmannshof.de with "[via Webseite]" tag.
  */
 
 window.SGRContact = (function() {
     'use strict';
 
     const TARGET_EMAIL = 'info@wissmannshof.de';
+    const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
 
     function buildEmailData(opts) {
         const source = opts.source || 'Webseite';
@@ -48,6 +49,38 @@ window.SGRContact = (function() {
         body += `Mit freundlichen Grüßen,\n${name}`;
 
         return { subject, body, targetEmail: TARGET_EMAIL, name, email, phone, source, message, details };
+    }
+
+    function showToast(message, isSuccess = true) {
+        let toast = document.getElementById('sgr-contact-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'sgr-contact-toast';
+            toast.style.cssText = `
+                position: fixed; bottom: 24px; right: 24px; z-index: 999999;
+                padding: 16px 22px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 0.95rem; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+                display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;
+                transform: translateY(100px); opacity: 0;
+            `;
+            document.body.appendChild(toast);
+        }
+
+        toast.style.background = isSuccess ? '#143324' : '#8B0000';
+        toast.style.color = isSuccess ? '#EAF6EE' : '#FFF';
+        toast.style.border = isSuccess ? '1px solid #D4AF37' : '1px solid #FF8888';
+        toast.innerHTML = (isSuccess ? '✓ ' : '⚠️ ') + message;
+
+        // Animate in
+        requestAnimationFrame(() => {
+            toast.style.transform = 'translateY(0)';
+            toast.style.opacity = '1';
+        });
+
+        setTimeout(() => {
+            toast.style.transform = 'translateY(100px)';
+            toast.style.opacity = '0';
+        }, 6000);
     }
 
     function showSendModal(data) {
@@ -126,7 +159,46 @@ window.SGRContact = (function() {
     async function send(opts) {
         const data = buildEmailData(opts);
 
-        // 1. Try PHP API endpoint if available on server
+        // 1. Dispatch via FormSubmit JSON API
+        try {
+            const payload = {
+                name: data.name,
+                email: data.email,
+                _replyto: data.email,
+                phone: data.phone || 'Keine Angabe',
+                _subject: data.subject,
+                message: data.message || 'Keine Notiz',
+                source: data.source,
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            // Flatten extra details into payload
+            if (data.details && typeof data.details === 'object') {
+                for (const [k, v] of Object.entries(data.details)) {
+                    if (v) payload[k] = v;
+                }
+            }
+
+            const res = await fetch(FORMSUBMIT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                const json = await res.json().catch(() => ({}));
+                showToast('Vielen Dank! Ihre Nachricht (via Webseite) wurde erfolgreich übermittelt.');
+                return { success: true, method: 'formsubmit', response: json };
+            }
+        } catch (err) {
+            console.warn('FormSubmit endpoint offline or blocked, falling back to direct client options:', err);
+        }
+
+        // 2. Fallback: Local PHP API endpoint if available on environment
         try {
             const res = await fetch('api/contact.php', {
                 method: 'POST',
@@ -145,6 +217,7 @@ window.SGRContact = (function() {
             if (res.ok) {
                 const json = await res.json().catch(() => null);
                 if (json && json.success && json.mailSent) {
+                    showToast('Vielen Dank! Ihre Nachricht (via Webseite) wurde erfolgreich übermittelt.');
                     return { success: true, method: 'api' };
                 }
             }
@@ -152,13 +225,14 @@ window.SGRContact = (function() {
             // API not supported on static host
         }
 
-        // 2. Launch Client Mail Dispatch Modal + Synchronous Mailto
+        // 3. Fallback: Launch Client Mail Dispatch Modal + Synchronous Mailto
         showSendModal(data);
         return { success: true, method: 'client' };
     }
 
     return {
         send: send,
-        showSendModal: showSendModal
+        showSendModal: showSendModal,
+        buildEmailData: buildEmailData
     };
 })();

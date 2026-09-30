@@ -175,13 +175,14 @@
 
         // Form Submit
         if (elements.careerForm) {
-            elements.careerForm.addEventListener('submit', e => {
+            elements.careerForm.addEventListener('submit', async e => {
                 e.preventDefault();
 
                 const name = document.getElementById('applicant-name').value.trim();
                 const email = document.getElementById('applicant-email').value.trim();
                 const phone = document.getElementById('applicant-phone').value.trim();
                 const job = document.getElementById('applicant-job').value;
+                const message = document.getElementById('applicant-message') ? document.getElementById('applicant-message').value.trim() : '';
                 const privacy = document.getElementById('applicant-privacy').checked;
 
                 if (!name || !email || !phone || !job || !privacy) {
@@ -189,7 +190,21 @@
                     return;
                 }
 
-                // Simulate successful submission
+                if (window.SGRContact) {
+                    await window.SGRContact.send({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        subject: `Bewerbung für ${job} - ${name}`,
+                        message: message,
+                        source: 'Karriere Online-Bewerbungsformular',
+                        details: {
+                            'Angestrebte Stelle': job
+                        }
+                    });
+                }
+
+                // Show successful submission banner
                 elements.formSuccessAlert.style.display = 'block';
                 elements.careerForm.reset();
                 if (elements.fileChosenName) elements.fileChosenName.textContent = '';
