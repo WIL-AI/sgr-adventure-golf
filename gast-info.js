@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
  Sport- und Golf-Resort Gut Wissmannshof - Gäste-Info Landing Page JS
  Interactive Logic, Bilingual Translation Engine (DE / EN) & Form Handler
  ========================================================================== */
@@ -32,10 +32,10 @@ const translations = {
  btnHeroPrices: "Greenfee & Preise im Überblick ↓",
 
  trust1Title: "18-Loch Resort Course",
- trust1Sub: "Kurs Blau-Gelb · 365 Tage bespielbar",
+ trust1Sub: "Kurs Blau-Gelb · Ganzjährig bespielbar",
  trust2Title: "Moderne E-Cart Flotte",
  trust2Sub: "9-Loch, 18-Loch & exklusive VIP-Carts",
- trust3Title: "Sundowner ab 80 €",
+ trust3Title: "Early Bird & Sundowner ab 80 €",
  trust3Sub: "Früh morgens & am späten Nachmittag",
  trust4Title: "Vom Zimmer aufs Fairway",
  trust4Sub: "Hotel & Gastronomie direkt am Platz",
@@ -61,8 +61,8 @@ const translations = {
  card18Desc: "Die volle Distanz: Atemberaubende Aussichten, anspruchsvolle Grüns und gepflegte Fairways.",
  rowWeekday: "Montag – Freitag <small>(werktags)</small>",
  rowWeekend: "Samstag, Sonntag & Feiertage",
- rowSundowner: "Sundowner Special",
- rowSundownerSub: "Bis 09:00 Uhr & ab 17:00 Uhr",
+ rowSundowner: "Early Bird & Sundowner",
+ rowSundownerSub: "Morgens bis 09:00 Uhr & abends ab 17:00 Uhr (Randzeiten)",
  btnBook18: "18-Loch Startzeit buchen",
 
  card9Title: "9-Loch Golfrunde",
@@ -181,7 +181,7 @@ const translations = {
  lblRoundType: "Gewünschte Runde / Angebot *",
  opt18: "18-Loch Resort-Runde",
  opt9: "9-Loch Runde",
- optSundowner: "Sundowner-Tarif (88 €)",
+ optSundowner: "Early Bird & Sundowner (88 €)",
  opt18Abo: "18-Loch Abo (5+1)",
  opt9Abo: "9-Loch Abo (5+1)",
  optCanyon: "Canyon Academy Kurs (6 Loch)",
@@ -251,10 +251,10 @@ const translations = {
  btnHeroPrices: "Green Fee & Prices at a Glance ↓",
 
  trust1Title: "18-Hole Resort Course",
- trust1Sub: "Course Blue-Yellow · Playable 365 days",
+ trust1Sub: "Course Blue-Yellow · Year-round playability",
  trust2Title: "Modern E-Cart Fleet",
  trust2Sub: "9-hole, 18-hole & VIP luxury carts",
- trust3Title: "Sundowner Rate from €88",
+ trust3Title: "Early Bird & Sundowner from €88",
  trust3Sub: "Early mornings & late afternoons",
  trust4Title: "From Room to Fairway",
  trust4Sub: "Hotel & dining right on the golf course",
@@ -280,8 +280,8 @@ const translations = {
  card18Desc: "The full distance: Breathtaking panoramas, pristine greens, and immaculately manicured fairways.",
  rowWeekday: "Monday – Friday <small>(weekdays)</small>",
  rowWeekend: "Saturday, Sunday & Public Holidays",
- rowSundowner: "Sundowner Special",
- rowSundownerSub: "Until 09:00 AM & from 05:00 PM",
+ rowSundowner: "Early Bird & Sundowner",
+ rowSundownerSub: "Mornings until 09:00 AM & evenings from 05:00 PM",
  btnBook18: "Book 18-Hole Tee Time",
 
  card9Title: "9-Hole Golf Round",
@@ -400,7 +400,7 @@ const translations = {
  lblRoundType: "Desired Round / Offer *",
  opt18: "18-Hole Resort Course Round",
  opt9: "9-Hole Round",
- optSundowner: "Sundowner Rate (€88)",
+ optSundowner: "Early Bird & Sundowner (€88)",
  opt18Abo: "18-Hole Pass (5+1)",
  opt9Abo: "9-Hole Pass (5+1)",
  optCanyon: "Canyon Academy Course (6 Holes)",

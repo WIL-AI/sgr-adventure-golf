@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
  Gut Wissmannshof - Golf Course & Interactive 18-Hole Guide Engine
  Bilingual Support (DE / EN), Interactive Hole Viewer, Lightbox
  ========================================================================== */
@@ -9,15 +9,15 @@ const HOLE_DATA = [
         id: 1,
         loop: 'blau',
         holeNumber: 1,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 1 – Der Auftakt', en: 'Hole 1 – The Opener' },
         par: 5,
         hcp: 3,
         tees: { white: 471, yellow: 459, blue: 448, red: 409 },
         image: 'assets/course_holes/blau_1.jpg',
         desc: {
-            de: 'Ein meisterhaftes Par 5 zum Start mit weitem Blick über das Landefeld. Ein solider Abschlag eröffnet gute Chancen auf ein sicheres Par.',
-            en: 'A masterful opening Par 5 with sweeping views over the Landefeld. A solid tee shot opens up great opportunities for a safe Par.'
+            de: 'Ein meisterhaftes Par 5 zum Start mit weitem Blick über das nordhessische Hügelland. Ein solider Abschlag eröffnet gute Chancen auf ein sicheres Par.',
+            en: 'A masterful opening Par 5 with sweeping views across the rolling countryside. A solid tee shot opens up great opportunities for a safe Par.'
         },
         protip: {
             de: 'Zielen Sie leicht rechts der Mitte, um den optimalen Winkel für den zweiten Schlag in Richtung Grün zu haben.',
@@ -28,7 +28,7 @@ const HOLE_DATA = [
         id: 2,
         loop: 'blau',
         holeNumber: 2,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 2 – Das sanfte Dogleg', en: 'Hole 2 – The Gentle Dogleg' },
         par: 4,
         hcp: 13,
@@ -47,7 +47,7 @@ const HOLE_DATA = [
         id: 3,
         loop: 'blau',
         holeNumber: 3,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 3 – Die Klippe', en: 'Hole 3 – The Ridge' },
         par: 4,
         hcp: 5,
@@ -66,7 +66,7 @@ const HOLE_DATA = [
         id: 4,
         loop: 'blau',
         holeNumber: 4,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 4 – Der Waldkorridor', en: 'Hole 4 – Forest Corridor' },
         par: 5,
         hcp: 11,
@@ -85,7 +85,7 @@ const HOLE_DATA = [
         id: 5,
         loop: 'blau',
         holeNumber: 5,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 5 – Das Präzisions-Par 3', en: 'Hole 5 – Precision Par 3' },
         par: 3,
         hcp: 15,
@@ -104,7 +104,7 @@ const HOLE_DATA = [
         id: 6,
         loop: 'blau',
         holeNumber: 6,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 6 – Schluchten-Schwung', en: 'Hole 6 – Gorge Swing' },
         par: 4,
         hcp: 7,
@@ -123,7 +123,7 @@ const HOLE_DATA = [
         id: 7,
         loop: 'blau',
         holeNumber: 7,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 7 – Das Tannen-Par 3', en: 'Hole 7 – Pine Par 3' },
         par: 3,
         hcp: 9,
@@ -142,7 +142,7 @@ const HOLE_DATA = [
         id: 8,
         loop: 'blau',
         holeNumber: 8,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 8 – Eichenallee', en: 'Hole 8 – Oak Avenue' },
         par: 4,
         hcp: 17,
@@ -161,7 +161,7 @@ const HOLE_DATA = [
         id: 9,
         loop: 'blau',
         holeNumber: 9,
-        loopName: { de: 'Kurs Blau (Landefeld)', en: 'Course Blue (Landefeld)' },
+        loopName: { de: 'Kurs Blau (Hole 1–9)', en: 'Course Blue (Hole 1–9)' },
         name: { de: 'Bahn 9 – Heimkehr zum Gutshof', en: 'Hole 9 – Manor Homecoming' },
         par: 4,
         hcp: 1,
@@ -412,11 +412,11 @@ const TRANSLATIONS = {
         lblStatus: 'Status:',
         lblGoal: 'Ziel:',
 
-        loopBlauTitle: 'Kurs Blau (Landefeld)',
+        loopBlauTitle: 'Kurs Blau (Hole 1–9)',
         loopBlauBadge: 'Hole 1–9',
         loopBlauSpec1: 'Weiß: 2.987 m | Gelb: 2.807 m | Rot: 2.463 m',
         loopBlauPar: '36 (Out) · 9 Bahnen',
-        loopBlauDesc: 'Weite Ausblicke über das Landefeld, abwechslungsreiche Höhenprofile und strategisch platzierte Wasser- und Sandhindernisse.',
+        loopBlauDesc: 'Weite Ausblicke über die sanften Hügel, abwechslungsreiche Höhenprofile und strategisch platzierte Wasser- und Sandhindernisse.',
         btnViewBlau: 'Hole 1–9 ansehen',
         
         loopGelbTitle: 'Kurs Gelb',
@@ -454,7 +454,7 @@ const TRANSLATIONS = {
         lblHcp: 'HCP / Index',
         lblTeeWhite: 'Weiß (Champ.)',
         lblTeeYellow: 'Gelb (Herren)',
-        lblTeeBlue: 'Blau (Damen)',
+        lblTeeBlue: 'Blau (Herren)',
         lblTeeRed: 'Rot (Damen)',
         lblTeeMeters: 'm',
         
@@ -550,11 +550,11 @@ const TRANSLATIONS = {
         lblStatus: 'Status:',
         lblGoal: 'Goal:',
 
-        loopBlauTitle: 'Course Blue (Landefeld)',
+        loopBlauTitle: 'Course Blue (Hole 1–9)',
         loopBlauBadge: 'Holes 1–9',
         loopBlauSpec1: 'White: 2,987 m | Yellow: 2,807 m | Red: 2,463 m',
         loopBlauPar: '36 (Out) · 9 Holes',
-        loopBlauDesc: 'Sweeping vistas across the Landefeld, varied elevation profiles, and strategically positioned sand and water hazards.',
+        loopBlauDesc: 'Sweeping vistas across the rolling fairways, varied elevation profiles, and strategically positioned sand and water hazards.',
         btnViewBlau: 'View Holes 1–9',
 
         loopGelbTitle: 'Course Yellow',
