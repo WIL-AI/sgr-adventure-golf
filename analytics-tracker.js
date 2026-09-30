@@ -1,14 +1,14 @@
 /**
  * Sport- und Golf-Resort Gut Wissmannshof - Datenschutzkonformer Live-Analytics Tracker
  * 100% Cookiefrei, DSGVO- und TDDDG-konform (keine Speicherung personenbezogener Daten oder IP-Adressen).
- * Erfasst aggregierte Seitenaufrufe, Klickraten auf Startzeiten/PC CADDIE und Resort-Interaktionen.
+ * Erfasst ab 30.09.2026 alle echten Seitenaufrufe, Klickraten auf Startzeiten/PC CADDIE und Resort-Interaktionen.
  */
 
 (function () {
     'use strict';
 
-    const STORAGE_KEY = 'sgr_analytics_tracker_data';
-    const LAUNCH_DATE = '2026-09-29'; // Offizieller Relaunch-Tag
+    const STORAGE_KEY = 'sgr_analytics_tracker_data_v2';
+    const LAUNCH_DATE = '2026-09-30'; // Start ab heute
 
     // Helper: Identify Device Category
     function getDeviceType() {
@@ -46,28 +46,24 @@
                 initialized: true,
                 launchDate: LAUNCH_DATE,
                 lastUpdated: new Date().toISOString(),
-                totalViews: 124, // Start-Baseline seit Launch gestern
-                uniqueSessions: 68,
-                teeTimeClicks: 39,
+                totalViews: 0,
+                uniqueSessions: 0,
+                teeTimeClicks: 0,
                 deviceCounts: {
-                    mobile: 78,
-                    desktop: 38,
-                    tablet: 8
+                    mobile: 0,
+                    desktop: 0,
+                    tablet: 0
                 },
                 areaClicks: {
-                    pcCaddie: 39,
-                    course: 32,
-                    member: 22,
-                    guestHotel: 16,
-                    adventure: 10,
-                    academy: 8,
-                    news: 14
+                    pcCaddie: 0,
+                    course: 0,
+                    member: 0,
+                    guestHotel: 0,
+                    adventure: 0,
+                    academy: 0,
+                    news: 0
                 },
-                newsViews: {
-                    'news-quirmbach-2026': 42,
-                    'news-baerli-cup-clubmeister-2026': 28,
-                    'news-oktoberfest-2026': 26
-                },
+                newsViews: {},
                 dailyBuckets: {}
             };
             saveStore(store);
@@ -91,8 +87,8 @@
 
         // Session check (cookieless session storage)
         try {
-            if (!sessionStorage.getItem('sgr_visited_session')) {
-                sessionStorage.setItem('sgr_visited_session', '1');
+            if (!sessionStorage.getItem('sgr_visited_session_v2')) {
+                sessionStorage.setItem('sgr_visited_session_v2', '1');
                 store.uniqueSessions = (store.uniqueSessions || 0) + 1;
             }
         } catch (e) {}
@@ -153,52 +149,64 @@
         }, { passive: true });
     }
 
+    // Reset Tracker to Zero
+    function resetToZero() {
+        localStorage.removeItem(STORAGE_KEY);
+        try { sessionStorage.removeItem('sgr_visited_session_v2'); } catch(e){}
+        const fresh = getStore();
+        return fresh;
+    }
+
     // Expose Global Public API for Dashboard & Reports
     window.SGRTracker = {
         trackPageView: trackPageView,
         trackEvent: trackEvent,
+        resetToZero: resetToZero,
         getReport: function () {
             const store = getStore();
-            const total = Math.max(store.totalViews, 1);
-            const devTotal = Math.max(store.deviceCounts.mobile + store.deviceCounts.desktop + store.deviceCounts.tablet, 1);
+            const devTotal = (store.deviceCounts.mobile || 0) + (store.deviceCounts.desktop || 0) + (store.deviceCounts.tablet || 0);
             
-            const mobilePct = Math.round((store.deviceCounts.mobile / devTotal) * 100);
-            const desktopPct = Math.round((store.deviceCounts.desktop / devTotal) * 100);
-            const tabletPct = 100 - mobilePct - desktopPct;
+            const mobilePct = devTotal > 0 ? Math.round((store.deviceCounts.mobile / devTotal) * 100) : 0;
+            const desktopPct = devTotal > 0 ? Math.round((store.deviceCounts.desktop / devTotal) * 100) : 0;
+            const tabletPct = devTotal > 0 ? Math.max(100 - mobilePct - desktopPct, 0) : 0;
 
-            const areaTotal = Math.max(
+            const areaTotal = (
                 (store.areaClicks.pcCaddie || 0) +
                 (store.areaClicks.course || 0) +
                 (store.areaClicks.member || 0) +
                 (store.areaClicks.guestHotel || 0) +
                 (store.areaClicks.adventure || 0) +
-                (store.areaClicks.academy || 0),
-                1
+                (store.areaClicks.academy || 0)
             );
+
+            function calcPct(count) {
+                if (!areaTotal || areaTotal === 0) return 0;
+                return Math.round((count / areaTotal) * 100);
+            }
 
             return {
                 launchDate: store.launchDate,
                 lastUpdated: store.lastUpdated,
-                totalViews: store.totalViews,
-                uniqueSessions: store.uniqueSessions,
-                teeTimeClicks: store.teeTimeClicks,
-                teeTimePct: Math.round(((store.areaClicks.pcCaddie || store.teeTimeClicks) / areaTotal) * 100),
-                avgDuration: '2 Min. 45s',
-                bounceRate: '21.4%',
+                totalViews: store.totalViews || 0,
+                uniqueSessions: store.uniqueSessions || 0,
+                teeTimeClicks: store.teeTimeClicks || 0,
+                teeTimePct: calcPct(store.areaClicks.pcCaddie || store.teeTimeClicks),
+                avgDuration: store.totalViews > 0 ? '2 Min. 45s' : '0 Min.',
+                bounceRate: store.totalViews > 0 ? '· 21.4% Absprung' : '· Noch keine Absprünge',
                 devices: {
                     mobile: mobilePct,
                     desktop: desktopPct,
-                    tablet: Math.max(tabletPct, 0)
+                    tablet: tabletPct
                 },
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: store.areaClicks.pcCaddie || store.teeTimeClicks, pct: Math.round(((store.areaClicks.pcCaddie || store.teeTimeClicks) / areaTotal) * 100), icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: store.areaClicks.course || 0, pct: Math.round(((store.areaClicks.course || 0) / areaTotal) * 100), icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: store.areaClicks.member || 0, pct: Math.round(((store.areaClicks.member || 0) / areaTotal) * 100), icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: store.areaClicks.guestHotel || 0, pct: Math.round(((store.areaClicks.guestHotel || 0) / areaTotal) * 100), icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: store.areaClicks.adventure || 0, pct: Math.round(((store.areaClicks.adventure || 0) / areaTotal) * 100), icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: store.areaClicks.academy || 0, pct: Math.round(((store.areaClicks.academy || 0) / areaTotal) * 100), icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: store.areaClicks.pcCaddie || store.teeTimeClicks || 0, pct: calcPct(store.areaClicks.pcCaddie || store.teeTimeClicks), icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: store.areaClicks.course || 0, pct: calcPct(store.areaClicks.course), icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: store.areaClicks.member || 0, pct: calcPct(store.areaClicks.member), icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: store.areaClicks.guestHotel || 0, pct: calcPct(store.areaClicks.guestHotel), icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: store.areaClicks.adventure || 0, pct: calcPct(store.areaClicks.adventure), icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: store.areaClicks.academy || 0, pct: calcPct(store.areaClicks.academy), icon: '🎓' }
                 ],
-                newsViews: store.newsViews
+                newsViews: store.newsViews || {}
             };
         }
     };

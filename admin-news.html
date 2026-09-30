@@ -2067,51 +2067,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        
-        
-
-            <!-- Two Column Breakdown -->
-            <div class="analytics-split-grid">
-                <!-- Left: Area Interest & Clicks Breakdown -->
-                <div class="analytics-subcard">
-                    <div class="analytics-subcard-title">
-                        <span>🎯 Höchste Klicks &amp; Interessensschwerpunkte</span>
-                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted);" id="analytics-area-period-label">Letzte 7 Tage</span>
-                    </div>
-                    <div id="analytics-area-list">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Right: Top Articles & Devices Split -->
-                <div class="analytics-subcard">
-                    <div class="analytics-subcard-title">
-                        <span>📰 Meistgelesene WiHo-News</span>
-                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-gold);" id="analytics-news-period-label">Top Artikel</span>
-                    </div>
-                    <div class="top-news-list" id="analytics-top-news-list">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- Device Split -->
-                    <div class="device-split-wrap">
-                        <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">
-                            📱 Endgeräte der Besucher
-                        </div>
-                        <div class="device-split-bar">
-                            <div class="device-segment-mobile" id="dev-bar-mobile" style="width: 64%;" title="Mobile: 64%"></div>
-                            <div class="device-segment-desktop" id="dev-bar-desktop" style="width: 29%;" title="Desktop: 29%"></div>
-                            <div class="device-segment-tablet" id="dev-bar-tablet" style="width: 7%;" title="Tablet: 7%"></div>
-                        </div>
-                        <div class="device-split-legend">
-                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #B8963E;"></span> Mobile: <strong id="dev-lbl-mobile">64%</strong></span>
-                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #0D2218;"></span> Desktop: <strong id="dev-lbl-desktop">29%</strong></span>
-                            <span class="device-legend-item"><span class="device-legend-dot" style="background: #9E7F30;"></span> Tablet: <strong id="dev-lbl-tablet">7%</strong></span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2164,7 +2119,9 @@
                         Besucherströme, Klickverteilung nach Resort-Bereichen und News-Resonanz auf <strong>wissmannshof.golf</strong>
                     </p>
                 </div>
-                <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <button type="button" class="action-icon-btn delete" style="padding: 4px 10px; font-size: 0.76rem;" onclick="resetLiveAnalyticsCounters()" title="Alle Zähler auf 0 setzen">🔄 Zähler auf 0</button>
+                    <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
                     <button type="button" class="analytics-period-btn active" data-period="7d" onclick="switchAnalyticsPeriod('7d')">
                         ⏱ Letzte 7 Tage
                     </button>
@@ -4269,108 +4226,108 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
            ========================================================================== */
         window.RESORT_ANALYTICS_DATA = {
             '7d': {
-                label: 'Letzte 7 Tage',
-                trendLabel: 'ggü. Vorwoche',
-                views: '4.280',
-                viewsTrend: '+14.2%',
-                visitors: '2.640',
-                visitorsTrend: '+11.8%',
-                teeClicks: '1.370',
-                teePct: '32.0%',
-                duration: '2 Min. 48s',
-                bounce: '· 24.5% Absprung',
+                label: 'Live seit Launch (30.09.2026)',
+                trendLabel: 'Start heute',
+                views: '0',
+                viewsTrend: 'Live',
+                visitors: '0',
+                visitorsTrend: 'Live',
+                teeClicks: '0',
+                teePct: '0%',
+                duration: '0 Min.',
+                bounce: '· Messung gestartet',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '1.370 Klicks', pct: 32, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '1.028 Klicks', pct: 24, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '770 Klicks', pct: 18, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '514 Klicks', pct: 12, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '342 Klicks', pct: 8, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '256 Klicks', pct: 6, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '1.140 Aufrufe', rate: '88% Leserate' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '890 Aufrufe', rate: '82% Leserate' },
-                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '630 Aufrufe', rate: '76% Leserate' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: '0% Leserate' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '0 Aufrufe', rate: '0% Leserate' },
+                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '0 Aufrufe', rate: '0% Leserate' }
                 ],
-                devices: { mobile: 64, desktop: 29, tablet: 7 }
+                devices: { mobile: 0, desktop: 0, tablet: 0 }
             },
             '30d': {
-                label: 'Letzter Monat (30 Tage)',
-                trendLabel: 'ggü. Vormonat',
-                views: '18.650',
-                viewsTrend: '+9.8%',
-                visitors: '11.420',
-                visitorsTrend: '+8.4%',
-                teeClicks: '5.960',
-                teePct: '32.0%',
-                duration: '2 Min. 52s',
-                bounce: '· 23.8% Absprung',
+                label: 'Letzter Monat (Referenz)',
+                trendLabel: 'Saison-Referenz',
+                views: '0',
+                viewsTrend: '–',
+                visitors: '0',
+                visitorsTrend: '–',
+                teeClicks: '0',
+                teePct: '0%',
+                duration: '0 Min.',
+                bounce: '· Neuerfassung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '5.968 Klicks', pct: 32, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '4.662 Klicks', pct: 25, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '3.170 Klicks', pct: 17, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '2.424 Klicks', pct: 13, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '1.492 Klicks', pct: 8, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '934 Klicks', pct: 5, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '4.920 Aufrufe', rate: '89% Leserate' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '3.740 Aufrufe', rate: '84% Leserate' },
-                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '2.680 Aufrufe', rate: '78% Leserate' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Oktoberfest-Scramble 2026', views: '0 Aufrufe', rate: '0%' }
                 ],
-                devices: { mobile: 62, desktop: 31, tablet: 7 }
+                devices: { mobile: 0, desktop: 0, tablet: 0 }
             },
             'year2026': {
-                label: 'Dieses Jahr (2026)',
-                trendLabel: 'ggü. Vorjahr 2025',
-                views: '142.890',
-                viewsTrend: '+23.5%',
-                visitors: '84.300',
-                visitorsTrend: '+21.2%',
-                teeClicks: '45.720',
-                teePct: '32.0%',
-                duration: '3 Min. 04s',
-                bounce: '· 22.4% Absprung',
+                label: 'Gesamtjahr 2026',
+                trendLabel: 'Saison 2026',
+                views: '0',
+                viewsTrend: '–',
+                visitors: '0',
+                visitorsTrend: '–',
+                teeClicks: '0',
+                teePct: '0%',
+                duration: '0 Min.',
+                bounce: '· Neuerfassung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '45.724 Klicks', pct: 32, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '37.151 Klicks', pct: 26, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '22.862 Klicks', pct: 16, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '18.575 Klicks', pct: 13, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '11.431 Klicks', pct: 8, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '7.147 Klicks', pct: 5, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '32.400 Aufrufe', rate: '91% Leserate' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '24.800 Aufrufe', rate: '86% Leserate' },
-                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '18.200 Aufrufe', rate: '80% Leserate' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Oktoberfest-Scramble 2026', views: '0 Aufrufe', rate: '0%' }
                 ],
-                devices: { mobile: 65, desktop: 28, tablet: 7 }
+                devices: { mobile: 0, desktop: 0, tablet: 0 }
             },
             'year2025': {
-                label: 'Letztes Jahr (2025)',
-                trendLabel: 'Jahresergebnis 2025',
-                views: '118.420',
-                viewsTrend: '+16.4%',
-                visitors: '69.800',
-                visitorsTrend: '+14.1%',
-                teeClicks: '37.890',
-                teePct: '32.0%',
-                duration: '2 Min. 45s',
-                bounce: '· 25.2% Absprung',
+                label: 'Historie 2025',
+                trendLabel: 'Vorjahr',
+                views: '0',
+                viewsTrend: '–',
+                visitors: '0',
+                visitorsTrend: '–',
+                teeClicks: '0',
+                teePct: '0%',
+                duration: '0 Min.',
+                bounce: '· Archiv',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '37.894 Klicks', pct: 32, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '29.605 Klicks', pct: 25, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '20.131 Klicks', pct: 17, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '15.394 Klicks', pct: 13, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '9.473 Klicks', pct: 8, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '5.923 Klicks', pct: 5, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Rückblick Saison 2025 & Platzoptimierungen', views: '22.100 Aufrufe', rate: '84% Leserate' },
-                    { title: 'Großes Wissmannshof Sommerfest & Benefizturnier', views: '18.400 Aufrufe', rate: '81% Leserate' },
-                    { title: 'Erweiterung der Resorthotel-Suiten mit Panoramablick', views: '14.900 Aufrufe', rate: '77% Leserate' }
+                    { title: 'Rückblick Saison 2025', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Wissmannshof Sommerfest', views: '0 Aufrufe', rate: '0%' },
+                    { title: 'Erweiterung Resorthotel-Suiten', views: '0 Aufrufe', rate: '0%' }
                 ],
-                devices: { mobile: 59, desktop: 33, tablet: 8 }
+                devices: { mobile: 0, desktop: 0, tablet: 0 }
             }
         };
 
@@ -4383,23 +4340,43 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
                 btn.classList.toggle('active', btn.getAttribute('data-period') === periodKey);
             });
 
-            // If 7d is selected, blend with real Live Tracker data
-            if (periodKey === '7d' && window.SGRTracker && typeof window.SGRTracker.getReport === 'function') {
+            // If 7d is selected, pull real Live Tracker data directly
+            if (window.SGRTracker && typeof window.SGRTracker.getReport === 'function') {
                 const live = window.SGRTracker.getReport();
-                data = {
-                    ...data,
-                    views: live.totalViews.toLocaleString('de-DE'),
-                    visitors: live.uniqueSessions.toLocaleString('de-DE'),
-                    teeClicks: live.teeTimeClicks.toLocaleString('de-DE'),
-                    teePct: live.teeTimePct + '%',
-                    devices: live.devices,
-                    areas: live.areas.map(a => ({
-                        name: a.name,
-                        clicks: a.clicks.toLocaleString('de-DE') + ' Klicks',
-                        pct: a.pct,
-                        icon: a.icon
-                    }))
-                };
+                if (periodKey === '7d' || periodKey === 'year2026') {
+                    data = {
+                        ...data,
+                        views: (live.totalViews || 0).toLocaleString('de-DE'),
+                        visitors: (live.uniqueSessions || 0).toLocaleString('de-DE'),
+                        teeClicks: (live.teeTimeClicks || 0).toLocaleString('de-DE'),
+                        teePct: (live.teeTimePct || 0) + '%',
+                        duration: live.avgDuration || '0 Min.',
+                        bounce: live.bounceRate || '· Messung läuft',
+                        devices: live.devices,
+                        areas: live.areas.map(a => ({
+                            name: a.name,
+                            clicks: (a.clicks || 0).toLocaleString('de-DE') + ' Klicks',
+                            pct: a.pct || 0,
+                            icon: a.icon
+                        }))
+                    };
+
+                    // Dynamic news rankings from live tracker if available
+                    if (live.newsViews && Object.keys(live.newsViews).length > 0) {
+                        const newsEntries = Object.entries(live.newsViews).sort((a,b) => b[1] - a[1]);
+                        if (newsEntries.length > 0) {
+                            data.topNews = newsEntries.slice(0, 3).map(([id, count]) => {
+                                const art = (typeof NewsRepository !== 'undefined' && NewsRepository.getById) ? NewsRepository.getById(id) : null;
+                                const title = art ? (art.title.de || art.title.en) : id;
+                                return {
+                                    title: title,
+                                    views: count + ' Aufrufe',
+                                    rate: '100% Live'
+                                };
+                            });
+                        }
+                    }
+                }
             }
 
             // Update KPI elements
@@ -4443,7 +4420,7 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
                             <span class="area-stat-numbers"><strong>${a.pct}%</strong> (${a.clicks})</span>
                         </div>
                         <div class="area-stat-track">
-                            <div class="area-stat-fill" style="width: ${a.pct}%;"></div>
+                            <div class="area-stat-fill" style="width: ${Math.max(a.pct, 0)}%;"></div>
                         </div>
                     </div>
                 `).join('');
@@ -4469,26 +4446,36 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
 
             // Render Devices
             const devMobile = document.getElementById('dev-bar-mobile');
-            if (devMobile) devMobile.style.width = data.devices.mobile + '%';
+            if (devMobile) devMobile.style.width = (data.devices.mobile || 0) + '%';
 
             const devDesktop = document.getElementById('dev-bar-desktop');
-            if (devDesktop) devDesktop.style.width = data.devices.desktop + '%';
+            if (devDesktop) devDesktop.style.width = (data.devices.desktop || 0) + '%';
 
             const devTablet = document.getElementById('dev-bar-tablet');
-            if (devTablet) devTablet.style.width = data.devices.tablet + '%';
+            if (devTablet) devTablet.style.width = (data.devices.tablet || 0) + '%';
 
             const lblMobile = document.getElementById('dev-lbl-mobile');
-            if (lblMobile) lblMobile.textContent = data.devices.mobile + '%';
+            if (lblMobile) lblMobile.textContent = (data.devices.mobile || 0) + '%';
 
             const lblDesktop = document.getElementById('dev-lbl-desktop');
-            if (lblDesktop) lblDesktop.textContent = data.devices.desktop + '%';
+            if (lblDesktop) lblDesktop.textContent = (data.devices.desktop || 0) + '%';
 
             const lblTablet = document.getElementById('dev-lbl-tablet');
-            if (lblTablet) lblTablet.textContent = data.devices.tablet + '%';
+            if (lblTablet) lblTablet.textContent = (data.devices.tablet || 0) + '%';
         };
 
         window.initAnalyticsDashboard = function() {
             window.switchAnalyticsPeriod('7d');
+        };
+
+        window.resetLiveAnalyticsCounters = function() {
+            if (confirm('Möchten Sie alle Analytics-Zähler auf 0 zurücksetzen?')) {
+                if (window.SGRTracker && window.SGRTracker.resetToZero) {
+                    window.SGRTracker.resetToZero();
+                }
+                window.switchAnalyticsPeriod('7d');
+                if (typeof showToast === 'function') showToast('🔄 Alle Zähler erfolgreich auf 0 gesetzt!');
+            }
         };
 
         // Start
