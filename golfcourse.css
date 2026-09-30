@@ -344,15 +344,31 @@ img {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
-    padding: 24px 28px;
-    background-color: #FFFFFF;
-    border: 1px solid var(--color-border);
+    padding: 26px 28px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--color-card-border);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 10px 30px rgba(13, 34, 24, 0.08);
     margin-top: -36px;
     position: relative;
     z-index: 10;
     text-align: center;
+}
+
+@media (max-width: 900px) {
+    .hero-facts-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: -24px;
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 540px) {
+    .hero-facts-bar {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
 }
 
 .fact-item {
@@ -360,29 +376,42 @@ img {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 0 12px;
+    border-right: 1px solid var(--color-card-border);
+    padding: 0 14px;
 }
 
 .fact-item:last-child {
     border-right: none;
 }
 
+@media (max-width: 900px) {
+    .fact-item {
+        border-right: none;
+        border-bottom: 1px solid var(--color-card-border);
+        padding-bottom: 12px;
+    }
+    .fact-item:last-child, .fact-item:nth-last-child(2) {
+        border-bottom: none;
+    }
+}
+
 .fact-number {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--color-gold-light);
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--color-gold) !important;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
 }
 
 .fact-label {
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.84rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.04em;
+    color: var(--color-primary) !important;
+    line-height: 1.35;
 }
 
 /* ==========================================================================
