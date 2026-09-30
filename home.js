@@ -440,7 +440,7 @@
     const contactSuccess = document.getElementById('contact-success');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async e => {
+        contactForm.addEventListener('submit', e => {
             e.preventDefault();
 
             const name = document.getElementById('contact-name').value.trim();
@@ -452,22 +452,27 @@
                 return;
             }
 
-            if (window.SGRContact) {
-                await window.SGRContact.send({
-                    name: name,
-                    email: email,
-                    subject: `Kontaktanfrage von ${name}`,
-                    message: msg,
-                    source: 'Startseite Kontaktformular'
-                });
-            }
+            const subject = encodeURIComponent(`[via Webseite] Kontaktanfrage von ${name}`);
+            const bodyText = `Hallo Team Wissmannshof,\n\n` +
+`eine neue Nachricht wurde über das Kontaktformular auf wissmannshof.golf (via Webseite) verfasst:\n\n` +
+`Name:   ${name}\n` +
+`E-Mail: ${email}\n\n` +
+`Ihre Nachricht:\n${msg}\n\n` +
+`====================================================\n` +
+`Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.\n` +
+`Mit freundlichen Grüßen,\n${name}`;
+
+            window.location.href = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
             if (contactSuccess) {
                 contactSuccess.style.display = 'block';
-                contactSuccess.innerHTML = currentLang === 'en' 
-                    ? 'Your message has been prepared for info@wissmannshof.de (via Website).' 
-                    : 'Ihre Nachricht wurde vorbereitet und an info@wissmannshof.de (via Webseite) adressiert.';
+                contactSuccess.innerHTML = currentLang === 'en'
+                    ? 'Thank you! Your email program has been opened with your inquiry for info@wissmannshof.de (via Website).'
+                    : 'Vielen Dank! Ihr E-Mail-Programm wurde mit Ihrer Anfrage an info@wissmannshof.de (via Webseite) geöffnet.';
                 contactForm.reset();
+                setTimeout(() => {
+                    contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
         });
     }

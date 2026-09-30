@@ -175,7 +175,7 @@
 
         // Form Submit
         if (elements.careerForm) {
-            elements.careerForm.addEventListener('submit', async e => {
+            elements.careerForm.addEventListener('submit', e => {
                 e.preventDefault();
 
                 const name = document.getElementById('applicant-name').value.trim();
@@ -190,19 +190,23 @@
                     return;
                 }
 
-                if (window.SGRContact) {
-                    await window.SGRContact.send({
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        subject: `Bewerbung für ${job} - ${name}`,
-                        message: message,
-                        source: 'Karriere Online-Bewerbungsformular',
-                        details: {
-                            'Angestrebte Stelle': job
-                        }
-                    });
-                }
+                const subject = encodeURIComponent(`[via Webseite] Bewerbung für ${job} - ${name}`);
+                const bodyText = 
+`Hallo Herr Landefeld, Hallo Team Wissmannshof,
+
+ich bewerbe mich hiermit auf folgende Position auf Gut Wissmannshof (via Webseite):
+
+- Angestrebte Position: ${job}
+- Name: ${name}
+- E-Mail: ${email}
+- Telefon: ${phone}
+
+${message ? `Anschreiben / Nachricht:\n${message}\n\n` : ''}====================================================
+Hinweis: Diese Bewerbung wurde über das Online-Formular auf wissmannshof.golf (via Webseite) abgesendet.
+Mit freundlichen Grüßen,
+${name}`;
+
+                window.location.href = `mailto:hubert@landefeld.de,info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
                 // Show successful submission banner
                 elements.formSuccessAlert.style.display = 'block';

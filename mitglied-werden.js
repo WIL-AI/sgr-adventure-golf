@@ -628,20 +628,26 @@ function initInquiryForm() {
 		const chosenType = typeLabels[type] || type;
 		const chosenHcp = hcpLabels[hcp] || hcp;
 
-		if (window.SGRContact) {
-			await window.SGRContact.send({
-				name: name,
-				email: email,
-				phone: phone,
-				subject: `Mitgliedschafts-Anfrage: ${chosenType} - ${name}`,
-				message: message,
-				source: 'Mitgliedschafts-Formular',
-				details: {
-					'Gewähltes Modell': chosenType,
-					'Handicap-Status': chosenHcp
-				}
-			});
-		}
+		const subject = encodeURIComponent(`[via Webseite] Mitgliedschafts-Anfrage: ${chosenType} - ${name}`);
+		
+		const bodyText = 
+`Hallo Team Wissmannshof,
+
+ich interessiere mich für eine Mitgliedschaft auf Gut Wissmannshof (via Webseite):
+
+- Gewünschtes Modell: ${chosenType}
+- Name: ${name}
+- Telefon: ${phone}
+- E-Mail: ${email}
+- Aktueller Golf-Status: ${chosenHcp}
+
+${message ? `Nachricht / Anmerkungen:\n${message}\n\n` : ''}====================================================
+Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
+Mit freundlichen Grüßen,
+${name}`;
+
+		const body = encodeURIComponent(bodyText);
+		window.location.href = `mailto:info@wissmannshof.de?subject=${subject}&body=${body}`;
 		form.reset();
 	});
 }

@@ -625,23 +625,31 @@ function initBookingForm() {
 			return;
 		}
 
-		if (window.SGRContact) {
-			await window.SGRContact.send({
-				name: name,
-				email: email,
-				phone: phone,
-				subject: `Startzeit / Gast-Anfrage: ${type} am ${date} - ${name}`,
-				message: msg,
-				source: 'Gast-Info Startzeiten-Formular',
-				details: {
-					'Angebot / Runde': type,
-					'Wunschdatum': date,
-					'Uhrzeit': time || 'Flexibel',
-					'Spieleranzahl': players,
-					'E-Carts': carts
-				}
-			});
-		}
+		const subject = encodeURIComponent(`[via Webseite] Startzeit / Gast-Anfrage: ${type} am ${date} - ${name}`);
+		
+		const bodyText = 
+`Hallo Team Wissmannshof,
+
+ich möchte eine Startzeit / Gast-Buchung anfragen (via Webseite):
+
+- Angebot / Runde: ${type}
+- Wunschdatum: ${date}
+- Wunsch-Uhrzeit: ${time || 'Flexibel / nach Verfügbarkeit'}
+- Anzahl Spieler: ${players}
+- E-Carts: ${carts}
+
+Kontaktdaten:
+- Name: ${name}
+- Telefon: ${phone}
+- E-Mail: ${email}
+
+${msg ? `Besondere Wünsche / Anmerkungen:\n${msg}\n\n` : ''}====================================================
+Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
+Mit freundlichen Grüßen,
+${name}`;
+
+		const body = encodeURIComponent(bodyText);
+		window.location.href = `mailto:info@wissmannshof.de?subject=${subject}&body=${body}`;
 		form.reset();
 	});
 }

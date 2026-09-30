@@ -867,20 +867,11 @@ Yo-ho-ho! Please get back to us to confirm the trip.
 Best regards,
 ${name}
 (${email})`;
-		if (window.SGRContact) {
-			await window.SGRContact.send({
-				name: name,
-				email: email,
-				subject: `${typeLabel} Anfrage - ${name}`,
-				message: note,
-				source: 'Adventure Golf Buchung',
-				details: {
-					'Paket / Typ': typeLabel,
-					'Wunschtermin': date,
-					'Anzahl Piraten': `${players} Personen`
-				}
-			});
 		}
+
+		const subject = encodeURIComponent(`[via Webseite] Adventure Golf Anfrage: ${typeLabel} - ${name}`);
+		const mailtoUrl = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(body)}`;
+		window.location.href = mailtoUrl;
 
 		modal.classList.remove('open');
 		form.reset();

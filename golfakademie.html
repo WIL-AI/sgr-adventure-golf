@@ -745,7 +745,7 @@
     </footer>
 
             <script>
-        async function sendAcademyInquiry() {
+        function sendAcademyInquiry() {
             const format = document.getElementById('acad-format').value;
             const name = document.getElementById('acad-name').value.trim();
             const phone = document.getElementById('acad-phone').value.trim();
@@ -757,20 +757,23 @@
                 return;
             }
 
-            if (window.SGRContact) {
-                await window.SGRContact.send({
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    subject: `Akademie-Anfrage: ${format} - ${name}`,
-                    message: msg,
-                    source: 'Golfakademie Anfrage-Formular',
-                    details: {
-                        'Kursformat': format
-                    }
-                });
-            }
+            const subject = encodeURIComponent(`[via Webseite] Akademie-Anfrage: ${format} - ${name}`);
+            const bodyText = 
+`Hallo Team Wissmannshof,
 
+ich interessiere mich für das Kursangebot der Golfakademie (via Webseite):
+
+- Kursformat: ${format}
+- Name: ${name}
+- Telefon: ${phone}
+- E-Mail: ${email}
+
+${msg ? `Ihre Nachricht / Wünsche:\n${msg}\n\n` : ''}====================================================
+Hinweis: Diese Anfrage wurde über das Online-Formular auf wissmannshof.golf (via Webseite) gesendet.
+Mit freundlichen Grüßen,
+${name}`;
+
+            window.location.href = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
             document.getElementById('academy-contact-form').reset();
         }
     </script>
