@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             'openingHours' => ['title' => 'Öffnungszeiten Shop & Sekretariat', 'text' => 'täglich 08:00 – 18:00 Uhr'],
             'trolleys' => ['status' => 'erlaubt', 'label' => 'Erlaubt', 'note' => ''],
             'carts' => ['status' => 'erlaubt', 'label' => 'Erlaubt', 'note' => ''],
-            'courseStatus' => ['status' => 'open', 'course' => '27-Loch regulär geöffnet', 'greens' => 'Sommergrüns', 'note' => ''],
+            'courseStatus' => ['status' => 'open', 'course' => '18-Loch regulär geöffnet', 'greens' => 'Sommergrüns', 'note' => ''],
             'lastUpdated' => date('c')
         ]);
     }
