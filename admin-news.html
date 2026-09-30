@@ -4375,13 +4375,32 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         };
 
         window.switchAnalyticsPeriod = function(periodKey) {
-            const data = window.RESORT_ANALYTICS_DATA[periodKey];
+            let data = window.RESORT_ANALYTICS_DATA[periodKey];
             if (!data) return;
 
             // Highlight buttons
             document.querySelectorAll('.analytics-period-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-period') === periodKey);
             });
+
+            // If 7d is selected, blend with real Live Tracker data
+            if (periodKey === '7d' && window.SGRTracker && typeof window.SGRTracker.getReport === 'function') {
+                const live = window.SGRTracker.getReport();
+                data = {
+                    ...data,
+                    views: live.totalViews.toLocaleString('de-DE'),
+                    visitors: live.uniqueSessions.toLocaleString('de-DE'),
+                    teeClicks: live.teeTimeClicks.toLocaleString('de-DE'),
+                    teePct: live.teeTimePct + '%',
+                    devices: live.devices,
+                    areas: live.areas.map(a => ({
+                        name: a.name,
+                        clicks: a.clicks.toLocaleString('de-DE') + ' Klicks',
+                        pct: a.pct,
+                        icon: a.icon
+                    }))
+                };
+            }
 
             // Update KPI elements
             const elViews = document.getElementById('kpi-views');
@@ -4475,5 +4494,7 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         // Start
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
+    <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
+    <script src="analytics-tracker.js" defer></script>
 </body>
 </html>
