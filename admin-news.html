@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790862633949">
+    <link rel="stylesheet" href="news.css?v=1790864300000">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -1802,17 +1802,66 @@
             </div>
         </div>
 
-        <div class="admin-studio" id="news-studio-section">
+        <!-- News Articles List & Overview -->
+        <div class="admin-card" id="articles-list-card" style="margin-top: 24px; border: 2px solid var(--color-gold-light);">
+            <div class="card-header-bar" style="flex-wrap: wrap; gap: 12px;">
+                <h2 class="card-title" style="font-size: 1.25rem;">
+                    <span>📰</span> Alle News-Beiträge (<span id="article-count">4</span>)
+                </h2>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-save" onclick="createNewArticleFromTable()" style="padding: 7px 18px; font-size: 0.88rem; background: var(--color-primary); color: var(--color-gold-light); font-weight: 700;">
+                        ➕ Neuen Beitrag verfassen
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Filter Toolbar -->
+            <div class="table-filter-bar">
+                <button type="button" class="tbl-filter-pill active" data-tfilter="all" onclick="filterTableByStatus('all')">Alle (<span id="count-all">4</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="live" onclick="filterTableByStatus('live')">🟢 Live / Aktiv (<span id="count-live">3</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="scheduled" onclick="filterTableByStatus('scheduled')">🔵 Geplant (<span id="count-scheduled">0</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="draft" onclick="filterTableByStatus('draft')">🟡 Entwürfe (<span id="count-draft">1</span>)</button>
+                <button type="button" class="tbl-filter-pill" data-tfilter="expired" onclick="filterTableByStatus('expired')">⚪ Abgelaufen (<span id="count-expired">0</span>)</button>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="articles-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Foto</th>
+                            <th>Titel &amp; Anreißer</th>
+                            <th>Kategorie</th>
+                            <th>Status &amp; Zeitsteuerung</th>
+                            <th>Datum</th>
+                            <th style="width: 170px; text-align: right;">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articles-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="admin-studio" id="news-studio-section" style="margin-top: 24px;">
             <!-- Left: Editor Form -->
             <div class="admin-editor-column">
                 <div class="admin-card">
-                    <div class="card-header-bar">
-                        <h2 class="card-title" id="form-title-heading">
-                            <span>✍</span> Neuen News-Beitrag erstellen
-                        </h2>
-                        <button type="button" class="btn-secondary" style="padding: 5px 12px; font-size: 0.8rem;" onclick="resetForm()">
-                            Formular leeren
-                        </button>
+                    <div class="card-header-bar" style="flex-wrap: wrap; gap: 12px;">
+                        <div>
+                            <h2 class="card-title" id="form-title-heading">
+                                <span>✍</span> News-Editor
+                            </h2>
+                            <div style="font-size: 0.78rem; color: var(--color-text-muted);" id="form-mode-subtitle">Wählen Sie einen Artikel zum Bearbeiten oder erstellen Sie einen neuen Beitrag</div>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                            <select id="quick-article-picker" class="form-select" style="font-size: 0.82rem; padding: 6px 12px; max-width: 320px; font-weight: 600; background: #FAF8F3;" onchange="onQuickPickerChange(this.value)">
+                                <!-- Populated dynamically -->
+                            </select>
+                            <button type="button" class="btn-secondary" style="padding: 5px 12px; font-size: 0.8rem;" onclick="resetForm()">
+                                Formular leeren
+                            </button>
+                        </div>
                     </div>
 
                     <form id="news-form">
@@ -2165,43 +2214,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom: Existing Articles List -->
-        <div class="admin-card" id="articles-list-card" style="margin-top: 10px;">
-            <div class="card-header-bar">
-                <h2 class="card-title">
-                    <span>📰</span> Alle News-Beiträge (<span id="article-count">0</span>)
-                </h2>
-            </div>
-
-            <!-- Table Filter Toolbar -->
-            <div class="table-filter-bar">
-                <button type="button" class="tbl-filter-pill active" data-tfilter="all" onclick="filterTableByStatus('all')">Alle (<span id="count-all">0</span>)</button>
-                <button type="button" class="tbl-filter-pill" data-tfilter="live" onclick="filterTableByStatus('live')">🟢 Live / Aktiv (<span id="count-live">0</span>)</button>
-                <button type="button" class="tbl-filter-pill" data-tfilter="scheduled" onclick="filterTableByStatus('scheduled')">🔵 Geplant (<span id="count-scheduled">0</span>)</button>
-                <button type="button" class="tbl-filter-pill" data-tfilter="draft" onclick="filterTableByStatus('draft')">🟡 Entwürfe (<span id="count-draft">0</span>)</button>
-                <button type="button" class="tbl-filter-pill" data-tfilter="expired" onclick="filterTableByStatus('expired')">⚪ Abgelaufen (<span id="count-expired">0</span>)</button>
-            </div>
-            
-            <div class="table-responsive">
-                <table class="articles-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 60px;">Foto</th>
-                            <th>Titel & Anreißer</th>
-                            <th>Kategorie</th>
-                            <th>Status & Zeitsteuerung</th>
-                            <th>Datum</th>
-                            <th style="width: 150px; text-align: right;">Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody id="articles-table-body">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
             </div>
         </div>
 
@@ -2482,8 +2494,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790862633949"></script>
-    <script src="news-data.js?v=1790862633949"></script>
+    <script src="status-data.js?v=1790864300000"></script>
+    <script src="news-data.js?v=1790864300000"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -3782,6 +3794,7 @@ ews-${Date.now()}`;
             });
 
             tbody.innerHTML = html;
+            updateQuickArticlePicker();
         }
 
         // Toggle Status between published & draft
@@ -3794,6 +3807,39 @@ ews-${Date.now()}`;
             currentArticles = NewsRepository.getAll();
             renderArticlesTable();
             showToast(`Status auf "${item.status === 'draft' ? 'Entwurf' : 'Veröffentlicht'}" geändert!`);
+        }
+
+        function updateQuickArticlePicker(selectedId) {
+            const select = document.getElementById('quick-article-picker');
+            if (!select) return;
+            let html = '<option value="">-- ⚡ Vorhandenen Artikel wählen --</option>';
+            currentArticles.forEach(item => {
+                const title = typeof item.title === 'string' ? item.title : (item.title?.de || item.title?.en || 'Ohne Titel');
+                const isDraft = (item.status === 'draft');
+                const icon = isDraft ? '🟡 [Entwurf]' : '🟢 [Live]';
+                const isSel = (item.id === selectedId) ? 'selected' : '';
+                const shortTitle = title.length > 45 ? title.substring(0, 45) + '…' : title;
+                html += `<option value="${item.id}" ${isSel}>${icon} ${shortTitle}</option>`;
+            });
+            html += '<option value="__new__">➕ [Neuen leeren Beitrag erstellen]</option>';
+            select.innerHTML = html;
+        }
+
+        function onQuickPickerChange(val) {
+            if (!val) return;
+            if (val === '__new__') {
+                createNewArticleFromTable();
+            } else {
+                editArticle(val);
+            }
+        }
+
+        function createNewArticleFromTable() {
+            resetForm();
+            const studio = document.getElementById('news-studio-section');
+            if (studio) studio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const titleInput = document.getElementById('article-title');
+            if (titleInput) setTimeout(() => titleInput.focus(), 400);
         }
 
         // Edit article
@@ -3864,9 +3910,14 @@ ews-${Date.now()}`;
             renderInlineImagesManager();
 
             document.getElementById('form-title-heading').innerHTML = '<span>✏</span> Beitrag bearbeiten';
+            const sub = document.getElementById('form-mode-subtitle');
+            if (sub) sub.textContent = 'Bearbeitungsmodus: Änderungen vornehmen und speichern.';
             document.getElementById('btn-submit-article').textContent = '💾 Änderungen speichern';
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateQuickArticlePicker(id);
+
+            const studio = document.getElementById('news-studio-section');
+            if (studio) studio.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             document.getElementById('article-teaser').dispatchEvent(new Event('input'));
             updateLivePreview();
@@ -3916,7 +3967,11 @@ ews-${Date.now()}`;
             renderInlineImagesManager();
 
             document.getElementById('form-title-heading').innerHTML = '<span>✍</span> Neuen News-Beitrag erstellen';
+            const sub = document.getElementById('form-mode-subtitle');
+            if (sub) sub.textContent = 'Neu-Modus: Schreiben Sie hier einen neuen Artikel.';
             document.getElementById('btn-submit-article').textContent = '💾 Artikel jetzt veröffentlichen';
+
+            updateQuickArticlePicker('__new__');
 
             clearUploadedImage();
             switchPhotoTab('upload');
@@ -4557,6 +4612,6 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
-    <script src="analytics-tracker.js?v=1790862633949" defer></script>
+    <script src="analytics-tracker.js?v=1790864300000" defer></script>
 </body>
 </html>
