@@ -1,0 +1,35 @@
+# ==============================================================================
+# Gut Wissmannshof - Apache Web Server Configuration (.htaccess)
+# ==============================================================================
+
+RewriteEngine On
+
+# 1. Canonical Domain: Redirect www.wissmannshof.golf -> https://wissmannshof.golf
+RewriteCond %{HTTP_HOST} ^www\.wissmannshof\.golf$ [NC]
+RewriteRule ^(.*)$ https://wissmannshof.golf/$1 [R=301,L]
+
+# 2. Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://wissmannshof.golf/$1 [R=301,L]
+
+# 3. Clean URLs: Support extensionless pages (/admin-news -> admin-news.html)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L,QSA]
+
+# 4. UTF-8 Charset & MIME Types
+AddDefaultCharset UTF-8
+AddType application/json .json
+AddType text/javascript .js
+AddType text/css .css
+AddType image/webp .webp
+AddType image/svg+xml .svg
+
+# 5. Security & Browser Caching Control
+<IfModule mod_headers.c>
+    # Prevent MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    # Enable CORS for API & JSON
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
