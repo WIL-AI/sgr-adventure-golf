@@ -129,7 +129,7 @@ const NEWS_IMAGE_PRESETS = [
 const DEFAULT_NEWS = [
     {
         "id": "news-1790673755396",
-        "status": "draft",
+        "status": "published",
         "publishFrom": null,
         "publishUntil": null,
         "category": "turniere",
@@ -148,12 +148,12 @@ const DEFAULT_NEWS = [
         "cropPosY": 37,
         "cropZoom": 1,
         "title": {
-            "de": "Hochspannung auf den Grüns:",
-            "en": "Hochspannung auf den Grüns:"
+            "de": "Hochspannung auf den Grüns: Die Clubmeisterschaften 2026",
+            "en": "Hochspannung auf den Grüns: Die Clubmeisterschaften 2026"
         },
         "teaser": {
-            "de": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut WissmannshofEs sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt. Die Clubmeisterschaften im…",
-            "en": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut WissmannshofEs sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt. Die Clubmeisterschaften im…"
+            "de": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut Wissmannshof: Es sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt...",
+            "en": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut Wissmannshof: Es sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt..."
         },
         "author": "Clubsekretariat Gut Wissmannshof",
         "readTime": "5 Min.",
