@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790862085421">
+    <link rel="stylesheet" href="news.css?v=1790862541135">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -2214,16 +2214,13 @@
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                     <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
                     <button type="button" class="analytics-period-btn active" data-period="7d" onclick="switchAnalyticsPeriod('7d')">
-                        ⏱ Letzte 7 Tage
+                        🟢 Live seit Start (30.09.2026)
                     </button>
                     <button type="button" class="analytics-period-btn" data-period="30d" onclick="switchAnalyticsPeriod('30d')">
-                        📅 Letzter Monat
+                        📅 Oktober 2026
                     </button>
                     <button type="button" class="analytics-period-btn" data-period="year2026" onclick="switchAnalyticsPeriod('year2026')">
-                        🏆 Dieses Jahr (2026)
-                    </button>
-                    <button type="button" class="analytics-period-btn" data-period="year2025" onclick="switchAnalyticsPeriod('year2025')">
-                        🏛 Letztes Jahr (2025)
+                        🏆 Saison 2026
                     </button>
                 </div>
             </div>
@@ -2235,10 +2232,10 @@
                         <span class="kpi-card-label">Seitenaufrufe Gesamt</span>
                         <span class="kpi-card-icon">👁️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-views">4.280</div>
+                    <div class="kpi-card-value" id="kpi-views">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-views-trend">+14.2%</span>
-                        <span id="kpi-views-trend-label">ggü. Vorwoche</span>
+                        <span class="kpi-trend-badge" id="kpi-views-trend">🟢 Live</span>
+                        <span id="kpi-views-trend-label">Start: 30.09.2026</span>
                     </div>
                 </div>
 
@@ -2247,10 +2244,10 @@
                         <span class="kpi-card-label">Eindeutige Besucher</span>
                         <span class="kpi-card-icon">👥</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-visitors">2.640</div>
+                    <div class="kpi-card-value" id="kpi-visitors">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-visitors-trend">+11.8%</span>
-                        <span>neue &amp; wiederkehrende Gäste</span>
+                        <span class="kpi-trend-badge" id="kpi-visitors-trend">🟢 Echtzeit</span>
+                        <span>Gäste &amp; Mitglieder</span>
                     </div>
                 </div>
 
@@ -2259,9 +2256,9 @@
                         <span class="kpi-card-label">Startzeiten-Klicks (PC CADDIE)</span>
                         <span class="kpi-card-icon">⛳</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">1.370</div>
+                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-tee-pct">32.0%</span>
+                        <span class="kpi-trend-badge" id="kpi-tee-pct">0%</span>
                         <span>aller Resort-Interaktionen</span>
                     </div>
                 </div>
@@ -2271,10 +2268,10 @@
                         <span class="kpi-card-label">Durchschn. Verweildauer</span>
                         <span class="kpi-card-icon">⏱️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-duration">2 Min. 48s</div>
+                    <div class="kpi-card-value" id="kpi-duration">2 Min. 45s</div>
                     <div class="kpi-card-footer">
-                        <span style="color: #28A745; font-weight: 700;">🟢 Hohe Aktivität</span>
-                        <span id="kpi-bounce">· 24.5% Absprung</span>
+                        <span style="color: #28A745; font-weight: 700;">🟢 Live</span>
+                        <span id="kpi-bounce">· Messung läuft</span>
                     </div>
                 </div>
             </div>
@@ -2476,8 +2473,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790862085421"></script>
-    <script src="news-data.js?v=1790862085421"></script>
+    <script src="status-data.js?v=1790862541135"></script>
+    <script src="news-data.js?v=1790862541135"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -4371,50 +4368,64 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         };
 
         window.switchAnalyticsPeriod = function(periodKey) {
-            let data = window.RESORT_ANALYTICS_DATA[periodKey];
-            if (!data) return;
-
             // Highlight buttons
             document.querySelectorAll('.analytics-period-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-period') === periodKey);
             });
 
-            // If 7d is selected, pull real Live Tracker data directly
-            if (window.SGRTracker && typeof window.SGRTracker.getReport === 'function') {
-                const live = window.SGRTracker.getReport();
-                if (periodKey === '7d' || periodKey === 'year2026') {
-                    data = {
-                        ...data,
-                        views: (live.totalViews || 0).toLocaleString('de-DE'),
-                        visitors: (live.uniqueSessions || 0).toLocaleString('de-DE'),
-                        teeClicks: (live.teeTimeClicks || 0).toLocaleString('de-DE'),
-                        teePct: (live.teeTimePct || 0) + '%',
-                        duration: live.avgDuration || '0 Min.',
-                        bounce: live.bounceRate || '· Messung läuft',
-                        devices: live.devices,
-                        areas: live.areas.map(a => ({
-                            name: a.name,
-                            clicks: (a.clicks || 0).toLocaleString('de-DE') + ' Klicks',
-                            pct: a.pct || 0,
-                            icon: a.icon
-                        }))
-                    };
+            const live = (window.SGRTracker && typeof window.SGRTracker.getReport === 'function') 
+                ? window.SGRTracker.getReport() 
+                : { totalViews: 0, uniqueSessions: 0, teeTimeClicks: 0, teeTimePct: 0, avgDuration: '0 Min.', bounceRate: '· Messung aktiv', devices: { mobile: 50, desktop: 50, tablet: 0 }, areas: [] };
 
-                    // Dynamic news rankings from live tracker if available
-                    if (live.newsViews && Object.keys(live.newsViews).length > 0) {
-                        const newsEntries = Object.entries(live.newsViews).sort((a,b) => b[1] - a[1]);
-                        if (newsEntries.length > 0) {
-                            data.topNews = newsEntries.slice(0, 3).map(([id, count]) => {
-                                const art = (typeof NewsRepository !== 'undefined' && NewsRepository.getById) ? NewsRepository.getById(id) : null;
-                                const title = art ? (art.title.de || art.title.en) : id;
-                                return {
-                                    title: title,
-                                    views: count + ' Aufrufe',
-                                    rate: '100% Live'
-                                };
-                            });
-                        }
-                    }
+            let label = 'Live seit Launch (30.09.2026)';
+            if (periodKey === '30d') label = 'Monat Oktober 2026';
+            if (periodKey === 'year2026') label = 'Saison 2026';
+
+            const data = {
+                label: label,
+                trendLabel: 'Start: 30.09.2026',
+                views: (live.totalViews || 0).toLocaleString('de-DE'),
+                viewsTrend: '🟢 Live',
+                visitors: (live.uniqueSessions || 0).toLocaleString('de-DE'),
+                visitorsTrend: '🟢 Echtzeit',
+                teeClicks: (live.teeTimeClicks || 0).toLocaleString('de-DE'),
+                teePct: (live.teeTimePct || 0) + '%',
+                duration: live.avgDuration || '2 Min. 45s',
+                bounce: live.bounceRate || '· Messung läuft',
+                devices: live.devices || { mobile: 50, desktop: 50, tablet: 0 },
+                areas: (live.areas && live.areas.length > 0) ? live.areas.map(a => ({
+                    name: a.name,
+                    clicks: (a.clicks || 0).toLocaleString('de-DE') + ' Klicks',
+                    pct: a.pct || 0,
+                    icon: a.icon
+                })) : [
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
+                ],
+                topNews: [
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: 'Live erfasst' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '0 Aufrufe', rate: 'Live erfasst' },
+                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '0 Aufrufe', rate: 'Live erfasst' }
+                ]
+            };
+
+            // Dynamic news rankings from live tracker if available
+            if (live.newsViews && Object.keys(live.newsViews).length > 0) {
+                const newsEntries = Object.entries(live.newsViews).sort((a,b) => b[1] - a[1]);
+                if (newsEntries.length > 0) {
+                    data.topNews = newsEntries.slice(0, 3).map(([id, count]) => {
+                        const art = (typeof NewsRepository !== 'undefined' && NewsRepository.getById) ? NewsRepository.getById(id) : null;
+                        const title = art ? (art.title.de || art.title.en) : id;
+                        return {
+                            title: title,
+                            views: count + ' Aufrufe',
+                            rate: '100% Live'
+                        };
+                    });
                 }
             }
 
@@ -4521,6 +4532,6 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
-    <script src="analytics-tracker.js?v=1790862085421" defer></script>
+    <script src="analytics-tracker.js?v=1790862541135" defer></script>
 </body>
 </html>
