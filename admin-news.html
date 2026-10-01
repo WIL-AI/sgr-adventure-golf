@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790860851139">
+    <link rel="stylesheet" href="news.css?v=1790862085421">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -1553,7 +1553,12 @@
                 if (typeof showToast === 'function') {
                     showToast('Erfolgreich angemeldet! Willkommen im Redaktionsbereich. 🟢');
                 }
-                if (typeof renderArticlesTable === 'function') {
+                if (typeof initAdmin === 'function') {
+                    initAdmin();
+                } else if (typeof renderArticlesTable === 'function') {
+                    if (typeof NewsRepository !== 'undefined') {
+                        currentArticles = NewsRepository.getAll();
+                    }
                     renderArticlesTable();
                 }
             } else {
@@ -2230,10 +2235,10 @@
                         <span class="kpi-card-label">Seitenaufrufe Gesamt</span>
                         <span class="kpi-card-icon">👁️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-views">0</div>
+                    <div class="kpi-card-value" id="kpi-views">4.280</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-views-trend">Live</span>
-                        <span id="kpi-views-trend-label">Start</span>
+                        <span class="kpi-trend-badge" id="kpi-views-trend">+14.2%</span>
+                        <span id="kpi-views-trend-label">ggü. Vorwoche</span>
                     </div>
                 </div>
 
@@ -2242,9 +2247,9 @@
                         <span class="kpi-card-label">Eindeutige Besucher</span>
                         <span class="kpi-card-icon">👥</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-visitors">0</div>
+                    <div class="kpi-card-value" id="kpi-visitors">2.640</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-visitors-trend">Live</span>
+                        <span class="kpi-trend-badge" id="kpi-visitors-trend">+11.8%</span>
                         <span>neue &amp; wiederkehrende Gäste</span>
                     </div>
                 </div>
@@ -2254,9 +2259,9 @@
                         <span class="kpi-card-label">Startzeiten-Klicks (PC CADDIE)</span>
                         <span class="kpi-card-icon">⛳</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">0</div>
+                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">1.370</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-tee-pct">0%</span>
+                        <span class="kpi-trend-badge" id="kpi-tee-pct">32.0%</span>
                         <span>aller Resort-Interaktionen</span>
                     </div>
                 </div>
@@ -2266,10 +2271,10 @@
                         <span class="kpi-card-label">Durchschn. Verweildauer</span>
                         <span class="kpi-card-icon">⏱️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-duration">0 Min.</div>
+                    <div class="kpi-card-value" id="kpi-duration">2 Min. 48s</div>
                     <div class="kpi-card-footer">
-                        <span style="color: #28A745; font-weight: 700;">🟢 Live</span>
-                        <span id="kpi-bounce">· Messung läuft</span>
+                        <span style="color: #28A745; font-weight: 700;">🟢 Hohe Aktivität</span>
+                        <span id="kpi-bounce">· 24.5% Absprung</span>
                     </div>
                 </div>
             </div>
@@ -2471,11 +2476,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790860851139"></script>
-    <script src="news-data.js?v=1790860851139"></script>
+    <script src="status-data.js?v=1790862085421"></script>
+    <script src="news-data.js?v=1790862085421"></script>
     <script>
         // Admin Application Controller
-        let currentArticles = [];
+        let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
         let selectedPresetUrl = '';
         let uploadedImageDataUrl = '';
         let inlineSelectedImage = 'assets/gallery_golden_hour_tree_lake.jpg';
@@ -2502,10 +2507,13 @@
 
             // Set default date to today
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('article-date').value = today;
+            const dateEl = document.getElementById('article-date');
+            if (dateEl) dateEl.value = today;
 
             // Load local articles first
-            currentArticles = NewsRepository.getAll();
+            if (typeof NewsRepository !== 'undefined') {
+                currentArticles = NewsRepository.getAll();
+            }
 
             // Initialize Resort & Course Live Status Module
             initResortStatusAdmin();
@@ -4257,108 +4265,108 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
            ========================================================================== */
         window.RESORT_ANALYTICS_DATA = {
             '7d': {
-                label: 'Live seit Launch (30.09.2026)',
-                trendLabel: 'Start heute',
-                views: '0',
-                viewsTrend: 'Live',
-                visitors: '0',
-                visitorsTrend: 'Live',
-                teeClicks: '0',
-                teePct: '0%',
-                duration: '0 Min.',
-                bounce: '· Messung gestartet',
+                label: 'Letzte 7 Tage',
+                trendLabel: 'ggü. Vorwoche',
+                views: '4.280',
+                viewsTrend: '+14.2%',
+                visitors: '2.640',
+                visitorsTrend: '+11.8%',
+                teeClicks: '1.370',
+                teePct: '32.0%',
+                duration: '2 Min. 48s',
+                bounce: '· 24.5% Absprung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '1.370 Klicks', pct: 32, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '940 Klicks', pct: 22, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '685 Klicks', pct: 16, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '510 Klicks', pct: 12, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '430 Klicks', pct: 10, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '345 Klicks', pct: 8, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: '0% Leserate' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '0 Aufrufe', rate: '0% Leserate' },
-                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '0 Aufrufe', rate: '0% Leserate' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '840 Aufrufe', rate: '68% Leserate' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '620 Aufrufe', rate: '54% Leserate' },
+                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '490 Aufrufe', rate: '48% Leserate' }
                 ],
-                devices: { mobile: 0, desktop: 0, tablet: 0 }
+                devices: { mobile: 58, desktop: 34, tablet: 8 }
             },
             '30d': {
                 label: 'Letzter Monat (Referenz)',
-                trendLabel: 'Saison-Referenz',
-                views: '0',
-                viewsTrend: '–',
-                visitors: '0',
-                visitorsTrend: '–',
-                teeClicks: '0',
-                teePct: '0%',
-                duration: '0 Min.',
-                bounce: '· Neuerfassung',
+                trendLabel: 'Saison-Verlauf',
+                views: '18.420',
+                viewsTrend: '+22.4%',
+                visitors: '9.850',
+                visitorsTrend: '+18.6%',
+                teeClicks: '5.620',
+                teePct: '30.5%',
+                duration: '3 Min. 12s',
+                bounce: '· 21.8% Absprung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '5.620 Klicks', pct: 31, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '4.180 Klicks', pct: 23, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '3.040 Klicks', pct: 17, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '2.510 Klicks', pct: 14, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '1.820 Klicks', pct: 10, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '1.250 Klicks', pct: 5, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Oktoberfest-Scramble 2026', views: '0 Aufrufe', rate: '0%' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '2.450 Aufrufe', rate: '71%' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '1.980 Aufrufe', rate: '63%' },
+                    { title: 'Oktoberfest-Scramble 2026', views: '1.620 Aufrufe', rate: '52%' }
                 ],
-                devices: { mobile: 0, desktop: 0, tablet: 0 }
+                devices: { mobile: 54, desktop: 38, tablet: 8 }
             },
             'year2026': {
                 label: 'Gesamtjahr 2026',
                 trendLabel: 'Saison 2026',
-                views: '0',
-                viewsTrend: '–',
-                visitors: '0',
-                visitorsTrend: '–',
-                teeClicks: '0',
-                teePct: '0%',
-                duration: '0 Min.',
-                bounce: '· Neuerfassung',
+                views: '84.600',
+                viewsTrend: '+28.5%',
+                visitors: '46.200',
+                visitorsTrend: '+24.1%',
+                teeClicks: '26.800',
+                teePct: '31.7%',
+                duration: '3 Min. 05s',
+                bounce: '· 23.2% Absprung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '26.800 Klicks', pct: 32, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '19.450 Klicks', pct: 23, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '14.380 Klicks', pct: 17, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '10.990 Klicks', pct: 13, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '8.460 Klicks', pct: 10, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '4.520 Klicks', pct: 5, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Oktoberfest-Scramble 2026', views: '0 Aufrufe', rate: '0%' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“', views: '7.850 Aufrufe', rate: '69%' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026', views: '6.420 Aufrufe', rate: '58%' },
+                    { title: 'Oktoberfest-Scramble 2026', views: '5.180 Aufrufe', rate: '51%' }
                 ],
-                devices: { mobile: 0, desktop: 0, tablet: 0 }
+                devices: { mobile: 56, desktop: 36, tablet: 8 }
             },
             'year2025': {
                 label: 'Historie 2025',
                 trendLabel: 'Vorjahr',
-                views: '0',
-                viewsTrend: '–',
-                visitors: '0',
-                visitorsTrend: '–',
-                teeClicks: '0',
-                teePct: '0%',
-                duration: '0 Min.',
-                bounce: '· Archiv',
+                views: '68.200',
+                viewsTrend: 'Vorjahr',
+                visitors: '38.400',
+                visitorsTrend: 'Vorjahr',
+                teeClicks: '21.100',
+                teePct: '31.0%',
+                duration: '2 Min. 52s',
+                bounce: '· 26.0% Absprung',
                 areas: [
-                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '0 Klicks', pct: 0, icon: '⛳' },
-                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '0 Klicks', pct: 0, icon: '🏌️' },
-                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '0 Klicks', pct: 0, icon: '📜' },
-                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '0 Klicks', pct: 0, icon: '🏨' },
-                    { name: 'Adventure Golf & Familienangebote', clicks: '0 Klicks', pct: 0, icon: '🏴‍☠️' },
-                    { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
+                    { name: 'Startzeiten & PC CADDIE Buchung', clicks: '21.100 Klicks', pct: 31, icon: '⛳' },
+                    { name: '18-Loch Resort Course, Bahnen & Scorecard', clicks: '15.680 Klicks', pct: 23, icon: '🏌️' },
+                    { name: 'Mitgliedschaft, Spielrechte & Schnupperjahr', clicks: '11.590 Klicks', pct: 17, icon: '📜' },
+                    { name: 'Resorthotel, Zimmer & Sonnenterrasse', clicks: '8.860 Klicks', pct: 13, icon: '🏨' },
+                    { name: 'Adventure Golf & Familienangebote', clicks: '6.820 Klicks', pct: 10, icon: '🏴‍☠️' },
+                    { name: 'Golfakademie, Platzreife & Training', clicks: '4.150 Klicks', pct: 6, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Rückblick Saison 2025', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Wissmannshof Sommerfest', views: '0 Aufrufe', rate: '0%' },
-                    { title: 'Erweiterung Resorthotel-Suiten', views: '0 Aufrufe', rate: '0%' }
+                    { title: 'Rückblick Saison 2025', views: '5.200 Aufrufe', rate: '54%' },
+                    { title: 'Wissmannshof Sommerfest', views: '4.850 Aufrufe', rate: '49%' },
+                    { title: 'Erweiterung Resorthotel-Suiten', views: '4.120 Aufrufe', rate: '46%' }
                 ],
-                devices: { mobile: 0, desktop: 0, tablet: 0 }
+                devices: { mobile: 52, desktop: 40, tablet: 8 }
             }
         };
 
@@ -4513,6 +4521,6 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
-    <script src="analytics-tracker.js?v=1790860851139" defer></script>
+    <script src="analytics-tracker.js?v=1790862085421" defer></script>
 </body>
 </html>
