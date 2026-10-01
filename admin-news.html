@@ -2120,7 +2120,6 @@
                     </p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <button type="button" class="action-icon-btn delete" style="padding: 4px 10px; font-size: 0.76rem;" onclick="resetLiveAnalyticsCounters()" title="Alle Zähler auf 0 setzen">🔄 Zähler auf 0</button>
                     <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
                     <button type="button" class="analytics-period-btn active" data-period="7d" onclick="switchAnalyticsPeriod('7d')">
                         ⏱ Letzte 7 Tage
@@ -2144,10 +2143,10 @@
                         <span class="kpi-card-label">Seitenaufrufe Gesamt</span>
                         <span class="kpi-card-icon">👁️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-views">4.280</div>
+                    <div class="kpi-card-value" id="kpi-views">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-views-trend">+14.2%</span>
-                        <span id="kpi-views-trend-label">ggü. Vorwoche</span>
+                        <span class="kpi-trend-badge" id="kpi-views-trend">Live</span>
+                        <span id="kpi-views-trend-label">Start</span>
                     </div>
                 </div>
 
@@ -2156,9 +2155,9 @@
                         <span class="kpi-card-label">Eindeutige Besucher</span>
                         <span class="kpi-card-icon">👥</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-visitors">2.640</div>
+                    <div class="kpi-card-value" id="kpi-visitors">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-visitors-trend">+11.8%</span>
+                        <span class="kpi-trend-badge" id="kpi-visitors-trend">Live</span>
                         <span>neue &amp; wiederkehrende Gäste</span>
                     </div>
                 </div>
@@ -2168,9 +2167,9 @@
                         <span class="kpi-card-label">Startzeiten-Klicks (PC CADDIE)</span>
                         <span class="kpi-card-icon">⛳</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">1.370</div>
+                    <div class="kpi-card-value" id="kpi-tee-clicks" style="color: var(--color-gold);">0</div>
                     <div class="kpi-card-footer">
-                        <span class="kpi-trend-badge" id="kpi-tee-pct">32.0%</span>
+                        <span class="kpi-trend-badge" id="kpi-tee-pct">0%</span>
                         <span>aller Resort-Interaktionen</span>
                     </div>
                 </div>
@@ -2180,10 +2179,10 @@
                         <span class="kpi-card-label">Durchschn. Verweildauer</span>
                         <span class="kpi-card-icon">⏱️</span>
                     </div>
-                    <div class="kpi-card-value" id="kpi-duration">2 Min. 48s</div>
+                    <div class="kpi-card-value" id="kpi-duration">0 Min.</div>
                     <div class="kpi-card-footer">
-                        <span style="color: #28A745; font-weight: 700;">🟢 Hohe Aktivität</span>
-                        <span id="kpi-bounce">· 24.5% Absprung</span>
+                        <span style="color: #28A745; font-weight: 700;">🟢 Live</span>
+                        <span id="kpi-bounce">· Messung läuft</span>
                     </div>
                 </div>
             </div>
