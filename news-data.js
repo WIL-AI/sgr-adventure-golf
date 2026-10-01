@@ -291,19 +291,21 @@ const NewsRepository = {
     },
 
     getAll: function() {
-        if (this._cached && Array.isArray(this._cached)) {
+        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
             return this._cached;
         }
 
-        // Try primary v2 key
+        // Try primary key
         try {
             const stored = localStorage.getItem(NEWS_STORAGE_KEY);
             if (stored !== null) {
                 const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed)) {
+                if (Array.isArray(parsed) && parsed.length > 0) {
                     const clean = this._sanitize(parsed);
-                    this._cached = clean;
-                    return clean;
+                    if (clean.length > 0) {
+                        this._cached = clean;
+                        return clean;
+                    }
                 }
             }
         } catch (e) {
@@ -328,24 +330,24 @@ const NewsRepository = {
      * Always retrieves fresh server data when online, updates local cache and returns the news array.
      */
     syncFromServer: async function() {
-        // Try live writeable server API (api/news.php)
-        try {
-            const resp = await fetch('api/news.php?t=' + Date.now(), { cache: 'no-store' });
-            if (resp.ok) {
-                const data = await resp.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    const cleanData = this._sanitize(data);
-                    if (cleanData.length > 0) {
-                        this._cached = cleanData;
-                        try {
-                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanData));
-                        } catch (e) {}
-                        return cleanData;
+        const endpoints = ['data/news.json', 'api/news.php'];
+        for (const url of endpoints) {
+            try {
+                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        const cleanData = this._sanitize(data);
+                        if (cleanData.length > 0) {
+                            this._cached = cleanData;
+                            try {
+                                localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanData));
+                            } catch (e) {}
+                            return cleanData;
+                        }
                     }
                 }
-            }
-        } catch (err) {
-            // API offline or static environment
+            } catch (err) {}
         }
 
         // Return current local articles (localStorage takes precedence over static fallbacks)
@@ -358,6 +360,7 @@ const NewsRepository = {
         this._cached = cleanList;
         try {
             localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanList));
+            window.dispatchEvent(new CustomEvent('sgr_news_updated', { detail: cleanList }));
         } catch (e) {
             console.error('Failed to save news to localStorage:', e);
         }

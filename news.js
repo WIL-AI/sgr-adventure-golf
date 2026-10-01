@@ -157,15 +157,25 @@
             return;
         }
 
-        allNews = NewsRepository.getAll();
-
         setupDOMReferences();
         setupEventListeners();
         applyLanguage(currentLang);
-        renderNewsGrid();
 
-        // Check if URL has #news-ID hash to open directly
+        allNews = NewsRepository.getAll();
+        renderNewsGrid();
         handleUrlHash();
+
+        // Cross-tab and live sync listeners
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'sgr_resort_news_v4') {
+                allNews = NewsRepository.getAll();
+                renderNewsGrid();
+            }
+        });
+        window.addEventListener('sgr_news_updated', () => {
+            allNews = NewsRepository.getAll();
+            renderNewsGrid();
+        });
 
         // Seamless server-side sync in background
         try {
@@ -339,16 +349,16 @@
      */
     function isArticleActive(item) {
         if (!item) return false;
-        if (item.status && item.status !== 'published') return false;
+        if (item.status === 'draft' || item.status === 'expired' || item.status === 'archived') return false;
 
         const now = new Date();
         if (item.publishFrom) {
             const from = new Date(item.publishFrom);
-            if (from > now) return false;
+            if (!isNaN(from.getTime()) && from > now) return false;
         }
         if (item.publishUntil) {
             const until = new Date(item.publishUntil);
-            if (until < now) return false;
+            if (!isNaN(until.getTime()) && until < now) return false;
         }
         return true;
     }
