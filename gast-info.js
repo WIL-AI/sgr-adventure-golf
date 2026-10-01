@@ -152,7 +152,7 @@ const translations = {
  hotelP3Title: "Events & Gruppen:",
  hotelP3Desc: "Perfekter Rahmen für Firmenausflüge, Clubreisen und Turniere",
  btnHotelView: "Hotel & Zimmer ansehen ↗",
- btnHotelCall: "Restaurant reservieren: 05543 / 999 22 39",
+ btnHotelCall: "Restaurant reservieren: +49 (0) 55 43 / 999 22 39",
 
  tagDirect: "Ihr direkter Draht",
  contactHeading: "Startzeit anfragen & Kontakt",
@@ -371,7 +371,7 @@ const translations = {
  hotelP3Title: "Events & Groups:",
  hotelP3Desc: "The perfect venue for company outings, club trips, and tournaments",
  btnHotelView: "Explore Hotel & Rooms ↗",
- btnHotelCall: "Reserve Table: +49 (0) 5543 / 999 22 39",
+ btnHotelCall: "Reserve Table: +49 (0) 55 43 / 999 22 39",
 
  tagDirect: "Direct Contact",
  contactHeading: "Inquire Tee Time & Contact",
@@ -446,7 +446,10 @@ const translations = {
 };
 
 // Global Language State (Shared across all pages)
-let currentLang = localStorage.getItem('sgr_lang') || 'de';
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+let currentLang = (urlLang === 'en' || urlLang === 'de') ? urlLang : (localStorage.getItem('sgr_lang') || 'de');
+if (currentLang !== 'en' && currentLang !== 'de') currentLang = 'de';
 
 document.addEventListener('DOMContentLoaded', () => {
  initLanguage();
@@ -478,11 +481,16 @@ function initLanguage() {
 }
 
 window.setLanguage = function(lang) {
- currentLang = lang;
- try {
- localStorage.setItem('sgr_lang', lang);
- } catch (e) {}
- updateLanguageUI();
+	currentLang = lang;
+	try {
+		localStorage.setItem('sgr_lang', lang);
+		const url = new URL(window.location.href);
+		if (url.searchParams.has('lang')) {
+			url.searchParams.set('lang', lang);
+			window.history.replaceState({}, '', url.toString());
+		}
+	} catch (e) {}
+	updateLanguageUI();
 };
 
 function updateLanguageUI() {

@@ -416,7 +416,10 @@ const translations = {
 };
 
 // Global Language State (Shared with Adventure Golf & Guest Info)
-let currentLang = localStorage.getItem('sgr_lang') || 'de';
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+let currentLang = (urlLang === 'en' || urlLang === 'de') ? urlLang : (localStorage.getItem('sgr_lang') || 'de');
+if (currentLang !== 'en' && currentLang !== 'de') currentLang = 'de';
 
 document.addEventListener('DOMContentLoaded', () => {
  initLanguage();
@@ -448,11 +451,16 @@ function initLanguage() {
 }
 
 window.setLanguage = function(lang) {
- currentLang = lang;
- try {
- localStorage.setItem('sgr_lang', lang);
- } catch (e) {}
- updateLanguageUI();
+	currentLang = lang;
+	try {
+		localStorage.setItem('sgr_lang', lang);
+		const url = new URL(window.location.href);
+		if (url.searchParams.has('lang')) {
+			url.searchParams.set('lang', lang);
+			window.history.replaceState({}, '', url.toString());
+		}
+	} catch (e) {}
+	updateLanguageUI();
 };
 
 function updateLanguageUI() {

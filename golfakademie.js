@@ -5,7 +5,10 @@
 (function () {
     'use strict';
 
-    let currentLang = localStorage.getItem('sgr_lang') || 'de';
+    const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+let currentLang = (urlLang === 'en' || urlLang === 'de') ? urlLang : (localStorage.getItem('sgr_lang') || 'de');
+if (currentLang !== 'en' && currentLang !== 'de') currentLang = 'de';
 
     const TRANSLATIONS = {
         de: {

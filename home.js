@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Sport- und Golf-Resort Gut Wissmannshof - Homepage Scripts & Bilingual Controller (DE / EN)
  */
 
@@ -6,7 +6,10 @@
     'use strict';
 
     // State
-    let currentLang = localStorage.getItem('sgr_lang') || 'de';
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    let currentLang = (urlLang === 'en' || urlLang === 'de') ? urlLang : (localStorage.getItem('sgr_lang') || 'de');
+    if (currentLang !== 'en' && currentLang !== 'de') currentLang = 'de';
 
     // Translations Dictionary for Homepage
     const I18N_HOME = {
@@ -35,7 +38,7 @@
             heroBadge: 'Willkommen im Golfresort',
             heroTitle: 'Gut Wissmannshof',
             heroLead: 'Golf. Hotel. Natur. An einem Ort.',
-            heroBtnGuest: 'Resort entdecken ↓',
+            heroBtnGuest: 'Resort entdecken →',
             heroMemberTitle: 'Mitgliedschaft, wie sie sein sollte.',
             heroMemberText: 'Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten',
             heroMemberLink: 'Jetzt Mitglied werden →',
@@ -119,8 +122,10 @@
             practiceItem1: 'Überdachte Abschlagplätze mit Ballautomaten',
             practiceItem2: 'Putting Green mit verschiedenen Breaks',
             practiceItem3: 'Chipping-Bereich mit Bunkern',
-            practiceScorecardBtn: 'Scorecard (PDF) ↗',
-            practiceHoleByHoleBtn: 'Bahn für Bahn',
+            practiceScorecardBtn: 'Golfakademie &amp; Kurse →',
+            practiceAcademyBtn: 'Golfakademie &amp; Kurse →',
+            practiceHoleByHoleBtn: 'Übungsanlagen &amp; Driving Range →',
+            practiceFacilitiesBtn: 'Übungsanlagen &amp; Driving Range →',
 
             // Hotel & Resort Section
             hotelTag: 'Wohnen &amp; Genießen',
@@ -193,7 +198,7 @@
             heroBadge: 'Welcome to the Golf Resort',
             heroTitle: 'Gut Wissmannshof',
             heroLead: 'Golf. Hotel. Nature. All in One Place.',
-            heroBtnGuest: 'Discover Resort ↓',
+            heroBtnGuest: 'Discover Resort →',
             heroMemberTitle: 'Membership as it should be.',
             heroMemberText: 'No entry fee · No assessments · Try before you commit',
             heroMemberLink: 'Become a Member →',
@@ -277,8 +282,10 @@
             practiceItem1: 'Covered hitting bays with automated ball dispensers',
             practiceItem2: 'Expansive putting green with varied contours',
             practiceItem3: 'Dedicated chipping area with practice bunkers',
-            practiceScorecardBtn: 'Scorecard (PDF) ↗',
-            practiceHoleByHoleBtn: 'Hole-by-Hole Guide',
+            practiceScorecardBtn: 'Golf Academy &amp; Lessons →',
+            practiceAcademyBtn: 'Golf Academy &amp; Lessons →',
+            practiceHoleByHoleBtn: 'Practice Facilities &amp; Range →',
+            practiceFacilitiesBtn: 'Practice Facilities &amp; Range →',
 
             // Hotel & Resort Section
             hotelTag: 'Stay &amp; Indulge',
@@ -397,7 +404,14 @@
 
     function applyLanguage(lang) {
         currentLang = lang;
-        localStorage.setItem('sgr_lang', lang);
+        try {
+            localStorage.setItem('sgr_lang', lang);
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('lang')) {
+                url.searchParams.set('lang', lang);
+                window.history.replaceState({}, '', url.toString());
+            }
+        } catch (e) {}
         document.documentElement.lang = lang;
 
         const t = I18N_HOME[lang] || I18N_HOME.de;

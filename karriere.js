@@ -6,7 +6,12 @@
     'use strict';
 
     const state = {
-        lang: localStorage.getItem('sgr_lang') || 'de'
+        lang: (function() {
+	const urlParams = new URLSearchParams(window.location.search);
+	const urlLang = urlParams.get('lang');
+	let l = (urlLang === 'en' || urlLang === 'de') ? urlLang : (localStorage.getItem('sgr_lang') || 'de');
+	return (l === 'en' || l === 'de') ? l : 'de';
+})()
     };
 
     // DOM Elements
@@ -109,8 +114,15 @@
 
     // Switch Language
     function applyLanguage(lang) {
-        state.lang = lang;
-        localStorage.setItem('sgr_lang', lang);
+	state.lang = lang;
+	try {
+		localStorage.setItem('sgr_lang', lang);
+		const url = new URL(window.location.href);
+		if (url.searchParams.has('lang')) {
+			url.searchParams.set('lang', lang);
+			window.history.replaceState({}, '', url.toString());
+		}
+	} catch (e) {}
 
         const dict = CAREER_DATA.i18n[lang];
         if (!dict) return;
