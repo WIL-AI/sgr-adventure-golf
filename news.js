@@ -167,7 +167,7 @@
 
         // Cross-tab and live sync listeners
         window.addEventListener('storage', (e) => {
-            if (e.key === 'sgr_resort_news_v4') {
+            if (e.key === 'sgr_resort_news_v5') {
                 allNews = NewsRepository.getAll();
                 renderNewsGrid();
             }

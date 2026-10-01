@@ -270,8 +270,8 @@ const DEFAULT_NEWS = [
 ];
 
 // Storage key
-const NEWS_STORAGE_KEY = 'sgr_resort_news_v4';
-const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3'];
+const NEWS_STORAGE_KEY = 'sgr_resort_news_v5';
+const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3', 'sgr_resort_news_v4'];
 const OBSOLETE_IDS = new Set(['news-001', 'news-002', 'news-003', 'news-004', 'news-005', 'news-006']);
 
 /**
@@ -291,9 +291,14 @@ const NewsRepository = {
     },
 
     getAll: function() {
-        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
+        if (this._cached && Array.isArray(this._cached) && this._cached.length >= 4) {
             return this._cached;
         }
+
+        // Clean legacy storage keys
+        try {
+            LEGACY_STORAGE_KEYS.forEach(k => localStorage.removeItem(k));
+        } catch (e) {}
 
         // Try primary key
         try {
@@ -303,19 +308,25 @@ const NewsRepository = {
                 if (Array.isArray(parsed) && parsed.length > 0) {
                     const clean = this._sanitize(parsed);
                     if (clean.length > 0) {
-                        this._cached = clean;
-                        return clean;
+                        // Merge with DEFAULT_NEWS to guarantee standard 4 articles are never lost
+                        const existingIds = new Set(clean.map(i => i.id));
+                        const merged = [...clean];
+                        DEFAULT_NEWS.forEach(dItem => {
+                            if (!existingIds.has(dItem.id)) {
+                                merged.push(dItem);
+                            }
+                        });
+                        this._cached = merged;
+                        try {
+                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(merged));
+                        } catch (e) {}
+                        return merged;
                     }
                 }
             }
         } catch (e) {
             console.warn('Could not read news from localStorage:', e);
         }
-
-        // Clean legacy storage keys
-        try {
-            LEGACY_STORAGE_KEYS.forEach(k => localStorage.removeItem(k));
-        } catch (e) {}
 
         this._cached = DEFAULT_NEWS;
         try {
@@ -330,7 +341,7 @@ const NewsRepository = {
      * Always retrieves fresh server data when online, updates local cache and returns the news array.
      */
     syncFromServer: async function() {
-        const endpoints = ['data/news.json', 'api/news.php'];
+        const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
         for (const url of endpoints) {
             try {
                 const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
