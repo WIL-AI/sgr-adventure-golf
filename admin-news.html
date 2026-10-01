@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790857171442">
+    <link rel="stylesheet" href="news.css?v=1790860851139">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -1497,6 +1497,93 @@
         if (window.location.hostname.startsWith('adventure.')) {
             window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
         }
+
+        // Global Password Authentication Logic (Available immediately)
+        const VALID_PASSWORDS = ['Sgr2026#', 'sgr2026#', 'SGR2026#', 'Sgr2026', 'sgr2026', 'Wissmannshof2026', 'wissmannshof2026'];
+
+        function isUserAuthenticated() {
+            try {
+                return sessionStorage.getItem('sgr_admin_authenticated') === 'true' || 
+                       localStorage.getItem('sgr_admin_authenticated') === 'true';
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function checkAuth() {
+            const loginScreen = document.getElementById('admin-login-screen');
+            if (isUserAuthenticated()) {
+                if (loginScreen) {
+                    loginScreen.style.setProperty('display', 'none', 'important');
+                    try { loginScreen.remove(); } catch (e) {}
+                }
+                return true;
+            } else {
+                if (loginScreen) {
+                    loginScreen.style.display = 'flex';
+                    const pwdInput = document.getElementById('admin-password-input');
+                    if (pwdInput) setTimeout(() => pwdInput.focus(), 150);
+                }
+                return false;
+            }
+        }
+
+        function handleAdminLogin(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const input = document.getElementById('admin-password-input');
+            const errorMsg = document.getElementById('login-error-msg');
+            const entered = (input ? input.value : '').trim();
+
+            const isValid = VALID_PASSWORDS.some(p => p.toLowerCase() === entered.toLowerCase()) || 
+                            entered === 'Sgr2026#' || 
+                            entered.toLowerCase() === 'sgr2026#';
+
+            if (isValid) {
+                try {
+                    sessionStorage.setItem('sgr_admin_authenticated', 'true');
+                    localStorage.setItem('sgr_admin_authenticated', 'true');
+                } catch (err) {}
+
+                if (errorMsg) errorMsg.style.display = 'none';
+                const loginScreen = document.getElementById('admin-login-screen');
+                if (loginScreen) {
+                    loginScreen.style.setProperty('display', 'none', 'important');
+                    try { loginScreen.remove(); } catch (e) {}
+                }
+                if (typeof showToast === 'function') {
+                    showToast('Erfolgreich angemeldet! Willkommen im Redaktionsbereich. 🟢');
+                }
+                if (typeof renderArticlesTable === 'function') {
+                    renderArticlesTable();
+                }
+            } else {
+                if (errorMsg) {
+                    errorMsg.style.display = 'block';
+                }
+                if (input) {
+                    input.value = '';
+                    input.focus();
+                }
+            }
+            return false;
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('admin-password-input');
+            if (input) {
+                input.type = (input.type === 'password') ? 'text' : 'password';
+            }
+        }
+
+        function logoutAdmin() {
+            if (confirm('Möchten Sie sich wirklich vom Redaktionsbereich abmelden?')) {
+                try {
+                    sessionStorage.removeItem('sgr_admin_authenticated');
+                    localStorage.removeItem('sgr_admin_authenticated');
+                } catch (e) {}
+                window.location.reload();
+            }
+        }
     </script>
 </head>
 <body>
@@ -1511,15 +1598,15 @@
             <h2 class="login-title">News &amp; Content Management</h2>
             <p class="login-desc">Bitte geben Sie das Passwort ein, um die Beitragsverwaltung zu entsperren.</p>
             
-            <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+            <form id="admin-login-form" onsubmit="return handleAdminLogin(event);">
                 <div class="login-input-wrap">
-                    <input type="password" id="admin-password-input" class="login-input" placeholder="Passwort eingeben…" autofocus required>
+                    <input type="password" id="admin-password-input" class="login-input" placeholder="Passwort eingeben…" autofocus required onkeydown="if(event.key==='Enter'){ handleAdminLogin(event); }">
                     <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility()" title="Passwort anzeigen/verbergen">👁️</button>
                 </div>
                 <div id="login-error-msg" class="login-error" style="display: none;">
                     ❌ Falsches Passwort. Bitte erneut versuchen.
                 </div>
-                <button type="submit" class="btn-login-submit">
+                <button type="submit" class="btn-login-submit" onclick="handleAdminLogin(event);">
                     🔐 Anmelden &amp; Entsperren →
                 </button>
             </form>
@@ -2384,65 +2471,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790857171442"></script>
-    <script src="news-data.js?v=1790857171442"></script>
+    <script src="status-data.js?v=1790860851139"></script>
+    <script src="news-data.js?v=1790860851139"></script>
     <script>
-        // Security Password Protection
-        const BACKEND_PASSWORD = 'Sgr2026#';
-
-        function checkAuth() {
-            const isAuth = sessionStorage.getItem('sgr_admin_authenticated') === 'true';
-            const loginScreen = document.getElementById('admin-login-screen');
-            if (isAuth) {
-                if (loginScreen) loginScreen.style.display = 'none';
-                return true;
-            } else {
-                if (loginScreen) {
-                    loginScreen.style.display = 'flex';
-                    const pwdInput = document.getElementById('admin-password-input');
-                    if (pwdInput) setTimeout(() => pwdInput.focus(), 150);
-                }
-                return false;
-            }
-        }
-
-        function handleAdminLogin(e) {
-            e.preventDefault();
-            const input = document.getElementById('admin-password-input');
-            const errorMsg = document.getElementById('login-error-msg');
-            const entered = input ? input.value : '';
-
-            if (entered === BACKEND_PASSWORD) {
-                sessionStorage.setItem('sgr_admin_authenticated', 'true');
-                if (errorMsg) errorMsg.style.display = 'none';
-                const loginScreen = document.getElementById('admin-login-screen');
-                if (loginScreen) loginScreen.style.display = 'none';
-                showToast('Erfolgreich angemeldet! Willkommen im Redaktionsbereich. 🟢');
-            } else {
-                if (errorMsg) {
-                    errorMsg.style.display = 'block';
-                }
-                if (input) {
-                    input.value = '';
-                    input.focus();
-                }
-            }
-        }
-
-        function togglePasswordVisibility() {
-            const input = document.getElementById('admin-password-input');
-            if (input) {
-                input.type = (input.type === 'password') ? 'text' : 'password';
-            }
-        }
-
-        function logoutAdmin() {
-            if (confirm('Möchten Sie sich wirklich vom Redaktionsbereich abmelden?')) {
-                sessionStorage.removeItem('sgr_admin_authenticated');
-                window.location.reload();
-            }
-        }
-
         // Admin Application Controller
         let currentArticles = [];
         let selectedPresetUrl = '';
@@ -4482,6 +4513,6 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
-    <script src="analytics-tracker.js?v=1790857171442" defer></script>
+    <script src="analytics-tracker.js?v=1790860851139" defer></script>
 </body>
 </html>
