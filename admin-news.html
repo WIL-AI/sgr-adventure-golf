@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- News Stylesheet for identical live typography & figure styling -->
-    <link rel="stylesheet" href="news.css?v=1790862541135">
+    <link rel="stylesheet" href="news.css?v=1790862633949">
 
     <!-- Admin Specific Stylesheet -->
     <style>
@@ -2213,14 +2213,17 @@
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                     <div class="analytics-period-selector" role="group" aria-label="Zeitraum auswählen">
-                    <button type="button" class="analytics-period-btn active" data-period="7d" onclick="switchAnalyticsPeriod('7d')">
-                        🟢 Live seit Start (30.09.2026)
+                    <button type="button" class="analytics-period-btn active" data-period="all" onclick="switchAnalyticsPeriod('all')">
+                        🟢 Gesamt seit Start (30.09.2026)
                     </button>
-                    <button type="button" class="analytics-period-btn" data-period="30d" onclick="switchAnalyticsPeriod('30d')">
-                        📅 Oktober 2026
+                    <button type="button" class="analytics-period-btn" data-period="today" onclick="switchAnalyticsPeriod('today')">
+                        📅 Heute (1. Okt)
                     </button>
-                    <button type="button" class="analytics-period-btn" data-period="year2026" onclick="switchAnalyticsPeriod('year2026')">
-                        🏆 Saison 2026
+                    <button type="button" class="analytics-period-btn" data-period="yesterday" onclick="switchAnalyticsPeriod('yesterday')">
+                        ⏱ Gestern (30. Sep)
+                    </button>
+                    <button type="button" class="analytics-period-btn" data-period="history" onclick="switchAnalyticsPeriod('history')">
+                        🏛 Historie vor Launch
                     </button>
                 </div>
             </div>
@@ -2473,8 +2476,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790862541135"></script>
-    <script src="news-data.js?v=1790862541135"></script>
+    <script src="status-data.js?v=1790862633949"></script>
+    <script src="news-data.js?v=1790862633949"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -4367,30 +4370,44 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             }
         };
 
-        window.switchAnalyticsPeriod = function(periodKey) {
+        window.switchAnalyticsPeriod = function(periodKey = 'all') {
             // Highlight buttons
             document.querySelectorAll('.analytics-period-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-period') === periodKey);
             });
 
             const live = (window.SGRTracker && typeof window.SGRTracker.getReport === 'function') 
-                ? window.SGRTracker.getReport() 
+                ? window.SGRTracker.getReport(periodKey) 
                 : { totalViews: 0, uniqueSessions: 0, teeTimeClicks: 0, teeTimePct: 0, avgDuration: '0 Min.', bounceRate: '· Messung aktiv', devices: { mobile: 50, desktop: 50, tablet: 0 }, areas: [] };
 
-            let label = 'Live seit Launch (30.09.2026)';
-            if (periodKey === '30d') label = 'Monat Oktober 2026';
-            if (periodKey === 'year2026') label = 'Saison 2026';
+            let label = 'Gesamt seit Start (30.09.2026)';
+            let trendLabel = 'Start: 30.09.2026';
+            let trendBadge = '🟢 Live';
+
+            if (periodKey === 'today') {
+                label = 'Heute (01.10.2026)';
+                trendLabel = 'Tagesstatistik';
+                trendBadge = '🟢 Heute';
+            } else if (periodKey === 'yesterday') {
+                label = 'Gestern (30.09.2026 - Launch-Tag)';
+                trendLabel = 'Start-Tag';
+                trendBadge = '⏱ Gestern';
+            } else if (periodKey === 'history') {
+                label = 'Historie (vor dem 30.09.2026)';
+                trendLabel = 'Vor Tracker-Launch';
+                trendBadge = '⚪ Keine Daten';
+            }
 
             const data = {
                 label: label,
-                trendLabel: 'Start: 30.09.2026',
+                trendLabel: trendLabel,
                 views: (live.totalViews || 0).toLocaleString('de-DE'),
-                viewsTrend: '🟢 Live',
+                viewsTrend: trendBadge,
                 visitors: (live.uniqueSessions || 0).toLocaleString('de-DE'),
-                visitorsTrend: '🟢 Echtzeit',
+                visitorsTrend: live.isArchive ? '⚪ Archiv' : '🟢 Echtzeit',
                 teeClicks: (live.teeTimeClicks || 0).toLocaleString('de-DE'),
                 teePct: (live.teeTimePct || 0) + '%',
-                duration: live.avgDuration || '2 Min. 45s',
+                duration: live.avgDuration || (live.isArchive ? '0 Min.' : '2 Min. 45s'),
                 bounce: live.bounceRate || '· Messung läuft',
                 devices: live.devices || { mobile: 50, desktop: 50, tablet: 0 },
                 areas: (live.areas && live.areas.length > 0) ? live.areas.map(a => ({
@@ -4407,9 +4424,9 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
                     { name: 'Golfakademie, Platzreife & Training', clicks: '0 Klicks', pct: 0, icon: '🎓' }
                 ],
                 topNews: [
-                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: '0 Aufrufe', rate: 'Live erfasst' },
-                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: '0 Aufrufe', rate: 'Live erfasst' },
-                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: '0 Aufrufe', rate: 'Live erfasst' }
+                    { title: 'Stefan Quirmbach startet als „Signature Pro“ im Gut Wissmannshof', views: (live.newsViews && live.newsViews['news-quirmbach-2026'] ? live.newsViews['news-quirmbach-2026'] + ' Aufrufe' : 'Live erfasst'), rate: live.isArchive ? '0%' : '100% Live' },
+                    { title: 'Clubmeisterschaften & Bärli-Cup 2026: Ein Fest des Golfsports', views: (live.newsViews && live.newsViews['news-baerli-cup-clubmeister-2026'] ? live.newsViews['news-baerli-cup-clubmeister-2026'] + ' Aufrufe' : 'Live erfasst'), rate: live.isArchive ? '0%' : '100% Live' },
+                    { title: 'Oktoberfest-Vierer & Saison-Höhepunkte auf Gut Wissmannshof', views: (live.newsViews && live.newsViews['news-oktoberfest-2026'] ? live.newsViews['news-oktoberfest-2026'] + ' Aufrufe' : 'Live erfasst'), rate: live.isArchive ? '0%' : '100% Live' }
                 ]
             };
 
@@ -4515,7 +4532,7 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         };
 
         window.initAnalyticsDashboard = function() {
-            window.switchAnalyticsPeriod('7d');
+            window.switchAnalyticsPeriod('all');
         };
 
         window.resetLiveAnalyticsCounters = function() {
@@ -4532,6 +4549,6 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         window.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
-    <script src="analytics-tracker.js?v=1790862541135" defer></script>
+    <script src="analytics-tracker.js?v=1790862633949" defer></script>
 </body>
 </html>
