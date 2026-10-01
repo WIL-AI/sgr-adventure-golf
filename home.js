@@ -439,7 +439,7 @@
 
         // Apply live dynamic status on top of i18n
         if (typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
-            window.StatusRepository.applyToDOM();
+            window.StatusRepository.applyToDOM(null, lang);
         }
 
         // Render dynamic news ticker in active language
@@ -631,6 +631,27 @@
             window.NewsRepository.syncFromServer().then(() => {
                 renderNewsTicker();
             }).catch(() => {});
+        }
+
+        // Live status sync from server
+        if (typeof window.StatusRepository !== 'undefined' && window.StatusRepository.syncFromServer) {
+            window.StatusRepository.syncFromServer().then(s => {
+                if (s && window.StatusRepository.applyToDOM) {
+                    window.StatusRepository.applyToDOM(s, currentLang);
+                }
+            }).catch(() => {});
+        }
+    });
+
+    // Real-time update if status is saved in another tab (Admin)
+    window.addEventListener('sgr_status_updated', e => {
+        if (e.detail && typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
+            window.StatusRepository.applyToDOM(e.detail, currentLang);
+        }
+    });
+    window.addEventListener('storage', e => {
+        if (e.key === 'sgr_resort_status_v1' && typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
+            window.StatusRepository.applyToDOM(null, currentLang);
         }
     });
 

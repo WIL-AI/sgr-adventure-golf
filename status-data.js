@@ -24,7 +24,8 @@ const DEFAULT_STATUS = {
         greens: "Sommergrüns",
         note: ""
     },
-    lastUpdated: "2026-09-29T14:48:00.000Z"
+    lastUpdated: "2026-10-01T12:00:00.000Z",
+    updatedBy: "Admin Studio"
 };
 
 const STATUS_STORAGE_KEY = 'sgr_resort_status_v1';
@@ -38,7 +39,7 @@ const StatusRepository = {
             const stored = localStorage.getItem(STATUS_STORAGE_KEY);
             if (stored) {
                 const parsed = JSON.parse(stored);
-                if (parsed && typeof parsed === 'object') {
+                if (parsed && typeof parsed === 'object' && (parsed.openingHours || parsed.courseStatus)) {
                     this._cached = parsed;
                     return parsed;
                 }
@@ -64,6 +65,11 @@ const StatusRepository = {
         // Apply immediately to current DOM
         this.applyToDOM(statusObj);
 
+        // Notify other windows/tabs
+        try {
+            window.dispatchEvent(new CustomEvent('sgr_status_updated', { detail: statusObj }));
+        } catch (e) {}
+
         // Async sync to server
         try {
             fetch('api/status.php', {
@@ -83,19 +89,29 @@ const StatusRepository = {
     },
 
     syncFromServer: async function() {
-        const endpoints = ['data/status.json', 'api/status.php'];
+        const endpoints = ['api/status.php', 'data/status.json'];
         for (const url of endpoints) {
             try {
                 const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
                     if (data && typeof data === 'object' && (data.openingHours || data.courseStatus)) {
-                        this._cached = data;
-                        try {
-                            localStorage.setItem(STATUS_STORAGE_KEY, JSON.stringify(data));
-                        } catch (e) {}
-                        this.applyToDOM(data);
-                        return data;
+                        const local = this.getStatus();
+                        const localTime = (local && local.lastUpdated) ? new Date(local.lastUpdated).getTime() : 0;
+                        const serverTime = (data && data.lastUpdated) ? new Date(data.lastUpdated).getTime() : 0;
+
+                        // Only overwrite local cache if server data is strictly newer
+                        if (serverTime > localTime) {
+                            this._cached = data;
+                            try {
+                                localStorage.setItem(STATUS_STORAGE_KEY, JSON.stringify(data));
+                            } catch (e) {}
+                            this.applyToDOM(data);
+                            return data;
+                        } else {
+                            this.applyToDOM(local);
+                            return local;
+                        }
                     }
                 }
             } catch (err) {}
@@ -122,27 +138,42 @@ const StatusRepository = {
         return 'badge-live-dot';
     },
 
-    getStatusLabel: function(code) {
-        if (code === 'erlaubt') return 'erlaubt';
-        if (code === 'eingeschraenkt') return 'eingeschränkt';
-        if (code === 'nicht_gestattet') return 'nicht gestattet';
+    getStatusLabel: function(code, lang = 'de') {
+        const isEn = (lang === 'en');
+        if (code === 'erlaubt' || code === 'open' || code === 'permitted') {
+            return isEn ? 'permitted' : 'erlaubt';
+        }
+        if (code === 'eingeschraenkt' || code === 'partial' || code === 'restricted') {
+            return isEn ? 'restricted' : 'eingeschränkt';
+        }
+        if (code === 'nicht_gestattet' || code === 'closed' || code === 'gesperrt' || code === 'verboten' || code === 'not permitted') {
+            return isEn ? 'not permitted' : 'nicht gestattet';
+        }
         return code;
     },
 
     /**
      * Updates all status indicators across the current page DOM
      */
-    applyToDOM: function(status) {
+    applyToDOM: function(status, lang) {
         const s = status || this.getStatus();
         if (!s) return;
+
+        const currentLang = lang || (typeof document !== 'undefined' && document.documentElement.lang) || 'de';
+        const isEn = (currentLang === 'en');
 
         // 1. Top Bar Course Status (Header on all pages)
         const topBarElements = document.querySelectorAll('[data-i18n="topBarCourseStatus"], .top-bar-course-status');
         topBarElements.forEach(el => {
-            const courseText = (s.courseStatus && s.courseStatus.course) ? s.courseStatus.course : 'Platz geöffnet';
-            const greensText = (s.courseStatus && s.courseStatus.greens) ? s.courseStatus.greens : 'Sommergrüns';
-            const dotClass = this.getTopDotClass(s.courseStatus ? s.courseStatus.status : 'open');
+            let courseText = (s.courseStatus && s.courseStatus.course) ? s.courseStatus.course : (isEn ? 'Course open' : 'Platz geöffnet');
+            let greensText = (s.courseStatus && s.courseStatus.greens) ? s.courseStatus.greens : (isEn ? 'Summer greens' : 'Sommergrüns');
             
+            if (isEn) {
+                if (courseText === '18-Loch regulär geöffnet' || courseText === 'Platz geöffnet') courseText = '18-Hole Course Open';
+                if (greensText === 'Sommergrüns') greensText = 'Summer Greens';
+            }
+
+            const dotClass = this.getTopDotClass(s.courseStatus ? s.courseStatus.status : 'open');
             el.innerHTML = `<span class="${dotClass}"></span> <strong>${courseText}</strong> · ${greensText}`;
         });
 
@@ -150,14 +181,14 @@ const StatusRepository = {
         // Öffnungszeiten
         const shopVal = document.querySelector('[data-i18n="shopVal"], #status-val-hours');
         if (shopVal && s.openingHours) {
-            shopVal.textContent = s.openingHours.text || 'täglich 08–18 Uhr';
+            shopVal.textContent = s.openingHours.text || (isEn ? 'Daily 08:00–18:00' : 'täglich 08–18 Uhr');
         }
 
         // Trolleys
         const trolleyVal = document.querySelector('[data-i18n="trolleyVal"], #status-val-trolleys');
         if (trolleyVal && s.trolleys) {
             const dot = this.getDotClass(s.trolleys.status);
-            const label = s.trolleys.label || this.getStatusLabel(s.trolleys.status);
+            const label = this.getStatusLabel(s.trolleys.status, currentLang);
             const note = s.trolleys.note ? ` <small style="font-size:0.8em;opacity:0.85">(${s.trolleys.note})</small>` : '';
             trolleyVal.innerHTML = `<span class="${dot}"></span> ${label}${note}`;
         }
@@ -166,7 +197,7 @@ const StatusRepository = {
         const cartVal = document.querySelector('[data-i18n="cartVal"], #status-val-carts');
         if (cartVal && s.carts) {
             const dot = this.getDotClass(s.carts.status);
-            const label = s.carts.label || this.getStatusLabel(s.carts.status);
+            const label = this.getStatusLabel(s.carts.status, currentLang);
             const note = s.carts.note ? ` <small style="font-size:0.8em;opacity:0.85">(${s.carts.note})</small>` : '';
             cartVal.innerHTML = `<span class="${dot}"></span> ${label}${note}`;
         }
@@ -175,7 +206,11 @@ const StatusRepository = {
         const courseStatusVal = document.querySelector('[data-i18n="courseStatusVal"], #status-val-course');
         if (courseStatusVal && s.courseStatus) {
             const dot = this.getDotClass(s.courseStatus.status);
-            const text = s.courseStatus.course || 'geöffnet';
+            let text = s.courseStatus.course || (isEn ? 'open' : 'geöffnet');
+            if (isEn) {
+                if (text === '18-Loch regulär geöffnet' || text === 'geöffnet') text = '18-Hole Course Open';
+                else if (text.includes('gesperrt')) text = 'Course Closed';
+            }
             courseStatusVal.innerHTML = `<span class="${dot}"></span> ${text}`;
         }
     }
@@ -196,4 +231,22 @@ if (typeof document !== 'undefined') {
         StatusRepository.applyToDOM();
         StatusRepository.syncFromServer();
     }
+
+    // Listen to live cross-tab status updates
+    window.addEventListener('storage', (e) => {
+        if (e.key === STATUS_STORAGE_KEY && e.newValue) {
+            try {
+                const updated = JSON.parse(e.newValue);
+                StatusRepository._cached = updated;
+                StatusRepository.applyToDOM(updated);
+            } catch (err) {}
+        }
+    });
+
+    window.addEventListener('sgr_status_updated', (e) => {
+        if (e.detail) {
+            StatusRepository._cached = e.detail;
+            StatusRepository.applyToDOM(e.detail);
+        }
+    });
 }
