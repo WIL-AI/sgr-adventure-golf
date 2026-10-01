@@ -1628,12 +1628,18 @@
                 <span class="admin-badge">Admin Studio</span>
                 <span class="admin-header-title">Gut Wissmannshof &mdash; News Redaktion</span>
             </div>
+            <nav class="admin-header-nav" style="display: flex; gap: 8px; align-items: center;">
+                <a href="#status-management-card" class="btn-view-live" style="font-size: 0.82rem;">⛳ Platzstatus</a>
+                <a href="#news-studio-section" class="btn-view-live" style="font-size: 0.82rem;">✍ Neuer Beitrag</a>
+                <a href="#articles-list-card" class="btn-view-live" style="font-size: 0.82rem; background: var(--color-gold); color: var(--color-primary); font-weight: 700; border-color: var(--color-gold);">📰 Alle Beiträge (<span id="header-article-count">4</span>)</a>
+                <a href="#analytics-dashboard-card" class="btn-view-live" style="font-size: 0.82rem;">📊 Analytics</a>
+            </nav>
             <div class="admin-header-actions">
                 <a href="index.html" target="_blank" class="btn-view-live">
                     Zur Startseite ↗
                 </a>
                 <a href="news.html" target="_blank" class="btn-view-live">
-                    Öffentliche News-Seite öffnen ↗
+                    News-Seite ↗
                 </a>
                 <button type="button" class="btn-logout" onclick="logoutAdmin()" title="Abmelden">
                     🔒 Abmelden
@@ -1796,7 +1802,7 @@
             </div>
         </div>
 
-        <div class="admin-studio">
+        <div class="admin-studio" id="news-studio-section">
             <!-- Left: Editor Form -->
             <div class="admin-editor-column">
                 <div class="admin-card">
@@ -2164,7 +2170,7 @@
         </div>
 
         <!-- Bottom: Existing Articles List -->
-        <div class="admin-card" style="margin-top: 10px;">
+        <div class="admin-card" id="articles-list-card" style="margin-top: 10px;">
             <div class="card-header-bar">
                 <h2 class="card-title">
                     <span>📰</span> Alle News-Beiträge (<span id="article-count">0</span>)
@@ -3703,7 +3709,9 @@ ews-${Date.now()}`;
         function renderArticlesTable() {
             const tbody = document.getElementById('articles-table-body');
             const countEl = document.getElementById('article-count');
-            countEl.textContent = currentArticles.length;
+            if (countEl) countEl.textContent = currentArticles.length;
+            const hdrCount = document.getElementById('header-article-count');
+            if (hdrCount) hdrCount.textContent = currentArticles.length;
 
             // Calculate counts for filter pills
             let counts = { all: currentArticles.length, live: 0, scheduled: 0, draft: 0, expired: 0 };

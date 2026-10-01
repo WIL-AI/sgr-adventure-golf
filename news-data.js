@@ -129,7 +129,7 @@ const NEWS_IMAGE_PRESETS = [
 const DEFAULT_NEWS = [
     {
         "id": "news-1790673755396",
-        "status": "published",
+        "status": "draft",
         "publishFrom": null,
         "publishUntil": null,
         "category": "turniere",
