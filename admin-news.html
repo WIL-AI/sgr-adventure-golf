@@ -2499,7 +2499,7 @@
 
     <!-- Scripts -->
     <script src="status-data.js?v=1790880000000"></script>
-    <script src="news-data.js?v=1790880000000"></script>
+    <script src="news-data.js?v=1790950000000"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -4124,18 +4124,32 @@ const NewsRepository = {
     },
 
     syncFromServer: async function() {
-        const endpoints = ['data/news.json', 'api/news.php'];
+        const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
         for (const url of endpoints) {
             try {
                 const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
                     if (Array.isArray(data) && data.length > 0) {
-                        this._cached = data;
-                        try {
-                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(data));
-                        } catch (e) {}
-                        return data;
+                        const cleanServerData = this._sanitize ? this._sanitize(data) : data;
+                        if (cleanServerData.length > 0) {
+                            const localArticles = this.getAll();
+                            const merged = [...localArticles];
+                            const localIds = new Set(localArticles.map(i => i.id));
+
+                            cleanServerData.forEach(serverItem => {
+                                if (!localIds.has(serverItem.id)) {
+                                    merged.push(serverItem);
+                                    localIds.add(serverItem.id);
+                                }
+                            });
+
+                            this._cached = merged;
+                            try {
+                                localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(merged));
+                            } catch (e) {}
+                            return merged;
+                        }
                     }
                 }
             } catch (err) {}

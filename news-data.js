@@ -291,7 +291,7 @@ const NewsRepository = {
     },
 
     getAll: function() {
-        if (this._cached && Array.isArray(this._cached) && this._cached.length >= 4) {
+        if (this._cached && Array.isArray(this._cached) && this._cached.length > 0) {
             return this._cached;
         }
 
@@ -338,7 +338,7 @@ const NewsRepository = {
 
     /**
      * Attempts to fetch the latest authentic news dataset from data/news.json or api/news.php
-     * Always retrieves fresh server data when online, updates local cache and returns the news array.
+     * Performs a non-destructive smart merge to preserve all newly created and edited local articles.
      */
     syncFromServer: async function() {
         const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
@@ -348,13 +348,25 @@ const NewsRepository = {
                 if (resp.ok) {
                     const data = await resp.json();
                     if (Array.isArray(data) && data.length > 0) {
-                        const cleanData = this._sanitize(data);
-                        if (cleanData.length > 0) {
-                            this._cached = cleanData;
+                        const cleanServerData = this._sanitize(data);
+                        if (cleanServerData.length > 0) {
+                            // Smart Non-Destructive Merge: preserve all local articles, add server articles
+                            const localArticles = this.getAll();
+                            const merged = [...localArticles];
+                            const localIds = new Set(localArticles.map(i => i.id));
+
+                            cleanServerData.forEach(serverItem => {
+                                if (!localIds.has(serverItem.id)) {
+                                    merged.push(serverItem);
+                                    localIds.add(serverItem.id);
+                                }
+                            });
+
+                            this._cached = merged;
                             try {
-                                localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(cleanData));
+                                localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(merged));
                             } catch (e) {}
-                            return cleanData;
+                            return merged;
                         }
                     }
                 }
