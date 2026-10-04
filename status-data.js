@@ -71,21 +71,78 @@ const StatusRepository = {
         } catch (e) {}
 
         // Async sync to server
+        this.pushToServerSync(statusObj);
+
+        return statusObj;
+    },
+
+    pushToServerSync: async function(statusObj) {
+        const data = statusObj || this.getStatus();
+
+        // 1. PHP API fallback
         try {
             fetch('api/status.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(statusObj)
+                body: JSON.stringify(data)
             }).then(r => r.json()).then(res => {
                 if (res && res.success) {
                     console.log('✅ Resort status synced with server (data/status.json)');
                 }
-            }).catch(() => {
-                // Static host fallback
-            });
+            }).catch(() => {});
         } catch (e) {}
 
-        return statusObj;
+        // 2. Direct GitHub Cloud Sync
+        let ghToken = '';
+        try {
+            ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
+        } catch (e) {}
+
+        if (ghToken) {
+            try {
+                const repo = 'WIL-AI/sgr-adventure-golf';
+                const path = 'data/status.json';
+                const branch = 'master';
+                const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+
+                let sha = null;
+                const getRes = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    sha = fileData.sha;
+                }
+
+                const contentStr = JSON.stringify(data, null, 2);
+                const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
+
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `content(status): update resort & course live status [via Admin Studio]`,
+                        content: encodedContent,
+                        sha: sha || undefined,
+                        branch: branch
+                    })
+                });
+
+                if (putRes.ok) {
+                    console.log('🚀 Successfully committed and pushed resort status directly to GitHub master');
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { type: 'status' } }));
+                }
+            } catch (err) {
+                console.warn('GitHub status sync error:', err);
+            }
+        }
     },
 
     syncFromServer: async function() {
