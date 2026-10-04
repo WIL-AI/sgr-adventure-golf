@@ -1635,6 +1635,9 @@
                 <a href="#analytics-dashboard-card" class="btn-view-live" style="font-size: 0.82rem;">📊 Analytics</a>
             </nav>
             <div class="admin-header-actions">
+                <button type="button" id="btn-cloud-sync-status" class="btn-view-live" onclick="openCloudSyncModal()" style="background: rgba(40,167,69,0.22); border-color: rgba(40,167,69,0.6); font-weight: 700; color: #fff;" title="Multi-Device & Server Live-Sync">
+                    🟢 Live-Sync
+                </button>
                 <a href="index.html" target="_blank" class="btn-view-live">
                     Zur Startseite ↗
                 </a>
@@ -1647,6 +1650,33 @@
             </div>
         </div>
     </header>
+
+    <!-- Cloud Sync Modal -->
+    <div id="modal-cloud-sync" class="import-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center;">
+        <div class="import-modal" style="background: #FFF; border-radius: 12px; max-width: 520px; width: 90%; padding: 24px; box-shadow: 0 10px 35px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #EEE; padding-bottom: 12px;">
+                <h3 style="font-size: 1.15rem; color: var(--color-primary); font-weight: 800;">🌐 Automatischer Server- & Multi-Device Sync</h3>
+                <button type="button" onclick="closeCloudSyncModal()" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #888;">&times;</button>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+                Sobald die Server-Synchronisation eingerichtet ist, werden alle Aktionen (<strong>Veröffentlichen, Entwurf speichern, Status aktivieren, Löschen</strong>) <strong>vollautomatisch in einem Schritt</strong> auf den Server übertragen. Ihre Änderungen sind sofort auf allen Rechnern und für alle Besucher weltweit aktiv.
+            </p>
+            <div class="form-group" style="margin-bottom: 14px;">
+                <label class="form-label" for="gh-token-input" style="font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 6px;">GitHub Personal Access Token (PAT):</label>
+                <input type="password" id="gh-token-input" class="form-input" placeholder="ghp_... oder github_pat_..." style="width: 100%; font-family: monospace; font-size: 0.88rem; padding: 8px 12px; border: 1.5px solid #DDD; border-radius: 6px;">
+                <small style="color: #666; font-size: 0.76rem; display: block; margin-top: 5px;">
+                    Ziel: <code>WIL-AI/sgr-adventure-golf</code> (Branch: <code>master</code>, Datei: <code>data/news.json</code>)
+                </small>
+            </div>
+            <div id="cloud-sync-status-detail" style="font-size: 0.82rem; margin-bottom: 18px; padding: 10px; border-radius: 6px; background: #F8F5EE; border: 1px solid #E2DBD0; color: #333;">
+                Status wird geprüft...
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button type="button" class="btn-secondary" onclick="testCloudSyncConnection()" style="padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600;">⚡ Verbindung testen</button>
+                <button type="button" class="btn-primary" onclick="saveCloudSyncSettings()" style="padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; background: var(--color-gold); color: var(--color-primary); border: none;">💾 Speichern</button>
+            </div>
+        </div>
+    </div>
 
     <div class="admin-container">
         <!-- Toast Notification -->
@@ -2551,6 +2581,7 @@
             setupInlineFileUpload();
             setupCropTool();
             setupImportDropzone();
+            updateCloudSyncHeaderBadge();
 
             // Pre-populate editor with latest article so it is never blank on load
             if (currentArticles && currentArticles.length > 0) {
@@ -4396,6 +4427,123 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
                 statusMsg.textContent = `❌ Import fehlgeschlagen: ${err.message}`;
             }
         }
+
+        // ==========================================================================
+        // Cloud Sync Modal & Multi-Device Manager
+        // ==========================================================================
+        function updateCloudSyncHeaderBadge() {
+            const btn = document.getElementById('btn-cloud-sync-status');
+            if (!btn) return;
+            const token = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token');
+            if (token) {
+                btn.innerHTML = '🟢 Server-Sync aktiv';
+                btn.style.background = 'rgba(40,167,69,0.22)';
+                btn.style.borderColor = 'rgba(40,167,69,0.6)';
+            } else {
+                btn.innerHTML = '⚙️ Server-Sync';
+                btn.style.background = 'rgba(255,193,7,0.2)';
+                btn.style.borderColor = 'rgba(255,193,7,0.5)';
+            }
+        }
+
+        function openCloudSyncModal() {
+            const modal = document.getElementById('modal-cloud-sync');
+            if (!modal) return;
+            modal.style.display = 'flex';
+            const token = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
+            const input = document.getElementById('gh-token-input');
+            if (input) input.value = token;
+            
+            const detail = document.getElementById('cloud-sync-status-detail');
+            if (detail) {
+                if (token) {
+                    detail.innerHTML = '🟢 <strong>GitHub Cloud-Sync ist aktiv.</strong><br>Alle Artikel-Aktionen (Veröffentlichen, Entwurf, Aktivieren, Löschen) werden automatisch mit <code>data/news.json</code> synchronisiert.';
+                    detail.style.background = '#D4EDDA';
+                    detail.style.color = '#155724';
+                } else {
+                    detail.innerHTML = 'ℹ️ <strong>Lokal-Modus:</strong> Geben Sie ein GitHub Personal Access Token ein, um alle Aktionen vollautomatisch in einem Schritt live auf den Server zu übertragen.';
+                    detail.style.background = '#FFF3CD';
+                    detail.style.color = '#856404';
+                }
+            }
+        }
+
+        function closeCloudSyncModal() {
+            const modal = document.getElementById('modal-cloud-sync');
+            if (modal) modal.style.display = 'none';
+        }
+
+        async function testCloudSyncConnection() {
+            const input = document.getElementById('gh-token-input');
+            const token = (input ? input.value : '').trim();
+            const detail = document.getElementById('cloud-sync-status-detail');
+            if (!token) {
+                if (detail) {
+                    detail.innerHTML = '⚠️ Bitte geben Sie ein GitHub Token ein.';
+                    detail.style.background = '#F8D7DA';
+                    detail.style.color = '#721C24';
+                }
+                return;
+            }
+
+            if (detail) {
+                detail.innerHTML = '⏳ Teste Verbindung zu <code>WIL-AI/sgr-adventure-golf</code>...';
+                detail.style.background = '#E2E3E5';
+                detail.style.color = '#383D41';
+            }
+
+            try {
+                const res = await fetch('https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                if (res.ok) {
+                    if (detail) {
+                        detail.innerHTML = '✅ <strong>Verbindung erfolgreich!</strong> Schreibzugriff auf <code>data/news.json</code> ist bereit.';
+                        detail.style.background = '#D4EDDA';
+                        detail.style.color = '#155724';
+                    }
+                } else {
+                    const err = await res.json().catch(() => ({}));
+                    if (detail) {
+                        detail.innerHTML = `❌ Verbindung fehlgeschlagen: ${err.message || 'Ungültiges Token oder fehlende Rechte'}`;
+                        detail.style.background = '#F8D7DA';
+                        detail.style.color = '#721C24';
+                    }
+                }
+            } catch (e) {
+                if (detail) {
+                    detail.innerHTML = `❌ Fehler: ${e.message}`;
+                    detail.style.background = '#F8D7DA';
+                    detail.style.color = '#721C24';
+                }
+            }
+        }
+
+        function saveCloudSyncSettings() {
+            const input = document.getElementById('gh-token-input');
+            const token = (input ? input.value : '').trim();
+            if (token) {
+                localStorage.setItem('sgr_gh_token', token);
+                sessionStorage.setItem('sgr_gh_token', token);
+                showToast('🟢 Server-Sync Einstellungen gespeichert!');
+                if (typeof NewsRepository !== 'undefined' && NewsRepository.pushToServerSync) {
+                    NewsRepository.pushToServerSync(currentArticles);
+                }
+            } else {
+                localStorage.removeItem('sgr_gh_token');
+                sessionStorage.removeItem('sgr_gh_token');
+                showToast('Token entfernt.');
+            }
+            updateCloudSyncHeaderBadge();
+            closeCloudSyncModal();
+        }
+
+        window.addEventListener('sgr_server_sync_success', (e) => {
+            showToast('🚀 Live mit zentralem Server synchronisiert!');
+        });
 
         
         /* ==========================================================================

@@ -362,22 +362,86 @@ const NewsRepository = {
             console.error('Failed to save news to localStorage:', e);
         }
 
-        // Asynchronously push to server API if reachable
+        // Asynchronously push to server API and GitHub Cloud Sync
+        this.pushToServerSync(cleanList);
+
+        return true;
+    },
+
+    /**
+     * Push news dataset to central server and GitHub repository automatically
+     */
+    pushToServerSync: async function(cleanList) {
+        const list = cleanList || this.getAll();
+
+        // 1. PHP API fallback (if server supports PHP)
         try {
             fetch('api/news.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(cleanList)
+                body: JSON.stringify(list)
             }).then(r => r.json()).then(res => {
                 if (res && res.success) {
                     console.log('✅ News successfully synchronized with server storage (data/news.json)');
                 }
-            }).catch(() => {
-                // Static host or offline
-            });
+            }).catch(() => {});
         } catch (e) {}
 
-        return true;
+        // 2. Direct GitHub Cloud Sync (for instant global multi-device deployment)
+        let ghToken = '';
+        try {
+            ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
+        } catch (e) {}
+
+        if (ghToken) {
+            try {
+                const repo = 'WIL-AI/sgr-adventure-golf';
+                const path = 'data/news.json';
+                const branch = 'master';
+                const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+
+                let sha = null;
+                const getRes = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    sha = fileData.sha;
+                }
+
+                const contentStr = JSON.stringify(list, null, 2);
+                const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
+
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `content(news): update articles (${list.length} items) [via Admin Studio]`,
+                        content: encodedContent,
+                        sha: sha || undefined,
+                        branch: branch
+                    })
+                });
+
+                if (putRes.ok) {
+                    console.log('🚀 Successfully committed and pushed news directly to GitHub master');
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length } }));
+                    return { success: true };
+                } else {
+                    const err = await putRes.json().catch(() => ({}));
+                    console.warn('GitHub commit response error:', err);
+                }
+            } catch (err) {
+                console.warn('GitHub push error:', err);
+            }
+        }
     },
 
     getById: function(id) {
