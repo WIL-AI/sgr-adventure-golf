@@ -354,14 +354,29 @@
         if (item.status === 'draft' || item.status === 'expired' || item.status === 'archived') return false;
 
         const now = new Date();
+
         if (item.publishFrom) {
-            const from = new Date(item.publishFrom);
+            let from;
+            if (typeof item.publishFrom === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.publishFrom.trim())) {
+                const p = item.publishFrom.trim().split('-');
+                from = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10), 0, 0, 0, 0);
+            } else {
+                from = new Date(item.publishFrom);
+            }
             if (!isNaN(from.getTime()) && from > now) return false;
         }
+
         if (item.publishUntil) {
-            const until = new Date(item.publishUntil);
+            let until;
+            if (typeof item.publishUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.publishUntil.trim())) {
+                const p = item.publishUntil.trim().split('-');
+                until = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10), 23, 59, 59, 999);
+            } else {
+                until = new Date(item.publishUntil);
+            }
             if (!isNaN(until.getTime()) && until < now) return false;
         }
+
         return true;
     }
 

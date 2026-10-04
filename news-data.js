@@ -163,41 +163,6 @@ const DEFAULT_NEWS = [
         }
     },
     {
-        "id": "news-oktoberfest-2026",
-        "status": "published",
-        "publishFrom": null,
-        "publishUntil": null,
-        "category": "turniere",
-        "categoryLabel": {
-            "de": "Turniere & Events",
-            "en": "Tournaments & Events"
-        },
-        "featured": false,
-        "date": "2026-09-29",
-        "image": "assets/news_oktoberfest_2026.jpg",
-        "imageCaption": {
-            "de": "",
-            "en": ""
-        },
-        "cropPosX": 49,
-        "cropPosY": 0,
-        "cropZoom": 1,
-        "title": {
-            "de": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026! – Powered by Volksbank Kassel-Göttingen",
-            "en": "Endspurt: Jetzt anmelden zum Oktoberfest-Scramble 2026! – Powered by Volksbank Kassel-Göttingen"
-        },
-        "teaser": {
-            "de": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)Am Samstag, den 3. Oktober…",
-            "en": "Liebe Mitglieder, liebe Golffreunde,der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)Am Samstag, den 3. Oktober…"
-        },
-        "author": "SC",
-        "readTime": "3 Min.",
-        "content": {
-            "de": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_3.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>",
-            "en": "<p>Liebe Mitglieder, liebe Golffreunde,</p>\n\n<p>der Saisonhöhepunkt im Herbst steht vor der Tür – sichern Sie sich jetzt Ihre Startplätze für unser beliebtes Oktoberfest-Scramble 2026! (Powered by Volksbank Kassel-Göttingen)</p>\n\n<p>Am Samstag, den 3. Oktober 2026, verbinden wir sportlichen Teamgeist mit bayerischer Geselligkeit: Gespielt wird ein lockeres 2er-Scramble-Zählspiel (Wunschflights möglich), bei dem der Spaß am Spiel und das Miteinander im Vordergrund stehen.</p>\n\n<p>Die Highlights auf einen Blick:</p>\n\n<p>Datum & Start: Samstag, 3. Oktober 2026, ab 09:30 Uhr (Tee 1 Blau & Tee 1 Gelb)   <br>Teilnahme: Mitglieder & Gäste ab Clubvorgabe -54 (max. 100 Teilnehmer)   <br>Rundenverpflegung „an der Tonne“: Bayerische Schmankerl (u. a. Leberkäse-Miniburger, Obazda, Minifrikadellen), Kaffee & Kuchen sowie Freibier, Wein und Softdrinks   <br>Bayerisches Festbuffet am Abend: Von ofenfrischer Schweinshaxe, Krustenbraten und Backhendl bis hin zu Weißwürsten und Bayerischer Creme   <br>Sonder-Joker: „Guttrinken“ von 3 Schlägen pro Flight!</p>\n\n<p>Nenngeld & KonditionenMitglieder: 49,00 €   <br>Gäste (inkl. Greenfee): 99,00 €   (Jeweils inklusive Halfway-Verpflegung, Freibier an der Tonne, reichhaltigem Abendbuffet und Turnierpreisen)</p>\n\n<p>Maldung – Jetzt Startplatz sichern!</p>\n\n<p>Der Anmeldeschluss rückt näher: Donnerstag, 1. Oktober 2026 um 18:00 Uhr.</p>\n\n<p>Melden Sie sich und Ihren Wunschpartner direkt im Service Center an:</p>\n\n<p>📧 E-Mail: info@wissmannshof.de   <br>📞 Telefon: +49 (0) 55 43 / 999 335   (Oder ganz bequem über die Club-App / das Intranet)</p>\n\n<p>Wir freuen uns auf einen unbeschwerten Tag auf dem Platz und einen zünftigen Abend im Clubhaus!</p>\n\n<p>Herzliche Grüße</p>\n\n<p>Ihr Team von Gut Wissmannshof</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-oktoberfest-2026_4.jpg\" alt=\"Gut Wissmannshof Impression\" loading=\"lazy\">\n</figure>"
-        }
-    },
-    {
         "id": "news-baerli-cup-clubmeister-2026",
         "status": "published",
         "publishFrom": null,
@@ -271,8 +236,9 @@ const DEFAULT_NEWS = [
 
 // Storage key
 const NEWS_STORAGE_KEY = 'sgr_resort_news_v5';
+const NEWS_DELETED_KEY = 'sgr_resort_news_deleted_v5';
 const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3', 'sgr_resort_news_v4'];
-const OBSOLETE_IDS = new Set(['news-001', 'news-002', 'news-003', 'news-004', 'news-005', 'news-006']);
+const OBSOLETE_IDS = new Set(['news-001', 'news-002', 'news-003', 'news-004', 'news-005', 'news-006', 'news-oktoberfest-2026']);
 
 /**
  * News Repository API
@@ -300,27 +266,25 @@ const NewsRepository = {
             LEGACY_STORAGE_KEYS.forEach(k => localStorage.removeItem(k));
         } catch (e) {}
 
+        let deletedIds = new Set();
+        try {
+            const delStr = localStorage.getItem(NEWS_DELETED_KEY);
+            if (delStr) {
+                const parsed = JSON.parse(delStr);
+                if (Array.isArray(parsed)) deletedIds = new Set(parsed);
+            }
+        } catch (e) {}
+
         // Try primary key
         try {
             const stored = localStorage.getItem(NEWS_STORAGE_KEY);
             if (stored !== null) {
                 const parsed = JSON.parse(stored);
                 if (Array.isArray(parsed) && parsed.length > 0) {
-                    const clean = this._sanitize(parsed);
+                    const clean = this._sanitize(parsed).filter(i => !deletedIds.has(i.id));
                     if (clean.length > 0) {
-                        // Merge with DEFAULT_NEWS to guarantee standard 4 articles are never lost
-                        const existingIds = new Set(clean.map(i => i.id));
-                        const merged = [...clean];
-                        DEFAULT_NEWS.forEach(dItem => {
-                            if (!existingIds.has(dItem.id)) {
-                                merged.push(dItem);
-                            }
-                        });
-                        this._cached = merged;
-                        try {
-                            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(merged));
-                        } catch (e) {}
-                        return merged;
+                        this._cached = clean;
+                        return clean;
                     }
                 }
             }
@@ -328,12 +292,13 @@ const NewsRepository = {
             console.warn('Could not read news from localStorage:', e);
         }
 
-        this._cached = DEFAULT_NEWS;
+        const fallback = DEFAULT_NEWS.filter(i => !deletedIds.has(i.id));
+        this._cached = fallback;
         try {
-            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(DEFAULT_NEWS));
+            localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(fallback));
         } catch (e) {}
 
-        return DEFAULT_NEWS;
+        return fallback;
     },
 
     /**
@@ -342,21 +307,30 @@ const NewsRepository = {
      */
     syncFromServer: async function() {
         const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
+        
+        let deletedIds = new Set();
+        try {
+            const delStr = localStorage.getItem(NEWS_DELETED_KEY);
+            if (delStr) {
+                const parsed = JSON.parse(delStr);
+                if (Array.isArray(parsed)) deletedIds = new Set(parsed);
+            }
+        } catch (e) {}
+
         for (const url of endpoints) {
             try {
                 const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
                     if (Array.isArray(data) && data.length > 0) {
-                        const cleanServerData = this._sanitize(data);
+                        const cleanServerData = this._sanitize(data).filter(i => !deletedIds.has(i.id));
                         if (cleanServerData.length > 0) {
-                            // Smart Non-Destructive Merge: preserve all local articles, add server articles
                             const localArticles = this.getAll();
                             const merged = [...localArticles];
                             const localIds = new Set(localArticles.map(i => i.id));
 
                             cleanServerData.forEach(serverItem => {
-                                if (!localIds.has(serverItem.id)) {
+                                if (!localIds.has(serverItem.id) && !deletedIds.has(serverItem.id)) {
                                     merged.push(serverItem);
                                     localIds.add(serverItem.id);
                                 }
@@ -412,6 +386,17 @@ const NewsRepository = {
     },
 
     saveItem: function(item) {
+        try {
+            const delStr = localStorage.getItem(NEWS_DELETED_KEY);
+            if (delStr) {
+                let delList = JSON.parse(delStr);
+                if (Array.isArray(delList) && delList.includes(item.id)) {
+                    delList = delList.filter(id => id !== item.id);
+                    localStorage.setItem(NEWS_DELETED_KEY, JSON.stringify(delList));
+                }
+            }
+        } catch (e) {}
+
         const list = [...this.getAll()];
         const index = list.findIndex(n => n.id === item.id);
         if (index >= 0) {
@@ -426,6 +411,16 @@ const NewsRepository = {
     deleteItem: function(id) {
         const list = this.getAll();
         const filtered = list.filter(item => item.id !== id);
+        
+        try {
+            const delStr = localStorage.getItem(NEWS_DELETED_KEY);
+            const delList = delStr ? JSON.parse(delStr) : [];
+            if (!delList.includes(id)) {
+                delList.push(id);
+                localStorage.setItem(NEWS_DELETED_KEY, JSON.stringify(delList));
+            }
+        } catch (e) {}
+
         this.saveAll(filtered);
         return filtered;
     },

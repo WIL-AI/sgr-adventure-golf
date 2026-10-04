@@ -2500,7 +2500,7 @@
 
     <!-- Scripts -->
     <script src="status-data.js?v=1790880000000"></script>
-    <script src="news-data.js?v=1790950000000"></script>
+    <script src="news-data.js?v=1791000000000"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -2817,7 +2817,13 @@
             const now = new Date();
 
             if (item.publishFrom) {
-                const fromDate = new Date(item.publishFrom);
+                let fromDate;
+                if (typeof item.publishFrom === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.publishFrom.trim())) {
+                    const p = item.publishFrom.trim().split('-');
+                    fromDate = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10), 0, 0, 0, 0);
+                } else {
+                    fromDate = new Date(item.publishFrom);
+                }
                 if (!isNaN(fromDate.getTime()) && now < fromDate) {
                     const dateStr = fromDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
                     return { code: 'scheduled', label: 'Geplant', badgeClass: 'badge-scheduled', icon: '🔵', detail: `Erscheint: ${dateStr}` };
@@ -2825,7 +2831,13 @@
             }
 
             if (item.publishUntil) {
-                const untilDate = new Date(item.publishUntil);
+                let untilDate;
+                if (typeof item.publishUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.publishUntil.trim())) {
+                    const p = item.publishUntil.trim().split('-');
+                    untilDate = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10), 23, 59, 59, 999);
+                } else {
+                    untilDate = new Date(item.publishUntil);
+                }
                 if (!isNaN(untilDate.getTime()) && now > untilDate) {
                     const dateStr = untilDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
                     return { code: 'expired', label: 'Abgelaufen', badgeClass: 'badge-expired', icon: '⚪', detail: `Seit: ${dateStr}` };
@@ -2834,7 +2846,13 @@
 
             let detailStr = 'Öffentlich sichtbar';
             if (item.publishUntil) {
-                const uDate = new Date(item.publishUntil);
+                let uDate;
+                if (typeof item.publishUntil === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item.publishUntil.trim())) {
+                    const p = item.publishUntil.trim().split('-');
+                    uDate = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+                } else {
+                    uDate = new Date(item.publishUntil);
+                }
                 if (!isNaN(uDate.getTime())) {
                     detailStr = `Bis: ${uDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'short' })}`;
                 }
