@@ -81,12 +81,12 @@ const translations = {
 	catWeekYearly: "(1.596 € pro Jahr)",
 
 	catSecondTitle: "Zweitmitgliedschaft",
-	catSecondTag: "Heimatclub ext.",
+	catSecondTag: "Heimatclub<br>extern",
 	catSecondDesc: "Für Golfer mit bestehender Vollmitgliedschaft in einem anderen anerkannten Golfclub – unbegrenztes Spielrecht auf Gut Wissmannshof.",
 	catSecondYearly: "(1.656 € pro Jahr)",
 
 	cat85Title: "Mitglied 85+",
-	cat85Tag: "Ab 86 Jahre",
+	cat85Tag: "Ab 86<br>Jahre",
 	cat85Desc: "Spezieller Tarif für unsere älteren Golffreunde ab dem vollendeten 85. Lebensjahr.",
 	cat85Yearly: "(996 € pro Jahr)",
 
@@ -96,37 +96,37 @@ const translations = {
 	catGreenfeeYearly: "(780 € pro Jahr)",
 
 	catRemoteTitle: "Fernmitgliedschaft (1. Person)",
-	catRemoteTag: "Wohnsitz ≥ 100 km",
+	catRemoteTag: "Wohnsitz<br>&gt; 150 km",
 	catRemoteDesc: "Für Golfer ab 100 km Wohnsitzentfernung. Inklusive offiziellem DGV-Ausweis und Handicapführung. Spielen gegen reduziertes Greenfee möglich.",
 	catRemoteYearly: "(444 € pro Jahr)",
 
 	catRemote2Title: "Fernmitgliedschaft (2. Person)",
-	catRemote2Tag: "Partner-Tarif",
+	catRemote2Tag: "Partner<br>Tarif",
 	catRemote2Desc: "Partnertarif: Voraussetzung ist, dass der Ehe- oder Lebenspartner bereits Fernmitglied ist. Spielen gegen reduziertes Greenfee möglich.",
 	catRemote2Yearly: "(348 € pro Jahr)",
 
 	catTrainTitle: "Trainingsmitgliedschaft",
-	catTrainTag: "Range & Canyon",
+	catTrainTag: "Range &amp;<br>Canyon",
 	catTrainDesc: "Volle Nutzung aller Übungsbereiche (Driving Range, Pitching & Putting) und des Canyon-Kurses.",
 	catTrainYearly: "(504 € pro Jahr)",
 
 	catStudentTitle: "Ausbildung / Studenten",
-	catStudentTag: "19 – 27 Jahre",
+	catStudentTag: "19 – 27<br>Jahre",
 	catStudentDesc: "Volles 18-Loch Spielrecht zu fairen Konditionen für Studierende & Azubis mit Nachweis.",
 	catStudentYearly: "(528 € pro Jahr)",
 
 	catYouthTitle: "Jugendliche (13–18 J.)",
-	catYouthTag: "13 – 18 Jahre",
+	catYouthTag: "13 – 18<br>Jahre",
 	catYouthDesc: "Nachwuchsförderung: Freies Spiel auf allen Plätzen, Jugendtraining und Turniere.",
 	catYouthYearly: "(372 € pro Jahr)",
 
 	catChildTitle: "Kinder (bis 12 Jahre)",
-	catChildTag: "Bis 12 Jahre",
+	catChildTag: "Bis 12<br>Jahre",
 	catChildDesc: "Spielerischer Einstieg in den Golfsport mit Zugang zu allen Übungsanlagen und Kursen.",
 	catChildYearly: "(192 € pro Jahr)",
 
 	catPassivTitle: "Passive Mitgliedschaft",
-	catPassivTag: "Ehem. Aktive",
+	catPassivTag: "Ehem.<br>Aktive",
 	catPassivDesc: "Clubverbundenheit: Nur möglich, wenn zuvor eine aktive Mitgliedschaft bestand.",
 	catPassivYearly: "(372 € pro Jahr)",
 
@@ -315,7 +315,7 @@ const translations = {
 	catWeekYearly: "(€1,596 per year)",
 
 	catSecondTitle: "Secondary Membership",
-	catSecondTag: "External Club",
+	catSecondTag: "External<br>Club",
 	catSecondDesc: "For golfers holding a full membership at another recognized golf club.",
 	catSecondYearly: "(€1,656 per year)",
 
@@ -330,37 +330,37 @@ const translations = {
 	catGreenfeeYearly: "(€780 per year)",
 
 	catRemoteTitle: "Remote Membership (1st Person)",
-	catRemoteTag: "Residence ≥ 100 km",
+	catRemoteTag: "Residence<br>&gt; 150 km",
 	catRemoteDesc: "For golfers residing at least 100 km away. Includes official DGV card and handicap management. Play possible at a reduced green fee.",
 	catRemoteYearly: "(€444 per year)",
 
 	catRemote2Title: "Remote Membership (2nd Person)",
-	catRemote2Tag: "Partner Rate",
+	catRemote2Tag: "Partner<br>Rate",
 	catRemote2Desc: "Partner tariff: Valid if spouse or life partner already holds remote membership. Play possible at a reduced green fee.",
 	catRemote2Yearly: "(€348 per year)",
 
 	catTrainTitle: "Practice Membership",
-	catTrainTag: "Range & Canyon",
+	catTrainTag: "Range &amp;<br>Canyon",
 	catTrainDesc: "Full access to all practice areas (driving range, pitching & putting) and the 9-hole Canyon course.",
 	catTrainYearly: "(€504 per year)",
 
 	catStudentTitle: "Students & Apprentices",
-	catStudentTag: "19 – 27 yrs",
+	catStudentTag: "19 – 27<br>yrs",
 	catStudentDesc: "Full 18-hole playing rights at preferential rates for students & trainees with valid proof.",
 	catStudentYearly: "(€528 per year)",
 
 	catYouthTitle: "Juniors (13–18 yrs)",
-	catYouthTag: "13 – 18 yrs",
+	catYouthTag: "13 – 18<br>yrs",
 	catYouthDesc: "Youth development: Free play across all courses, junior coaching and tournaments.",
 	catYouthYearly: "(€372 per year)",
 
 	catChildTitle: "Kids (up to 12 yrs)",
-	catChildTag: "Up to 12 yrs",
+	catChildTag: "Up to 12<br>yrs",
 	catChildDesc: "Playful introduction to golf with full access to practice grounds and courses.",
 	catChildYearly: "(€192 per year)",
 
 	catPassivTitle: "Passive Membership",
-	catPassivTag: "Former Active",
+	catPassivTag: "Former<br>Active",
 	catPassivDesc: "Maintain club connection. Only available to former active members of Gut Wissmannshof.",
 	catPassivYearly: "(€372 per year)",
 
