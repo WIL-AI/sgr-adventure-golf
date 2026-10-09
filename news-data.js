@@ -155,7 +155,7 @@ const DEFAULT_NEWS = [
             "de": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut Wissmannshof: Es sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt...",
             "en": "Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut Wissmannshof: Es sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt..."
         },
-        "author": "Clubsekretariat Gut Wissmannshof",
+        "author": "Service-Center SGR",
         "readTime": "5 Min.",
         "content": {
             "de": "<p>Die Clubmeisterschaften 2026 im Sport- & Golf-Resort Gut WissmannshofEs sind die Tage im Kalenderjahr, an denen der Puls auf dem ersten Abschlag spürbar höher schlägt. Die Clubmeisterschaften im Sport- & Golf-Resort Gut Wissmannshof bildeten auch in diesem Spätsommer den sportlichen und emotionalen Höhepunkt der Saison. Gespielt über zwei anspruchsvolle Runden im klassischen Zählspiel auf der Kombination Blau/Gelb, verlangte der Platz den Teilnehmerinnen und Teilnehmern neben technischer Präzision vor allem mentale Stärke und Durchhaltevermögen ab.   Am Ende standen nicht nur hervorragende Scores zu Buche, sondern vor allem große sportliche Momente, fairer Respekt und die Freude über verdiente Titelträger.</p>\n\n<figure class=\"article-figure full-width\">\n    <img src=\"assets/news_inline_news-1790673755396_1.jpg\" alt=\"UNSERE CLUBMEISTER 2026\" loading=\"lazy\">\n    <figcaption>UNSERE CLUBMEISTER 2026</figcaption>\n</figure>\n\n<p>Offene Herrenklasse: Frank Wiegand triumphiert souverän<br>In der Königsklasse der Herren demonstrierte Frank Wiegand bereits am ersten Turniertag seine Extraklasse. Mit einer herausragenden 68er-Runde (vier unter Par) legte er den Grundstein für seinen Gesamtsieg. Auch wenn der Finaltag mit einer 79er-Runde fordernder wurde, ließ er mit einem Gesamtscore von 147 Schlägen (+5) nichts mehr anbrennen und sicherte sich hochverdient den Titel des Clubmeisters.   Auf Rang zwei folgte Jörg Bieshaar, der mit einer starken 69 am Samstag furios eröffnet hatte, sich am Sonntag jedoch der Konstanz des Siegers beugen musste (156 Schläge). Das Podium komplettierte Heinz Arend, der mit Runden von 75 und 83 Schlägen (gesamt 158) einen soliden und mannschaftsdienlichen dritten Platz einfuhr.   1. Platz (Clubmeister): Frank Wiegand – 147 Schläge (68 / 79)   2. Platz: Jörg Bieshaar – 156 Schläge (69 / 87)   3. Platz: Heinz Arend – 158 Schläge (75 / 83)</p>\n\n<p>Offene Damenklasse: Katrin Söder behält die Nerven <br>Bei den Damen bewies Katrin Söder bemerkenswerten Kampfgeist. Nach einer 96er-Auftaktrunde fand sie am Finaltag zu gewohnter Sicherheit und verbesserte sich deutlich auf eine starke 87. Mit insgesamt 183 Schlägen belohnte sie sich mit dem verdienten Titel der Clubmeisterin. Den zweiten Platz sicherte sich Tanja Bekel mit zwei kämpferischen Runden und insgesamt 223 Schlägen (111 / 112).   1. Platz (Clubmeisterin): Katrin Söder – 183 Schläge (96 / 87)   2. Platz: Tanja Bekel – 223 Schläge (111 / 112)</p>\n\n<p>Altersklasse 50: Konstanz und packende Duelle</p>\n\n<p>Herren AK 50: Marek Prena setzt sich durch<br>Ein sportlich hochklassiges und enges Duell lieferte sich das Führungstrio der AK 50 Herren. Am Ende setzte sich Marek Prena dank bemerkenswerter Ausgeglichenheit durch: Runden von 78 und 82 Schlägen (160 gesamt) brachten ihm den Titel ein. Dicht auf den Fersen blieb ihm Ronald Fraser, der mit 164 Schlägen (81 / 83) den Silberrang belegte, gefolgt von Jochen Witt, der mit 166 Schlägen (79 / 87) Rang drei sicherte.   1. Platz: Marek Prena – 160 Schläge (78 / 82)   2. Platz: Ronald Fraser – 164 Schläge (81 / 83)   3. Platz: Jochen Witt – 166 Schläge (79 / 87)</p>\n\n<p>Damen AK 50: Olga Schwartz dreht am Finaltag auf<br>In der AK 50 der Damen sorgte Olga Schwartz für die spielentscheidende Wendung: Nach 107 Schlägen am Samstag spielte sie am Sonntag eine beherzte 99er-Schlussrunde und kletterte mit 206 Schlägen an die Spitze des Tableaus. Petra Konermann, die nach Tag eins noch geführt hatte, belegte mit 214 Schlägen Rang zwei, vor Tatjana Muster, die mit 222 Schlägen Dritte wurde.   1. Platz: Olga Schwartz – 206 Schläge (107 / 99)   2. Platz: Petra Konermann – 214 Schläge (103 / 111)   3. Platz: Tatjana Muster – 222 Schläge (106 / 116)</p>\n\n<p>Altersklasse 65: Erfahrung und Millimeterentscheidungen</p>\n\n<p>Herren AK 65: Rainer Wilms triumphiert im Wimpernschlagfinale<br>An Dramatik kaum zu überbieten war die Entscheidung bei den Senioren. Rainer Wilms sicherte sich mit Runden von 88 und 94 Schlägen (182 gesamt) denkbar knapp den Gesamtsieg. Dahinter herrschte absolute Schlaggleichheit: Sowohl Otto Lintze (91 / 93) als auch Hayo Böttcher (87 / 97) beendeten das Turnier mit 184 Schlägen. Gemäß Reglement und Handicap-Wertung ging Platz zwei an Otto Lintze, Hayo Böttcher freute sich über den dritten Rang auf dem Podest.   1. Platz: Rainer Wilms – 182 Schläge (88 / 94)   2. Platz: Otto Lintze – 184 Schläge (91 / 93)   3. Platz: Hayo Böttcher – 184 Schläge (87 / 97)</p>\n\n<p>Damen AK 65: Souveräner Start-Ziel-Sieg für Helga Stahlberg<br>In der Damenkonkurrenz der AK 65 dominierte Helga Stahlberg das Geschehen. Mit Runden von 96 und 101 Schlägen blieb sie als einzige Spielerin unter der 200er-Marke und gewann mit 197 Schlägen souverän. Den zweiten Platz eroberte Angelika Tippelt mit einer geschlossenen Mannschaftsleistung von 203 Schlägen (103 / 100), gefolgt von Dr. Roswitha Jung auf Rang drei (211 Schläge).   1. Platz: Helga Stahlberg – 197 Schläge (96 / 101)   2. Platz: Angelika Tippelt – 203 Schläge (103 / 100)   3. Platz: Dr. Roswitha Jung – 211 Schläge (107 / 104)</p>\n\n<p>Wir gratulieren allen Clubmeisterinnen und Clubmeistern sowie allen Platzierten ganz herzlich zu ihren herausragenden Leistungen und danken allen Teilnehmern für ein stimmungsvolles Meisterschaftswochenende!</p>",
@@ -235,9 +235,9 @@ const DEFAULT_NEWS = [
 ];
 
 // Storage key
-const NEWS_STORAGE_KEY = 'sgr_resort_news_v5';
-const NEWS_DELETED_KEY = 'sgr_resort_news_deleted_v5';
-const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3', 'sgr_resort_news_v4'];
+const NEWS_STORAGE_KEY = 'sgr_resort_news_v6';
+const NEWS_DELETED_KEY = 'sgr_resort_news_deleted_v6';
+const LEGACY_STORAGE_KEYS = ['sgr_resort_news', 'sgr_resort_news_v2', 'sgr_resort_news_v3', 'sgr_resort_news_v4', 'sgr_resort_news_v5', 'sgr_resort_news_deleted_v5'];
 const OBSOLETE_IDS = new Set(['news-001', 'news-002', 'news-003', 'news-004', 'news-005', 'news-006', 'news-oktoberfest-2026']);
 
 /**
@@ -303,7 +303,7 @@ const NewsRepository = {
 
     /**
      * Attempts to fetch the latest authentic news dataset from data/news.json or api/news.php
-     * Performs a non-destructive smart merge to preserve all newly created and edited local articles.
+     * Performs an intelligent merge: server updates override stale local articles, while keeping local drafts.
      */
     syncFromServer: async function() {
         const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
@@ -327,12 +327,14 @@ const NewsRepository = {
                         if (cleanServerData.length > 0) {
                             const localArticles = this.getAll();
                             const merged = [...localArticles];
-                            const localIds = new Set(localArticles.map(i => i.id));
 
                             cleanServerData.forEach(serverItem => {
-                                if (!localIds.has(serverItem.id) && !deletedIds.has(serverItem.id)) {
+                                if (deletedIds.has(serverItem.id)) return;
+                                const existingIndex = merged.findIndex(i => i.id === serverItem.id);
+                                if (existingIndex >= 0) {
+                                    merged[existingIndex] = serverItem;
+                                } else {
                                     merged.push(serverItem);
-                                    localIds.add(serverItem.id);
                                 }
                             });
 
@@ -393,54 +395,65 @@ const NewsRepository = {
             ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
         } catch (e) {}
 
-        if (ghToken) {
-            try {
-                const repo = 'WIL-AI/sgr-adventure-golf';
-                const path = 'data/news.json';
-                const branch = 'master';
-                const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+        if (!ghToken) {
+            window.dispatchEvent(new CustomEvent('sgr_server_sync_missing_token'));
+            return { success: false, reason: 'missing_token' };
+        }
 
-                let sha = null;
-                const getRes = await fetch(url, {
-                    headers: {
-                        'Authorization': `Bearer ${ghToken}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                if (getRes.ok) {
-                    const fileData = await getRes.json();
-                    sha = fileData.sha;
+        try {
+            const repo = 'WIL-AI/sgr-adventure-golf';
+            const path = 'data/news.json';
+            const branch = 'master';
+            const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&_t=${Date.now()}`;
+
+            let sha = null;
+            const getRes = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${ghToken}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Cache-Control': 'no-cache'
                 }
-
-                const contentStr = JSON.stringify(list, null, 2);
-                const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
-
-                const putRes = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${ghToken}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: `content(news): update articles (${list.length} items) [via Admin Studio]`,
-                        content: encodedContent,
-                        sha: sha || undefined,
-                        branch: branch
-                    })
-                });
-
-                if (putRes.ok) {
-                    console.log('🚀 Successfully committed and pushed news directly to GitHub master');
-                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length } }));
-                    return { success: true };
-                } else {
-                    const err = await putRes.json().catch(() => ({}));
-                    console.warn('GitHub commit response error:', err);
-                }
-            } catch (err) {
-                console.warn('GitHub push error:', err);
+            });
+            if (getRes.ok) {
+                const fileData = await getRes.json();
+                sha = fileData.sha;
             }
+
+            const contentStr = JSON.stringify(list, null, 2);
+            const encodedContent = btoa(encodeURIComponent(contentStr).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                return String.fromCharCode('0x' + p1);
+            }));
+
+            const putRes = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${ghToken}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `content(news): update articles (${list.length} items) [via Admin Studio]`,
+                    content: encodedContent,
+                    sha: sha || undefined,
+                    branch: branch
+                })
+            });
+
+            if (putRes.ok) {
+                console.log('🚀 Successfully committed and pushed news directly to GitHub master');
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length } }));
+                return { success: true };
+            } else {
+                const err = await putRes.json().catch(() => ({}));
+                const errMsg = err.message || `HTTP ${putRes.status}`;
+                console.warn('GitHub commit response error:', errMsg);
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_error', { detail: { error: errMsg } }));
+                return { success: false, error: errMsg };
+            }
+        } catch (err) {
+            console.warn('GitHub push error:', err);
+            window.dispatchEvent(new CustomEvent('sgr_server_sync_error', { detail: { error: err.message } }));
+            return { success: false, error: err.message };
         }
     },
 

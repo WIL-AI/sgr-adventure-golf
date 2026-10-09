@@ -1672,8 +1672,9 @@
             <div id="cloud-sync-status-detail" style="font-size: 0.82rem; margin-bottom: 18px; padding: 10px; border-radius: 6px; background: #F8F5EE; border: 1px solid #E2DBD0; color: #333;">
                 Status wird geprüft...
             </div>
-            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;">
                 <button type="button" class="btn-secondary" onclick="testCloudSyncConnection()" style="padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600;">⚡ Verbindung testen</button>
+                <button type="button" class="btn-secondary" onclick="triggerManualSyncNow()" style="padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 700; background: #E8F5E9; color: #1B5E20; border: 1.5px solid #81C784;">🚀 Jetzt live synchronisieren</button>
                 <button type="button" class="btn-primary" onclick="saveCloudSyncSettings()" style="padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; background: var(--color-gold); color: var(--color-primary); border: none;">💾 Speichern</button>
             </div>
         </div>
@@ -1777,7 +1778,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label" for="article-author">Verfasser / Abteilung</label>
-                                <input type="text" id="article-author" class="form-input" placeholder="z. B. Clubsekretariat, Head-Greenkeeper" value="Clubsekretariat Gut Wissmannshof">
+                                <input type="text" id="article-author" class="form-input" placeholder="z. B. Service-Center SGR, Head-Greenkeeper" value="Service-Center SGR">
                             </div>
                             <div class="form-group">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -2021,7 +2022,7 @@
                             <div style="font-size: 0.76rem; font-weight: 800; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;" id="prev-full-cat">Turniere & Events</div>
                             <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--color-primary); line-height: 1.3; margin-bottom: 12px;" id="prev-full-title">Überschrift</h2>
                             <div style="font-size: 0.8rem; color: var(--color-text-muted); padding-bottom: 12px; border-bottom: 1px solid #EDE8DC; margin-bottom: 16px;" id="prev-full-meta">
-                                18. Okt 2026 &bull; Verfasser: Clubsekretariat
+                                18. Okt 2026 &bull; Verfasser: Service-Center SGR
                             </div>
                             <div id="prev-full-content" class="modal-article-text prose" style="font-size: 0.95rem; line-height: 1.7;">
                                 <!-- Live HTML Body with embedded images -->
@@ -2530,8 +2531,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1790880000000"></script>
-    <script src="news-data.js?v=1791000000000"></script>
+    <script src="status-data.js?v=1791100000000"></script>
+    <script src="news-data.js?v=1791100000000"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -3671,7 +3672,7 @@
             const title = document.getElementById('article-title').value.trim() || 'Überschrift des Artikels';
             const cat = document.getElementById('article-category').value;
             const dateVal = document.getElementById('article-date').value;
-            const author = document.getElementById('article-author').value.trim() || 'Clubsekretariat';
+            const author = document.getElementById('article-author').value.trim() || 'Service-Center SGR';
             const readTime = document.getElementById('article-readtime').value.trim() || '3 Min.';
             const img = document.getElementById('article-image').value.trim() || 'assets/gallery_golden_hour_tree_lake.jpg';
             const imgCaption = document.getElementById('article-image-caption').value.trim();
@@ -4034,7 +4035,7 @@
             document.getElementById('article-status').value = 'published';
             document.getElementById('article-publish-from').value = '';
             document.getElementById('article-publish-until').value = '';
-            document.getElementById('article-author').value = 'Clubsekretariat Gut Wissmannshof';
+            document.getElementById('article-author').value = 'Service-Center SGR';
             
             isReadTimeManuallyEdited = false;
             document.getElementById('article-readtime').value = '2 Min.';
@@ -4437,13 +4438,13 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             if (!btn) return;
             const token = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token');
             if (token) {
-                btn.innerHTML = '🟢 Server-Sync aktiv';
+                btn.innerHTML = '🟢 Live-Sync aktiv';
                 btn.style.background = 'rgba(40,167,69,0.22)';
                 btn.style.borderColor = 'rgba(40,167,69,0.6)';
             } else {
-                btn.innerHTML = '⚙️ Server-Sync';
-                btn.style.background = 'rgba(255,193,7,0.2)';
-                btn.style.borderColor = 'rgba(255,193,7,0.5)';
+                btn.innerHTML = '⚠️ Server-Sync einrichten';
+                btn.style.background = 'rgba(255,193,7,0.3)';
+                btn.style.borderColor = 'rgba(255,193,7,0.8)';
             }
         }
 
@@ -4458,11 +4459,11 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             const detail = document.getElementById('cloud-sync-status-detail');
             if (detail) {
                 if (token) {
-                    detail.innerHTML = '🟢 <strong>GitHub Cloud-Sync ist aktiv.</strong><br>Alle Artikel-Aktionen (Veröffentlichen, Entwurf, Aktivieren, Löschen) werden automatisch mit <code>data/news.json</code> synchronisiert.';
+                    detail.innerHTML = '🟢 <strong>GitHub Live-Sync ist hinterlegt.</strong><br>Alle Artikel-Aktionen (Veröffentlichen, Entwurf, Aktivieren, Löschen) synchronisieren automatisch mit <code>data/news.json</code> auf GitHub & Server.';
                     detail.style.background = '#D4EDDA';
                     detail.style.color = '#155724';
                 } else {
-                    detail.innerHTML = 'ℹ️ <strong>Lokal-Modus:</strong> Geben Sie ein GitHub Personal Access Token ein, um alle Aktionen vollautomatisch in einem Schritt live auf den Server zu übertragen.';
+                    detail.innerHTML = '⚠️ <strong>Token fehlt:</strong> Geben Sie Ihr GitHub Personal Access Token ein, damit neue Artikel (wie z. B. <em>Zünftiger Herbstgenuss</em>) direkt live auf den zentralen Server übertragen und auf Edge/Smartphones sichtbar werden.';
                     detail.style.background = '#FFF3CD';
                     detail.style.color = '#856404';
                 }
@@ -4497,28 +4498,56 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
                 const res = await fetch('https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Cache-Control': 'no-cache'
                     }
                 });
                 if (res.ok) {
+                    const data = await res.json();
                     if (detail) {
-                        detail.innerHTML = '✅ <strong>Verbindung erfolgreich!</strong> Schreibzugriff auf <code>data/news.json</code> ist bereit.';
+                        detail.innerHTML = `✅ <strong>Verbindung erfolgreich!</strong> Zugriff auf <code>data/news.json</code> (SHA: ${data.sha ? data.sha.substring(0,7) : 'ok'}) ist bereit.`;
                         detail.style.background = '#D4EDDA';
                         detail.style.color = '#155724';
                     }
                 } else {
                     const err = await res.json().catch(() => ({}));
                     if (detail) {
-                        detail.innerHTML = `❌ Verbindung fehlgeschlagen: ${err.message || 'Ungültiges Token oder fehlende Rechte'}`;
+                        detail.innerHTML = `❌ Verbindung fehlgeschlagen (${res.status}): ${err.message || 'Ungültiges Token oder fehlende Rechte'}<br><small>Tipp: Prüfen Sie, ob das Token Rechte für <code>WIL-AI/sgr-adventure-golf</code> (Contents: Read & write) hat.</small>`;
                         detail.style.background = '#F8D7DA';
                         detail.style.color = '#721C24';
                     }
                 }
             } catch (e) {
                 if (detail) {
-                    detail.innerHTML = `❌ Fehler: ${e.message}`;
+                    detail.innerHTML = `❌ Verbindungsfehler: ${e.message}`;
                     detail.style.background = '#F8D7DA';
                     detail.style.color = '#721C24';
+                }
+            }
+        }
+
+        async function triggerManualSyncNow() {
+            const detail = document.getElementById('cloud-sync-status-detail');
+            if (detail) {
+                detail.innerHTML = '⏳ Übertrage alle lokalen Beiträge live auf den Server...';
+                detail.style.background = '#E2E3E5';
+                detail.style.color = '#383D41';
+            }
+            if (typeof NewsRepository !== 'undefined' && NewsRepository.pushToServerSync) {
+                const res = await NewsRepository.pushToServerSync(currentArticles);
+                if (res && res.success) {
+                    if (detail) {
+                        detail.innerHTML = `🚀 <strong>Erfolgreich synchronisiert!</strong> Alle ${currentArticles.length} Beiträge wurden live auf den Server übertragen.`;
+                        detail.style.background = '#D4EDDA';
+                        detail.style.color = '#155724';
+                    }
+                    showToast(`🚀 Alle ${currentArticles.length} Beiträge live übertragen!`);
+                } else {
+                    if (detail) {
+                        detail.innerHTML = `❌ <strong>Übertragung fehlgeschlagen:</strong> ${res ? (res.error || res.reason) : 'Unbekannter Fehler'}`;
+                        detail.style.background = '#F8D7DA';
+                        detail.style.color = '#721C24';
+                    }
                 }
             }
         }
@@ -4543,7 +4572,15 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         }
 
         window.addEventListener('sgr_server_sync_success', (e) => {
-            showToast('🚀 Live mit zentralem Server synchronisiert!');
+            showToast('🚀 Live mit zentralem Server synchronisiert! Alle Geräte aktuell.');
+        });
+
+        window.addEventListener('sgr_server_sync_warning', (e) => {
+            showToast('⚠️ Lokal gespeichert. Bitte oben auf "⚙️ Server-Sync" klicken und Token hinterlegen.');
+        });
+
+        window.addEventListener('sgr_server_sync_error', (e) => {
+            showToast('❌ Live-Sync Fehler: ' + (e.detail?.error || 'Verbindung fehlgeschlagen'));
         });
 
         
