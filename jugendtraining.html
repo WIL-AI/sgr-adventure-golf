@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugendtraining im Winter 2026/27: Jetzt anmelden – Gut Wissmannshof</title>
+    <meta name="description" content="Anmeldung zum Winter-Jugendtraining 2026/27 auf Gut Wissmannshof. Breitensport, Spiel und Spaß an der Bewegung für Kinder und Jugendliche. Samstags, kleine Gruppen, wettergeschützt. Anmeldeschluss: 31. Oktober 2026.">
+    <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="home.css?v=1791104500000">
+
+    <style>
+        /* ==========================================================================
+           Jugendtraining Wintersaison 2026/27 - Breitensport & Anmeldung
+           ========================================================================== */
+        .jugend-hero {
+            position: relative;
+            min-height: 460px;
+            padding: 140px 0 70px;
+            background: linear-gradient(180deg, rgba(7, 21, 14, 0.76) 0%, rgba(13, 34, 24, 0.88) 100%), url('assets/gallery_driving_range_bays.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .jugend-hero-content {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .jugend-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-gold-light);
+            background: rgba(184, 150, 62, 0.22);
+            border: 1px solid var(--color-border-gold, #B8963E);
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .jugend-deadline-tag {
+            display: inline-block;
+            background: #C8102E;
+            color: #FFFFFF;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.35);
+        }
+
+        .jugend-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4.4vw, 3.1rem);
+            font-weight: 800;
+            line-height: 1.22;
+            margin-bottom: 16px;
+            color: var(--color-white);
+        }
+
+        .jugend-hero p.lead {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 30px;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .jugend-hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 28px;
+            background: var(--color-gold);
+            color: #FFFFFF !important;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: var(--radius-pill);
+            box-shadow: 0 6px 18px rgba(184, 150, 62, 0.35);
+            transition: var(--transition-smooth);
+            border: 2px solid var(--color-gold);
+        }
+
+        .btn-gold-cta:hover {
+            background: var(--color-gold-hover, #9E7F30);
+            border-color: var(--color-gold-hover, #9E7F30);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 26px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: var(--radius-pill);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* 4 Simple Pillars Grid */
+        .feature-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: -45px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-item {
+            background: var(--color-white);
+            padding: 24px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--color-gold);
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .feature-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Letter & Overview Section */
+        .letter-section {
+            padding: 75px 0 55px;
+            background: var(--color-cream);
+        }
+
+        .letter-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-subtle);
+            margin-bottom: 35px;
+        }
+
+        .letter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-bottom: 1.5px solid rgba(184, 150, 62, 0.25);
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+        }
+
+        .letter-to {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .letter-date-meta {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+        }
+
+        .letter-title {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .letter-body {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-text-body);
+        }
+
+        .letter-body p {
+            margin-bottom: 15px;
+        }
+
+        .principle-highlight-box {
+            background: #FAF8F2;
+            border-left: 4px solid var(--color-gold);
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+
+        /* Fact Overview Box */
+        .fact-table-box {
+            background: #FAF8F2;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px 28px;
+            margin: 26px 0;
+        }
+
+        .fact-table-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .fact-item {
+            background: var(--color-white);
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(184, 150, 62, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fact-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .fact-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+        }
+
+        .fact-highlight {
+            color: var(--color-gold);
+        }
+
+        /* Registration Form Section */
+        .registration-section {
+            padding: 85px 0;
+            background: linear-gradient(180deg, #07150E 0%, #0D2218 100%);
+            color: var(--color-white);
+        }
+
+        .registration-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 46px;
+            align-items: start;
+        }
+
+        .registration-intro h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 14px;
+            line-height: 1.25;
+        }
+
+        .registration-intro p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .deadline-card-alert {
+            background: rgba(200, 16, 46, 0.16);
+            border: 1.5px solid #C8102E;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+
+        .deadline-card-alert h4 {
+            color: #FF8A96;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .deadline-card-alert p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+            line-height: 1.55;
+        }
+
+        .service-center-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .service-center-card h4 {
+            color: var(--color-gold-light);
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .service-center-card a {
+            color: var(--color-gold-light);
+            text-decoration: underline;
+        }
+
+        /* Form Card */
+        .form-card-container {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 38px 32px;
+            color: var(--color-charcoal);
+            box-shadow: var(--shadow-luxury);
+            border: 1px solid var(--color-border);
+        }
+
+        .form-card-container h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-card-container p.form-subtitle {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .form-section-divider {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-gold);
+            margin: 22px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1.5px solid rgba(184, 150, 62, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-group label .req {
+            color: #C8102E;
+        }
+
+        .form-control-input,
+        .form-control-select,
+        .form-control-textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #D5DDD7;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--color-charcoal);
+            background: #FFFFFF;
+            transition: var(--transition-fast);
+        }
+
+        .form-control-input:focus,
+        .form-control-select:focus,
+        .form-control-textarea:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.2);
+        }
+
+        .radio-options-column {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-box-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            padding: 10px 14px;
+            border: 1px solid #D5DDD7;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+            background: #FAFAFA;
+        }
+
+        .radio-box-label:hover {
+            border-color: var(--color-gold);
+            background: #FFFFFF;
+        }
+
+        .radio-box-label input[type="radio"] {
+            margin-top: 3px;
+            accent-color: var(--color-gold);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0 22px;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: var(--color-gold);
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-submit-registration {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--color-gold);
+            color: #FFFFFF !important;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(184, 150, 62, 0.35);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-submit-registration:hover {
+            background: var(--color-gold-hover, #9E7F30);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(184, 150, 62, 0.45);
+        }
+
+        .registration-success-banner {
+            display: none;
+            background: #EDF7EE;
+            border: 1.5px solid #2E8B57;
+            color: #1E4620;
+            padding: 22px;
+            border-radius: var(--radius-md);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .registration-success-banner h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1E4620;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .feature-bar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 20px;
+            }
+            .fact-grid {
+                grid-template-columns: 1fr;
+            }
+            .registration-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .feature-bar-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row-2 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .form-card-container {
+                padding: 26px 18px;
+            }
+            .letter-card {
+                padding: 26px 18px;
+            }
+            .jugend-hero {
+                padding: 125px 0 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Site Header & Main Navigation -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo" title="Gut Wissmannshof">
+                <img src="assets/logo_regular_black.png" alt="Sport- und Golf-Resort Gut Wissmannshof Logo">
+            </a>
+
+            <nav class="main-nav" id="main-nav">
+                <a href="golfcourse.html" class="nav-link">Golf Course</a>
+                <a href="adventure-golf.html" class="nav-link">Adventure Golf</a>
+                <a href="mitglied-werden.html" class="nav-link">Mitglied werden</a>
+                <a href="gast-info.html" class="nav-link">Gast-Info</a>
+                <a href="golfakademie.html" class="nav-link active" style="color: var(--color-gold); font-weight: 700;">Golf Akademie</a>
+                <a href="news.html" class="nav-link">WiHo-News</a>
+                <a href="karriere.html" class="nav-link">Karriere</a>
+                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link">WEBCAM</a>
+            </nav>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="nav-btn-cta">
+                    <span>Startzeit buchen</span>
+                </a>
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="jugend-hero">
+            <div class="container">
+                <div class="jugend-hero-content">
+                    <span class="jugend-badge">
+                        <span>⛳</span>
+                        <span>Gut Wissmannshof • Jugend &amp; Freizeit</span>
+                    </span>
+                    <br>
+                    <div class="jugend-deadline-tag">
+                        ⏰ Anmeldeschluss: 31. Oktober 2026
+                    </div>
+                    <h1>Jugendtraining im Winter 2026/27:<br>Jetzt anmelden</h1>
+                    <p class="lead">
+                        Unser Jugendtraining ist ein Angebot für alle Kinder und Jugendlichen, die Freude an Bewegung und am Golfsport haben. Es geht um Spaß, Spiel und gemeinsames Lernen – ganz ohne Mannschaften und ohne Leistungsdruck.
+                    </p>
+                    <div class="jugend-hero-actions">
+                        <a href="#anmeldung" class="btn-gold-cta">Zur Anmeldung ↓</a>
+                        <a href="#elternbrief" class="btn-outline-white">Informationen &amp; Konditionen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Pillars Grid (Breitensport & Entspanntes Lernen) -->
+        <section style="background: var(--color-cream); padding: 0 0 30px;">
+            <div class="container">
+                <div class="feature-bar-grid">
+                    <div class="feature-item">
+                        <span class="icon">🎈</span>
+                        <h4>Spaß &amp; Spiel</h4>
+                        <p>Gemeinsames Lernen und Bewegung stehen im Mittelpunkt – kein Wettkampf, kein Leistungsdruck.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="icon">🗓️</span>
+                        <h4>Jeden Samstag</h4>
+                        <p>Feste Trainingszeiten samstags von November bis April, wettergeschützt auf der Driving Range.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="icon">👥</span>
+                        <h4>Bis zu 7 Jugendliche</h4>
+                        <p>Kleine Gruppen in ähnlichem Alter, damit jedes Kind persönlich und stressfrei betreut wird.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="icon">🏌️</span>
+                        <h4>Bälle &amp; Schläger inkl.</h4>
+                        <p>Kostenlose Leihschläger bei Bedarf und alle Rangebälle sind bereits im Beitrag enthalten.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Official Letter & Information Section -->
+        <section class="letter-section" id="elternbrief">
+            <div class="container">
+                
+                <!-- Elternbrief Card -->
+                <div class="letter-card">
+                    <div class="letter-header">
+                        <div>
+                            <div class="letter-to">An die Eltern unserer jugendlichen Golferinnen und Golfer</div>
+                            <div style="font-size: 0.85rem; color: var(--color-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Sport- und Golf-Resort Gut Wissmannshof</div>
+                        </div>
+                        <div class="letter-date-meta">20. Oktober 2026</div>
+                    </div>
+
+                    <h2 class="letter-title">Jugendtraining im Winter 2026/27: Jetzt anmelden</h2>
+
+                    <div class="letter-body">
+                        <p><strong>Liebe Eltern,</strong></p>
+                        <p>
+                            viel zu schnell neigt sich die Saison dem Ende zu, und mit ihr die sonnigen und schönen Tage auf unserer Golfanlage. Jetzt planen wir die Trainingseinheiten für die Wintersaison und bitten Sie, Ihren Sohn / Ihre Tochter zum bevorstehenden Wintertraining anzumelden, sofern er oder sie teilnehmen möchte.
+                        </p>
+
+                        <div class="principle-highlight-box">
+                            „Unser Jugendtraining ist ein Angebot für alle, die Freude an Bewegung und am Golfsport haben. Es geht um Spaß, Spiel und gemeinsames Lernen, nicht um Wettkampf. Es gibt keine Mannschaften und keinen Leistungsdruck.“
+                        </div>
+
+                        <p>
+                            Eigene Schläger sind willkommen, wer keine hat, nutzt kostenlos Leihschläger des Resorts. Rangebälle sind enthalten.
+                        </p>
+                        <p>
+                            In der Wintersaison (November bis April) bieten wir das Training <strong>jeweils samstags</strong> an. Wir planen mit Gruppen von <strong>voraussichtlich bis zu sieben Jugendlichen</strong>, damit jedes Kind persönlich betreut wird und sich die Kinder in ähnlichem Alter gut verstehen. Die Einteilung und die genauen Uhrzeiten teilen wir Ihnen nach Anmeldeschluss mit.
+                        </p>
+
+                        <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin: 26px 0 10px;">Teilnahme und Beitrag</h3>
+                        <p>
+                            Das Jugendtraining wird grundsätzlich für unsere jugendlichen Mitglieder angeboten. Kinder und Jugendliche, die in diesem Jahr am Probetraining teilgenommen haben, können aktuell im Rahmen einer Mitgliedschaft am Jugendtraining teilnehmen. Dafür schließen Sie bitte mit der Anmeldung die Jugendmitgliedschaft ab. Neben dem Mitgliedsbeitrag fällt je Halbjahr der Trainingsbeitrag an. Unser Service Center berät Sie dazu gerne.
+                        </p>
+
+                        <!-- Overview Fact Box -->
+                        <div class="fact-table-box">
+                            <h3>📋 Konditionen auf einen Blick</h3>
+                            <div class="fact-grid">
+                                <div class="fact-item">
+                                    <span class="fact-label">Trainingsbeitrag</span>
+                                    <span class="fact-value fact-highlight">99 € pro Kind und Halbjahr</span>
+                                </div>
+                                <div class="fact-item">
+                                    <span class="fact-label">Halbjahre</span>
+                                    <span class="fact-value">Winter (Nov. bis April) &amp; Sommer (Mai bis Okt.)</span>
+                                </div>
+                                <div class="fact-item">
+                                    <span class="fact-label">Zusätzlich</span>
+                                    <span class="fact-value">Beitrag der Jugendmitgliedschaft</span>
+                                </div>
+                                <div class="fact-item">
+                                    <span class="fact-label">Im Beitrag enthalten</span>
+                                    <span class="fact-value">Training, Leihschläger &amp; Rangebälle</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(184, 150, 62, 0.12); border-left: 4px solid var(--color-gold); padding: 18px 22px; border-radius: var(--radius-sm); margin-top: 22px;">
+                            <strong style="color: var(--color-primary-dark); display: block; margin-bottom: 4px;">ℹ️ Faire Konditionen für unsere Jugend:</strong>
+                            <p style="margin: 0; font-size: 0.93rem; color: var(--color-text-muted);">
+                                Die Mitgliedschaft auf Gut Wissmannshof ist unkompliziert: <strong>0 € Aufnahmegebühr, keine Umlagen</strong>.
+                                Für Kinder bis 12 Jahre beträgt der Beitrag nur 16 € / Monat, für Jugendliche (13–18 Jahre) nur 31 € / Monat. Bei Fragen berät Sie unser Service Center gerne.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section class="registration-section" id="anmeldung">
+            <div class="container">
+                <div class="registration-grid">
+                    
+                    <!-- Left Column: Deadlines & Instructions -->
+                    <div class="registration-intro">
+                        <span class="section-tag-gold" style="color: var(--color-gold-light); background: rgba(184, 150, 62, 0.2); border-color: rgba(184, 150, 62, 0.4);">
+                            Unkomplizierte Anmeldung
+                        </span>
+                        <h2>Jetzt für das Wintertraining anmelden</h2>
+                        <p>
+                            Damit die Anmeldung so einfach wie möglich ist, haben wir dieses Online-Formular für Sie eingerichtet. Bitte tragen Sie die Angaben zu Ihrer Tochter / Ihrem Sohn sowie Ihre Kontaktdaten ein.
+                        </p>
+
+                        <!-- Deadline Highlight -->
+                        <div class="deadline-card-alert">
+                            <h4>⏰ Anmeldeschluss: 31. Oktober 2026</h4>
+                            <p>
+                                Bitte melden Sie sich bis dahin an, damit wir die Jugendgruppen rechtzeitig und in passenden Altersstufen planen können. Die genauen Uhrzeiten und die Einteilung erhalten Sie nach Anmeldeschluss.
+                            </p>
+                        </div>
+
+                        <!-- Service Center Card -->
+                        <div class="service-center-card">
+                            <h4>📞 Fragen? Unser Service Center hilft gerne!</h4>
+                            <p style="margin-bottom: 10px;">
+                                Bei allen Fragen zum Ablauf, zur Ausrüstung oder zur Jugendmitgliedschaft erreichen Sie uns jederzeit gerne:
+                            </p>
+                            <div>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></div>
+                            <div>Telefon: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></div>
+                            <div style="margin-top: 6px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.65);">Sport- und Golf-Resort Gut Wissmannshof</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Registration Form Card -->
+                    <div class="form-card-container">
+                        <h3>Anmeldung zum Jugendtraining</h3>
+                        <p class="form-subtitle">Wintersaison 2026/27 (samstags, Nov. bis April) • 99 € / Halbjahr</p>
+
+                        <form id="jugend-anmeldung-form" onsubmit="event.preventDefault(); submitJugendRegistration();">
+                            
+                            <!-- 1. Angaben zum Kind / Jugendlichen -->
+                            <div class="form-section-divider">
+                                <span>1. Angaben zur Tochter / zum Sohn</span>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="child-firstname">Vorname des Kindes <span class="req">*</span></label>
+                                    <input type="text" id="child-firstname" class="form-control-input" placeholder="z. B. Paul" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="child-lastname">Nachname des Kindes <span class="req">*</span></label>
+                                    <input type="text" id="child-lastname" class="form-control-input" placeholder="z. B. Müller" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="child-birthdate">Geburtsdatum oder Alter <span class="req">*</span></label>
+                                    <input type="text" id="child-birthdate" class="form-control-input" placeholder="z. B. 10 Jahre oder 15.03.2016" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="child-experience">Bisherige Golferfahrung</label>
+                                    <select id="child-experience" class="form-control-select">
+                                        <option value="Hat dieses Jahr am Probetraining teilgenommen">Hat dieses Jahr am Probetraining teilgenommen</option>
+                                        <option value="Hat schon erste Erfahrungen gesammelt">Hat schon erste Erfahrungen gesammelt</option>
+                                        <option value="Kompletter Neueinsteiger">Kompletter Neueinsteiger</option>
+                                        <option value="Spielt bereits regelmäßig">Spielt bereits regelmäßig</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Golfausrüstung / Schläger <span class="req">*</span></label>
+                                <div class="radio-options-column">
+                                    <label class="radio-box-label">
+                                        <input type="radio" name="equipment" value="Eigene Schläger vorhanden" checked>
+                                        <span><strong>Eigene Schläger vorhanden:</strong> Mein Kind bringt eigene Schläger mit.</span>
+                                    </label>
+                                    <label class="radio-box-label">
+                                        <input type="radio" name="equipment" value="Kostenlose Leihschläger des Resorts benötigt">
+                                        <span><strong>Kostenlose Leihschläger benötigt:</strong> Wir nutzen gerne die Leihschläger des Resorts.</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 2. Angaben zu den Eltern / Erziehungsberechtigten -->
+                            <div class="form-section-divider">
+                                <span>2. Angaben der Eltern / Erziehungsberechtigten</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="parent-name">Name der/des Erziehungsberechtigten <span class="req">*</span></label>
+                                <input type="text" id="parent-name" class="form-control-input" placeholder="Vor- und Nachname" required>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="parent-email">E-Mail-Adresse <span class="req">*</span></label>
+                                    <input type="email" id="parent-email" class="form-control-input" placeholder="eltern@beispiel.de" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="parent-phone">Telefon- / Mobilnummer <span class="req">*</span></label>
+                                    <input type="tel" id="parent-phone" class="form-control-input" placeholder="Für Rückfragen & Einteilung" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status der Jugendmitgliedschaft <span class="req">*</span></label>
+                                <div class="radio-options-column">
+                                    <label class="radio-box-label">
+                                        <input type="radio" name="membership_status" value="Kind ist bereits Mitglied auf Gut Wissmannshof" checked>
+                                        <span><strong>Bereits Mitglied:</strong> Mein Kind ist bereits jugendliches Mitglied auf Gut Wissmannshof.</span>
+                                    </label>
+                                    <label class="radio-box-label">
+                                        <input type="radio" name="membership_status" value="Teilnahme am Probetraining - Jugendmitgliedschaft wird mit der Anmeldung abgeschlossen">
+                                        <span><strong>Probetrainingsteilnehmer:</strong> Jugendmitgliedschaft wird mit der Anmeldung abgeschlossen.</span>
+                                    </label>
+                                    <label class="radio-box-label">
+                                        <input type="radio" name="membership_status" value="Noch kein Mitglied - bitte um Beratung durch das Service Center">
+                                        <span><strong>Beratung gewünscht:</strong> Ich bitte um kurze Beratung zur Mitgliedschaft durch das Service Center.</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 3. Wünsche & Bemerkungen -->
+                            <div class="form-section-divider">
+                                <span>3. Wünsche, Zeiten &amp; Anmerkungen</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="training-notes">Wünsche oder Bemerkungen (optional)</label>
+                                <textarea id="training-notes" class="form-control-textarea" rows="3" placeholder="z. B. Bevorzugte Uhrzeit samstags (z. B. vormittags / mittags), gerne zusammen in eine Gruppe mit Freund/Freundin..."></textarea>
+                            </div>
+
+                            <!-- Datenschutz & Einverständnis -->
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="privacy-consent" required>
+                                <label for="privacy-consent">
+                                    Ich melde mein Kind hiermit zum Wintertraining 2026/27 (99 € / Halbjahr) an und stimme der Kontaktaufnahme zur Organisation des Trainings zu. Hinweise in der <a href="datenschutz.html" target="_blank" style="color: var(--color-gold); text-decoration: underline;">Datenschutzerklärung</a>. <span class="req">*</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="btn-submit-registration">
+                                Anmeldung jetzt absenden →
+                            </button>
+
+                            <p style="font-size: 0.78rem; color: var(--color-text-muted); text-align: center; margin-top: 14px;">
+                                Ihre Anmeldung wird direkt per E-Mail an das Service Center Wissmannshof gesendet.
+                            </p>
+
+                            <!-- Success Banner -->
+                            <div id="success-banner" class="registration-success-banner">
+                                <h4>🎉 Vielen Dank für die Anmeldung!</h4>
+                                <p>
+                                    Ihre Daten wurden vorbereitet und Ihr E-Mail-Programm geöffnet. Unser Service Center meldet sich nach Anmeldeschluss (31. Oktober 2026) mit den genauen Uhrzeiten und der Gruppeneinteilung bei Ihnen!
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="background: var(--color-cream); padding: 65px 0;">
+            <div class="container" style="max-width: 900px;">
+                <div class="section-header-center" style="margin-bottom: 30px; text-align: center;">
+                    <span class="section-tag-gold" style="display: inline-block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold); background: rgba(184, 150, 62, 0.12); border: 1px solid rgba(184, 150, 62, 0.3); padding: 5px 14px; border-radius: 50px; margin-bottom: 12px;">Gut zu wissen</span>
+                    <h2 class="section-title">Häufige Fragen zum Jugendtraining</h2>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
+                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Gibt es Mannschaften oder Leistungsdruck?</h4>
+                        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
+                            Nein. Unser Jugendtraining ist ein reines Breitensport-Angebot. Es geht um Spaß, Bewegung an der frischen Luft und spielerisches Lernen in einer freundlichen Gemeinschaft – ohne Leistungsdruck und ohne Mannschaftszwang.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
+                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Wann findet das Training statt?</h4>
+                        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
+                            In der Wintersaison (November bis April) trainieren wir <strong>jeweils samstags</strong>. Die Gruppen umfassen bis zu sieben Jugendliche in ähnlichem Alter. Die genauen Uhrzeiten teilen wir nach Anmeldeschluss (31. Oktober 2026) mit.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
+                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Was kostet das Training und was muss mitgebracht werden?</h4>
+                        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
+                            Der Trainingsbeitrag liegt bei <strong>99 € pro Kind und Halbjahr</strong>. Leihschläger (kostenfrei) und alle Rangebälle sind inklusive. Ihr Kind benötigt lediglich bequeme, wetterangepasste Kleidung und Turnschuhe.
+                        </p>
+                    </div>
+
+                    <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
+                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Wie funktioniert das mit der Mitgliedschaft?</h4>
+                        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
+                            Kinder, die in diesem Jahr am Probetraining teilgenommen haben, können im Rahmen einer Jugendmitgliedschaft am Training teilnehmen (ab 16 € / Monat, 0 € Aufnahmegebühr, keine Umlagen). Diese schließen Sie einfach mit der Anmeldung ab. Unser Service Center berät Sie dazu gerne.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" title="Gut Wissmannshof Startseite">
+                        <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof" class="footer-logo">
+                    </a>
+                    <p class="footer-address">
+                        Sport- und Golf-Resort Gut Wissmannshof<br>
+                        Wissmannshof 1<br>
+                        34355 Staufenberg
+                    </p>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;">
+                        18-Loch Resort Course, Canyon Academy Kurs, Driving Range &amp; Golfakademie.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Service Center &amp; Kontakt</h4>
+                    <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
+                    <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
+                    <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
+                    <p style="font-size: 0.84rem; margin-top: 8px; color: var(--color-gold-light);">
+                        Navi-Adresse: Wissmannshof 1, 34355 Staufenberg
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Rechtliches &amp; Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="karriere.html">Karriere im Resort</a></li>
+                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;">Cookie-Einstellungen</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Handler & Mobile Navigation Script -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (mobileToggle && mainNav) {
+            mobileToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+        }
+
+        // Form Submit Handler
+        function submitJugendRegistration() {
+            const childFirstname = document.getElementById('child-firstname').value.trim();
+            const childLastname = document.getElementById('child-lastname').value.trim();
+            const childBirthdate = document.getElementById('child-birthdate').value.trim();
+            const childExperience = document.getElementById('child-experience').value;
+            
+            const equipmentEl = document.querySelector('input[name="equipment"]:checked');
+            const equipment = equipmentEl ? equipmentEl.value : 'Eigene Schläger vorhanden';
+
+            const parentName = document.getElementById('parent-name').value.trim();
+            const parentEmail = document.getElementById('parent-email').value.trim();
+            const parentPhone = document.getElementById('parent-phone').value.trim();
+
+            const membershipStatusEl = document.querySelector('input[name="membership_status"]:checked');
+            const membershipStatus = membershipStatusEl ? membershipStatusEl.value : 'Keine Angabe';
+
+            const notes = document.getElementById('training-notes').value.trim();
+            const consent = document.getElementById('privacy-consent').checked;
+
+            if (!childFirstname || !childLastname || !childBirthdate || !parentName || !parentEmail || !parentPhone) {
+                alert('Bitte füllen Sie alle erforderlichen Pflichtfelder (*) aus.');
+                return;
+            }
+
+            if (!consent) {
+                alert('Bitte bestätigen Sie die Anmeldung und die Datenschutzerklärung.');
+                return;
+            }
+
+            const subject = encodeURIComponent(`[Jugendtraining 2026/27] Anmeldung: ${childFirstname} ${childLastname}`);
+
+            const bodyContent = 
+`Hallo Team Wissmannshof,
+
+hiermit melde ich mein Kind zum Winter-Jugendtraining 2026/27 (Wintersaison November bis April, samstags, 99 € / Halbjahr) an:
+
+1. ANGABEN ZUM TEILNEHMER (TOCHTER / SOHN):
+- Vorname: ${childFirstname}
+- Nachname: ${childLastname}
+- Geburtsdatum / Alter: ${childBirthdate}
+- Bisherige Golferfahrung: ${childExperience}
+- Golfausrüstung: ${equipment}
+
+2. KONTAKTDATEN ERZIEHUNGSBERECHTIGTE(R):
+- Name: ${parentName}
+- E-Mail-Adresse: ${parentEmail}
+- Telefon- / Mobilnummer: ${parentPhone}
+- Status Jugendmitgliedschaft: ${membershipStatus}
+
+3. WÜNSCHE, ZEITEN & ANMERKUNGEN:
+${notes ? notes : 'Keine besonderen Anmerkungen angegeben.'}
+
+====================================================
+Konditionen:
+- Trainingsbeitrag: 99 € pro Kind und Halbjahr (Winter: November bis April)
+- Inklusive: Training, Rangebälle, Leihschläger bei Bedarf
+- Anmeldeschluss: 31. Oktober 2026
+Hinweis: Diese Anmeldung wurde über das Online-Formular auf wissmannshof.golf gesendet.
+
+Mit freundlichen Grüßen,
+${parentName}`;
+
+            const mailtoLink = `mailto:info@wissmannshof.de?subject=${subject}&body=${encodeURIComponent(bodyContent)}`;
+            
+            // Show confirmation banner
+            const successBanner = document.getElementById('success-banner');
+            if (successBanner) {
+                successBanner.style.display = 'block';
+                successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Trigger mailto link
+            window.location.href = mailtoLink;
+        }
+    </script>
+
+    <!-- Cookie Consent & Live Tracker -->
+    <script src="cookie-consent.js?v=1791104500000"></script>
+    <script src="analytics-tracker.js?v=1791104500000" defer></script>
+</body>
+</html>

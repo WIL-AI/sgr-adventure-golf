@@ -55,7 +55,7 @@ const translations = {
  trialF3: "Offizieller DGV-Ausweis & Handicapführung",
  trialF4: "Alle regulären Club-Vorteile & Gäste-Privilegien",
  trialF5: "Freie Nutzung aller Übungsanlagen (Driving Range & Grüns)",
- trialF6: "Erst 12 Monate testen, dann frei entscheiden",
+ trialF6: "12 Monate Schnupperphase – transparenter Einstieg",
  btnSelectTrial: "Schnuppermitgliedschaft anfragen",
 
  badgeFull: "Das Premium-Erlebnis",
@@ -82,7 +82,7 @@ const translations = {
 
 	catSecondTitle: "Zweitmitgliedschaft",
 	catSecondTag: "Heimatclub<br>extern",
-	catSecondDesc: "Für Golfer mit bestehender Vollmitgliedschaft in einem anderen anerkannten Golfclub – unbegrenztes Spielrecht auf Gut Wissmannshof.",
+	catSecondDesc: "Für Golfer mit bestehender Vollmitgliedschaft in einem anderen anerkannten Golfclub.",
 	catSecondYearly: "(1.656 € pro Jahr)",
 
 	cat85Title: "Mitglied 85+",
@@ -96,7 +96,7 @@ const translations = {
 	catGreenfeeYearly: "(780 € pro Jahr)",
 
 	catRemoteTitle: "Fernmitgliedschaft (1. Person)",
-	catRemoteTag: "Wohnsitz<br>&gt; 150 km",
+	catRemoteTag: "Wohnsitz<br>ab 100 km",
 	catRemoteDesc: "Für Golfer ab 100 km Wohnsitzentfernung. Inklusive offiziellem DGV-Ausweis und Handicapführung. Spielen gegen reduziertes Greenfee möglich.",
 	catRemoteYearly: "(444 € pro Jahr)",
 
@@ -133,13 +133,13 @@ const translations = {
  tagStepByStep: "Einfach Ausprobieren",
  pathHeading: "Der entspannte Weg auf den Platz",
  pathSub: "Sie möchten Golf ohne Druck und ohne langfristige Bindung kennenlernen? Bei uns gibt es keine Hürden – starten Sie einfach in Ihrem eigenen Rhythmus.",
- step1Title: "Schnupperkurs oder Driving Range",
+ step1Title: "Schnupperkurs & Driving Range",
  step1Desc: "Erste Bälle schlagen, das Gefühl für den Schwung spüren. Völlig unkompliziert auf unserer modernen Driving Range.",
  step2Title: "Platzreife auf Gut Wissmannshof",
  step2Desc: "Lernen Sie die Grundlagen in lockerer Atmosphäre bei unseren Golf-Professionals. Praxisnah, verständlich und mit Spaß.",
  step3Title: "1 Jahr Schnuppermitgliedschaft",
  step3Desc: "Für nur 85 € monatlich volle 365 Tage unbegrenzt spielen, Trainieren, Turniere spielen und Clubfreunde finden.",
- step4Title: "Frei entscheiden",
+ step4Title: "Frei & flexibel entscheiden",
  step4Desc: "Nach dem Schnupperjahr geht Ihr Spielrecht nahtlos in die reguläre Mitgliedschaft über – mit transparenter Kündigungsmöglichkeit.",
 
  tagContracts: "Transparenz",
@@ -160,12 +160,12 @@ const translations = {
  resortSub: "Gut Wissmannshof ist kein anonymer Platz, sondern ein Ort zum Wohlfühlen, Verweilen und Genießen.",
  resort1Title: "18-Loch Resort Course",
  resort1Desc: "Herausforderndes Design, sanfte Hügel, reizvolle Wasserhindernisse und ganzjährig exzellent gepflegte Bahnen.",
- resort2Title: "Hotel & Sonnenterrasse",
- resort2Desc: "Wohnen in Rundhäusern direkt am Platz und nach der Runde auf der Seeterrasse regionale und mediterrane Köstlichkeiten genießen.",
- resort3Title: "Golfakademie & Übungsareal",
- resort3Desc: "25 überdachte Abschlagplätze, Chipping Green, Putting Green und moderne Fitting- und Trainingsmethoden.",
+ resort2Title: "Resorthotel & Seeterrasse",
+ resort2Desc: "Wohnen in Rundhäusern direkt am Platz und nach der Runde auf der Sonnenterrasse regionale und mediterrane Spitzenküche genießen.",
+ resort3Title: "Golfakademie & Übungszentrum",
+ resort3Desc: "25 überdachte Abschlagplätze, Chipping Green, Putting Green sowie zielgerichtete Einzel- und Gruppenkurse bei PGA-Profis.",
  resort4Title: "Gemeinschaft & Clubleben",
- resort4Desc: "Herzliche Willkommenskultur, Turniere für jede Spielstärke und regelmäßige Club-Events unter Freunden.",
+ resort4Desc: "Herzliche Willkommenskultur, offene Turniere für jede Spielstärke und gesellige After-Work-Runden unter Freunden.",
 
  tagFaq: "Häufige Fragen",
  faqHeading: "Fragen zur Mitgliedschaft? Hier sind die Antworten.",
@@ -174,7 +174,7 @@ const translations = {
  faq2Q: "Kostet die monatliche Zahlweise einen Aufpreis?",
  faq2A: "Nein. Sie können Ihren Jahresbeitrag bequem in 12 gleichen Monatsraten per SEPA-Lastschrift zahlen – ohne jeden Ratenzuschlag.",
  faq3Q: "Was passiert nach dem Schnupperjahr?",
- faq3A: "Die Schnuppermitgliedschaft bietet Ihnen 12 Monate vollen Einstieg. Anschließend geht das Spielrecht nahtlos in die reguläre Mitgliedschaft über – mit transparenter Kündigungsmöglichkeit.",
+ faq3A: "Die Schnuppermitgliedschaft dient dem risikolosen Kennenlernen. Nach Ablauf der 12 Monate geht Ihr Spielrecht nahtlos in die reguläre Mitgliedschaft über – mit transparenter Kündigungsmöglichkeit.",
  faq4Q: "Ist der Platz wirklich das ganze Jahr über bespielbar?",
  faq4A: "Ja! Durch unsere hervorragende Platzpflege und erstklassige Drainage spielen Sie bei uns ganzjährig auf regulären Sommergrüns – ohne monatelange witterungsbedingte Winterpausen (witterungsabhängig).",
  faq5Q: "Welche Vorteile bietet die Partnerschaft mit dem Golfresort Hardenberg?",
@@ -199,8 +199,8 @@ const translations = {
 	optSecond: "Zweitmitgliedschaft (138 € / Monat)",
 	opt85: "Mitglied 85+ (83 € / Monat)",
 	optGreenfee: "Greenfee-Mitgliedschaft (65 € / Monat)",
-	optRemote: "Fernmitgliedschaft 1. Person (37 € / Monat)",
-	optRemote2: "Fernmitgliedschaft 2. Person (29 € / Monat)",
+	optRemote: "Fernmitgliedschaft (1. Person) (37 € / Monat)",
+	optRemote2: "Fernmitgliedschaft (2. Person) (29 € / Monat)",
 	optTrain: "Trainingsmitgliedschaft (42 € / Monat)",
 	optStudent: "Ausbildung / Studenten (44 € / Monat)",
 	optYouth: "Jugendliche 13–18 Jahre (31 € / Monat)",
@@ -224,7 +224,7 @@ const translations = {
  privacyNote: "Ihre Angaben werden vertraulich behandelt und ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.",
 
  footerCol1: "Resort & Golf",
- fLinkHome: "Hauptwebseite Wissmannshof",
+ fLinkHome: "Startseite Wissmannshof",
  fLinkGuest: "Gäste & Greenfee",
  fLinkAdv: "Adventure Golf",
  fLinkAcad: "Golfakademie & Pros",
@@ -284,19 +284,19 @@ const translations = {
  cardTrialTitle: "Trial Membership",
  cardTrialSub: "Full playing rights to get to know the resort with zero risk",
  priceTrialPeriod: "per month <span class=\"price-yearly-sub\">(€1,020 per year)</span>",
- trialF1: "Unlimited playing rights 365 days a year",
+ trialF1: "Full playing rights on the 18-hole Resort Course & Canyon Course",
  trialF2: "Full access to all practice facilities (driving range, pitching & putting)",
  trialF3: "Official DGV handicap card & handicap management",
  trialF4: "All regular club privileges & guest discounts",
- trialF5: "Locker room & wardrobe service included",
- trialF6: "Enjoy 12 months with full freedom to decide afterwards",
+ trialF5: "Free use of all practice facilities (driving range & greens)",
+ trialF6: "12 months trial phase – transparent start without risk",
  btnSelectTrial: "Request Trial Membership",
 
  badgeFull: "The Premium Experience",
  cardFullTitle: "Full Membership",
  cardFullSub: "The unrestricted, all-inclusive golf experience",
  priceFullPeriod: "per month <span class=\"price-yearly-sub\">(€1,836 per year)</span>",
- fullF1: "365 days unlimited play on the entire 18-hole resort course",
+ fullF1: "Unlimited playing rights on the 18-hole Resort Course & Canyon Course",
  fullF2: "Includes all practice facilities, driving range & short game area",
  fullF3: "DGV membership card & worldwide tournament eligibility",
  fullF4: "Exclusive Perk: 5 complimentary green fee rounds per year at Golf Resort Hardenberg included!",
@@ -330,7 +330,7 @@ const translations = {
 	catGreenfeeYearly: "(€780 per year)",
 
 	catRemoteTitle: "Remote Membership (1st Person)",
-	catRemoteTag: "Residence<br>&gt; 150 km",
+	catRemoteTag: "Residence<br>min. 100 km",
 	catRemoteDesc: "For golfers residing at least 100 km away. Includes official DGV card and handicap management. Play possible at a reduced green fee.",
 	catRemoteYearly: "(€444 per year)",
 
@@ -367,13 +367,13 @@ const translations = {
  tagStepByStep: "Easy Start",
  pathHeading: "Your Relaxed Path onto the Course",
  pathSub: "Want to explore golf without pressure or long-term obligations? We keep things simple – get started at your own pace.",
- step1Title: "Taster Lesson or Driving Range",
+ step1Title: "Taster Course & Driving Range",
  step1Desc: "Hit your first balls and feel the rhythm of the swing. Super relaxed on our modern driving range.",
  step2Title: "Course License at Gut Wissmannshof",
  step2Desc: "Learn the fundamentals in an enjoyable setting with our golf professionals. Practical, engaging, and fun.",
  step3Title: "1-Year Trial Membership",
  step3Desc: "For just €85 per month, enjoy 365 days of unlimited golf, practice, club tournaments, and new friendships.",
- step4Title: "Freedom of Choice",
+ step4Title: "Decide Freely & Flexibly",
  step4Desc: "After your trial year, your playing rights transition seamlessly into regular membership – with transparent cancellation options.",
 
  tagContracts: "Contract Clarity",
@@ -394,7 +394,7 @@ const translations = {
  resortSub: "Gut Wissmannshof is not an anonymous course, but a destination to relax, stay, and enjoy life.",
  resort1Title: "18-Hole Resort Course",
  resort1Desc: "Challenging course design, rolling hills, scenic water hazards, and playable 365 days on regular summer greens.",
- resort2Title: "Hotel & Sun Terrace",
+ resort2Title: "Resort Hotel & Lake Terrace",
  resort2Desc: "Stay in unique circular guest houses right on the course and enjoy regional and Mediterranean cuisine on the lake terrace.",
  resort3Title: "Golf Academy & Practice Center",
  resort3Desc: "25 covered driving bays, chipping green, putting green, and modern fitting and coaching technology.",
@@ -433,8 +433,8 @@ const translations = {
 	optSecond: "Secondary Membership (€138 / month)",
 	opt85: "Member 85+ (€83 / month)",
 	optGreenfee: "Greenfee Membership (€65 / month)",
-	optRemote: "Remote Membership 1st Person (€37 / month)",
-	optRemote2: "Remote Membership 2nd Person (€29 / month)",
+	optRemote: "Remote Membership (1st Person) (€37 / month)",
+	optRemote2: "Remote Membership (2nd Person) (€29 / month)",
 	optTrain: "Practice Membership (€42 / month)",
 	optStudent: "Students & Apprentices (€44 / month)",
 	optYouth: "Juniors 13–18 yrs (€31 / month)",
@@ -679,12 +679,17 @@ function initInquiryForm() {
 		const typeLabels = {
 			schnupper: 'Schnuppermitgliedschaft (85 € / Monat)',
 			voll: 'Vollmitgliedschaft (153 € / Monat)',
-			woche: 'Wochenmitgliedschaft Mo.–Fr. (128 € / Monat)',
-			'9loch': '9-Loch Mitgliedschaft (102 € / Monat)',
-			zweit: 'Zweitmitgliedschaft (95 € / Monat)',
-			fern: 'Fernmitgliedschaft (38 € / Monat)',
-			student: 'Ausbildung / Studenten (60 € / Monat)',
-			jugend: 'Kinder / Jugendliche (20 € / Monat)',
+			woche: 'Wochenmitgliedschaft Mo.–Fr. (133 € / Monat)',
+			zweit: 'Zweitmitgliedschaft (138 € / Monat)',
+			mgl85: 'Mitglied 85+ (83 € / Monat)',
+			greenfee: 'Greenfee-Mitgliedschaft (65 € / Monat)',
+			fern: 'Fernmitgliedschaft (1. Person) (37 € / Monat)',
+			fern2: 'Fernmitgliedschaft (2. Person) (29 € / Monat)',
+			training: 'Trainingsmitgliedschaft (42 € / Monat)',
+			student: 'Ausbildung / Studenten (44 € / Monat)',
+			jugend: 'Jugendliche 13–18 Jahre (31 € / Monat)',
+			kinder: 'Kinder bis 12 Jahre (16 € / Monat)',
+			passiv: 'Passive Mitgliedschaft (31 € / Monat)',
 			beratung: 'Allgemeine Beratung & Probespielen'
 		};
 
@@ -695,8 +700,13 @@ function initInquiryForm() {
 			wiedereinsteiger: 'Wiedereinsteiger'
 		};
 
-		const chosenType = typeLabels[type] || type;
-		const chosenHcp = hcpLabels[hcp] || hcp;
+		const typeSelect = document.getElementById('mgl-type');
+		const chosenOption = typeSelect && typeSelect.selectedIndex >= 0 ? typeSelect.options[typeSelect.selectedIndex] : null;
+		const chosenType = chosenOption ? chosenOption.textContent.trim() : (typeLabels[type] || type);
+
+		const hcpSelect = document.getElementById('mgl-hcp');
+		const chosenHcpOption = hcpSelect && hcpSelect.selectedIndex >= 0 ? hcpSelect.options[hcpSelect.selectedIndex] : null;
+		const chosenHcp = chosenHcpOption ? chosenHcpOption.textContent.trim() : (hcpLabels[hcp] || hcp);
 
 		const subject = encodeURIComponent(`[via Webseite] Mitgliedschafts-Anfrage: ${chosenType} - ${name}`);
 		
