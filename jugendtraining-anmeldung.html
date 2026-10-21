@@ -133,55 +133,9 @@
             transform: translateY(-2px);
         }
 
-        /* 4 Pillars Grid */
-        .feature-bar-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: -45px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .feature-item {
-            background: var(--color-white);
-            padding: 24px 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--color-card-border);
-            box-shadow: var(--shadow-medium);
-            text-align: center;
-            transition: var(--transition-smooth);
-        }
-
-        .feature-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-luxury);
-            border-color: var(--color-gold);
-        }
-
-        .feature-item .icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .feature-item h4 {
-            font-family: var(--font-heading);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--color-primary-dark);
-            margin-bottom: 6px;
-        }
-
-        .feature-item p {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
-        }
-
         /* Letter & Overview Section */
         .letter-section {
-            padding: 75px 0 55px;
+            padding: 60px 0 50px;
             background: var(--color-cream);
         }
 
@@ -554,10 +508,6 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .feature-bar-grid {
-                grid-template-columns: repeat(2, 1fr);
-                margin-top: 20px;
-            }
             .fact-grid {
                 grid-template-columns: 1fr;
             }
@@ -568,9 +518,6 @@
         }
 
         @media (max-width: 640px) {
-            .feature-bar-grid {
-                grid-template-columns: 1fr;
-            }
             .form-row-2 {
                 grid-template-columns: 1fr;
                 gap: 0;
@@ -635,42 +582,11 @@
                     </div>
                     <h1>Jugendtraining im Winter 2026/27:<br>Jetzt anmelden</h1>
                     <p class="lead">
-                        Unser Jugendtraining ist ein Angebot für alle Kinder und Jugendlichen, die Freude an Bewegung und am Golfsport haben. Es geht um Spaß, Spiel und gemeinsames Lernen – ganz ohne Mannschaften und ohne Leistungsdruck.
+                        Unser Jugendtraining ist ein Angebot für alle Kinder und Jugendlichen, die Freude an Bewegung und am Golfsport haben. Es geht um Spaß, Spiel und gemeinsames Lernen – ganz ohne Mannschaften und ohne Leistungsdruck. Nach jetzigem Stand ist das Training jeweils für samstags geplant.
                     </p>
                     <div class="jugend-hero-actions">
                         <a href="#anmeldung" class="btn-gold-cta">Zur Anmeldung (Winter / Sommer / Beide) ↓</a>
                         <a href="#elternbrief" class="btn-outline-white">Informationen &amp; Konditionen</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4 Pillars Grid (Breitensport & Entspanntes Lernen) -->
-        <section style="background: var(--color-cream); padding: 0 0 30px;">
-            <div class="container">
-                <div class="feature-bar-grid">
-                    <div class="feature-item">
-                        <span class="icon">🎈</span>
-                        <h4>Spaß &amp; Spiel</h4>
-                        <p>Gemeinsames Lernen und Bewegung stehen im Mittelpunkt – kein Wettkampf, kein Leistungsdruck.</p>
-                    </div>
-
-                    <div class="feature-item">
-                        <span class="icon">🗓️</span>
-                        <h4>Jeden Samstag</h4>
-                        <p>Feste Trainingszeiten samstags von November bis April, wettergeschützt auf der Driving Range.</p>
-                    </div>
-
-                    <div class="feature-item">
-                        <span class="icon">👥</span>
-                        <h4>Bis zu 7 Jugendliche</h4>
-                        <p>Kleine Gruppen in ähnlichem Alter, damit jedes Kind persönlich und stressfrei betreut wird.</p>
-                    </div>
-
-                    <div class="feature-item">
-                        <span class="icon">🏌️</span>
-                        <h4>Bälle &amp; Schläger inkl.</h4>
-                        <p>Kostenlose Leihschläger bei Bedarf und alle Rangebälle sind bereits im Beitrag enthalten.</p>
                     </div>
                 </div>
             </div>
@@ -706,7 +622,7 @@
                             Eigene Schläger sind willkommen, wer keine hat, nutzt kostenlos Leihschläger des Resorts. Rangebälle sind enthalten.
                         </p>
                         <p>
-                            In der Wintersaison (November bis April) bieten wir das Training <strong>jeweils samstags</strong> an. Wir planen mit Gruppen von <strong>voraussichtlich bis zu sieben Jugendlichen</strong>, damit jedes Kind persönlich betreut wird und sich die Kinder in ähnlichem Alter gut verstehen. Die Einteilung und die genauen Uhrzeiten teilen wir Ihnen nach Anmeldeschluss mit.
+                            Nach jetzigem Stand ist das Training jeweils für samstags geplant. Wir planen mit Gruppen von <strong>voraussichtlich bis zu sieben Jugendlichen</strong>, damit jedes Kind persönlich betreut wird und sich die Kinder in ähnlichem Alter gut verstehen. Die Einteilung und die genauen Uhrzeiten teilen wir Ihnen nach Anmeldeschluss mit.
                         </p>
 
                         <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin: 26px 0 10px;">Teilnahme und Beitrag</h3>
@@ -804,7 +720,7 @@
                                         <input type="radio" name="training_period" value="Anmeldung zum Wintertraining (Nov. bis April • 99 €)" checked>
                                         <div>
                                             <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block;">❄️ Anmeldung zum Wintertraining</strong>
-                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Wintersaison November 2026 bis April 2027 • samstags • 99 € pro Kind</span>
+                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Wintersaison November 2026 bis April 2027 • nach jetzigem Stand samstags • 99 € pro Kind</span>
                                         </div>
                                     </label>
 
@@ -812,7 +728,7 @@
                                         <input type="radio" name="training_period" value="Anmeldung zum Sommertraining (Mai bis Okt. • 99 €)">
                                         <div>
                                             <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block;">☀️ Anmeldung zum Sommertraining</strong>
-                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Sommersaison Mai 2027 bis Oktober 2027 • samstags • 99 € pro Kind</span>
+                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Sommersaison Mai 2027 bis Oktober 2027 • nach jetzigem Stand samstags • 99 € pro Kind</span>
                                         </div>
                                     </label>
 
@@ -820,7 +736,7 @@
                                         <input type="radio" name="training_period" value="Anmeldung zum Winter- und Sommertraining (Ganzjährig • 99 € je Halbjahr)">
                                         <div>
                                             <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block;">⛳ Anmeldung zum Winter- und Sommertraining</strong>
-                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Ganzjähriges Training (beide Halbjahre) • 99 € je Halbjahr für durchgehenden Schwung</span>
+                                            <span style="color: var(--color-text-muted); font-size: 0.84rem;">Ganzjähriges Training (beide Halbjahre) • nach jetzigem Stand samstags • 99 € je Halbjahr</span>
                                         </div>
                                     </label>
                                 </div>
@@ -976,7 +892,7 @@
                     <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
                         <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Wann findet das Training statt?</h4>
                         <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
-                            In der Wintersaison (November bis April) trainieren wir <strong>jeweils samstags</strong>. Die Gruppen umfassen bis zu sieben Jugendliche in ähnlichem Alter. Die genauen Uhrzeiten teilen wir nach Anmeldeschluss (31. Oktober 2026) mit. Auch im Sommer findet das Training samstags statt.
+                            Nach jetzigem Stand ist das Training jeweils für samstags geplant. Die Gruppen umfassen bis zu sieben Jugendliche in ähnlichem Alter. Die genauen Uhrzeiten und die Gruppeneinteilung teilen wir nach Anmeldeschluss (31. Oktober 2026) mit.
                         </p>
                     </div>
 
