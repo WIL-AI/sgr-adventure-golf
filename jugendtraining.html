@@ -1059,7 +1059,7 @@
         }
 
         // Form Submit Handler
-        async function submitJugendRegistration() {
+        function submitJugendRegistration() {
             const submitBtn = document.getElementById('submit-btn');
             const trainingPeriodEl = document.querySelector('input[name="training_period"]:checked');
             const trainingPeriod = trainingPeriodEl ? trainingPeriodEl.value : 'Anmeldung zum Wintertraining (Nov. bis April • 99 €)';
@@ -1090,11 +1090,6 @@
             if (!consent) {
                 alert('Bitte bestätigen Sie die Anmeldung und die Datenschutzerklärung.');
                 return;
-            }
-
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span>⏳ Anmeldung wird an info@wissmannshof.de gesendet...</span>';
             }
 
             const cleanSubject = `[Jugendtraining] ${trainingPeriod.split('(')[0].trim()}: ${childFirstname} ${childLastname}`;
@@ -1134,9 +1129,9 @@ Hinweis: Diese Anmeldung wurde über das Online-Formular auf wissmannshof.golf g
 Mit freundlichen Grüßen,
 ${parentName}`;
 
-            // Send via background API to info@wissmannshof.de
+            // Optional background transmission to logging endpoint
             try {
-                await fetch('api/contact.php', {
+                fetch('api/contact.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1160,12 +1155,10 @@ ${parentName}`;
                             'Anmerkungen': notes || 'Keine'
                         }
                     })
-                });
-            } catch (err) {
-                console.warn('API submission notice:', err);
-            }
+                }).catch(() => {});
+            } catch (err) {}
 
-            // Mailto link for dual delivery and email receipt
+            // Mailto link directed straight to info@wissmannshof.de
             const mailtoLink = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(cleanSubject)}&body=${encodeURIComponent(plainTextSummary)}`;
             
             // Show confirmation banner
@@ -1179,12 +1172,11 @@ ${parentName}`;
                 submitBtn.innerHTML = '✓ Anmeldung an info@wissmannshof.de übermittelt';
                 submitBtn.style.background = '#28a745';
                 submitBtn.style.borderColor = '#28a745';
+                submitBtn.disabled = true;
             }
 
-            // Trigger mailto link
-            setTimeout(() => {
-                window.location.href = mailtoLink;
-            }, 600);
+            // Immediately trigger the email client to send to info@wissmannshof.de
+            window.location.href = mailtoLink;
         }
     </script>
 
