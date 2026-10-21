@@ -859,11 +859,28 @@
                             </p>
 
                             <!-- Success Banner -->
-                            <div id="success-banner" class="registration-success-banner">
-                                <h4>🎉 Vielen Dank für die Anmeldung!</h4>
+                            <div id="success-banner" class="registration-success-banner" style="display: none;">
+                                <h4>🎉 Anmeldung vorbereitet &amp; übermittelt!</h4>
                                 <p id="success-banner-msg">
-                                    Ihre Anmeldung wurde erfolgreich an das Postfach <strong>info@wissmannshof.de</strong> übermittelt. Unser Service Center meldet sich in Kürze mit den genauen Trainingszeiten und der Gruppeneinteilung bei Ihnen!
+                                    Ihre Anmeldung wurde für unser Service Center (<strong>info@wissmannshof.de</strong>) fertig zusammengestellt und Ihr E-Mail-Programm aufgerufen.
                                 </p>
+                                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+                                    <a id="btn-manual-mailto" href="#" class="btn-gold-cta" style="font-size: 0.9rem; padding: 11px 18px; text-decoration: none; text-align: center; color: #FFFFFF !important;">
+                                        ✉️ Im Standard-E-Mail-Programm absenden
+                                    </a>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                        <a id="btn-webmail-gmail" href="#" target="_blank" rel="noopener" style="background: #EA4335; color: #FFFFFF !important; text-align: center; padding: 9px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+                                            In Gmail öffnen ↗
+                                        </a>
+                                        <a id="btn-webmail-outlook" href="#" target="_blank" rel="noopener" style="background: #0078D4; color: #FFFFFF !important; text-align: center; padding: 9px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+                                            In Outlook Web ↗
+                                        </a>
+                                    </div>
+                                    <button type="button" id="btn-copy-formdata" style="background: rgba(20, 51, 36, 0.08); border: 1px solid rgba(20, 51, 36, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.82rem; cursor: pointer; color: var(--color-primary-dark); font-weight: 600; margin-top: 2px;">
+                                        📋 Anmeldung als Text kopieren
+                                    </button>
+                                    <span id="copy-confirm-notice" style="display: none; font-size: 0.8rem; color: #28a745; font-weight: 700; text-align: center;">✓ In Zwischenablage kopiert!</span>
+                                </div>
                             </div>
 
                         </form>
@@ -1074,8 +1091,35 @@ ${parentName}`;
                 }).catch(() => {});
             } catch (err) {}
 
-            // Mailto link directed straight to info@wissmannshof.de
-            const mailtoLink = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(cleanSubject)}&body=${encodeURIComponent(plainTextSummary)}`;
+            // Prepare Mail links and webmail URLs
+            const encodedSub = encodeURIComponent(cleanSubject);
+            const encodedBody = encodeURIComponent(plainTextSummary);
+            const mailtoLink = `mailto:info@wissmannshof.de?subject=${encodedSub}&body=${encodedBody}`;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@wissmannshof.de&su=${encodedSub}&body=${encodedBody}`;
+            const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=info@wissmannshof.de&subject=${encodedSub}&body=${encodedBody}`;
+
+            // Wire up banner buttons
+            const btnManualMailto = document.getElementById('btn-manual-mailto');
+            if (btnManualMailto) btnManualMailto.href = mailtoLink;
+
+            const btnGmail = document.getElementById('btn-webmail-gmail');
+            if (btnGmail) btnGmail.href = gmailUrl;
+
+            const btnOutlook = document.getElementById('btn-webmail-outlook');
+            if (btnOutlook) btnOutlook.href = outlookUrl;
+
+            const btnCopy = document.getElementById('btn-copy-formdata');
+            if (btnCopy) {
+                btnCopy.onclick = () => {
+                    navigator.clipboard.writeText(`An: info@wissmannshof.de\nBetreff: ${cleanSubject}\n\n${plainTextSummary}`).then(() => {
+                        const notice = document.getElementById('copy-confirm-notice');
+                        if (notice) {
+                            notice.style.display = 'block';
+                            setTimeout(() => { notice.style.display = 'none'; }, 4000);
+                        }
+                    });
+                };
+            }
             
             // Show confirmation banner
             const successBanner = document.getElementById('success-banner');
