@@ -619,10 +619,7 @@
                         </div>
 
                         <p>
-                            Eigene Schläger sind willkommen, wer keine hat, nutzt kostenlos Leihschläger des Resorts. Rangebälle sind enthalten.
-                        </p>
-                        <p>
-                            Nach jetzigem Stand ist das Training jeweils für samstags geplant. Wir planen mit Gruppen von <strong>voraussichtlich bis zu sieben Jugendlichen</strong>, damit jedes Kind persönlich betreut wird und sich die Kinder in ähnlichem Alter gut verstehen. Die Einteilung und die genauen Uhrzeiten teilen wir Ihnen nach Anmeldeschluss mit.
+                            Alle benötigten Rangebälle während der Trainingseinheiten sind bereits im Beitrag enthalten. Nach jetzigem Stand ist das Training jeweils für samstags geplant. Wir planen mit Gruppen von <strong>voraussichtlich bis zu sieben Jugendlichen</strong>, damit jedes Kind persönlich betreut wird und sich die Kinder in ähnlichem Alter gut verstehen. Die Einteilung und die genauen Uhrzeiten teilen wir Ihnen nach Anmeldeschluss mit.
                         </p>
 
                         <h3 style="color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 800; margin: 26px 0 10px;">Teilnahme und Beitrag</h3>
@@ -648,7 +645,7 @@
                                 </div>
                                 <div class="fact-item">
                                     <span class="fact-label">Im Beitrag enthalten</span>
-                                    <span class="fact-value">Training, Leihschläger &amp; Rangebälle</span>
+                                    <span class="fact-value">Training &amp; Rangebälle</span>
                                 </div>
                             </div>
                         </div>
@@ -693,7 +690,7 @@
                         <div class="service-center-card">
                             <h4>📞 Fragen? Unser Service Center hilft gerne!</h4>
                             <p style="margin-bottom: 10px;">
-                                Bei allen Fragen zum Ablauf, zur Ausrüstung oder zur Jugendmitgliedschaft erreichen Sie uns jederzeit gerne:
+                                Bei allen Fragen zum Ablauf oder zur Jugendmitgliedschaft erreichen Sie uns jederzeit gerne:
                             </p>
                             <div>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></div>
                             <div>Telefon: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></div>
@@ -771,20 +768,6 @@
                                         <option value="Kompletter Neueinsteiger">Kompletter Neueinsteiger</option>
                                         <option value="Spielt bereits regelmäßig">Spielt bereits regelmäßig</option>
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Golfausrüstung / Schläger <span class="req">*</span></label>
-                                <div class="radio-options-column">
-                                    <label class="radio-box-label">
-                                        <input type="radio" name="equipment" value="Eigene Schläger vorhanden" checked>
-                                        <span><strong>Eigene Schläger vorhanden:</strong> Mein Kind bringt eigene Schläger mit.</span>
-                                    </label>
-                                    <label class="radio-box-label">
-                                        <input type="radio" name="equipment" value="Kostenlose Leihschläger des Resorts benötigt">
-                                        <span><strong>Kostenlose Leihschläger benötigt:</strong> Wir nutzen gerne die Leihschläger des Resorts.</span>
-                                    </label>
                                 </div>
                             </div>
 
@@ -914,9 +897,9 @@
                     </div>
 
                     <div style="background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-card-border); padding: 20px 24px;">
-                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Was kostet das Training und was muss mitgebracht werden?</h4>
+                        <h4 style="color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 6px;">Was kostet das Training und was wird benötigt?</h4>
                         <p style="color: var(--color-text-muted); font-size: 0.92rem; margin: 0; line-height: 1.65;">
-                            Der Trainingsbeitrag liegt bei <strong>99 € pro Kind und Halbjahr</strong>. Leihschläger (kostenfrei) und alle Rangebälle sind inklusive. Ihr Kind benötigt lediglich bequeme, wetterangepasste Kleidung und Turnschuhe.
+                            Der Trainingsbeitrag liegt bei <strong>99 € pro Kind und Halbjahr</strong>. Alle Rangebälle während der Trainingseinheiten sind inklusive. Ihr Kind benötigt lediglich bequeme, wetterangepasste Sportkleidung und Turnschuhe.
                         </p>
                     </div>
 
@@ -1001,9 +984,6 @@
             const childLastname = document.getElementById('child-lastname').value.trim();
             const childBirthdate = document.getElementById('child-birthdate').value.trim();
             const childExperience = document.getElementById('child-experience').value;
-            
-            const equipmentEl = document.querySelector('input[name="equipment"]:checked');
-            const equipment = equipmentEl ? equipmentEl.value : 'Eigene Schläger vorhanden';
 
             const parentName = document.getElementById('parent-name').value.trim();
             const parentEmail = document.getElementById('parent-email').value.trim();
@@ -1040,7 +1020,6 @@ GEWÄHLTE TRAININGSOPTION:
 - Nachname: ${childLastname}
 - Geburtsdatum / Alter: ${childBirthdate}
 - Bisherige Golferfahrung: ${childExperience}
-- Golfausrüstung: ${equipment}
 
 2. KONTAKTDATEN ERZIEHUNGSBERECHTIGTE(R):
 - Name: ${parentName}
@@ -1054,7 +1033,7 @@ ${notes ? notes : 'Keine besonderen Anmerkungen angegeben.'}
 ====================================================
 Konditionen:
 - Trainingsbeitrag: 99 € pro Kind und Halbjahr
-- Inklusive: Training, Rangebälle, Leihschläger bei Bedarf
+- Inklusive: Training & Rangebälle
 - Anmeldeschluss Winter: 31. Oktober 2026
 - Empfänger: info@wissmannshof.de
 Hinweis: Diese Anmeldung wurde über das Online-Formular auf wissmannshof.golf gesendet.
@@ -1080,7 +1059,6 @@ ${parentName}`;
                             'Kind Nachname': childLastname,
                             'Geburtsdatum / Alter': childBirthdate,
                             'Golferfahrung': childExperience,
-                            'Ausrüstung': equipment,
                             'Erziehungsberechtigte(r)': parentName,
                             'Telefon': parentPhone,
                             'E-Mail': parentEmail,
