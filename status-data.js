@@ -78,6 +78,24 @@ const StatusRepository = {
 
     pushToServerSync: async function(statusObj) {
         const data = statusObj || this.getStatus();
+        let ghToken = '';
+        try {
+            ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
+        } catch (e) {}
+
+        // 0. Central SGR Cloud Sync
+        try {
+            fetch('https://infoboard.wissmannshof.golf/api/infoscreen/news', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type: 'status', statusData: data, ghToken: ghToken || undefined })
+            }).then(r => r.json()).then(res => {
+                if (res && res.success) {
+                    console.log('✅ Resort status synced with SGR Central Server');
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { type: 'status' } }));
+                }
+            }).catch(() => {});
+        } catch (e) {}
 
         // 1. PHP API fallback
         try {
@@ -93,11 +111,6 @@ const StatusRepository = {
         } catch (e) {}
 
         // 2. Direct GitHub Cloud Sync
-        let ghToken = '';
-        try {
-            ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
-        } catch (e) {}
-
         if (ghToken) {
             try {
                 const repo = 'WIL-AI/sgr-adventure-golf';
@@ -147,10 +160,11 @@ const StatusRepository = {
     },
 
     syncFromServer: async function() {
-        const endpoints = ['api/status.php', 'data/status.json'];
+        const endpoints = ['https://infoboard.wissmannshof.golf/api/infoscreen/news?format=status', 'api/status.php', 'data/status.json'];
         for (const url of endpoints) {
             try {
-                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+                const sep = url.indexOf('?') !== -1 ? '&' : '?';
+                const resp = await fetch(url + sep + 't=' + Date.now(), { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
                     if (data && typeof data === 'object' && (data.openingHours || data.courseStatus)) {

@@ -306,7 +306,7 @@ const NewsRepository = {
      * Performs an intelligent merge: server updates override stale local articles, while keeping local drafts.
      */
     syncFromServer: async function() {
-        const endpoints = ['data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
+        const endpoints = ['https://infoboard.wissmannshof.golf/api/infoscreen/news?format=articles', 'data/news.json', '/data/news.json', './data/news.json', 'api/news.php'];
         
         let deletedIds = new Set();
         try {
@@ -319,7 +319,8 @@ const NewsRepository = {
 
         for (const url of endpoints) {
             try {
-                const resp = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+                const sep = url.includes('?') ? '&' : '?';
+                const resp = await fetch(url + sep + 't=' + Date.now(), { cache: 'no-store' });
                 if (resp.ok) {
                     const data = await resp.json();
                     if (Array.isArray(data) && data.length > 0) {
@@ -375,9 +376,38 @@ const NewsRepository = {
      */
     pushToServerSync: async function(cleanList) {
         const list = cleanList || this.getAll();
-        let phpSaved = false;
+        let serverSaved = false;
+        let githubSaved = false;
 
-        // 1. PHP API fallback (if server supports PHP)
+        let ghToken = '';
+        try {
+            ghToken = (localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '')
+                .trim()
+                .replace(/[^\x20-\x7E]/g, '');
+        } catch (e) {}
+
+        // 1. Central SGR Cloud Backend Sync (infoboard.wissmannshof.golf) - immune to browser CORS / Adblockers
+        try {
+            const centralRes = await fetch('https://infoboard.wissmannshof.golf/api/infoscreen/news', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ articles: list, ghToken: ghToken })
+            });
+            if (centralRes.ok) {
+                const centralJson = await centralRes.json().catch(() => null);
+                if (centralJson && centralJson.success) {
+                    serverSaved = true;
+                    if (centralJson.githubSynced) {
+                        githubSaved = true;
+                    }
+                    console.log('✅ News synchronized via central SGR Server (infoboard.wissmannshof.golf)');
+                }
+            }
+        } catch (e) {
+            console.warn('Central SGR sync notice:', e);
+        }
+
+        // 2. Local PHP API fallback (if server supports PHP)
         try {
             const phpRes = await fetch('api/news.php', {
                 method: 'POST',
@@ -387,24 +417,23 @@ const NewsRepository = {
             if (phpRes.ok) {
                 const resJson = await phpRes.json().catch(() => null);
                 if (resJson && resJson.success) {
-                    phpSaved = true;
-                    console.log('✅ News successfully synchronized with server storage (data/news.json)');
+                    serverSaved = true;
+                    console.log('✅ News synchronized with PHP storage (data/news.json)');
                 }
             }
         } catch (e) {}
 
-        // 2. Direct GitHub Cloud Sync (for instant global multi-device deployment)
-        let ghToken = '';
-        try {
-            ghToken = (localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '')
-                .trim()
-                .replace(/[^\x20-\x7E]/g, '');
-        } catch (e) {}
+        // If already synced to GitHub via central server, finish immediately with success
+        if (githubSaved) {
+            window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server+github' } }));
+            return { success: true, via: 'server+github' };
+        }
 
+        // 3. Direct GitHub Cloud Sync (if token present and not yet synced by server)
         if (!ghToken) {
-            if (phpSaved) {
-                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
-                return { success: true, via: 'php' };
+            if (serverSaved) {
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server' } }));
+                return { success: true, via: 'server' };
             }
             window.dispatchEvent(new CustomEvent('sgr_server_sync_missing_token'));
             return { success: false, reason: 'missing_token' };
@@ -453,7 +482,6 @@ const NewsRepository = {
                 })
             });
 
-            // Automatic retry once on 409 SHA conflict
             if (putRes.status === 409) {
                 sha = await fetchLatestSha();
                 putRes = await fetch(putUrl, {
@@ -477,9 +505,9 @@ const NewsRepository = {
                 window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length } }));
                 return { success: true };
             } else {
-                if (phpSaved) {
-                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
-                    return { success: true, via: 'php' };
+                if (serverSaved) {
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server' } }));
+                    return { success: true, via: 'server' };
                 }
                 const err = await putRes.json().catch(() => ({}));
                 const errMsg = err.message || `HTTP ${putRes.status}`;
@@ -488,16 +516,16 @@ const NewsRepository = {
                 return { success: false, error: errMsg };
             }
         } catch (err) {
-            if (phpSaved) {
-                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
-                return { success: true, via: 'php' };
+            if (serverSaved) {
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server' } }));
+                return { success: true, via: 'server' };
             }
             console.warn('GitHub push error:', err);
             window.dispatchEvent(new CustomEvent('sgr_server_sync_error', { detail: { error: err.message } }));
             return { success: false, error: err.message };
         }
-    },
-
+    },
+
     getById: function(id) {
         const list = this.getAll();
         return list.find(item => item.id === id) || null;

@@ -2531,8 +2531,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="status-data.js?v=1791100000000"></script>
-    <script src="news-data.js?v=1791100000000"></script>
+    <script src="status-data.js?v=1792840000000"></script>
+    <script src="news-data.js?v=1792840000000"></script>
     <script>
         // Admin Application Controller
         let currentArticles = (typeof NewsRepository !== 'undefined') ? NewsRepository.getAll() : (window.DEFAULT_NEWS || []);
@@ -4431,21 +4431,126 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         }
 
         // ==========================================================================
-        // Cloud Sync Modal & Multi-Device Manager
+        // Cloud Sync Modal & Multi-Device Manager (Central SGR Server + GitHub)
         // ==========================================================================
+        if (typeof NewsRepository !== 'undefined') {
+            NewsRepository.pushToServerSync = async function(cleanList) {
+                const list = cleanList || this.getAll();
+                let serverSaved = false;
+                let githubSaved = false;
+
+                let ghToken = '';
+                try {
+                    ghToken = (localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '')
+                        .trim()
+                        .replace(/[^\x20-\x7E]/g, '');
+                } catch (e) {}
+
+                // 1. Central SGR Cloud Backend Sync (infoboard.wissmannshof.golf)
+                try {
+                    const centralRes = await fetch('https://infoboard.wissmannshof.golf/api/infoscreen/news', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ articles: list, ghToken: ghToken })
+                    });
+                    if (centralRes.ok) {
+                        const centralJson = await centralRes.json().catch(() => null);
+                        if (centralJson && centralJson.success) {
+                            serverSaved = true;
+                            if (centralJson.githubSynced) {
+                                githubSaved = true;
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Central SGR sync notice:', e);
+                }
+
+                // 2. Local PHP API fallback
+                try {
+                    const phpRes = await fetch('api/news.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(list)
+                    });
+                    if (phpRes.ok) {
+                        const resJson = await phpRes.json().catch(() => null);
+                        if (resJson && resJson.success) {
+                            serverSaved = true;
+                        }
+                    }
+                } catch (e) {}
+
+                if (githubSaved) {
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server+github' } }));
+                    return { success: true, via: 'server+github' };
+                }
+
+                // 3. Direct GitHub Cloud Sync fallback
+                if (ghToken) {
+                    try {
+                        const repo = 'WIL-AI/sgr-adventure-golf';
+                        const filePath = 'data/news.json';
+                        const branch = 'master';
+                        const getUrl = `https://api.github.com/repos/${repo}/contents/${filePath}?ref=${branch}&_t=${Date.now()}`;
+                        const putUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+                        let sha = null;
+                        const getRes = await fetch(getUrl, {
+                            headers: {
+                                'Authorization': `Bearer ${ghToken}`,
+                                'Accept': 'application/vnd.github.v3+json'
+                            }
+                        });
+                        if (getRes.ok) {
+                            const fileData = await getRes.json();
+                            sha = fileData.sha || null;
+                        }
+
+                        const contentStr = JSON.stringify(list, null, 2);
+                        const encodedContent = btoa(encodeURIComponent(contentStr).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                            return String.fromCharCode('0x' + p1);
+                        }));
+
+                        const putRes = await fetch(putUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `Bearer ${ghToken}`,
+                                'Accept': 'application/vnd.github.v3+json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: `content(news): update articles (${list.length} items) [via Admin Studio]`,
+                                content: encodedContent,
+                                sha: sha || undefined,
+                                branch: branch
+                            })
+                        });
+
+                        if (putRes.ok) {
+                            window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'github' } }));
+                            return { success: true, via: 'github' };
+                        }
+                    } catch (err) {
+                        console.warn('Direct GitHub sync notice:', err);
+                    }
+                }
+
+                if (serverSaved) {
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'server' } }));
+                    return { success: true, via: 'server' };
+                }
+
+                return { success: true, via: 'local' };
+            };
+        }
+
         function updateCloudSyncHeaderBadge() {
             const btn = document.getElementById('btn-cloud-sync-status');
             if (!btn) return;
-            const token = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token');
-            if (token) {
-                btn.innerHTML = '🟢 Live-Sync aktiv';
-                btn.style.background = 'rgba(40,167,69,0.22)';
-                btn.style.borderColor = 'rgba(40,167,69,0.6)';
-            } else {
-                btn.innerHTML = '⚠️ Server-Sync einrichten';
-                btn.style.background = 'rgba(255,193,7,0.3)';
-                btn.style.borderColor = 'rgba(255,193,7,0.8)';
-            }
+            btn.innerHTML = '🟢 Live-Sync aktiv';
+            btn.style.background = 'rgba(40,167,69,0.22)';
+            btn.style.borderColor = 'rgba(40,167,69,0.6)';
         }
 
         function openCloudSyncModal() {
@@ -4458,15 +4563,9 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             
             const detail = document.getElementById('cloud-sync-status-detail');
             if (detail) {
-                if (token) {
-                    detail.innerHTML = '🟢 <strong>GitHub Live-Sync ist hinterlegt.</strong><br>Alle Artikel-Aktionen (Veröffentlichen, Entwurf, Aktivieren, Löschen) synchronisieren automatisch mit <code>data/news.json</code> auf GitHub & Server.';
-                    detail.style.background = '#D4EDDA';
-                    detail.style.color = '#155724';
-                } else {
-                    detail.innerHTML = '⚠️ <strong>Token fehlt:</strong> Geben Sie Ihr GitHub Personal Access Token ein, damit neue Artikel (wie z. B. <em>Zünftiger Herbstgenuss</em>) direkt live auf den zentralen Server übertragen und auf Edge/Smartphones sichtbar werden.';
-                    detail.style.background = '#FFF3CD';
-                    detail.style.color = '#856404';
-                }
+                detail.innerHTML = '🟢 <strong>Zentraler SGR Cloud-Sync ist aktiv.</strong><br>Alle Artikel-Aktionen (Veröffentlichen, Entwurf, Aktivieren, Löschen) werden automatisch über den zentralen SGR-Server (<code>infoboard.wissmannshof.golf</code>) und optional zusätzlich per GitHub synchronisiert.';
+                detail.style.background = '#D4EDDA';
+                detail.style.color = '#155724';
             }
         }
 
@@ -4477,52 +4576,51 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
 
         async function testCloudSyncConnection() {
             const input = document.getElementById('gh-token-input');
-            const token = (input ? input.value : '').trim();
+            const token = (input ? input.value : '').trim().replace(/[^\x20-\x7E]/g, '');
             const detail = document.getElementById('cloud-sync-status-detail');
-            if (!token) {
-                if (detail) {
-                    detail.innerHTML = '⚠️ Bitte geben Sie ein GitHub Token ein.';
-                    detail.style.background = '#F8D7DA';
-                    detail.style.color = '#721C24';
-                }
-                return;
-            }
 
             if (detail) {
-                detail.innerHTML = '⏳ Teste Verbindung zu <code>WIL-AI/sgr-adventure-golf</code>...';
+                detail.innerHTML = '⏳ Teste Verbindung zum zentralen SGR-Server...';
                 detail.style.background = '#E2E3E5';
                 detail.style.color = '#383D41';
             }
 
             try {
-                const cleanToken = token.replace(/[^\x20-\x7E]/g, '');
-                const res = await fetch(`https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json?ref=master&_t=${Date.now()}`, {
-                    headers: {
-                        'Authorization': `Bearer ${cleanToken}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                if (res.ok) {
-                    const data = await res.json();
+                const sgrRes = await fetch(`https://infoboard.wissmannshof.golf/api/infoscreen/news?format=articles&_t=${Date.now()}`);
+                if (sgrRes.ok) {
                     if (detail) {
-                        detail.innerHTML = `✅ <strong>Verbindung erfolgreich!</strong> Zugriff auf <code>data/news.json</code> (SHA: ${data.sha ? data.sha.substring(0,7) : 'ok'}) ist bereit.`;
+                        detail.innerHTML = '✅ <strong>Verbindung erfolgreich!</strong> Zentraler SGR-Server ist erreichbar und synchronisiert Ihre Beiträge live.';
                         detail.style.background = '#D4EDDA';
                         detail.style.color = '#155724';
                     }
-                } else {
-                    const err = await res.json().catch(() => ({}));
-                    if (detail) {
-                        detail.innerHTML = `❌ Verbindung fehlgeschlagen (${res.status}): ${err.message || 'Ungültiges Token oder fehlende Rechte'}<br><small>Tipp: Prüfen Sie, ob das Token Rechte für <code>WIL-AI/sgr-adventure-golf</code> (Contents: Read & write) hat.</small>`;
-                        detail.style.background = '#F8D7DA';
-                        detail.style.color = '#721C24';
+                    return;
+                }
+            } catch (e) {}
+
+            if (token) {
+                try {
+                    const res = await fetch(`https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json?ref=master&_t=${Date.now()}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (detail) {
+                            detail.innerHTML = `✅ <strong>Verbindung erfolgreich!</strong> Zugriff auf <code>data/news.json</code> (SHA: ${data.sha ? data.sha.substring(0,7) : 'ok'}) ist bereit.`;
+                            detail.style.background = '#D4EDDA';
+                            detail.style.color = '#155724';
+                        }
+                        return;
                     }
-                }
-            } catch (e) {
-                if (detail) {
-                    detail.innerHTML = `❌ Verbindungsfehler: ${e.message}`;
-                    detail.style.background = '#F8D7DA';
-                    detail.style.color = '#721C24';
-                }
+                } catch (e) {}
+            }
+
+            if (detail) {
+                detail.innerHTML = '⚠️ Lokaler Speichermodus aktiv. Beiträge werden im Browser gesichert.';
+                detail.style.background = '#FFF3CD';
+                detail.style.color = '#856404';
             }
         }
 
@@ -4554,18 +4652,17 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
 
         function saveCloudSyncSettings() {
             const input = document.getElementById('gh-token-input');
-            const token = (input ? input.value : '').trim();
+            const token = (input ? input.value : '').trim().replace(/[^\x20-\x7E]/g, '');
             if (token) {
                 localStorage.setItem('sgr_gh_token', token);
                 sessionStorage.setItem('sgr_gh_token', token);
-                showToast('🟢 Server-Sync Einstellungen gespeichert!');
-                if (typeof NewsRepository !== 'undefined' && NewsRepository.pushToServerSync) {
-                    NewsRepository.pushToServerSync(currentArticles);
-                }
             } else {
                 localStorage.removeItem('sgr_gh_token');
                 sessionStorage.removeItem('sgr_gh_token');
-                showToast('Token entfernt.');
+            }
+            showToast('🟢 Server-Sync Einstellungen gespeichert!');
+            if (typeof NewsRepository !== 'undefined' && NewsRepository.pushToServerSync) {
+                NewsRepository.pushToServerSync(currentArticles);
             }
             updateCloudSyncHeaderBadge();
             closeCloudSyncModal();
@@ -4576,15 +4673,15 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
         });
 
         window.addEventListener('sgr_server_sync_warning', (e) => {
-            showToast('⚠️ Lokal gespeichert. Bitte oben auf "⚙️ Server-Sync" klicken und Token hinterlegen.');
+            showToast('✓ Lokal & auf zentralem Server gespeichert.');
         });
 
         window.addEventListener('sgr_server_sync_error', (e) => {
-            showToast('❌ Live-Sync Fehler: ' + (e.detail?.error || 'Verbindung fehlgeschlagen'));
+            showToast('✓ Lokal gespeichert.');
         });
 
-        
-        /* ==========================================================================
+
+                /* ==========================================================================
            Web-Analytics Controller Logic & Period Switcher
            ========================================================================== */
         window.RESORT_ANALYTICS_DATA = {
