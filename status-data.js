@@ -103,12 +103,13 @@ const StatusRepository = {
                 const repo = 'WIL-AI/sgr-adventure-golf';
                 const path = 'data/status.json';
                 const branch = 'master';
-                const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+                const getUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&_t=${Date.now()}`;
+                const putUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
 
                 let sha = null;
-                const getRes = await fetch(url, {
+                const getRes = await fetch(getUrl, {
                     headers: {
-                        'Authorization': `Bearer ${ghToken}`,
+                        'Authorization': `Bearer ${ghToken.trim().replace(/[^\x20-\x7E]/g, '')}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
@@ -120,10 +121,10 @@ const StatusRepository = {
                 const contentStr = JSON.stringify(data, null, 2);
                 const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
 
-                const putRes = await fetch(url, {
+                const putRes = await fetch(putUrl, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `Bearer ${ghToken}`,
+                        'Authorization': `Bearer ${ghToken.trim().replace(/[^\x20-\x7E]/g, '')}`,
                         'Accept': 'application/vnd.github.v3+json',
                         'Content-Type': 'application/json'
                     },

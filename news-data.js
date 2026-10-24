@@ -375,27 +375,37 @@ const NewsRepository = {
      */
     pushToServerSync: async function(cleanList) {
         const list = cleanList || this.getAll();
+        let phpSaved = false;
 
         // 1. PHP API fallback (if server supports PHP)
         try {
-            fetch('api/news.php', {
+            const phpRes = await fetch('api/news.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(list)
-            }).then(r => r.json()).then(res => {
-                if (res && res.success) {
+            });
+            if (phpRes.ok) {
+                const resJson = await phpRes.json().catch(() => null);
+                if (resJson && resJson.success) {
+                    phpSaved = true;
                     console.log('✅ News successfully synchronized with server storage (data/news.json)');
                 }
-            }).catch(() => {});
+            }
         } catch (e) {}
 
         // 2. Direct GitHub Cloud Sync (for instant global multi-device deployment)
         let ghToken = '';
         try {
-            ghToken = localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '';
+            ghToken = (localStorage.getItem('sgr_gh_token') || sessionStorage.getItem('sgr_gh_token') || '')
+                .trim()
+                .replace(/[^\x20-\x7E]/g, '');
         } catch (e) {}
 
         if (!ghToken) {
+            if (phpSaved) {
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
+                return { success: true, via: 'php' };
+            }
             window.dispatchEvent(new CustomEvent('sgr_server_sync_missing_token'));
             return { success: false, reason: 'missing_token' };
         }
@@ -404,27 +414,31 @@ const NewsRepository = {
             const repo = 'WIL-AI/sgr-adventure-golf';
             const path = 'data/news.json';
             const branch = 'master';
-            const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&_t=${Date.now()}`;
+            const getUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&_t=${Date.now()}`;
+            const putUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
 
-            let sha = null;
-            const getRes = await fetch(url, {
-                headers: {
-                    'Authorization': `Bearer ${ghToken}`,
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Cache-Control': 'no-cache'
+            const fetchLatestSha = async () => {
+                const getRes = await fetch(`${getUrl}&_r=${Math.random()}`, {
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    return fileData.sha || null;
                 }
-            });
-            if (getRes.ok) {
-                const fileData = await getRes.json();
-                sha = fileData.sha;
-            }
+                return null;
+            };
+
+            let sha = await fetchLatestSha();
 
             const contentStr = JSON.stringify(list, null, 2);
             const encodedContent = btoa(encodeURIComponent(contentStr).replace(/%([0-9A-F]{2})/g, function(match, p1) {
                 return String.fromCharCode('0x' + p1);
             }));
 
-            const putRes = await fetch(url, {
+            let putRes = await fetch(putUrl, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${ghToken}`,
@@ -439,11 +453,34 @@ const NewsRepository = {
                 })
             });
 
+            // Automatic retry once on 409 SHA conflict
+            if (putRes.status === 409) {
+                sha = await fetchLatestSha();
+                putRes = await fetch(putUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${ghToken}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `content(news): update articles (${list.length} items) [via Admin Studio]`,
+                        content: encodedContent,
+                        sha: sha || undefined,
+                        branch: branch
+                    })
+                });
+            }
+
             if (putRes.ok) {
                 console.log('🚀 Successfully committed and pushed news directly to GitHub master');
                 window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length } }));
                 return { success: true };
             } else {
+                if (phpSaved) {
+                    window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
+                    return { success: true, via: 'php' };
+                }
                 const err = await putRes.json().catch(() => ({}));
                 const errMsg = err.message || `HTTP ${putRes.status}`;
                 console.warn('GitHub commit response error:', errMsg);
@@ -451,6 +488,10 @@ const NewsRepository = {
                 return { success: false, error: errMsg };
             }
         } catch (err) {
+            if (phpSaved) {
+                window.dispatchEvent(new CustomEvent('sgr_server_sync_success', { detail: { count: list.length, via: 'php' } }));
+                return { success: true, via: 'php' };
+            }
             console.warn('GitHub push error:', err);
             window.dispatchEvent(new CustomEvent('sgr_server_sync_error', { detail: { error: err.message } }));
             return { success: false, error: err.message };

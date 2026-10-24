@@ -4495,11 +4495,11 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             }
 
             try {
-                const res = await fetch('https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json', {
+                const cleanToken = token.replace(/[^\x20-\x7E]/g, '');
+                const res = await fetch(`https://api.github.com/repos/WIL-AI/sgr-adventure-golf/contents/data/news.json?ref=master&_t=${Date.now()}`, {
                     headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Cache-Control': 'no-cache'
+                        'Authorization': `Bearer ${cleanToken}`,
+                        'Accept': 'application/vnd.github.v3+json'
                     }
                 });
                 if (res.ok) {
