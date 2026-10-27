@@ -323,15 +323,46 @@ img {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        180deg, 
-        rgba(7, 21, 14, 0.12) 0%, 
-        rgba(7, 21, 14, 0.02) 35%, 
-        rgba(7, 21, 14, 0.22) 72%,
-        rgba(7, 21, 14, 0.42) 100%
-    );
+    background:
+        radial-gradient(ellipse 55% 35% at 92% 8%, rgba(7, 21, 14, 0.48) 0%, rgba(7, 21, 14, 0) 100%),
+        linear-gradient(
+            180deg, 
+            rgba(7, 21, 14, 0.22) 0%, 
+            rgba(7, 21, 14, 0.04) 35%, 
+            rgba(7, 21, 14, 0.22) 72%,
+            rgba(7, 21, 14, 0.45) 100%
+        );
     z-index: 2;
     pointer-events: none;
+}
+
+.hero-opening-hours {
+    position: absolute;
+    top: 28px;
+    right: max(24px, calc((100% - 1400px) / 2 + 24px));
+    z-index: 4;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.15vw, 1.08rem);
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    text-align: right;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.92), 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 26px rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+}
+
+.hero-opening-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.hero-opening-time {
+    font-weight: 700;
+    color: #F8D98C;
+    white-space: nowrap;
 }
 
 .home-hero-content {
@@ -1409,6 +1440,11 @@ img {
     .hero-main-title {
         font-size: 2.7rem;
     }
+    .hero-opening-hours {
+        top: 22px;
+        right: 24px;
+        font-size: 0.94rem;
+    }
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -1441,6 +1477,14 @@ img {
     }
     .hero-main-title {
         font-size: 2.1rem;
+    }
+    .hero-opening-hours {
+        top: 16px;
+        right: 16px;
+        left: 16px;
+        justify-content: flex-end;
+        font-size: 0.84rem;
+        flex-wrap: wrap;
     }
     .golf-slide-item {
         height: 340px;

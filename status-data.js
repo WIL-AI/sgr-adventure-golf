@@ -3,10 +3,44 @@
  * Manages daily live status for Opening Hours, Trolleys, Carts, and Course Status.
  */
 
+function getSeasonalOpeningHours(dateObj, lang = 'de') {
+    const d = dateObj instanceof Date ? dateObj : new Date();
+    const month = d.getMonth(); // 0 = Jan, 1 = Feb, 2 = Mar, 3 = Apr ... 9 = Oct, 10 = Nov, 11 = Dec
+    const day = d.getDate();
+    const isEn = (lang === 'en');
+
+    // 1. November bis Ende Februar (28./29. Februar): 10 – 16 Uhr
+    if (month === 10 || month === 11 || month === 0 || month === 1) {
+        return {
+            short: isEn ? '10:00 – 16:00' : '10 – 16 Uhr',
+            daily: isEn ? 'Daily 10:00–16:00' : 'täglich 10–16 Uhr'
+        };
+    }
+    // März (1. März – 31. März): 9 – 17 Uhr
+    if (month === 2) {
+        return {
+            short: isEn ? '09:00 – 17:00' : '9 – 17 Uhr',
+            daily: isEn ? 'Daily 09:00–17:00' : 'täglich 09–17 Uhr'
+        };
+    }
+    // Mitte Oktober bis Ende Oktober (16. Oktober – 31. Oktober): 9 – 17 Uhr
+    if (month === 9 && day >= 16) {
+        return {
+            short: isEn ? '09:00 – 17:00' : '9 – 17 Uhr',
+            daily: isEn ? 'Daily 09:00–17:00' : 'täglich 09–17 Uhr'
+        };
+    }
+    // 1. April bis Mitte Oktober (15. Oktober): 8 – 18 Uhr
+    return {
+        short: isEn ? '08:00 – 18:00' : '8 – 18 Uhr',
+        daily: isEn ? 'Daily 08:00–18:00' : 'täglich 08–18 Uhr'
+    };
+}
+
 const DEFAULT_STATUS = {
     openingHours: {
         title: "Öffnungszeiten Shop & Sekretariat",
-        text: "täglich 08:00 – 18:00 Uhr"
+        text: getSeasonalOpeningHours(new Date(), 'de').daily
     },
     trolleys: {
         status: "erlaubt",
@@ -249,11 +283,23 @@ const StatusRepository = {
             el.innerHTML = `<span class="${dotClass}"></span> <strong>${courseText}</strong> · ${greensText}`;
         });
 
-        // 2. Status Widget Cards on Homepage
-        // Öffnungszeiten
+        // 2. Hero Opening Hours & Status Widget Cards on Homepage
+        const seasonal = getSeasonalOpeningHours(new Date(), currentLang);
+        const heroOpeningTime = document.getElementById('hero-opening-time');
+        const heroOpeningLabel = document.querySelector('[data-i18n="heroOpeningLabel"], .hero-opening-label');
+        if (heroOpeningLabel) {
+            heroOpeningLabel.textContent = isEn ? 'Current Opening Hours:' : 'Aktuelle Öffnungszeit:';
+        }
+        if (heroOpeningTime) {
+            heroOpeningTime.textContent = seasonal.short;
+        }
+
+        // Öffnungszeiten Status Card
         const shopVal = document.querySelector('[data-i18n="shopVal"], #status-val-hours');
-        if (shopVal && s.openingHours) {
-            shopVal.textContent = s.openingHours.text || (isEn ? 'Daily 08:00–18:00' : 'täglich 08–18 Uhr');
+        if (shopVal) {
+            const rawHours = (s.openingHours && s.openingHours.text) ? s.openingHours.text.trim() : '';
+            const isGenericSummerDefault = !rawHours || rawHours === 'täglich 08:00 – 18:00 Uhr' || rawHours === 'täglich 08–18 Uhr' || rawHours === 'Daily 08:00–18:00';
+            shopVal.textContent = isGenericSummerDefault ? seasonal.daily : rawHours;
         }
 
         // Trolleys

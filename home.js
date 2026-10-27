@@ -35,6 +35,7 @@
             navBookTeeTime: 'Startzeit buchen',
 
             // Hero Section
+            heroOpeningLabel: 'Aktuelle Öffnungszeit:',
             heroBadge: 'Willkommen im Golfresort',
             heroTitle: 'Gut Wissmannshof',
             heroLead: 'Golf. Hotel. Natur. An einem Ort.',
@@ -195,6 +196,7 @@
             navBookTeeTime: 'Book Tee Time',
 
             // Hero Section
+            heroOpeningLabel: 'Current Opening Hours:',
             heroBadge: 'Welcome to the Golf Resort',
             heroTitle: 'Gut Wissmannshof',
             heroLead: 'Golf. Hotel. Nature. All in One Place.',
@@ -440,6 +442,22 @@
         // Apply live dynamic status on top of i18n
         if (typeof window.StatusRepository !== 'undefined' && window.StatusRepository.applyToDOM) {
             window.StatusRepository.applyToDOM(null, lang);
+        }
+
+        // Ensure Hero seasonal opening hours are always up-to-date
+        const heroOpeningTimeEl = document.getElementById('hero-opening-time');
+        if (heroOpeningTimeEl) {
+            const d = new Date();
+            const m = d.getMonth();
+            const day = d.getDate();
+            const isEn = (lang === 'en');
+            let timeStr = isEn ? '08:00 – 18:00' : '8 – 18 Uhr';
+            if (m === 10 || m === 11 || m === 0 || m === 1) {
+                timeStr = isEn ? '10:00 – 16:00' : '10 – 16 Uhr';
+            } else if (m === 2 || (m === 9 && day >= 16)) {
+                timeStr = isEn ? '09:00 – 17:00' : '9 – 17 Uhr';
+            }
+            heroOpeningTimeEl.textContent = timeStr;
         }
 
         // Render dynamic news ticker in active language
