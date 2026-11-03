@@ -36,10 +36,21 @@ $message = trim($data['message'] ?? $data['msg'] ?? '');
 $formSource = trim($data['source'] ?? 'Webseite');
 $details = $data['details'] ?? [];
 
-if (empty($name) || empty($email)) {
+if (empty($name)) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Name und E-Mail sind Pflichtfelder.']);
+    echo json_encode(['success' => false, 'error' => 'Name ist ein Pflichtfeld.']);
     exit;
+}
+
+if (empty($email)) {
+    // For quick mobile cancellations, email is optional; default to club info address
+    if (stripos($formSource, 'Abmeldung') !== false || stripos($subject, 'Abmeldung') !== false) {
+        $email = 'jugendtraining@wissmannshof.de';
+    } else {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Name und E-Mail sind Pflichtfelder.']);
+        exit;
+    }
 }
 
 // Ensure "[via Webseite]" is in the subject

@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Jugendtraining Abmeldung · Gut Wissmannshof</title>
+    <meta name="description" content="Schnelle und unkomplizierte Online-Abmeldung vom Jugendtraining auf Gut Wissmannshof. Speziell für Mobiltelefone optimiert: In wenigen Sekunden erledigt.">
+    <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="home.css?v=1791104500000">
+
+    <style>
+        /* ==========================================================================
+           Mobile-First Jugendtraining Abmeldung - Gut Wissmannshof
+           ========================================================================== */
+        :root {
+            --app-max-width: 620px;
+            --touch-target-height: 52px;
+            --brand-green-deep: #07150E;
+            --brand-green-forest: #0D2218;
+            --brand-green-surface: #133324;
+            --brand-gold: #B8963E;
+            --brand-gold-hover: #9E7F30;
+            --brand-gold-pale: rgba(184, 150, 62, 0.12);
+            --brand-gold-border: rgba(184, 150, 62, 0.35);
+            --brand-cream: #F8F5EE;
+            --brand-white: #FFFFFF;
+            --brand-text-dark: #1F2922;
+            --brand-text-muted: #5E6660;
+            --brand-danger: #C8102E;
+            --brand-success: #28a745;
+            --brand-radius-card: 20px;
+            --brand-radius-pill: 9999px;
+            --brand-radius-input: 14px;
+        }
+
+        body {
+            background-color: var(--brand-cream);
+            color: var(--brand-text-dark);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Slim Mobile App Header */
+        .abmeldung-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(184, 150, 62, 0.22);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .abmeldung-header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .abmeldung-header-brand img {
+            height: 34px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .abmeldung-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-header-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--brand-green-forest);
+            background: rgba(184, 150, 62, 0.15);
+            border: 1px solid var(--brand-gold);
+            border-radius: var(--brand-radius-pill);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-header-call:active {
+            transform: scale(0.97);
+            background: var(--brand-gold);
+            color: #FFFFFF;
+        }
+
+        /* Main Container */
+        .abmeldung-main {
+            flex: 1 0 auto;
+            max-width: var(--app-max-width);
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px 16px 40px;
+            box-sizing: border-box;
+        }
+
+        /* Page Top Meta */
+        .abmeldung-top-meta {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .abmeldung-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8A6B22;
+            background: rgba(184, 150, 62, 0.16);
+            border: 1px solid rgba(184, 150, 62, 0.4);
+            padding: 4px 14px;
+            border-radius: var(--brand-radius-pill);
+            margin-bottom: 10px;
+        }
+
+        .abmeldung-title {
+            font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+            font-weight: 800;
+            color: var(--brand-green-forest);
+            line-height: 1.25;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .abmeldung-subtitle {
+            font-size: 0.92rem;
+            color: var(--brand-text-muted);
+            line-height: 1.45;
+            margin: 0 auto 16px;
+            max-width: 500px;
+        }
+
+        /* Dynamic Live Statement Card */
+        .live-statement-card {
+            background: linear-gradient(135deg, var(--brand-green-deep) 0%, var(--brand-green-forest) 100%);
+            border: 1.5px solid var(--brand-gold);
+            border-radius: 16px;
+            padding: 14px 18px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(7, 21, 14, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .live-statement-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(184, 150, 62, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .live-statement-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #D4AF37;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .live-statement-text {
+            font-size: 1.02rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.94);
+            margin: 0;
+        }
+
+        .live-token {
+            display: inline-block;
+            background: rgba(184, 150, 62, 0.28);
+            border-bottom: 2px solid #D4AF37;
+            color: #FFE599;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 4px;
+            transition: all 0.25s ease;
+        }
+
+        .live-token.active {
+            background: #B8963E;
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(184, 150, 62, 0.4);
+        }
+
+        /* Form Card */
+        .abmeldung-form-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E0D3;
+            border-radius: var(--brand-radius-card);
+            padding: 22px 18px;
+            box-shadow: 0 6px 24px rgba(13, 34, 24, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 480px) {
+            .abmeldung-form-card {
+                padding: 28px 24px;
+            }
+        }
+
+        .form-section-block {
+            margin-bottom: 22px;
+        }
+
+        .form-section-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--brand-green-forest);
+            margin-bottom: 8px;
+        }
+
+        .field-label-desc {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--brand-text-muted);
+            margin-top: -4px;
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .req-star {
+            color: var(--brand-danger);
+            font-weight: 700;
+            margin-left: 3px;
+        }
+
+        /* Big Touch Inputs */
+        .touch-input {
+            width: 100%;
+            height: var(--touch-target-height);
+            font-size: 1.02rem;
+            font-family: inherit;
+            color: var(--brand-text-dark);
+            background: #FFFFFF;
+            border: 1.5px solid #D6DCD7;
+            border-radius: var(--brand-radius-input);
+            padding: 0 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            -webkit-appearance: none;
+        }
+
+        .touch-input:focus {
+            border-color: var(--brand-gold);
+            box-shadow: 0 0 0 4px rgba(184, 150, 62, 0.18);
+        }
+
+        .touch-input::placeholder {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+        }
+
+        .touch-textarea {
+            width: 100%;
+            min-height: 74px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--brand-text-dark);
+            background: #FFFFFF;
+            border: 1.5px solid #D6DCD7;
+            border-radius: var(--brand-radius-input);
+            padding: 12px 16px;
+            box-sizing: border-box;
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .touch-textarea:focus {
+            border-color: var(--brand-gold);
+            box-shadow: 0 0 0 4px rgba(184, 150, 62, 0.18);
+        }
+
+        /* Quick Child Suggestion Chip */
+        .recent-child-bar {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--brand-text-muted);
+            flex-wrap: wrap;
+        }
+
+        .recent-child-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(184, 150, 62, 0.12);
+            color: var(--brand-green-forest);
+            border: 1px dashed var(--brand-gold);
+            border-radius: var(--brand-radius-pill);
+            padding: 4px 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .recent-child-chip:active {
+            background: var(--brand-gold);
+            color: #FFFFFF;
+            transform: scale(0.96);
+        }
+
+        /* Saturday Quick Picker Chips */
+        .saturday-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 480px) {
+            .saturday-chips-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .sat-chip {
+            background: #FAFAFA;
+            border: 2px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 72px;
+        }
+
+        .sat-chip:hover {
+            border-color: rgba(184, 150, 62, 0.6);
+            background: #FFFFFF;
+        }
+
+        .sat-chip:active {
+            transform: scale(0.96);
+        }
+
+        .sat-chip.selected {
+            background: linear-gradient(135deg, var(--brand-green-forest) 0%, #173f2c 100%);
+            border-color: var(--brand-gold);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(13, 34, 24, 0.22);
+        }
+
+        .sat-chip-weekday {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #8C6D23;
+            margin-bottom: 2px;
+        }
+
+        .sat-chip.selected .sat-chip-weekday {
+            color: #D4AF37;
+        }
+
+        .sat-chip-date {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--brand-green-forest);
+            line-height: 1.2;
+        }
+
+        .sat-chip.selected .sat-chip-date {
+            color: #FFFFFF;
+        }
+
+        .sat-chip-badge {
+            font-size: 0.65rem;
+            color: var(--brand-text-muted);
+            margin-top: 2px;
+        }
+
+        .sat-chip.selected .sat-chip-badge {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .sat-chip-check {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 0.85rem;
+            color: var(--brand-gold);
+            display: none;
+        }
+
+        .sat-chip.selected .sat-chip-check {
+            display: block;
+        }
+
+        /* Custom Date Picker Accordion / Toggle */
+        .custom-date-toggle-btn {
+            background: none;
+            border: 1px dashed rgba(184, 150, 62, 0.6);
+            border-radius: 12px;
+            color: #8C6D23;
+            font-size: 0.86rem;
+            font-weight: 700;
+            padding: 10px 14px;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .custom-date-toggle-btn:active {
+            background: rgba(184, 150, 62, 0.1);
+        }
+
+        .custom-date-drawer {
+            display: none;
+            margin-top: 10px;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .custom-date-drawer.open {
+            display: block;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        /* Reason Quick Tags */
+        .reason-tags-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .reason-tag {
+            background: #F3F4F6;
+            border: 1.5px solid #E5E7EB;
+            border-radius: var(--brand-radius-pill);
+            padding: 7px 14px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--brand-text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .reason-tag:active {
+            transform: scale(0.96);
+        }
+
+        .reason-tag.active {
+            background: rgba(184, 150, 62, 0.16);
+            border-color: var(--brand-gold);
+            color: var(--brand-green-forest);
+            font-weight: 700;
+        }
+
+        /* Optional Parent Contact Toggle */
+        .parent-contact-box {
+            background: #F8F9FA;
+            border: 1px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+
+        .parent-contact-header {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--brand-green-forest);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .contact-inputs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        @media (min-width: 480px) {
+            .contact-inputs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-mini-input {
+            width: 100%;
+            height: 44px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--brand-text-dark);
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            border-radius: 10px;
+            padding: 0 12px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .contact-mini-input:focus {
+            border-color: var(--brand-gold);
+        }
+
+        /* Primary Submit CTA */
+        .submit-section {
+            margin-top: 24px;
+        }
+
+        .btn-submit-abmeldung {
+            width: 100%;
+            height: 56px;
+            background: linear-gradient(135deg, #B8963E 0%, #A27E29 100%);
+            color: #FFFFFF !important;
+            border: none;
+            border-radius: var(--brand-radius-pill);
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: inherit;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(184, 150, 62, 0.4);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .btn-submit-abmeldung:hover {
+            background: linear-gradient(135deg, #C2A044 0%, #B8963E 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(184, 150, 62, 0.48);
+        }
+
+        .btn-submit-abmeldung:active {
+            transform: scale(0.98);
+        }
+
+        .btn-submit-abmeldung:disabled {
+            background: #9CA3AF !important;
+            box-shadow: none !important;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--brand-text-muted);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Success Card (Post Submission) */
+        .success-card {
+            display: none;
+            background: #FFFFFF;
+            border: 2px solid #28a745;
+            border-radius: var(--brand-radius-card);
+            padding: 32px 20px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(40, 167, 69, 0.15);
+            animation: fadeIn 0.35s ease-out;
+        }
+
+        .success-icon-badge {
+            width: 72px;
+            height: 72px;
+            background: #E8F8ED;
+            border: 2px solid #28a745;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #28a745;
+            margin-bottom: 16px;
+        }
+
+        .success-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--brand-green-forest);
+            margin: 0 0 8px 0;
+        }
+
+        .success-summary-box {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 18px 0;
+            text-align: left;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .success-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dashed #E5E7EB;
+        }
+
+        .success-summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .success-label {
+            color: var(--brand-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .success-value {
+            font-weight: 700;
+            color: var(--brand-green-forest);
+            text-align: right;
+        }
+
+        .success-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-action-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--brand-green-forest);
+            background: #FFFFFF;
+            border: 1.5px solid var(--brand-green-forest);
+            border-radius: var(--brand-radius-pill);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action-outline:active {
+            background: #F3F4F6;
+            transform: scale(0.98);
+        }
+
+        .btn-action-whatsapp {
+            background: #25D366;
+            color: #FFFFFF !important;
+            border-color: #25D366;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-action-whatsapp:active {
+            background: #20BA5A;
+        }
+
+        /* Subtle Bottom Info & Cross-Links */
+        .bottom-links-box {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--brand-text-muted);
+        }
+
+        .bottom-links-box a {
+            color: #8C6D23;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .abmeldung-footer {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E0D3;
+            padding: 24px 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--brand-text-muted);
+            margin-top: auto;
+        }
+
+        .abmeldung-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .abmeldung-footer-links a {
+            color: var(--brand-text-muted);
+            text-decoration: none;
+        }
+
+        .abmeldung-footer-links a:hover {
+            color: var(--brand-green-forest);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Sticky Header -->
+    <header class="abmeldung-header">
+        <a href="index.html" class="abmeldung-header-brand" title="Gut Wissmannshof Startseite">
+            <img src="assets/logo_regular_black.png" alt="Sport- und Golf-Resort Gut Wissmannshof Logo">
+        </a>
+        <div class="abmeldung-header-actions">
+            <a href="tel:+495543999335" class="btn-header-call" title="Service Center anrufen">
+                <span>📞</span>
+                <span>Service Center</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="abmeldung-main">
+
+        <!-- Top Title & Badge -->
+        <div class="abmeldung-top-meta">
+            <span class="abmeldung-badge">
+                <span>⛳</span>
+                <span>Jugendtraining · Abmeldung</span>
+            </span>
+            <h1 class="abmeldung-title">Kind vom Jugendtraining abmelden</h1>
+            <p class="abmeldung-subtitle">
+                Das Training findet an 3 Samstagen im Monat statt. Wählen Sie einfach das Datum und den Namen Ihres Kindes.
+            </p>
+        </div>
+
+        <!-- Dynamic Live Natural-Language Sentence Card -->
+        <div class="live-statement-card">
+            <div class="live-statement-label">
+                <span>💬</span>
+                <span>Ihre Abmeldung im Überblick:</span>
+            </div>
+            <p class="live-statement-text">
+                „Wir möchten unser Kind <span id="preview-child" class="live-token">Name des Kindes</span> für das Jugendtraining am <span id="preview-date" class="live-token">Datum auswählen</span> abmelden.“
+            </p>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="abmeldung-form-card" id="form-container">
+            <form id="abmeldung-form" onsubmit="event.preventDefault(); submitAbmeldung();">
+
+                <!-- 1. Name des Kindes -->
+                <div class="form-section-block">
+                    <label class="field-label" for="child-name">
+                        <span>👤 Name des Kindes <span class="req-star">*</span></span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="child-name" 
+                        class="touch-input" 
+                        placeholder="Vor- und Nachname (z. B. Paul Meier)" 
+                        autocomplete="name" 
+                        required
+                        autofocus
+                    >
+                    <!-- Quick-chip for stored child name from previous visit -->
+                    <div class="recent-child-bar" id="recent-child-bar">
+                        <span>Zuletzt verwendet:</span>
+                        <span class="recent-child-chip" id="recent-child-btn"></span>
+                    </div>
+                </div>
+
+                <!-- 2. Samstags-Auswahl (Kalender / Quick Chips) -->
+                <div class="form-section-block">
+                    <label class="field-label">
+                        <span>📅 Für welches Samstags-Training? <span class="req-star">*</span></span>
+                    </label>
+                    <div class="field-label-desc">
+                        Tippen Sie direkt auf den gewünschten Samstag:
+                    </div>
+
+                    <!-- Generated Quick Chips -->
+                    <div class="saturday-chips-grid" id="saturday-chips-container">
+                        <!-- Populated by JavaScript with upcoming Saturdays -->
+                    </div>
+
+                    <!-- Fallback / Alternative Date Button -->
+                    <button type="button" class="custom-date-toggle-btn" id="toggle-custom-date-btn">
+                        <span>📆</span>
+                        <span>Anderen Samstag im Kalender wählen...</span>
+                    </button>
+
+                    <div class="custom-date-drawer" id="custom-date-drawer">
+                        <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--brand-green-forest); margin-bottom:6px;" for="custom-date-input">
+                            Beliebiges Datum auswählen:
+                        </label>
+                        <input 
+                            type="date" 
+                            id="custom-date-input" 
+                            class="touch-input" 
+                            style="background:#FFFFFF; font-size:1rem;"
+                        >
+                        <div id="date-weekday-notice" style="font-size:0.78rem; color:#8C6D23; margin-top:6px; display:none;"></div>
+                    </div>
+
+                    <!-- Hidden storage for selected ISO date -->
+                    <input type="hidden" id="selected-date" required>
+                    <input type="hidden" id="selected-date-formatted" required>
+                </div>
+
+                <!-- 3. Grund für die Abmeldung (Knackig & Optional) -->
+                <div class="form-section-block">
+                    <label class="field-label" for="notes">
+                        <span>💬 Grund / Bemerkung <span style="font-size:0.8rem; font-weight:400; color:var(--brand-text-muted);">(optional)</span></span>
+                    </label>
+                    <div class="field-label-desc">
+                        Schnellauswahl durch Antippen:
+                    </div>
+
+                    <div class="reason-tags-row">
+                        <span class="reason-tag" data-reason="Krankheit / Verletzt 🤒">🤒 Krank / Verletzt</span>
+                        <span class="reason-tag" data-reason="Schulveranstaltung / Klausur 📚">📚 Schule / Klausur</span>
+                        <span class="reason-tag" data-reason="Familienausflug / Urlaub 🚗">🚗 Familienausflug</span>
+                        <span class="reason-tag" data-reason="Sonstige Verhinderung 💬">💬 Sonstiges</span>
+                    </div>
+
+                    <textarea 
+                        id="notes" 
+                        class="touch-textarea" 
+                        rows="2" 
+                        placeholder="Optionale Notiz für die Jugendtrainer (z. B. 'Meldet sich für die nächste Woche wieder zurück')..."
+                    ></textarea>
+                </div>
+
+                <!-- 4. Optional: Kontaktdaten für Rückfragen -->
+                <div class="form-section-block">
+                    <div class="parent-contact-box">
+                        <div class="parent-contact-header">
+                            <span>✉️ Kontaktdaten der Eltern (optional)</span>
+                            <span style="font-size:0.75rem; color:var(--brand-text-muted); font-weight:400;">für E-Mail-Bestätigung</span>
+                        </div>
+                        <div class="contact-inputs-grid">
+                            <input 
+                                type="email" 
+                                id="parent-email" 
+                                class="contact-mini-input" 
+                                placeholder="Ihre E-Mail-Adresse"
+                                autocomplete="email"
+                            >
+                            <input 
+                                type="tel" 
+                                id="parent-phone" 
+                                class="contact-mini-input" 
+                                placeholder="Telefon / Mobilfunk"
+                                autocomplete="tel"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Submit CTA Button -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-submit-abmeldung" id="submit-btn">
+                        <span>⛳</span>
+                        <span>Abmeldung jetzt absenden</span>
+                    </button>
+                    <div class="submit-note">
+                        <span>🔒</span>
+                        <span>Geht direkt an das Trainerteam &amp; das Service Center Gut Wissmannshof.</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- SUCCESS CONFIRMATION SCREEN (Shown after submission) -->
+        <div class="success-card" id="success-card">
+            <div class="success-icon-badge">✓</div>
+            <h2 class="success-title">Abmeldung erfolgreich übermittelt!</h2>
+            <p style="color:var(--brand-text-muted); font-size:0.92rem; margin:0 auto; max-width:440px;">
+                Vielen Dank! Die Abmeldung wurde bei uns im System erfasst und unser Jugendtrainer-Team ist informiert.
+            </p>
+
+            <div class="success-summary-box">
+                <div class="success-summary-row">
+                    <span class="success-label">Kind:</span>
+                    <span class="success-value" id="res-child-name">-</span>
+                </div>
+                <div class="success-summary-row">
+                    <span class="success-label">Termin:</span>
+                    <span class="success-value" id="res-training-date">-</span>
+                </div>
+                <div class="success-summary-row">
+                    <span class="success-label">Status:</span>
+                    <span class="success-value" style="color:#28a745;">Vom Training abgemeldet</span>
+                </div>
+                <div class="success-summary-row" id="res-reason-row" style="display:none;">
+                    <span class="success-label">Grund / Notiz:</span>
+                    <span class="success-value" id="res-reason-val">-</span>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <button type="button" class="btn-action-outline btn-action-whatsapp" id="btn-share-whatsapp">
+                    <span>📲</span>
+                    <span>Bestätigung per WhatsApp teilen</span>
+                </button>
+                <a href="#" class="btn-action-outline" id="btn-open-email-copy" style="display:none;">
+                    <span>📧</span>
+                    <span>Als E-Mail-Nachricht öffnen</span>
+                </a>
+                <button type="button" class="btn-action-outline" id="btn-another-abmeldung">
+                    <span>🔄</span>
+                    <span>Weiteres Kind oder Datum abmelden</span>
+                </button>
+                <a href="index.html" class="btn-action-outline" style="border-color:#D1D5DB; color:var(--brand-text-muted);">
+                    <span>🏠 Zurück zur Startseite</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cross-Links & Service Center Notice -->
+        <div class="bottom-links-box">
+            <p>
+                Noch nicht für die Saison angemeldet? <br>
+                <a href="jugendtraining-anmeldung.html">Hier geht's zur offiziellen Jugendtraining-Anmeldung →</a>
+            </p>
+            <p style="margin-top:10px; font-size:0.8rem;">
+                Bei dringenden Rückfragen am Trainingstag: <br>
+                Service Center: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a> · <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a>
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Minimal Clean Footer -->
+    <footer class="abmeldung-footer">
+        <div class="abmeldung-footer-links">
+            <a href="jugendtraining-anmeldung.html">Jugendtraining Info &amp; Anmeldung</a>
+            <span>·</span>
+            <a href="golfakademie.html">Golf Akademie</a>
+            <span>·</span>
+            <a href="impressum.html">Impressum</a>
+            <span>·</span>
+            <a href="datenschutz.html">Datenschutz</a>
+        </div>
+        <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Logic & Event Handlers -->
+    <script>
+        (function() {
+            // Elements
+            const childNameInput = document.getElementById('child-name');
+            const previewChild = document.getElementById('preview-child');
+            const previewDate = document.getElementById('preview-date');
+            const chipsContainer = document.getElementById('saturday-chips-container');
+            const selectedDateInput = document.getElementById('selected-date');
+            const selectedDateFormattedInput = document.getElementById('selected-date-formatted');
+            const toggleCustomDateBtn = document.getElementById('toggle-custom-date-btn');
+            const customDateDrawer = document.getElementById('custom-date-drawer');
+            const customDateInput = document.getElementById('custom-date-input');
+            const dateWeekdayNotice = document.getElementById('date-weekday-notice');
+            const recentChildBar = document.getElementById('recent-child-bar');
+            const recentChildBtn = document.getElementById('recent-child-btn');
+            const reasonTags = document.querySelectorAll('.reason-tag');
+            const notesTextarea = document.getElementById('notes');
+            const formContainer = document.getElementById('form-container');
+            const successCard = document.getElementById('success-card');
+            const submitBtn = document.getElementById('submit-btn');
+
+            let selectedReasonTag = "";
+
+            // 1. Live update for Child Name
+            childNameInput.addEventListener('input', () => {
+                const val = childNameInput.value.trim();
+                if (val) {
+                    previewChild.textContent = val;
+                    previewChild.classList.add('active');
+                } else {
+                    previewChild.textContent = "Name des Kindes";
+                    previewChild.classList.remove('active');
+                }
+            });
+
+            // 2. LocalStorage for previously submitted child name
+            const STORED_CHILD_KEY = "sgr_last_child_name";
+            const lastChild = localStorage.getItem(STORED_CHILD_KEY);
+            if (lastChild && recentChildBar && recentChildBtn) {
+                recentChildBtn.textContent = `👤 ${lastChild}`;
+                recentChildBar.style.display = 'flex';
+                recentChildBtn.addEventListener('click', () => {
+                    childNameInput.value = lastChild;
+                    childNameInput.dispatchEvent(new Event('input'));
+                    childNameInput.focus();
+                });
+            }
+
+            // 3. Compute and render next 4 to 6 Saturdays
+            const GERMAN_MONTHS = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+            const GERMAN_FULL_MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
+            function getNextSaturdays(count = 6) {
+                const list = [];
+                const now = new Date();
+                const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+                // Find days until next Saturday (0=Sun, 1=Mon, ..., 6=Sat)
+                let daysToSat = (6 - d.getDay() + 7) % 7;
+                
+                // If today is Saturday, but past 15:00, jump to next Saturday
+                if (d.getDay() === 6 && now.getHours() >= 15) {
+                    daysToSat = 7;
+                }
+
+                d.setDate(d.getDate() + daysToSat);
+
+                for (let i = 0; i < count; i++) {
+                    const currentSat = new Date(d);
+                    const year = currentSat.getFullYear();
+                    const monthNum = String(currentSat.getMonth() + 1).padStart(2, '0');
+                    const day = String(currentSat.getDate()).padStart(2, '0');
+                    const iso = `${year}-${monthNum}-${day}`;
+                    const monthShort = GERMAN_MONTHS[currentSat.getMonth()];
+                    const monthFull = GERMAN_FULL_MONTHS[currentSat.getMonth()];
+
+                    list.push({
+                        iso,
+                        day,
+                        monthShort,
+                        monthFull,
+                        year,
+                        formattedLong: `Samstag, ${day}. ${monthFull} ${year}`,
+                        formattedShort: `Sa, ${day}. ${monthShort}`
+                    });
+
+                    d.setDate(d.getDate() + 7);
+                }
+                return list;
+            }
+
+            const saturdays = getNextSaturdays(6);
+
+            function selectSaturday(satObj, clickedEl = null) {
+                selectedDateInput.value = satObj.iso;
+                selectedDateFormattedInput.value = satObj.formattedLong;
+
+                previewDate.textContent = satObj.formattedLong;
+                previewDate.classList.add('active');
+
+                // Update active chip state
+                document.querySelectorAll('.sat-chip').forEach(c => c.classList.remove('selected'));
+                if (clickedEl) {
+                    clickedEl.classList.add('selected');
+                } else {
+                    const matched = document.querySelector(`.sat-chip[data-iso="${satObj.iso}"]`);
+                    if (matched) matched.classList.add('selected');
+                }
+
+                // Vibrate feedback on mobile if supported
+                if (navigator.vibrate) navigator.vibrate(12);
+            }
+
+            // Render Saturday Chips
+            saturdays.forEach((sat, index) => {
+                const chip = document.createElement('div');
+                chip.className = 'sat-chip' + (index === 0 ? ' selected' : '');
+                chip.dataset.iso = sat.iso;
+                chip.innerHTML = `
+                    <span class="sat-chip-check">✓</span>
+                    <span class="sat-chip-weekday">Samstag</span>
+                    <span class="sat-chip-date">${sat.day}. ${sat.monthShort}</span>
+                    <span class="sat-chip-badge">${sat.year}</span>
+                `;
+
+                chip.addEventListener('click', () => {
+                    selectSaturday(sat, chip);
+                });
+
+                chipsContainer.appendChild(chip);
+
+                // Auto-select first Saturday by default for instant readiness
+                if (index === 0) {
+                    selectSaturday(sat, chip);
+                }
+            });
+
+            // 4. Custom Date Drawer Toggle & Listener
+            toggleCustomDateBtn.addEventListener('click', () => {
+                const isOpen = customDateDrawer.classList.toggle('open');
+                toggleCustomDateBtn.innerHTML = isOpen 
+                    ? `<span>▲</span><span>Kalenderauswahl schließen</span>`
+                    : `<span>📆</span><span>Anderen Samstag im Kalender wählen...</span>`;
+                if (isOpen) {
+                    const todayNow = new Date();
+                    customDateInput.min = `${todayNow.getFullYear()}-${String(todayNow.getMonth() + 1).padStart(2, '0')}-${String(todayNow.getDate()).padStart(2, '0')}`;
+                    customDateInput.focus();
+                }
+            });
+
+            customDateInput.addEventListener('change', () => {
+                const val = customDateInput.value;
+                if (!val) return;
+
+                const [year, month, day] = val.split('-').map(Number);
+                const chosenDate = new Date(year, month - 1, day);
+                const isSaturday = chosenDate.getDay() === 6;
+
+                const dayStr = String(day).padStart(2, '0');
+                const monthFull = GERMAN_FULL_MONTHS[month - 1];
+                const weekdayName = chosenDate.toLocaleDateString('de-DE', { weekday: 'long' });
+                const formattedLong = `${weekdayName}, ${dayStr}. ${monthFull} ${year}`;
+
+                selectedDateInput.value = val;
+                selectedDateFormattedInput.value = formattedLong;
+
+                previewDate.textContent = formattedLong;
+                previewDate.classList.add('active');
+
+                // Deselect chips if custom date picked
+                document.querySelectorAll('.sat-chip').forEach(c => c.classList.remove('selected'));
+
+                // Warning if not a Saturday
+                if (!isSaturday) {
+                    dateWeekdayNotice.style.display = 'block';
+                    dateWeekdayNotice.innerHTML = `⚠️ <strong>Hinweis:</strong> Der ${dayStr}. ${monthFull} ist ein ${weekdayName}. Unser Jugendtraining findet regulär samstags statt. Das Datum wurde trotzdem übernommen.`;
+                } else {
+                    dateWeekdayNotice.style.display = 'none';
+                }
+            });
+
+            // 5. Reason Quick Tags
+            reasonTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const reason = tag.dataset.reason;
+                    if (tag.classList.contains('active')) {
+                        tag.classList.remove('active');
+                        selectedReasonTag = "";
+                    } else {
+                        reasonTags.forEach(t => t.classList.remove('active'));
+                        tag.classList.add('active');
+                        selectedReasonTag = reason;
+                    }
+                });
+            });
+
+            // 6. Form Submission Handler
+            window.submitAbmeldung = async function() {
+                const childName = childNameInput.value.trim();
+                const trainingDate = selectedDateFormattedInput.value || previewDate.textContent;
+                const trainingIso = selectedDateInput.value;
+                const notes = notesTextarea.value.trim();
+                const parentEmail = document.getElementById('parent-email').value.trim();
+                const parentPhone = document.getElementById('parent-phone').value.trim();
+
+                if (!childName) {
+                    alert('Bitte geben Sie den Namen des Kindes ein.');
+                    childNameInput.focus();
+                    return;
+                }
+
+                if (!trainingDate || trainingDate.includes('auswählen')) {
+                    alert('Bitte wählen Sie ein Trainingsdatum (Samstag) aus.');
+                    return;
+                }
+
+                // Compile full reason
+                let fullReason = selectedReasonTag;
+                if (notes) {
+                    fullReason = fullReason ? `${fullReason} - ${notes}` : notes;
+                }
+                if (!fullReason) {
+                    fullReason = "Keine gesonderte Begründung angegeben";
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>⏳</span><span>Wird übermittelt...</span>`;
+
+                // Persist child name in localStorage for instant convenience next time
+                try {
+                    localStorage.setItem(STORED_CHILD_KEY, childName);
+                } catch (e) {}
+
+                const cleanSubject = `[Jugendtraining Abmeldung] ${childName} für ${trainingDate}`;
+                const plainMessage = 
+`Hallo Team Wissmannshof,
+
+hiermit melde ich mein Kind vom Jugendtraining ab:
+
+1. ANGABEN ZUR ABMELDUNG:
+- Kind: ${childName}
+- Trainingsdatum: ${trainingDate}
+- Begründung: ${fullReason}
+
+2. KONTAKTDATEN (ELTERN):
+- E-Mail für Bestätigung: ${parentEmail || 'Keine E-Mail hinterlegt'}
+- Telefon für Rückfragen: ${parentPhone || 'Keine Telefonnummer hinterlegt'}
+
+====================================================
+Hinweis: Diese Abmeldung wurde direkt über das mobile Formular auf wissmannshof.golf/jugendtraining-abmeldung gesendet.
+Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
+
+                // Transmit to contact API
+                let apiSuccess = false;
+                try {
+                    const res = await fetch('api/contact.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            source: 'Jugendtraining Abmeldung',
+                            name: `${childName} (Abmeldung Jugendtraining)`,
+                            email: parentEmail || 'jugendtraining@wissmannshof.de',
+                            phone: parentPhone || '',
+                            subject: cleanSubject,
+                            message: plainMessage,
+                            details: {
+                                'Abgemeldetes Kind': childName,
+                                'Trainingsdatum': trainingDate,
+                                'Datum (ISO)': trainingIso,
+                                'Grund': fullReason,
+                                'Eltern E-Mail': parentEmail || 'Keine',
+                                'Eltern Telefon': parentPhone || 'Keine'
+                            }
+                        })
+                    });
+
+                    if (res.ok) {
+                        apiSuccess = true;
+                    }
+                } catch (netErr) {
+                    console.warn("API submission notice:", netErr);
+                }
+
+                // Update Success Screen
+                document.getElementById('res-child-name').textContent = childName;
+                document.getElementById('res-training-date').textContent = trainingDate;
+
+                if (fullReason && fullReason !== "Keine gesonderte Begründung angegeben") {
+                    document.getElementById('res-reason-row').style.display = 'flex';
+                    document.getElementById('res-reason-val').textContent = fullReason;
+                } else {
+                    document.getElementById('res-reason-row').style.display = 'none';
+                }
+
+                // WhatsApp Share Handler
+                const shareBtn = document.getElementById('btn-share-whatsapp');
+                if (shareBtn) {
+                    const waText = encodeURIComponent(
+                        `⛳ *Jugendtraining Abmeldung Gut Wissmannshof*\n\n` +
+                        `Unser Kind *${childName}* wurde für das Jugendtraining am *${trainingDate}* abgemeldet.\n` +
+                        (fullReason !== "Keine gesonderte Begründung angegeben" ? `Grund: ${fullReason}\n\n` : `\n`) +
+                        `Gesendet über wissmannshof.golf/jugendtraining-abmeldung`
+                    );
+                    shareBtn.onclick = () => {
+                        window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
+                    };
+                }
+
+                // Email Copy Handler
+                const emailCopyBtn = document.getElementById('btn-open-email-copy');
+                if (emailCopyBtn) {
+                    const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(cleanSubject)}&body=${encodeURIComponent(plainMessage)}`;
+                    emailCopyBtn.href = mailtoUrl;
+                    emailCopyBtn.style.display = 'inline-flex';
+                }
+
+                // Reset Handler for "Weiteres Kind abmelden"
+                const anotherBtn = document.getElementById('btn-another-abmeldung');
+                if (anotherBtn) {
+                    anotherBtn.onclick = () => {
+                        childNameInput.value = "";
+                        notesTextarea.value = "";
+                        reasonTags.forEach(t => t.classList.remove('active'));
+                        selectedReasonTag = "";
+                        childNameInput.dispatchEvent(new Event('input'));
+
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = `<span>⛳</span><span>Abmeldung jetzt absenden</span>`;
+
+                        successCard.style.display = 'none';
+                        formContainer.style.display = 'block';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    };
+                }
+
+                // Hide Form, Show Success Card
+                formContainer.style.display = 'none';
+                successCard.style.display = 'block';
+                successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+        })();
+    </script>
+
+    <!-- Cookie Consent & Analytics -->
+    <script src="cookie-consent.js?v=1791104500000"></script>
+    <script src="analytics-tracker.js?v=1791104500000" defer></script>
+</body>
+</html>
