@@ -92,7 +92,19 @@ $mailBody .= "====================================================\n";
 $mailBody .= "Hinweis: Diese Nachricht wurde automatisch über das Kontaktformular auf wissmannshof.golf (via Webseite) generiert.\n";
 $mailBody .= "Sie können direkt auf diese E-Mail antworten, um dem Absender (" . $email . ") zu schreiben.\n";
 
-$targetEmail = 'info@wissmannshof.de';
+// Determine target recipients
+if (stripos($formSource, 'Jugendtraining Abmeldung') !== false || stripos($subject, 'Jugendtraining Abmeldung') !== false) {
+    // Jugendtraining cancellations go to Service Center, Maximilian Brock and Daniel Wünsche
+    $recipients = [
+        'info@wissmannshof.de',
+        'm.brock@wissmannshof.de',
+        'danielwuensche@hotmail.de'
+    ];
+} else {
+    $recipients = ['info@wissmannshof.de'];
+}
+
+$targetEmail = implode(', ', $recipients);
 $senderDomain = $_SERVER['SERVER_NAME'] ?? 'wissmannshof.golf';
 if (empty($senderDomain) || $senderDomain === 'localhost') {
     $senderDomain = 'wissmannshof.golf';
@@ -106,8 +118,16 @@ $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
 $headers[] = 'X-Mailer: PHP/' . phpversion();
 $headers[] = 'X-Origin-Form: ' . $formSource . ' (via Webseite)';
 
-// Send mail via PHP mail()
-$mailSent = @mail($targetEmail, '=?UTF-8?B?' . base64_encode($mailSubject) . '?=', $mailBody, implode("\r\n", $headers));
+// Send mail to each recipient individually for maximal delivery reliability
+$mailSent = false;
+$sentRecipients = [];
+foreach ($recipients as $recipient) {
+    $sent = @mail($recipient, '=?UTF-8?B?' . base64_encode($mailSubject) . '?=', $mailBody, implode("\r\n", $headers));
+    if ($sent) {
+        $sentRecipients[] = $recipient;
+        $mailSent = true;
+    }
+}
 
 // Log inquiry to data/inquiries.json as safety backup
 $logFile = __DIR__ . '/../data/inquiries.json';
@@ -125,6 +145,8 @@ $logEntry = [
     'subject' => $mailSubject,
     'message' => $message,
     'details' => $details,
+    'recipients' => $recipients,
+    'sentRecipients' => $sentRecipients,
     'mailSent' => $mailSent
 ];
 
