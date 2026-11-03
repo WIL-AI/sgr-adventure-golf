@@ -477,86 +477,6 @@
             animation: fadeIn 0.25s ease-out;
         }
 
-        /* Reason Quick Tags */
-        .reason-tags-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-
-        .reason-tag {
-            background: #F3F4F6;
-            border: 1.5px solid #E5E7EB;
-            border-radius: var(--brand-radius-pill);
-            padding: 7px 14px;
-            font-size: 0.84rem;
-            font-weight: 600;
-            color: var(--brand-text-dark);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .reason-tag:active {
-            transform: scale(0.96);
-        }
-
-        .reason-tag.active {
-            background: rgba(184, 150, 62, 0.16);
-            border-color: var(--brand-gold);
-            color: var(--brand-green-forest);
-            font-weight: 700;
-        }
-
-        /* Optional Parent Contact Toggle */
-        .parent-contact-box {
-            background: #F8F9FA;
-            border: 1px solid #E5E7EB;
-            border-radius: 14px;
-            padding: 12px 14px;
-        }
-
-        .parent-contact-header {
-            font-size: 0.84rem;
-            font-weight: 700;
-            color: var(--brand-green-forest);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .contact-inputs-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-
-        @media (min-width: 480px) {
-            .contact-inputs-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .contact-mini-input {
-            width: 100%;
-            height: 44px;
-            font-size: 0.9rem;
-            font-family: inherit;
-            color: var(--brand-text-dark);
-            background: #FFFFFF;
-            border: 1px solid #D1D5DB;
-            border-radius: 10px;
-            padding: 0 12px;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .contact-mini-input:focus {
-            border-color: var(--brand-gold);
-        }
 
         /* Primary Submit CTA */
         .submit-section {
@@ -870,57 +790,25 @@
                     <input type="hidden" id="selected-date-formatted" required>
                 </div>
 
-                <!-- 3. Grund für die Abmeldung (Knackig & Optional) -->
+                <!-- 3. Abgemeldet durch (Ihr Name) -->
                 <div class="form-section-block">
-                    <label class="field-label" for="notes">
-                        <span>💬 Grund / Bemerkung <span style="font-size:0.8rem; font-weight:400; color:var(--brand-text-muted);">(optional)</span></span>
+                    <label class="field-label" for="parent-name">
+                        <span>✍️ Abgemeldet durch (Ihr Name) <span class="req-star">*</span></span>
                     </label>
                     <div class="field-label-desc">
-                        Schnellauswahl durch Antippen:
+                        Vor- und Nachname des abmeldenden Elternteils / Erziehungsberechtigten:
                     </div>
-
-                    <div class="reason-tags-row">
-                        <span class="reason-tag" data-reason="Krankheit / Verletzt 🤒">🤒 Krank / Verletzt</span>
-                        <span class="reason-tag" data-reason="Schulveranstaltung / Klausur 📚">📚 Schule / Klausur</span>
-                        <span class="reason-tag" data-reason="Familienausflug / Urlaub 🚗">🚗 Familienausflug</span>
-                        <span class="reason-tag" data-reason="Sonstige Verhinderung 💬">💬 Sonstiges</span>
-                    </div>
-
-                    <textarea 
-                        id="notes" 
-                        class="touch-textarea" 
-                        rows="2" 
-                        placeholder="Optionale Notiz für die Jugendtrainer (z. B. 'Meldet sich für die nächste Woche wieder zurück')..."
-                    ></textarea>
+                    <input 
+                        type="text" 
+                        id="parent-name" 
+                        class="touch-input" 
+                        placeholder="z. B. Sabine Meier" 
+                        autocomplete="name" 
+                        required
+                    >
                 </div>
 
-                <!-- 4. Optional: Kontaktdaten für Rückfragen -->
-                <div class="form-section-block">
-                    <div class="parent-contact-box">
-                        <div class="parent-contact-header">
-                            <span>✉️ Kontaktdaten der Eltern (optional)</span>
-                            <span style="font-size:0.75rem; color:var(--brand-text-muted); font-weight:400;">für E-Mail-Bestätigung</span>
-                        </div>
-                        <div class="contact-inputs-grid">
-                            <input 
-                                type="email" 
-                                id="parent-email" 
-                                class="contact-mini-input" 
-                                placeholder="Ihre E-Mail-Adresse"
-                                autocomplete="email"
-                            >
-                            <input 
-                                type="tel" 
-                                id="parent-phone" 
-                                class="contact-mini-input" 
-                                placeholder="Telefon / Mobilfunk"
-                                autocomplete="tel"
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. Submit CTA Button -->
+                <!-- 4. Submit CTA Button -->
                 <div class="submit-section">
                     <button type="submit" class="btn-submit-abmeldung" id="submit-btn">
                         <span>⛳</span>
@@ -928,7 +816,7 @@
                     </button>
                     <div class="submit-note">
                         <span>🔒</span>
-                        <span>Geht direkt an das Trainerteam &amp; das Service Center Gut Wissmannshof.</span>
+                        <span>Geht direkt an das Service Center Gut Wissmannshof.</span>
                     </div>
                 </div>
             </form>
@@ -939,7 +827,7 @@
             <div class="success-icon-badge">✓</div>
             <h2 class="success-title">Abmeldung erfolgreich übermittelt!</h2>
             <p style="color:var(--brand-text-muted); font-size:0.92rem; margin:0 auto; max-width:440px;">
-                Vielen Dank! Die Abmeldung wurde bei uns im System erfasst und unser Jugendtrainer-Team ist informiert.
+                Vielen Dank! Die Abmeldung wurde bei uns im System erfasst und an das Service Center Gut Wissmannshof übermittelt.
             </p>
 
             <div class="success-summary-box">
@@ -952,12 +840,12 @@
                     <span class="success-value" id="res-training-date">-</span>
                 </div>
                 <div class="success-summary-row">
+                    <span class="success-label">Abgemeldet durch:</span>
+                    <span class="success-value" id="res-parent-name">-</span>
+                </div>
+                <div class="success-summary-row">
                     <span class="success-label">Status:</span>
                     <span class="success-value" style="color:#28a745;">Vom Training abgemeldet</span>
-                </div>
-                <div class="success-summary-row" id="res-reason-row" style="display:none;">
-                    <span class="success-label">Grund / Notiz:</span>
-                    <span class="success-value" id="res-reason-val">-</span>
                 </div>
             </div>
 
@@ -966,10 +854,6 @@
                     <span>📲</span>
                     <span>Bestätigung per WhatsApp teilen</span>
                 </button>
-                <a href="#" class="btn-action-outline" id="btn-open-email-copy" style="display:none;">
-                    <span>📧</span>
-                    <span>Als E-Mail-Nachricht öffnen</span>
-                </a>
                 <button type="button" class="btn-action-outline" id="btn-another-abmeldung">
                     <span>🔄</span>
                     <span>Weiteres Kind oder Datum abmelden</span>
@@ -1022,15 +906,12 @@
             const customDateDrawer = document.getElementById('custom-date-drawer');
             const customDateInput = document.getElementById('custom-date-input');
             const dateWeekdayNotice = document.getElementById('date-weekday-notice');
+            const parentNameInput = document.getElementById('parent-name');
             const recentChildBar = document.getElementById('recent-child-bar');
             const recentChildBtn = document.getElementById('recent-child-btn');
-            const reasonTags = document.querySelectorAll('.reason-tag');
-            const notesTextarea = document.getElementById('notes');
             const formContainer = document.getElementById('form-container');
             const successCard = document.getElementById('success-card');
             const submitBtn = document.getElementById('submit-btn');
-
-            let selectedReasonTag = "";
 
             // 1. Live update for Child Name
             childNameInput.addEventListener('input', () => {
@@ -1044,8 +925,10 @@
                 }
             });
 
-            // 2. LocalStorage for previously submitted child name
+            // 2. LocalStorage for previously submitted child name & parent name
             const STORED_CHILD_KEY = "sgr_last_child_name";
+            const STORED_PARENT_KEY = "sgr_last_parent_name";
+
             const lastChild = localStorage.getItem(STORED_CHILD_KEY);
             if (lastChild && recentChildBar && recentChildBtn) {
                 recentChildBtn.textContent = `👤 ${lastChild}`;
@@ -1055,6 +938,11 @@
                     childNameInput.dispatchEvent(new Event('input'));
                     childNameInput.focus();
                 });
+            }
+
+            const lastParent = localStorage.getItem(STORED_PARENT_KEY);
+            if (lastParent && parentNameInput) {
+                parentNameInput.value = lastParent;
             }
 
             // 3. Compute and render next 4 to 6 Saturdays
@@ -1190,29 +1078,12 @@
                 }
             });
 
-            // 5. Reason Quick Tags
-            reasonTags.forEach(tag => {
-                tag.addEventListener('click', () => {
-                    const reason = tag.dataset.reason;
-                    if (tag.classList.contains('active')) {
-                        tag.classList.remove('active');
-                        selectedReasonTag = "";
-                    } else {
-                        reasonTags.forEach(t => t.classList.remove('active'));
-                        tag.classList.add('active');
-                        selectedReasonTag = reason;
-                    }
-                });
-            });
-
-            // 6. Form Submission Handler
+            // 5. Form Submission Handler
             window.submitAbmeldung = async function() {
                 const childName = childNameInput.value.trim();
                 const trainingDate = selectedDateFormattedInput.value || previewDate.textContent;
                 const trainingIso = selectedDateInput.value;
-                const notes = notesTextarea.value.trim();
-                const parentEmail = document.getElementById('parent-email').value.trim();
-                const parentPhone = document.getElementById('parent-phone').value.trim();
+                const parentName = parentNameInput ? parentNameInput.value.trim() : "";
 
                 if (!childName) {
                     alert('Bitte geben Sie den Namen des Kindes ein.');
@@ -1225,41 +1096,35 @@
                     return;
                 }
 
-                // Compile full reason
-                let fullReason = selectedReasonTag;
-                if (notes) {
-                    fullReason = fullReason ? `${fullReason} - ${notes}` : notes;
-                }
-                if (!fullReason) {
-                    fullReason = "Keine gesonderte Begründung angegeben";
+                if (!parentName) {
+                    alert('Bitte geben Sie Ihren Namen ein (wer das Kind abmeldet).');
+                    if (parentNameInput) parentNameInput.focus();
+                    return;
                 }
 
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = `<span>⏳</span><span>Wird übermittelt...</span>`;
 
-                // Persist child name in localStorage for instant convenience next time
+                // Persist names in localStorage for instant convenience next time
                 try {
                     localStorage.setItem(STORED_CHILD_KEY, childName);
+                    if (parentName) localStorage.setItem(STORED_PARENT_KEY, parentName);
                 } catch (e) {}
 
                 const cleanSubject = `[Jugendtraining Abmeldung] ${childName} für ${trainingDate}`;
                 const plainMessage = 
 `Hallo Team Wissmannshof,
 
-hiermit melde ich mein Kind vom Jugendtraining ab:
+hiermit wird folgendes Kind vom Jugendtraining abgemeldet:
 
 1. ANGABEN ZUR ABMELDUNG:
 - Kind: ${childName}
 - Trainingsdatum: ${trainingDate}
-- Begründung: ${fullReason}
-
-2. KONTAKTDATEN (ELTERN):
-- E-Mail für Bestätigung: ${parentEmail || 'Keine E-Mail hinterlegt'}
-- Telefon für Rückfragen: ${parentPhone || 'Keine Telefonnummer hinterlegt'}
+- Abgemeldet durch: ${parentName}
 
 ====================================================
 Hinweis: Diese Abmeldung wurde direkt über das mobile Formular auf wissmannshof.golf/jugendtraining-abmeldung gesendet.
-Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
+Empfänger: Service Center Gut Wissmannshof`;
 
                 // Transmit to contact API
                 let apiSuccess = false;
@@ -1269,18 +1134,16 @@ Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             source: 'Jugendtraining Abmeldung',
-                            name: `${childName} (Abmeldung Jugendtraining)`,
-                            email: parentEmail || 'jugendtraining@wissmannshof.de',
-                            phone: parentPhone || '',
+                            name: `${childName} (Abgemeldet durch ${parentName})`,
+                            email: 'jugendtraining@wissmannshof.de',
+                            phone: '',
                             subject: cleanSubject,
                             message: plainMessage,
                             details: {
                                 'Abgemeldetes Kind': childName,
                                 'Trainingsdatum': trainingDate,
                                 'Datum (ISO)': trainingIso,
-                                'Grund': fullReason,
-                                'Eltern E-Mail': parentEmail || 'Keine',
-                                'Eltern Telefon': parentPhone || 'Keine'
+                                'Abgemeldet durch': parentName
                             }
                         })
                     });
@@ -1295,13 +1158,7 @@ Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
                 // Update Success Screen
                 document.getElementById('res-child-name').textContent = childName;
                 document.getElementById('res-training-date').textContent = trainingDate;
-
-                if (fullReason && fullReason !== "Keine gesonderte Begründung angegeben") {
-                    document.getElementById('res-reason-row').style.display = 'flex';
-                    document.getElementById('res-reason-val').textContent = fullReason;
-                } else {
-                    document.getElementById('res-reason-row').style.display = 'none';
-                }
+                document.getElementById('res-parent-name').textContent = parentName;
 
                 // WhatsApp Share Handler
                 const shareBtn = document.getElementById('btn-share-whatsapp');
@@ -1309,20 +1166,12 @@ Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
                     const waText = encodeURIComponent(
                         `⛳ *Jugendtraining Abmeldung Gut Wissmannshof*\n\n` +
                         `Unser Kind *${childName}* wurde für das Jugendtraining am *${trainingDate}* abgemeldet.\n` +
-                        (fullReason !== "Keine gesonderte Begründung angegeben" ? `Grund: ${fullReason}\n\n` : `\n`) +
-                        `Gesendet über wissmannshof.golf/jugendtraining-abmeldung`
+                        `Abgemeldet durch: ${parentName}\n\n` +
+                        `Service Center Gut Wissmannshof`
                     );
                     shareBtn.onclick = () => {
                         window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
                     };
-                }
-
-                // Email Copy Handler
-                const emailCopyBtn = document.getElementById('btn-open-email-copy');
-                if (emailCopyBtn) {
-                    const mailtoUrl = `mailto:info@wissmannshof.de?subject=${encodeURIComponent(cleanSubject)}&body=${encodeURIComponent(plainMessage)}`;
-                    emailCopyBtn.href = mailtoUrl;
-                    emailCopyBtn.style.display = 'inline-flex';
                 }
 
                 // Reset Handler for "Weiteres Kind abmelden"
@@ -1330,9 +1179,6 @@ Empfänger: Jugendtrainer-Team & Service Center Gut Wissmannshof`;
                 if (anotherBtn) {
                     anotherBtn.onclick = () => {
                         childNameInput.value = "";
-                        notesTextarea.value = "";
-                        reasonTags.forEach(t => t.classList.remove('active'));
-                        selectedReasonTag = "";
                         childNameInput.dispatchEvent(new Event('input'));
 
                         submitBtn.disabled = false;
