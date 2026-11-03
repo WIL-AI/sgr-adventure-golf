@@ -628,16 +628,6 @@
             transform: scale(0.98);
         }
 
-        .btn-action-whatsapp {
-            background: #25D366;
-            color: #FFFFFF !important;
-            border-color: #25D366;
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-action-whatsapp:active {
-            background: #20BA5A;
-        }
 
         /* Subtle Bottom Info & Cross-Links */
         .bottom-links-box {
@@ -811,12 +801,12 @@
                 <!-- 4. Submit CTA Button -->
                 <div class="submit-section">
                     <button type="submit" class="btn-submit-abmeldung" id="submit-btn">
-                        <span>⛳</span>
-                        <span>Abmeldung jetzt absenden</span>
+                        <span>✉️</span>
+                        <span>Abmeldung per E-Mail absenden</span>
                     </button>
                     <div class="submit-note">
                         <span>🔒</span>
-                        <span>Geht direkt an das Service Center Gut Wissmannshof.</span>
+                        <span>Öffnet automatisch Ihre E-Mail an das Service Center &amp; Trainerteam.</span>
                     </div>
                 </div>
             </form>
@@ -824,10 +814,10 @@
 
         <!-- SUCCESS CONFIRMATION SCREEN (Shown after submission) -->
         <div class="success-card" id="success-card">
-            <div class="success-icon-badge">✓</div>
-            <h2 class="success-title">Abmeldung erfolgreich übermittelt!</h2>
-            <p style="color:var(--brand-text-muted); font-size:0.92rem; margin:0 auto; max-width:440px;">
-                Vielen Dank! Die Abmeldung wurde bei uns im System erfasst und an das Service Center Gut Wissmannshof übermittelt.
+            <div class="success-icon-badge" style="background:#EBF3EF; color:var(--brand-green-forest); border-color:var(--brand-gold);">✉️</div>
+            <h2 class="success-title">E-Mail-Programm geöffnet!</h2>
+            <p style="color:var(--brand-text-muted); font-size:0.92rem; margin:0 auto 16px; max-width:440px; line-height:1.5;">
+                Die vorbereitete Abmeldung wurde an Ihr Mail-Programm übergeben. Bitte tippen Sie dort nur noch auf <strong>„Senden“</strong>.
             </p>
 
             <div class="success-summary-box">
@@ -844,17 +834,31 @@
                     <span class="success-value" id="res-parent-name">-</span>
                 </div>
                 <div class="success-summary-row">
-                    <span class="success-label">Status:</span>
-                    <span class="success-value" style="color:#28a745;">Vom Training abgemeldet</span>
+                    <span class="success-label">Empfänger:</span>
+                    <span class="success-value" style="font-size:0.8rem; font-weight:600; color:var(--brand-text-dark); line-height:1.35;">
+                        info@wissmannshof.de<br>
+                        m.brock@wissmannshof.de<br>
+                        danielwuensche@hotmail.de
+                    </span>
                 </div>
             </div>
 
             <div class="success-actions">
-                <button type="button" class="btn-action-outline btn-action-whatsapp" id="btn-share-whatsapp">
-                    <span>📲</span>
-                    <span>Bestätigung per WhatsApp teilen</span>
-                </button>
-                <button type="button" class="btn-action-outline" id="btn-another-abmeldung">
+                <a href="#" class="btn-submit-abmeldung" id="btn-manual-mailto" style="text-decoration:none;">
+                    <span>✉️</span>
+                    <span>E-Mail im Mail-Programm öffnen</span>
+                </a>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+                    <a href="#" target="_blank" rel="noopener" class="btn-action-outline" id="btn-webmail-gmail" style="font-size:0.84rem; padding:10px 8px;">
+                        <span>Gmail öffnen</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" class="btn-action-outline" id="btn-webmail-outlook" style="font-size:0.84rem; padding:10px 8px;">
+                        <span>Outlook öffnen</span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn-action-outline" id="btn-another-abmeldung" style="margin-top:4px;">
                     <span>🔄</span>
                     <span>Weiteres Kind oder Datum abmelden</span>
                 </button>
@@ -1163,19 +1167,23 @@ Empfänger:
                 document.getElementById('res-training-date').textContent = trainingDate;
                 document.getElementById('res-parent-name').textContent = parentName;
 
-                // WhatsApp Share Handler
-                const shareBtn = document.getElementById('btn-share-whatsapp');
-                if (shareBtn) {
-                    const waText = encodeURIComponent(
-                        `⛳ *Jugendtraining Abmeldung Gut Wissmannshof*\n\n` +
-                        `Unser Kind *${childName}* wurde für das Jugendtraining am *${trainingDate}* abgemeldet.\n` +
-                        `Abgemeldet durch: ${parentName}\n\n` +
-                        `Service Center Gut Wissmannshof`
-                    );
-                    shareBtn.onclick = () => {
-                        window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
-                    };
-                }
+                // Prepare Mail Links & Pre-filled mailto
+                const mailRecipients = 'info@wissmannshof.de,m.brock@wissmannshof.de,danielwuensche@hotmail.de';
+                const encodedSub = encodeURIComponent(cleanSubject);
+                const encodedBody = encodeURIComponent(plainMessage);
+                const mailtoLink = `mailto:${mailRecipients}?subject=${encodedSub}&body=${encodedBody}`;
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@wissmannshof.de&cc=m.brock@wissmannshof.de,danielwuensche@hotmail.de&su=${encodedSub}&body=${encodedBody}`;
+                const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=info@wissmannshof.de&cc=m.brock@wissmannshof.de,danielwuensche@hotmail.de&subject=${encodedSub}&body=${encodedBody}`;
+
+                // Wire up fallback and webmail buttons
+                const btnManualMailto = document.getElementById('btn-manual-mailto');
+                if (btnManualMailto) btnManualMailto.href = mailtoLink;
+
+                const btnGmail = document.getElementById('btn-webmail-gmail');
+                if (btnGmail) btnGmail.href = gmailUrl;
+
+                const btnOutlook = document.getElementById('btn-webmail-outlook');
+                if (btnOutlook) btnOutlook.href = outlookUrl;
 
                 // Reset Handler for "Weiteres Kind abmelden"
                 const anotherBtn = document.getElementById('btn-another-abmeldung');
@@ -1185,7 +1193,7 @@ Empfänger:
                         childNameInput.dispatchEvent(new Event('input'));
 
                         submitBtn.disabled = false;
-                        submitBtn.innerHTML = `<span>⛳</span><span>Abmeldung jetzt absenden</span>`;
+                        submitBtn.innerHTML = `<span>✉️</span><span>Abmeldung per E-Mail absenden</span>`;
 
                         successCard.style.display = 'none';
                         formContainer.style.display = 'block';
@@ -1193,10 +1201,13 @@ Empfänger:
                     };
                 }
 
-                // Hide Form, Show Success Card
+                // Show Success Screen
                 formContainer.style.display = 'none';
                 successCard.style.display = 'block';
                 successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // AUTOMATICALLY OPEN USER'S EMAIL CLIENT (Standard mailto)
+                window.location.href = mailtoLink;
             };
         })();
     </script>
