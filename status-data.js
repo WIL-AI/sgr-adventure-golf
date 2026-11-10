@@ -9,11 +9,11 @@ function getSeasonalOpeningHours(dateObj, lang = 'de') {
     const day = d.getDate();
     const isEn = (lang === 'en');
 
-    // 1. November bis Ende Februar (28./29. Februar): 10 – 16 Uhr
+    // 1. November bis Ende Februar (28./29. Februar): 9 – 15 Uhr
     if (month === 10 || month === 11 || month === 0 || month === 1) {
         return {
-            short: isEn ? '10:00 – 16:00' : '10 – 16 Uhr',
-            daily: isEn ? 'Daily 10:00–16:00' : 'täglich 10–16 Uhr'
+            short: isEn ? '09:00 – 15:00' : '9 – 15 Uhr',
+            daily: isEn ? 'Daily 09:00–15:00' : 'täglich 09–15 Uhr'
         };
     }
     // März (1. März – 31. März): 9 – 17 Uhr

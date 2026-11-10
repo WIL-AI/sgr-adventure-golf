@@ -453,7 +453,7 @@
             const isEn = (lang === 'en');
             let timeStr = isEn ? '08:00 – 18:00' : '8 – 18 Uhr';
             if (m === 10 || m === 11 || m === 0 || m === 1) {
-                timeStr = isEn ? '10:00 – 16:00' : '10 – 16 Uhr';
+                timeStr = isEn ? '09:00 – 15:00' : '9 – 15 Uhr';
             } else if (m === 2 || (m === 9 && day >= 16)) {
                 timeStr = isEn ? '09:00 – 17:00' : '9 – 17 Uhr';
             }
