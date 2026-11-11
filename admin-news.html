@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -1629,9 +1629,9 @@
                 <span class="admin-header-title">Gut Wissmannshof &mdash; News Redaktion</span>
             </div>
             <nav class="admin-header-nav" style="display: flex; gap: 8px; align-items: center;">
-                <a href="#news-studio-section" class="btn-view-live" style="font-size: 0.82rem; background: var(--color-gold); color: var(--color-primary); font-weight: 700; border-color: var(--color-gold);">✍ News-Editor</a>
+                <a href="#status-management-card" class="btn-view-live" style="font-size: 0.82rem; background: var(--color-gold); color: var(--color-primary); font-weight: 700; border-color: var(--color-gold);">⛳ Platzstatus</a>
+                <a href="#news-studio-section" class="btn-view-live" style="font-size: 0.82rem;">✍ News-Editor</a>
                 <a href="#articles-list-card" class="btn-view-live" style="font-size: 0.82rem;">📰 Alle Beiträge (<span id="header-article-count">4</span>)</a>
-                <a href="#status-management-card" class="btn-view-live" style="font-size: 0.82rem;">⛳ Platzstatus</a>
                 <a href="#analytics-dashboard-card" class="btn-view-live" style="font-size: 0.82rem;">📊 Analytics</a>
             </nav>
             <div class="admin-header-actions">
@@ -1684,7 +1684,158 @@
         <!-- Toast Notification -->
         <div id="toast" class="toast-msg">Beitrag erfolgreich gespeichert! ✓</div>
 
-        <!-- 1. Sektion: News-Editor Studio (Editor Form + Live Preview) -->
+        <!-- 1. Sektion: Live Resort- & Platzstatus Management -->
+<div class="status-admin-card" id="status-management-card" style="margin-top: 24px;">
+            <div class="card-header-bar" style="margin-bottom: 16px;">
+                <h2 class="card-title" style="font-size: 1.25rem;">
+                    <span>⛳</span> Live Resort- &amp; Platzstatus (Startseite)
+                </h2>
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span id="status-live-indicator" class="status-pill-green">🟢 Live synchronisiert</span>
+                    <button type="button" class="btn-save" onclick="saveResortStatus()" style="padding: 7px 18px; font-size: 0.88rem;">
+                        💾 Status speichern &amp; veröffentlichen
+                    </button>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;">
+                Verwalten Sie hier die tagesaktuellen Angaben für die 4 Infoboxen auf der Startseite. Änderungen werden sofort gespeichert und live auf der Startseite angezeigt.
+            </p>
+
+            <div class="status-admin-grid">
+                <!-- 1. Öffnungszeiten -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🕒</span> Öffnungszeiten Shop
+                            </label>
+                            <span style="font-size: 0.74rem; color: var(--color-text-muted);">Freitext</span>
+                        </div>
+                        <input type="text" id="status-input-hours" class="form-input" placeholder="z. B. täglich 08:00 – 18:00 Uhr" value="täglich 08:00 – 18:00 Uhr" oninput="updateStatusPreview()">
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 08–18 Uhr')">08–18 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 09–17 Uhr')">09–17 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 09–15 Uhr')">09–15 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 07–12 Uhr')">07–12 Uhr</button>
+                        <button type="button" class="preset-chip" onclick="setStatusHours('Heute geschlossen')">Geschlossen</button>
+                    </div>
+                </div>
+
+                <!-- 2. Trolleys -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🛞</span> Trolleys
+                            </label>
+                            <span id="trolley-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
+                        </div>
+                        <select id="status-select-trolleys" class="form-select" onchange="updateStatusPreview()">
+                            <option value="erlaubt">🟢 Erlaubt</option>
+                            <option value="eingeschraenkt">🟡 Eingeschränkt</option>
+                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-note-trolleys" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur mit Winterrädern)" oninput="updateStatusPreview()">
+                </div>
+
+                <!-- 3. Carts -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>🚗</span> Carts (E-Carts)
+                            </label>
+                            <span id="cart-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
+                        </div>
+                        <select id="status-select-carts" class="form-select" onchange="updateStatusPreview()">
+                            <option value="erlaubt">🟢 Erlaubt</option>
+                            <option value="eingeschraenkt">🟡 Eingeschränkt (90°-Regel)</option>
+                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-note-carts" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur auf Wegen)" oninput="updateStatusPreview()">
+                </div>
+
+                <!-- 4. Platzstatus -->
+                <div class="status-admin-box">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span>⛳</span> Platzstatus
+                            </label>
+                            <span id="course-badge-preview" class="status-pill-green">🟢 Geöffnet</span>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px;">
+                            <select id="status-select-course-state" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
+                                <option value="open">🟢 Geöffnet</option>
+                                <option value="partial">🟡 Eingeschränkt</option>
+                                <option value="closed">🔴 Gesperrt</option>
+                            </select>
+                            <select id="status-select-greens" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
+                                <option value="Sommergrüns">Sommergrüns</option>
+                                <option value="Wintergrüns">Wintergrüns</option>
+                                <option value="Bespielbar">Bespielbar</option>
+                            </select>
+                        </div>
+
+                        <select id="status-preset-course" class="form-select" onchange="onCoursePresetSelect()" style="margin-bottom: 8px; font-size: 0.82rem; background: #FAF8F3;">
+                            <option value="">-- Schnellvorlage wählen --</option>
+                            <option value="geöffnet">geöffnet</option>
+                            <option value="18-Loch regulär geöffnet">18-Loch regulär geöffnet</option>
+                            <option value="18-Loch geöffnet (Kurs Gelb & Blau)">18-Loch geöffnet (Gelb & Blau)</option>
+                            <option value="9-Loch geöffnet (Kurs Gelb)">9-Loch geöffnet (Kurs Gelb)</option>
+                            <option value="9-Loch geöffnet (Kurs Blau)">9-Loch geöffnet (Kurs Blau)</option>
+                            <option value="Canyon Academy Kurs geöffnet">Canyon Academy Kurs geöffnet</option>
+                            <option value="Aktuell Wintergrüns">Aktuell Wintergrüns</option>
+                            <option value="Witterungsbedingt gesperrt">Witterungsbedingt gesperrt</option>
+                        </select>
+                    </div>
+                    <input type="text" id="status-input-course-text" class="form-input" style="font-size: 0.85rem;" placeholder="Anzeigetext Platz (z. B. geöffnet oder 9-Loch...)" value="geöffnet" oninput="updateStatusPreview()">
+                </div>
+            </div>
+
+            <!-- Live Preview Bar of the 4 boxes -->
+            <div style="margin-top: 18px; padding: 14px 18px; background: #F4EDE0; border-radius: var(--radius-md); border: 1px dashed rgba(184, 150, 62, 0.6);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                    <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary);">
+                        🔍 Live-Vorschau der Startseiten-Infoboxen
+                    </span>
+                    <span id="status-last-updated-text" style="font-size: 0.75rem; color: var(--color-text-muted);">
+                        Stand: Zuletzt synchronisiert
+                    </span>
+                </div>
+                <div class="status-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Öffnungszeiten Shop</span>
+                        <span id="prev-val-hours" class="status-preview-val">täglich 08–18 Uhr</span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Trolleys</span>
+                        <span id="prev-val-trolleys" class="status-preview-val">
+                            <span class="status-dot-green"></span> erlaubt
+                        </span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Carts</span>
+                        <span id="prev-val-carts" class="status-preview-val">
+                            <span class="status-dot-green"></span> erlaubt
+                        </span>
+                    </div>
+                    <div class="status-preview-box">
+                        <span class="status-preview-label">Platzstatus</span>
+                        <span id="prev-val-course" class="status-preview-val">
+                            <span class="status-dot-green"></span> geöffnet
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- 2. Sektion: News-Editor Studio (Editor Form + Live Preview) -->
         <div class="admin-studio" id="news-studio-section" style="margin-top: 10px;">
             <!-- Left: Editor Form -->
             <div class="admin-editor-column">
@@ -2103,158 +2254,6 @@
             <!-- Accordion Expand / Collapse Wrapper for > 5 articles -->
             <div id="articles-expand-wrapper" style="text-align: center; margin-top: 14px; display: none;"></div>
         </div>
-
-        <!-- 3. Sektion: Live Resort- & Platzstatus Management -->
-        <div class="status-admin-card" id="status-management-card" style="margin-top: 24px;">
-            <div class="card-header-bar" style="margin-bottom: 16px;">
-                <h2 class="card-title" style="font-size: 1.25rem;">
-                    <span>⛳</span> Live Resort- &amp; Platzstatus (Startseite)
-                </h2>
-                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <span id="status-live-indicator" class="status-pill-green">🟢 Live synchronisiert</span>
-                    <button type="button" class="btn-save" onclick="saveResortStatus()" style="padding: 7px 18px; font-size: 0.88rem;">
-                        💾 Status speichern &amp; veröffentlichen
-                    </button>
-                </div>
-            </div>
-            
-            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;">
-                Verwalten Sie hier die tagesaktuellen Angaben für die 4 Infoboxen auf der Startseite. Änderungen werden sofort gespeichert und live auf der Startseite angezeigt.
-            </p>
-
-            <div class="status-admin-grid">
-                <!-- 1. Öffnungszeiten -->
-                <div class="status-admin-box">
-                    <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
-                                <span>🕒</span> Öffnungszeiten Shop
-                            </label>
-                            <span style="font-size: 0.74rem; color: var(--color-text-muted);">Freitext</span>
-                        </div>
-                        <input type="text" id="status-input-hours" class="form-input" placeholder="z. B. täglich 08:00 – 18:00 Uhr" value="täglich 08:00 – 18:00 Uhr" oninput="updateStatusPreview()">
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">
-                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 08–18 Uhr')">08–18 Uhr</button>
-                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 09–17 Uhr')">09–17 Uhr</button>
-                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 09–15 Uhr')">09–15 Uhr</button>
-                        <button type="button" class="preset-chip" onclick="setStatusHours('täglich 07–12 Uhr')">07–12 Uhr</button>
-                        <button type="button" class="preset-chip" onclick="setStatusHours('Heute geschlossen')">Geschlossen</button>
-                    </div>
-                </div>
-
-                <!-- 2. Trolleys -->
-                <div class="status-admin-box">
-                    <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
-                                <span>🛞</span> Trolleys
-                            </label>
-                            <span id="trolley-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
-                        </div>
-                        <select id="status-select-trolleys" class="form-select" onchange="updateStatusPreview()">
-                            <option value="erlaubt">🟢 Erlaubt</option>
-                            <option value="eingeschraenkt">🟡 Eingeschränkt</option>
-                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
-                        </select>
-                    </div>
-                    <input type="text" id="status-note-trolleys" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur mit Winterrädern)" oninput="updateStatusPreview()">
-                </div>
-
-                <!-- 3. Carts -->
-                <div class="status-admin-box">
-                    <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
-                                <span>🚗</span> Carts (E-Carts)
-                            </label>
-                            <span id="cart-badge-preview" class="status-pill-green">🟢 Erlaubt</span>
-                        </div>
-                        <select id="status-select-carts" class="form-select" onchange="updateStatusPreview()">
-                            <option value="erlaubt">🟢 Erlaubt</option>
-                            <option value="eingeschraenkt">🟡 Eingeschränkt (90°-Regel)</option>
-                            <option value="nicht_gestattet">🔴 Nicht gestattet</option>
-                        </select>
-                    </div>
-                    <input type="text" id="status-note-carts" class="form-input" style="margin-top: 10px; font-size: 0.82rem;" placeholder="Optionale Notiz (z. B. nur auf Wegen)" oninput="updateStatusPreview()">
-                </div>
-
-                <!-- 4. Platzstatus -->
-                <div class="status-admin-box">
-                    <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                            <label class="form-label" style="margin: 0; display: flex; align-items: center; gap: 6px;">
-                                <span>⛳</span> Platzstatus
-                            </label>
-                            <span id="course-badge-preview" class="status-pill-green">🟢 Geöffnet</span>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px;">
-                            <select id="status-select-course-state" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
-                                <option value="open">🟢 Geöffnet</option>
-                                <option value="partial">🟡 Eingeschränkt</option>
-                                <option value="closed">🔴 Gesperrt</option>
-                            </select>
-                            <select id="status-select-greens" class="form-select" onchange="updateStatusPreview()" style="font-size: 0.82rem;">
-                                <option value="Sommergrüns">Sommergrüns</option>
-                                <option value="Wintergrüns">Wintergrüns</option>
-                                <option value="Bespielbar">Bespielbar</option>
-                            </select>
-                        </div>
-
-                        <select id="status-preset-course" class="form-select" onchange="onCoursePresetSelect()" style="margin-bottom: 8px; font-size: 0.82rem; background: #FAF8F3;">
-                            <option value="">-- Schnellvorlage wählen --</option>
-                            <option value="geöffnet">geöffnet</option>
-                            <option value="18-Loch regulär geöffnet">18-Loch regulär geöffnet</option>
-                            <option value="18-Loch geöffnet (Kurs Gelb & Blau)">18-Loch geöffnet (Gelb & Blau)</option>
-                            <option value="9-Loch geöffnet (Kurs Gelb)">9-Loch geöffnet (Kurs Gelb)</option>
-                            <option value="9-Loch geöffnet (Kurs Blau)">9-Loch geöffnet (Kurs Blau)</option>
-                            <option value="Canyon Academy Kurs geöffnet">Canyon Academy Kurs geöffnet</option>
-                            <option value="Aktuell Wintergrüns">Aktuell Wintergrüns</option>
-                            <option value="Witterungsbedingt gesperrt">Witterungsbedingt gesperrt</option>
-                        </select>
-                    </div>
-                    <input type="text" id="status-input-course-text" class="form-input" style="font-size: 0.85rem;" placeholder="Anzeigetext Platz (z. B. geöffnet oder 9-Loch...)" value="geöffnet" oninput="updateStatusPreview()">
-                </div>
-            </div>
-
-            <!-- Live Preview Bar of the 4 boxes -->
-            <div style="margin-top: 18px; padding: 14px 18px; background: #F4EDE0; border-radius: var(--radius-md); border: 1px dashed rgba(184, 150, 62, 0.6);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-                    <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary);">
-                        🔍 Live-Vorschau der Startseiten-Infoboxen
-                    </span>
-                    <span id="status-last-updated-text" style="font-size: 0.75rem; color: var(--color-text-muted);">
-                        Stand: Zuletzt synchronisiert
-                    </span>
-                </div>
-                <div class="status-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                    <div class="status-preview-box">
-                        <span class="status-preview-label">Öffnungszeiten Shop</span>
-                        <span id="prev-val-hours" class="status-preview-val">täglich 08–18 Uhr</span>
-                    </div>
-                    <div class="status-preview-box">
-                        <span class="status-preview-label">Trolleys</span>
-                        <span id="prev-val-trolleys" class="status-preview-val">
-                            <span class="status-dot-green"></span> erlaubt
-                        </span>
-                    </div>
-                    <div class="status-preview-box">
-                        <span class="status-preview-label">Carts</span>
-                        <span id="prev-val-carts" class="status-preview-val">
-                            <span class="status-dot-green"></span> erlaubt
-                        </span>
-                    </div>
-                    <div class="status-preview-box">
-                        <span class="status-preview-label">Platzstatus</span>
-                        <span id="prev-val-course" class="status-preview-val">
-                            <span class="status-dot-green"></span> geöffnet
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Web-Analytics & Visitor Statistics Dashboard (Placed at the very bottom of Admin Backend) -->
         <div class="analytics-card" id="analytics-dashboard-card" style="margin-top: 24px;">
@@ -4681,7 +4680,7 @@ window.NEWS_IMAGE_PRESETS = NEWS_IMAGE_PRESETS;
             showToast('✓ Lokal gespeichert.');
         });
 
-
+
                 /* ==========================================================================
            Web-Analytics Controller Logic & Period Switcher
            ========================================================================== */
