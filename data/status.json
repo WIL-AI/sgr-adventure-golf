@@ -1,16 +1,16 @@
 {
   "openingHours": {
-    "title": "Öffnungszeiten Shop & Sekretariat",
+    "title": "Öffnungszeiten Shop",
     "text": "täglich 09:00 – 15:00 Uhr"
   },
   "trolleys": {
     "status": "erlaubt",
-    "label": "Erlaubt",
+    "label": "erlaubt",
     "note": ""
   },
   "carts": {
-    "status": "erlaubt",
-    "label": "Erlaubt",
+    "status": "nicht_gestattet",
+    "label": "nicht gestattet",
     "note": ""
   },
   "courseStatus": {
@@ -19,6 +19,6 @@
     "greens": "Sommergrüns",
     "note": ""
   },
-  "lastUpdated": "2026-11-10T13:50:25.817Z",
+  "lastUpdated": "2026-11-11T16:16:40.790Z",
   "updatedBy": "Admin Studio"
 }
