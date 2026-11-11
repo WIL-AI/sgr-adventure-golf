@@ -166,6 +166,9 @@
                     <div class="hero-actions-wrap">
                         <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="heroBtnTee">Startzeit reservieren ↗</a>
                         <a href="gast-info.html" class="btn btn-outline-white" data-i18n="heroBtnGuest">Resort entdecken →</a>
+                        <button type="button" class="btn btn-hero-voice" id="hero-btn-voice" onclick="openVoiceReceptionist('hero')" data-i18n="heroBtnVoice">
+                            <span class="voice-pulse-orb"></span> 🎙️ 24/7 KI-Rezeptionistin fragen
+                        </button>
                     </div>
                 </div>
             </div>
@@ -555,6 +558,7 @@
                     <h4 data-i18n="footerContactHeading">Direktkontakt &amp; Anreise</h4>
                     <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
                     <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
+                    <p>KI-Rezeption (24/7): <a href="#" onclick="openVoiceReceptionist('footer'); return false;" style="color: var(--color-gold-light, #D4AF37); font-weight: 600;">🎙️ Jetzt im Browser sprechen</a></p>
                     <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
                     <p style="font-size: 0.84rem; margin-top: 8px; color: var(--color-gold-light);">
                         Navi-Adresse: Wissmannshof 1, 34355 Staufenberg
@@ -588,5 +592,8 @@
     <script src="cookie-consent.js?v=1790864300000"></script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
     <script src="analytics-tracker.js?v=1790864300000" defer></script>
+    <!-- IONOS AI Voice Receptionist Integration -->
+    <script src="voice-receptionist.js?v=1"></script>
+    <script src="https://ionos.ai-voicereceptionist.com/widget/v1/embed.js" data-agent-id="c79edcd2-83ef-4eee-93cb-0ee927e0b73a" defer></script>
 </body>
 </html>

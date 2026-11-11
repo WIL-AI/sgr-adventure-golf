@@ -93,6 +93,9 @@
             <div class="hero-actions">
                 <a href="#kontakt" class="btn btn-gold" data-t="btnHeroBook">Startzeit anfragen &amp; reservieren</a>
                 <a href="#greenfee" class="btn btn-outline-white" data-t="btnHeroPrices">Greenfee &amp; Tarife ansehen ↓</a>
+                <button type="button" class="btn btn-hero-voice" id="hero-btn-voice" onclick="openVoiceReceptionist('gast-info-hero')">
+                    <span class="voice-pulse-orb"></span> 🎙️ 24/7 KI-Rezeptionistin fragen
+                </button>
             </div>
         </div>
     </section>
@@ -532,6 +535,13 @@
  <a href="tel:+4955439992239" class="meta-val">+49 (0) 55 43 / 999 22 39</a>
  </div>
  </div>
+ <div class="meta-item" onclick="openVoiceReceptionist('gast-info-contact')" style="cursor: pointer;">
+ <span class="meta-icon">🎙️</span>
+ <div>
+ <span class="meta-label">KI-Rezeption (24/7)</span>
+ <a href="#" onclick="openVoiceReceptionist('gast-info-contact'); return false;" class="meta-val" style="color: var(--color-gold, #AA771C); font-weight: 700;">Jetzt live im Browser sprechen ↗</a>
+ </div>
+ </div>
  <div class="meta-item">
  <span class="meta-icon"></span>
  <div>
@@ -760,6 +770,7 @@
  <h4 data-t="fColContact">Direktkontakt</h4>
  <p data-t="fPhoneSec">Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
  <p data-t="fPhoneHotel">Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
+ <p>KI-Rezeption (24/7): <a href="#" onclick="openVoiceReceptionist('gast-info-footer'); return false;" style="color: var(--color-gold-light, #D4AF37); font-weight: 600;">🎙️ Jetzt im Browser sprechen</a></p>
  <p data-t="fEmailSec">E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
  </div>
 
@@ -786,6 +797,9 @@
     <script src="cookie-consent.js?v=1790864300000"></script>
     <!-- Datenschutzkonformer SGR Live-Analytics Tracker -->
     <script src="analytics-tracker.js?v=1790864300000" defer></script>
+    <!-- IONOS AI Voice Receptionist Integration -->
+    <script src="voice-receptionist.js?v=1"></script>
+    <script src="https://ionos.ai-voicereceptionist.com/widget/v1/embed.js" data-agent-id="c79edcd2-83ef-4eee-93cb-0ee927e0b73a" defer></script>
 </body>
 </html>
 
