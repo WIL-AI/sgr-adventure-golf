@@ -91,20 +91,17 @@
 .voucher-trust-item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    padding: 4px 0;
 }
 
-.voucher-trust-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
+.voucher-trust-bullet {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
     border-radius: 50%;
-    background: #FAF7EE;
-    border: 1.5px solid var(--color-gold, #B8963E);
-    color: var(--color-primary, #0D2218);
-    display: grid;
-    place-items: center;
-    font-size: 1.25rem;
+    background: var(--color-gold, #B8963E);
+    display: inline-block;
 }
 
 .voucher-trust-item strong {
@@ -260,9 +257,13 @@
 }
 
 .voucher-card-perks li::before {
-    content: '✓';
-    color: var(--color-gold, #B8963E);
-    font-weight: 800;
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gold, #B8963E);
+    flex-shrink: 0;
 }
 
 .voucher-card-actions {
@@ -404,24 +405,13 @@
     border: 1.5px solid var(--color-card-border, #E2DBD0);
     border-radius: var(--radius-md, 14px);
     padding: 30px 36px;
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    gap: 24px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 24px;
     margin-top: 40px;
     box-shadow: var(--shadow-subtle);
-}
-
-.voucher-app-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 18px;
-    background: var(--color-primary, #0D2218);
-    color: var(--color-gold, #B8963E);
-    display: grid;
-    place-items: center;
-    font-size: 2.2rem;
-    border: 2px solid var(--color-gold, #B8963E);
+    border-left: 4px solid var(--color-gold);
 }
 
 .voucher-app-text h4 {
