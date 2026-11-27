@@ -11,7 +11,7 @@
   "carts": {
     "status": "nicht_gestattet",
     "label": "nicht gestattet",
-    "note": "VIP Carts auf Nachfrage verfügbar!"
+    "note": "VIP Carts auf Nachfrage gestattet."
   },
   "courseStatus": {
     "status": "open",
@@ -19,6 +19,6 @@
     "greens": "Sommergrüns",
     "note": ""
   },
-  "lastUpdated": "2026-11-27T06:20:42.792Z",
+  "lastUpdated": "2026-11-27T06:33:41.253Z",
   "updatedBy": "Admin Studio"
 }
