@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deine PC CADDIE App kann jetzt mehr | Sport- und Golf-Resort Gut Wissmannshof</title>
+    <meta name="description" content="Entdecke die neuen Funktionen der PC CADDIE Golf Club App für Gut Wissmannshof: Bälle direkt am Automaten ziehen, Gutscheine kaufen, Kurse & Events buchen und Startzeiten verwalten.">
+    <link rel="icon" href="https://www.wissmannshof.de/wp-content/uploads/2025/10/favicon_wissmannshof-150x150.png" sizes="32x32">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="home.css?v=1793085200000">
+    <link rel="stylesheet" href="pccaddie-app.css?v=1793100000000">
+
+    <!-- Canonical Domain Routing -->
+    <script>
+        if (window.location.hostname.startsWith('adventure.')) {
+            window.location.replace('https://wissmannshof.golf' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
+
+    <!-- SEO & Social Meta -->
+    <link rel="canonical" href="https://wissmannshof.golf/pccaddie-app.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sport- und Golf-Resort Gut Wissmannshof">
+    <meta property="og:url" content="https://wissmannshof.golf/pccaddie-app.html">
+    <meta property="og:title" content="Deine PC CADDIE App kann jetzt mehr | Gut Wissmannshof">
+    <meta property="og:description" content="Bälle am Automaten per Smartphone ziehen, Gutscheine kaufen, Startzeiten & Events verwalten – alles in der PC CADDIE App.">
+    <meta property="og:image" content="https://wissmannshof.golf/assets/gallery_driving_range_bays.jpg">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         Header & Navigation (Standard Resort Header - No new main nav link per user spec)
+         ========================================================================== -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo" title="Gut Wissmannshof">
+                <img src="assets/logo_regular_black.png" alt="Sport- und Golf-Resort Gut Wissmannshof Logo">
+            </a>
+
+            <nav class="main-nav" id="main-nav">
+                <a href="golfcourse.html" class="nav-link">Golf Course</a>
+                <a href="adventure-golf.html" class="nav-link">Adventure Golf</a>
+                <a href="mitglied-werden.html" class="nav-link">Mitglied werden</a>
+                <a href="gast-info.html" class="nav-link">Gast-Info</a>
+                <a href="golfakademie.html" class="nav-link">Golf Akademie</a>
+                <a href="news.html" class="nav-link">WiHo-News</a>
+                <a href="karriere.html" class="nav-link">Karriere</a>
+                <a href="https://webcam.wissmannshof.golf/static-cam/" target="_blank" class="nav-link">WEBCAM</a>
+            </nav>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- Language Switcher -->
+                <div class="lang-switcher" aria-label="Sprachauswahl">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <svg class="flag-icon" viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>
+                        <span>DE</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+
+                <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="nav-btn-cta">
+                    <span>Startzeit buchen</span>
+                </a>
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             Hero Section with Smartphone App Menu Preview
+             ========================================================================== -->
+        <section class="app-hero">
+            <div class="container">
+                <div class="app-hero-grid">
+                    <div>
+                        <span class="app-eyebrow">Sport- und Golf-Resort Gut Wissmannshof</span>
+                        <h1>Deine PC CADDIE App kann jetzt <em>mehr</em>.</h1>
+                        <p class="app-hero-lead">
+                            Startzeiten, Turniere und Trainer kennst du schon. Neu hinzugekommen sind Gutscheine, Bälle direkt aus dem Automaten, Kurse und Events und bald eine eigene Infoseite zur Anlage. Hier zeigen wir dir, wo du alles findest und wie es funktioniert.
+                        </p>
+                        <nav class="app-jump-nav" aria-label="Schnellzugriff">
+                            <a href="#gutscheine">Gutscheine</a>
+                            <a href="#automaten">Ballautomaten</a>
+                            <a href="#kurse">Kurse &amp; Events</a>
+                            <a href="#info">Startseite</a>
+                            <a href="#meinbereich">Mein Bereich</a>
+                            <a href="#start">So startest du</a>
+                            <a href="gutscheine.html" style="border-color: var(--color-gold); background: var(--color-gold); color: #07150E; font-weight: 700;">🎁 Gutschein-Shop ↗</a>
+                        </nav>
+                    </div>
+
+                    <div class="app-phone-wrapper">
+                        <div class="app-phone" role="img" aria-label="Menü der PC CADDIE App mit den neuen Bereichen">
+                            <div class="app-screen">
+                                <div class="screen-grp">NAVIGATION</div>
+                                <div class="screen-it on">Start</div>
+                                <div class="screen-it">Anlagenauswahl</div>
+                                
+                                <div class="screen-grp">STARTZEITEN</div>
+                                <div class="screen-it">Startzeit buchen</div>
+                                
+                                <div class="screen-grp">TURNIERE</div>
+                                <div class="screen-it">Turnier Kalender</div>
+                                <div class="screen-it">Turniere &amp; Events</div>
+                                <div class="screen-it">Turniere Startlisten</div>
+                                <div class="screen-it">Turniere Ergebnisse</div>
+                                
+                                <div class="screen-grp">TRAINER</div>
+                                <div class="screen-it">Trainer buchen</div>
+                                <div class="screen-it">Trainer Wochenplan</div>
+                                <div class="screen-it">Trainer Übersicht</div>
+                                
+                                <div class="screen-grp">SCORING</div>
+                                <div class="screen-it">Online Scorekarte</div>
+                                
+                                <div class="screen-grp">KURSE &amp; EVENTS</div>
+                                <div class="screen-it">Kurs buchen <span class="screen-tag-neu">Neu</span></div>
+                                <div class="screen-it">Events buchen <span class="screen-tag-neu">Neu</span></div>
+                                
+                                <div class="screen-grp">BUCHUNG</div>
+                                <div class="screen-it">Gutscheine kaufen <span class="screen-tag-neu">Neu</span></div>
+                                
+                                <div class="screen-grp">KARTENFUNKTIONEN</div>
+                                <div class="screen-it">Automaten <span class="screen-tag-neu">Neu</span></div>
+                                
+                                <div class="screen-grp">INFORMATIONEN</div>
+                                <div class="screen-it">Support &amp; Kontakt</div>
+                                <div class="screen-it">Barrierefreiheit</div>
+                                <div class="screen-it">Datenschutz</div>
+                            </div>
+                        </div>
+                        <p class="app-phone-caption">Das komplette Menü der App mit markierten neuen Bereichen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section: Das ist neu
+             ========================================================================== -->
+        <section class="app-section">
+            <div class="container">
+                <div class="app-sec-head">
+                    <span class="app-eyebrow" style="color: var(--color-gold-hover);">Was ist neu?</span>
+                    <div>
+                        <h2>Das ist neu in deiner App</h2>
+                        <p>Du findest alles im Menü der App, das du oben links öffnest. Die Bezeichnungen unten entsprechen genau dem, was du dort liest.</p>
+                        <div class="app-note" style="margin-top: 16px;">
+                            Alle hier gezeigten Funktionen sind bereits verfügbar. Die Reihenfolge im Menü passen wir in den kommenden Wochen noch an, damit du die meistgenutzten Punkte schneller findest. Die Namen der Menüpunkte bleiben dabei gleich.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Gutscheine kaufen -->
+                <div class="app-feature-row" id="gutscheine">
+                    <div class="app-where">
+                        <strong>Gutscheine kaufen</strong>
+                        Geschenke mit wenigen Klicks
+                        <div class="app-menu-path"><span>Buchung</span> › <span>Gutscheine kaufen</span></div>
+                    </div>
+                    <div class="app-body">
+                        <p>
+                            Ob zu Weihnachten, zum Geburtstag oder als Dankeschön: Gutscheine für Gut Wissmannshof kaufst du jetzt direkt in der App, rund um die Uhr und ohne Weg ins Service Center.
+                        </p>
+                        <p>
+                            <strong>Ab sofort erhältlich: Wertgutscheine.</strong> Sie gelten im gesamten Golfbereich der Anlage, also im Service Center, in der Golfschule, auf dem Golfplatz und beim Adventure Golf.
+                        </p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="badge badge-gold" style="font-size: 0.85rem; padding: 4px 12px;">✓ Wertgutscheine verfügbar</span>
+                            <span class="badge badge-green" style="font-size: 0.85rem; padding: 4px 12px;">✓ Sofort als PDF / Print@Home</span>
+                        </div>
+                        <p>
+                            <strong>In den nächsten Tagen kommen dazu:</strong> Themengutscheine, zum Beispiel für Greenfee, Golfcart, Abos und Adventure Golf.
+                        </p>
+                        <p>Lieber am Computer? Gutscheine kannst du auch ohne App direkt im Browser kaufen oder unsere neue Gutschein-Seite besuchen.</p>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a class="btn btn-gold" href="gutscheine.html">Zur Gutschein-Übersicht im Resort →</a>
+                            <a class="btn btn-outline-white" style="color: var(--color-primary); border-color: var(--color-primary);" href="https://www.pccaddie.net/clubs/0493402/app.php?cat=voucher" target="_blank" rel="noopener">Direkt im PC CADDIE Shop kaufen ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Automaten -->
+                <div class="app-feature-row" id="automaten">
+                    <div class="app-where">
+                        <strong>Automaten</strong>
+                        Bälle ziehen und Guthaben aufladen
+                        <div class="app-menu-path"><span>Kartenfunktionen</span> › <span>Automaten</span></div>
+                    </div>
+                    <div class="app-body">
+                        <p>Deine Ballkarte darf in der Tasche bleiben. Mit dem Smartphone holst du dir die Bälle direkt am Automaten auf der Driving Range.</p>
+                        
+                        <ol class="app-steps-list">
+                            <li><span>Stell dich vor den Ballautomaten und öffne die PC CADDIE App.</span></li>
+                            <li><span>Geh im Menü auf <strong>Kartenfunktionen › Automaten</strong>. Dort siehst du auch dein aktuelles Guthaben.</span></li>
+                            <li><span>Tippe auf den Automaten, vor dem du stehst. Die Bälle kommen heraus.</span></li>
+                        </ol>
+
+                        <div class="app-note">
+                            <strong>Standortfreigabe erforderlich:</strong> Damit die App den richtigen Automaten erkennt, muss die Standortfreigabe für PC CADDIE auf deinem Smartphone eingeschaltet sein. Bist du zu weit entfernt, zeigt die App „Außerhalb Ihrer Reichweite“ an. Zur Auswahl stehen die Automaten <strong>Driving Range oben</strong> und <strong>Driving Range unten</strong>.
+                        </div>
+
+                        <p>
+                            <strong>Guthaben aufladen, auch wenn das Service Center geschlossen ist.</strong> Im selben Bereich lädst du dein Ballguthaben auf. Wähle 25, 50 oder 100 Euro und bezahle sicher per Kreditkarte oder PayPal.
+                        </p>
+
+                        <div class="app-amounts-bar">
+                            <div class="app-amount-box"><strong>25 €</strong><small>fester Betrag</small></div>
+                            <div class="app-amount-box"><strong>50 €</strong><small>fester Betrag</small></div>
+                            <div class="app-amount-box"><strong>100 €</strong><small>fester Betrag</small></div>
+                        </div>
+
+                        <div class="app-mocks-row" aria-label="Beispielansichten aus der App">
+                            <div>
+                                <div class="app-mock-card" role="img" aria-label="App-Ansicht Automaten">
+                                    <div class="mock-header-bar">
+                                        <i class="mock-burger-icon"></i>
+                                        <div class="mock-user-info"><span><b>Max Mustermann</b>Mitglied</span><span class="mock-user-avatar">MM</span></div>
+                                    </div>
+                                    <div class="mock-subhead">Gut Wissmannshof<b>Automaten</b></div>
+                                    <div class="mock-body-content">
+                                        <div class="mock-green-banner">AUTOMATEN</div>
+                                        <div class="mock-auto-item active"><b>Driving Range oben</b><br><span>In Reichweite, antippen</span></div>
+                                        <div class="mock-auto-item inactive"><b>Driving Range unten</b><br><span>Außerhalb Ihrer Reichweite</span></div>
+                                        <div class="mock-green-banner">KARTEN</div>
+                                        <div class="mock-info-row"><div>Ihr Guthaben</div><div>25,00 EUR</div></div>
+                                        <div class="mock-info-row"><div>Aktionen</div><div>Karte aufladen</div></div>
+                                    </div>
+                                </div>
+                                <p class="app-mock-caption">Automat wählen &amp; Guthaben sehen</p>
+                            </div>
+
+                            <div>
+                                <div class="app-mock-card" role="img" aria-label="App-Ansicht Karte aufladen">
+                                    <div class="mock-header-bar">
+                                        <i class="mock-burger-icon"></i>
+                                        <div class="mock-user-info"><span><b>Max Mustermann</b>Mitglied</span><span class="mock-user-avatar">MM</span></div>
+                                    </div>
+                                    <div class="mock-body-content">
+                                        <div class="mock-green-banner">KARTE AUFLADEN</div>
+                                        <div class="mock-info-row"><div>Ihr Guthaben</div><div>25,00 EUR</div></div>
+                                        <p style="margin: 4px 0 0; font-weight: 700; font-size: 0.75rem;">Guthaben aufladen um</p>
+                                        <div style="display: flex; gap: 4px;">
+                                            <span class="mock-btn-opt">25,00 EUR</span>
+                                            <span class="mock-btn-opt selected">50,00 EUR</span>
+                                            <span class="mock-btn-opt">100,00 EUR</span>
+                                        </div>
+                                        <div class="mock-btn-options">
+                                            <span class="mock-btn-opt selected" style="padding: 4px 10px;">Aufladen</span>
+                                            <span class="mock-btn-opt" style="padding: 4px 10px; background: #EEE;">Zurück</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-mock-caption">Betrag wählen, aufladen, fertig</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Kurse & Events -->
+                <div class="app-feature-row" id="kurse">
+                    <div class="app-where">
+                        <strong>Kurse &amp; Events</strong>
+                        Anmelden mit einem Tipp
+                        <div class="app-menu-path"><span>Kurse &amp; Events</span> › <span>Kurs buchen</span> <span>Events buchen</span></div>
+                    </div>
+                    <div class="app-body">
+                        <p>
+                            Alle Kurse und Veranstaltungen auf der Anlage findest du jetzt an einer zentralen Stelle: vom offenen Wintertraining über Regelkunde bis zu geselligen Abenden wie unserem beliebten Range Glow.
+                        </p>
+                        <p>
+                            Viele Angebote haben eine begrenzte Teilnehmerzahl. In der App siehst du transparent, wie viele Plätze noch frei sind, und meldest dich direkt an. Ist ein Termin ausgebucht, kannst du dich auf die Warteliste setzen lassen. Mit „Im Kalender speichern“ landen deine Termine automatisch in deinem Smartphone-Kalender.
+                        </p>
+
+                        <div class="app-mocks-row" aria-label="Beispielansichten aus der App">
+                            <div>
+                                <div class="app-mock-card" role="img" aria-label="App-Ansicht Events buchen">
+                                    <div class="mock-header-bar">
+                                        <i class="mock-burger-icon"></i>
+                                        <div class="mock-user-info"><span><b>Max Mustermann</b>Mitglied</span><span class="mock-user-avatar">MM</span></div>
+                                    </div>
+                                    <div class="mock-subhead">Gut Wissmannshof<b>Events buchen</b></div>
+                                    <div class="mock-body-content">
+                                        <div class="mock-green-banner">EVENTS BUCHEN</div>
+                                        <div class="mock-event-item">
+                                            <div class="mock-event-date"><i>Dez.</i><b>5</b><em>Sa 17:00</em></div>
+                                            <div><strong>RANGE GLOW</strong><br><small style="color: #666;">Teilnehmer max.: 100<br>Freie Plätze verfügbar</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-mock-caption">Events wie der Range Glow</p>
+                            </div>
+
+                            <div>
+                                <div class="app-mock-card" role="img" aria-label="App-Ansicht Kurs buchen">
+                                    <div class="mock-header-bar">
+                                        <i class="mock-burger-icon"></i>
+                                        <div class="mock-user-info"><span><b>Max Mustermann</b>Mitglied</span><span class="mock-user-avatar">MM</span></div>
+                                    </div>
+                                    <div class="mock-subhead">Gut Wissmannshof<b>Kurs buchen</b></div>
+                                    <div class="mock-body-content">
+                                        <div class="mock-green-banner">KURS BUCHEN</div>
+                                        <div class="mock-event-item">
+                                            <div class="mock-event-date"><i>Dez.</i><b>19</b><em>Sa 13:30</em></div>
+                                            <div><strong>Offenes Wintertraining</strong><br><small style="color: #666;">Teilnehmer max.: 12<br>Freie Plätze / Warteliste</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-mock-caption">Kurse mit freien Plätzen &amp; Warteliste</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Startseite -->
+                <div class="app-feature-row" id="info">
+                    <div class="app-where">
+                        <strong>Startseite</strong>
+                        Quick Links &amp; Infos zur Anlage
+                        <div class="app-menu-path"><span>Navigation</span> › <span>Start</span></div>
+                    </div>
+                    <div class="app-body">
+                        <p>
+                            Gleich beim Öffnen der App findest du unter <strong>Quick Links</strong> die wichtigsten Direktfunktionen für Gut Wissmannshof: Startzeit buchen, Turnier Kalender, Meine Reservierungen und Trainer buchen. Ein Fingertipp genügt.
+                        </p>
+                        <div class="app-note">
+                            <strong>In Kürze verfügbar:</strong> Aktuelle Clubnachrichten, was heute auf der Anlage los ist, der aktuelle Platzstatus und das lokale Golf-Wetter – alles gebündelt auf einer übersichtlichen Seite.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section: Mein Bereich (Personal User Area)
+             ========================================================================== -->
+        <section class="app-section app-section-cream" id="meinbereich">
+            <div class="container">
+                <div class="app-sec-head">
+                    <span class="app-eyebrow">Mein Bereich</span>
+                    <div>
+                        <h2>Dein persönlicher Bereich</h2>
+                        <p>Tippe oben rechts auf den Kreis mit deinen Initialen. Dort findest du alles, was nur dich betrifft: deine Buchungen, deine Käufe und deine individuellen Einstellungen.</p>
+                    </div>
+                </div>
+
+                <div class="app-mine-grid">
+                    <div class="app-mine-menu-card" role="img" aria-label="Persönliches Menü der PC CADDIE App">
+                        <div class="mine-profile-header">
+                            <div><span>Angemeldet als</span><strong>Dein Name</strong></div>
+                            <i></i>
+                        </div>
+                        <ul>
+                            <li>Mein Handicap Index</li>
+                            <li>Meine Freunde</li>
+                            <li>Meine Turniere / Events / Kurse</li>
+                            <li>Meine Reservierungen</li>
+                            <li>Meine Benachrichtigungen</li>
+                            <li>Meine Käufe</li>
+                        </ul>
+                        <ul>
+                            <li>Mein Profil</li>
+                            <li>Meine Einstellungen</li>
+                            <li>E-Mail ändern</li>
+                            <li>Passwort ändern</li>
+                            <li>Mein Golf</li>
+                        </ul>
+                        <ul>
+                            <li>Benutzer wechseln</li>
+                            <li>Logout</li>
+                        </ul>
+                    </div>
+
+                    <div class="app-mine-dl-grid">
+                        <div>
+                            <h3>Dein Golf</h3>
+                            <dl>
+                                <dt>Mein Handicap Index</dt>
+                                <dd>Dein offizieller aktueller Handicap Index, immer sekundenschnell griffbereit.</dd>
+                                
+                                <dt>Meine Freunde</dt>
+                                <dd>Spielpartner, die du regelmäßig mitbuchst, findest du hier blitzschnell wieder.</dd>
+                                
+                                <dt>Meine Turniere / Events / Kurse</dt>
+                                <dd>Alles, wofür du angemeldet bist, übersichtlich auf einen Blick.</dd>
+                                
+                                <dt>Meine Reservierungen</dt>
+                                <dd>Deine gebuchten Startzeiten und Trainerstunden im Überblick.</dd>
+                                
+                                <dt>Meine Benachrichtigungen</dt>
+                                <dd>Aktuelle Hinweise und Mitteilungen, die wir dir direkt über die App senden.</dd>
+                                
+                                <dt>Meine Käufe</dt>
+                                <dd>Gekaufte Gutscheine und aufgeladenes Guthaben auf einen Blick.</dd>
+                            </dl>
+                        </div>
+
+                        <div>
+                            <h3>Dein Konto</h3>
+                            <dl>
+                                <dt>Mein Profil &amp; Meine Einstellungen</dt>
+                                <dd>Persönliche Kontaktdaten und individuelle Benachrichtigungseinstellungen.</dd>
+                                
+                                <dt>E-Mail &amp; Passwort ändern</dt>
+                                <dd>Zugangsdaten jederzeit selbstständig und sicher im Profil anpassen.</dd>
+                                
+                                <dt>Mein Golf</dt>
+                                <dd>Dein Heimatclub und deine DGV-Ausweisnummer hinterlegt.</dd>
+                                
+                                <dt>Benutzer wechseln</dt>
+                                <dd>Besonders praktisch, wenn mehrere Familienmitglieder die App auf einem Tablet oder Smartphone nutzen.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section: Bewährt (Was die App schon kann)
+             ========================================================================== -->
+        <section class="app-section">
+            <div class="container">
+                <div class="app-sec-head">
+                    <span class="app-eyebrow">Bewährt</span>
+                    <div>
+                        <h2>Was die App schon kann</h2>
+                        <p>Falls du die App bisher nur für Startzeiten nutzt: Diese Kernbereiche lohnen sich ebenfalls jeden Tag.</p>
+                    </div>
+                </div>
+
+                <div class="app-grid-4">
+                    <div class="app-feature-card">
+                        <span class="grp-label">Startzeiten</span>
+                        <h3>Startzeit buchen</h3>
+                        <p>Freie Abschlagszeiten in Echtzeit sehen, buchen und Mitspieler direkt mit eintragen.</p>
+                    </div>
+
+                    <div class="app-feature-card">
+                        <span class="grp-label">Turniere</span>
+                        <h3>Kalender, Startlisten, Ergebnisse</h3>
+                        <p>Melde dich unkompliziert zu Turnieren an und sieh nach, mit wem du spielst und wie das Turnier ausgegangen ist.</p>
+                    </div>
+
+                    <div class="app-feature-card">
+                        <span class="grp-label">Trainer</span>
+                        <h3>Trainer buchen</h3>
+                        <p>Im Live-Wochenplan siehst du, wann unsere Pros Zeit haben, und buchst deine Trainerstunde direkt.</p>
+                    </div>
+
+                    <div class="app-feature-card">
+                        <span class="grp-label">Scoring</span>
+                        <h3>Online Scorekarte</h3>
+                        <p>Ergebnisse während der Golfrunde digital erfassen und auswerten – ganz ohne Papier und Bleistift.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section: So startest du (App Download & Setup in 3 Schritten)
+             ========================================================================== -->
+        <section class="app-start-section" id="start">
+            <div class="container">
+                <div class="app-sec-head">
+                    <span class="app-eyebrow">So startest du</span>
+                    <div>
+                        <h2>In drei Schritten startklar</h2>
+                        <p>Du hast die App noch nicht oder benötigst Hilfe bei der Registrierung? Unser Service Center hilft dir gern bei der Einrichtung, und für schnelle Fragen sind unser digitaler Assistent und Lina rund um die Uhr da.</p>
+                    </div>
+                </div>
+
+                <ol class="app-steps-list">
+                    <li>
+                        <span>
+                            Lade die kostenlose <strong>PC CADDIE Golf Club App</strong> aus dem App Store (iOS) oder von Google Play (Android) herunter.
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            Wähle unter <strong>Anlagenauswahl</strong> das <em>Sport- und Golf-Resort Gut Wissmannshof</em>.
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            Melde dich mit deinem persönlichen PC CADDIE Zugang an. Für Automaten und Ballguthaben hinterlegst du einmalig deine Kreditkarte oder PayPal.
+                        </span>
+                    </li>
+                </ol>
+
+                <div class="app-store-badges">
+                    <a href="https://apps.apple.com/de/app/pc-caddie/id1451556277" target="_blank" rel="noopener" class="btn-store-badge">
+                        <span>🍏</span>
+                        <div><small style="font-size: 0.68rem; display: block; opacity: 0.8;">Laden im</small><strong>App Store (Apple)</strong></div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.pccaddie.app" target="_blank" rel="noopener" class="btn-store-badge">
+                        <span>🤖</span>
+                        <div><small style="font-size: 0.68rem; display: block; opacity: 0.8;">Jetzt bei</small><strong>Google Play</strong></div>
+                    </a>
+                </div>
+
+                <div class="app-contact-bar">
+                    <div class="app-contact-item">
+                        Service Center Golf
+                        <strong><a href="tel:+495543999335">05543 / 999 335</a></strong>
+                    </div>
+                    <div class="app-contact-item">
+                        E-Mail Kontakt
+                        <strong><a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></strong>
+                    </div>
+                </div>
+
+                <div class="app-assist-box">
+                    <strong>Fragen zur App? Frag einfach nach:</strong> Unser digitaler Assistent auf der Webseite sowie <strong>Lina</strong>, unsere digitale Assistentin am Telefon, kennen sich bestens mit der PC CADDIE App aus und helfen dir gern weiter – auch außerhalb der regulären Öffnungszeiten des Service Centers.
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section: FAQ (Häufige Fragen)
+             ========================================================================== -->
+        <section class="app-section">
+            <div class="container">
+                <div class="app-sec-head">
+                    <span class="app-eyebrow">Fragen &amp; Antworten</span>
+                    <div>
+                        <h2>Häufig gestellte Fragen</h2>
+                    </div>
+                </div>
+
+                <div style="max-width: 860px;">
+                    <details class="app-faq-item" open>
+                        <summary class="app-faq-summary">Brauche ich meine bisherige Ballkarte noch?</summary>
+                        <p>Die physische Ballkarte funktioniert selbstverständlich weiterhin. Wer lieber das Smartphone nutzt, kann sie einfach in der Tasche lassen. Dein Kartenguthaben ist synchron dasselbe, ganz egal ob du mit Karte oder per App am Automaten Bälle ziehst.</p>
+                    </details>
+
+                    <details class="app-faq-item">
+                        <summary class="app-faq-summary">Die App findet den Ballautomaten nicht. Was kann ich tun?</summary>
+                        <p>Prüfe bitte zuerst, ob die <strong>Standortfreigabe</strong> für die PC CADDIE App in den Einstellungen deines Smartphones auf „Beim Verwenden der App“ aktiviert ist und du dich in unmittelbarer Nähe des Automaten befindest. Sollte es dennoch haken, wende dich gerne an unser Service Center.</p>
+                    </details>
+
+                    <details class="app-faq-item">
+                        <summary class="app-faq-summary">Wie bezahle ich Ballguthaben und Gutscheine?</summary>
+                        <p>Bequem und sicher per Kreditkarte (Mastercard, Visa) oder PayPal. Die Zahlungsdaten werden einmalig verschlüsselt hinterlegt.</p>
+                    </details>
+
+                    <details class="app-faq-item">
+                        <summary class="app-faq-summary">Kann ich mich auch ohne App zu Events und Kursen anmelden?</summary>
+                        <p>Ja, natürlich! Schreibe uns einfach eine E-Mail an <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a> oder rufe kurz im Service Center an. Die App ist jedoch der schnellste Weg, weil du direkt die aktuellen freien Plätze und eventuelle Wartelistenplätze einsehen kannst.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         Footer (Resort CI Standard)
+         ========================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" title="Gut Wissmannshof Startseite">
+                        <img src="assets/logo_regular_black.png" alt="Gut Wissmannshof" class="footer-logo">
+                    </a>
+                    <p class="footer-address">
+                        Sport- und Golf-Resort Gut Wissmannshof<br>
+                        Wissmannshof 1<br>
+                        34355 Staufenberg
+                    </p>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 8px;">
+                        18-Loch Resort Course, Canyon Academy Kurs, Adventure Golf &amp; Premium-Golfresort.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Direktkontakt &amp; Anreise</h4>
+                    <p>Golfsekretariat: <a href="tel:+495543999335">+49 (0) 55 43 / 999 335</a></p>
+                    <p>Hotel &amp; Restaurant: <a href="tel:+4955439992239">+49 (0) 55 43 / 999 22 39</a></p>
+                    <p>KI-Rezeption (24/7): <a href="#" onclick="openVoiceReceptionist('footer'); return false;" style="color: var(--color-gold-light, #D4AF37); font-weight: 600;">🎙️ Jetzt im Browser sprechen</a></p>
+                    <p>E-Mail: <a href="mailto:info@wissmannshof.de">info@wissmannshof.de</a></p>
+                    <p style="font-size: 0.84rem; margin-top: 8px; color: var(--color-gold-light);">
+                        Navi-Adresse: Wissmannshof 1, 34355 Staufenberg
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resort &amp; Online-Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="gutscheine.html">🎁 Gutscheine online kaufen</a></li>
+                        <li><a href="pccaddie-app.html" style="color: var(--color-gold-light, #D4AF37); font-weight: 700;">📱 PC CADDIE App Übersicht</a></li>
+                        <li><a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener">⛳ Startzeiten online reservieren</a></li>
+                        <li><a href="gast-info.html">Gast-Informationen &amp; Greenfee</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Rechtliches &amp; Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="karriere.html">Karriere im Resort</a></li>
+                        <li><a href="#" onclick="window.SGRConsent && window.SGRConsent.openSettings(); return false;">Cookie-Einstellungen</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p>&copy; 2026 Sport- und Golf-Resort Gut Wissmannshof. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline">Besser als gut. Ihr Premium-Golf-Erlebnis.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="cookie-consent.js?v=1790864300000"></script>
+    <script src="analytics-tracker.js?v=1790864300000" defer></script>
+    <script src="voice-receptionist.js?v=2"></script>
+    <script src="https://ionos.ai-voicereceptionist.com/widget/v1/embed.js" data-agent-id="c79edcd2-83ef-4eee-93cb-0ee927e0b73a" defer></script>
+</body>
+</html>
