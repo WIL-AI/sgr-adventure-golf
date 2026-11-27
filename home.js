@@ -44,7 +44,7 @@
             heroMemberText: 'Keine Aufnahmegebühr · Keine Umlagen · Schnuppern statt verpflichten',
             heroMemberLink: 'Jetzt Mitglied werden →',
             heroBtnTee: 'Startzeit reservieren',
-            heroBtnVoice: '<span class="voice-pulse-orb"></span> 🎙️ 24/7 KI-Rezeptionistin fragen',
+            heroBtnVoice: '<span class="voice-pulse-orb"></span> 24/7 Rezeption fragen →',
             heroBtnGolf: 'Golfplatz &amp; Bahnen',
             heroBtnHotel: 'Hotel &amp; Zimmer buchen ↗',
             heroBtnNews: 'Aktuelles &amp; News',
@@ -206,7 +206,7 @@
             heroMemberText: 'No entry fee · No assessments · Try before you commit',
             heroMemberLink: 'Become a Member →',
             heroBtnTee: 'Reserve Tee Time',
-            heroBtnVoice: '<span class="voice-pulse-orb"></span> 🎙️ Ask 24/7 AI Receptionist',
+            heroBtnVoice: '<span class="voice-pulse-orb"></span> Ask 24/7 Reception →',
             heroBtnGolf: 'Golf Course &amp; Holes',
             heroBtnHotel: 'Book Hotel &amp; Rooms ↗',
             heroBtnNews: 'Resort News',
@@ -640,11 +640,29 @@
         });
     });
 
+    /**
+     * Automatische Verwaltung der Weihnachtskugel im Hero-Bereich
+     * Wird am 25.12. (00:00 Uhr) automatisch von der Webseite entfernt.
+     */
+    function checkHeroXmasBauble() {
+        const bauble = document.getElementById('hero-xmas-bauble');
+        if (!bauble) return;
+        const now = new Date();
+        const year = now.getFullYear();
+        // Cutoff: 25. Dezember um 00:00:00 Uhr
+        const expirationDate = new Date(year, 11, 25, 0, 0, 0); // Monat 11 = Dezember
+        const seasonStart = new Date(year, 10, 1, 0, 0, 0);    // Monat 10 = November
+        if (now < seasonStart || now >= expirationDate) {
+            bauble.remove();
+        }
+    }
+
     // Initialize Language & Dynamic News on Page Load
     document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(currentLang);
         renderNewsTicker();
         initHeroBackgroundRotator();
+        checkHeroXmasBauble();
 
         // Background server sync for news
         if (typeof window.NewsRepository !== 'undefined' && window.NewsRepository.syncFromServer) {
@@ -679,4 +697,5 @@
     applyLanguage(currentLang);
     renderNewsTicker();
     initHeroBackgroundRotator();
+    checkHeroXmasBauble();
 })();

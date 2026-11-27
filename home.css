@@ -467,6 +467,261 @@ img {
     text-shadow: none;
 }
 
+/* ==========================================================================
+   Weihnachtskugel Hero-Aktion (Auto-Removal am 25.12.)
+   ========================================================================== */
+.hero-xmas-bauble {
+    position: absolute;
+    top: 0;
+    right: max(24px, calc((100% - 1380px) / 2 + 24px));
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 220px;
+    transform-origin: top center;
+    animation: xmasSway 5.5s ease-in-out infinite alternate;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+@keyframes xmasSway {
+    0% { transform: rotate(-2.2deg); }
+    100% { transform: rotate(2.2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-xmas-bauble {
+        animation: none !important;
+    }
+}
+
+.hero-xmas-bauble:hover {
+    filter: brightness(1.08);
+}
+
+.xmas-cord {
+    width: 2px;
+    height: 65px;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.7) 40%, #F5DEB3 100%);
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+}
+
+.xmas-cap-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -1px;
+}
+
+.xmas-ring {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #D4AF37;
+    border-radius: 50%;
+    margin-bottom: -5px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.6);
+}
+
+.xmas-cap {
+    width: 40px;
+    height: 13px;
+    background: linear-gradient(180deg, #FFF3D1 0%, #D4AF37 45%, #8C6218 100%);
+    border-radius: 4px 4px 1px 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.xmas-sphere {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    margin-top: -3px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 35% 28%, #1D543A 0%, #0E291C 48%, #06160F 82%, #020805 100%);
+    border: 2px solid rgba(212, 175, 55, 0.85);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.65),
+        inset -12px -12px 25px rgba(0, 0, 0, 0.8),
+        inset 10px 10px 22px rgba(255, 255, 255, 0.22),
+        0 0 28px rgba(212, 175, 55, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.hero-xmas-bauble:hover .xmas-sphere {
+    transform: scale(1.04);
+    border-color: #F8D98C;
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.75),
+        inset -12px -12px 25px rgba(0, 0, 0, 0.8),
+        inset 12px 12px 26px rgba(255, 255, 255, 0.32),
+        0 0 40px rgba(212, 175, 55, 0.65);
+}
+
+.xmas-glare {
+    position: absolute;
+    top: 14px;
+    left: 26px;
+    width: 70px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 75%);
+    transform: rotate(-32deg);
+    pointer-events: none;
+    filter: blur(1.5px);
+}
+
+.xmas-desktop-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: #FFFFFF;
+}
+
+.xmas-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F8D98C;
+    line-height: 1.2;
+}
+
+.xmas-heading {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #FFFFFF;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    margin: 2px 0;
+}
+
+.xmas-subtext {
+    font-size: 0.74rem;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 6px;
+    max-width: 155px;
+}
+
+.xmas-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
+    color: #07150E !important;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+}
+
+.xmas-mobile-content {
+    display: none;
+}
+
+/* Tablet view */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .hero-xmas-bauble {
+        top: 60px;
+        right: 20px;
+        width: 175px;
+    }
+    .xmas-cord {
+        height: 40px;
+    }
+    .xmas-sphere {
+        width: 170px;
+        height: 170px;
+        padding: 14px;
+    }
+    .xmas-heading {
+        font-size: 0.98rem;
+    }
+    .xmas-subtext {
+        font-size: 0.68rem;
+        max-width: 130px;
+    }
+    .xmas-btn {
+        font-size: 0.68rem;
+        padding: 4px 10px;
+    }
+}
+
+/* Mobile responsive view */
+@media (max-width: 768px) {
+    .hero-xmas-bauble {
+        position: static;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 22px 0;
+        animation: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        background: linear-gradient(135deg, rgba(13, 34, 24, 0.92) 0%, rgba(7, 21, 14, 0.95) 100%);
+        border: 1.5px solid rgba(212, 175, 55, 0.65);
+        border-radius: 20px;
+        padding: 12px 18px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+    .hero-xmas-bauble .xmas-cord,
+    .hero-xmas-bauble .xmas-cap-wrap {
+        display: none;
+    }
+    .hero-xmas-bauble .xmas-sphere {
+        width: 62px;
+        height: 62px;
+        min-width: 62px;
+        margin: 0;
+        border-width: 1.5px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset -4px -4px 10px rgba(0, 0, 0, 0.8), 0 0 14px rgba(212, 175, 55, 0.4);
+        padding: 0;
+    }
+    .hero-xmas-bauble .xmas-sphere .xmas-desktop-content {
+        display: none;
+    }
+    .hero-xmas-bauble .xmas-mobile-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 2px;
+        flex: 1;
+    }
+    .hero-xmas-bauble .xmas-mobile-content .xmas-eyebrow {
+        font-size: 0.65rem;
+    }
+    .hero-xmas-bauble .xmas-mobile-content .xmas-heading {
+        font-size: 0.98rem;
+        line-height: 1.25;
+        margin: 1px 0 4px;
+        color: #FFFFFF;
+    }
+    .hero-xmas-bauble .xmas-mobile-content .xmas-btn {
+        font-size: 0.72rem;
+        padding: 3px 10px;
+    }
+}
+
 .btn-hero-action {
     display: inline-flex;
     align-items: center;
@@ -763,7 +1018,6 @@ img {
 .section-status-bar {
     padding: 40px 0;
     background: #FFFFFF;
-    border-top: 1px solid var(--color-card-border);
     border-bottom: 1px solid var(--color-card-border);
 }
 
