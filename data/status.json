@@ -14,11 +14,11 @@
     "note": "VIP Carts auf Nachfrage gestattet."
   },
   "courseStatus": {
-    "status": "open",
-    "course": "18-Loch regulär geöffnet",
+    "status": "closed",
+    "course": "Witterungsbedingt gesperrt",
     "greens": "Sommergrüns",
     "note": ""
   },
-  "lastUpdated": "2026-11-27T06:33:41.253Z",
+  "lastUpdated": "2026-11-27T07:22:17.534Z",
   "updatedBy": "Admin Studio"
 }
