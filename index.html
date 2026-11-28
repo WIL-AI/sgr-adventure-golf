@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="home.css?v=1793085200000">
+    <link rel="stylesheet" href="home.css?v=1793200000000">
 
     
     <!-- Canonical Domain Routing: Ensure all traffic and admin sessions run on wissmannshof.golf -->
@@ -159,45 +159,46 @@
                 <strong class="hero-opening-time" id="hero-opening-time">9 – 15 Uhr</strong>
             </div>
             <div class="container hero-container">
+                <!-- Weihnachtskugel für Gutscheine (Automatisches Ausblenden ab 25.12.) -->
+                <a href="gutscheine.html" id="hero-xmas-bauble" class="hero-xmas-bauble" aria-label="Weihnachtsgutscheine verschenken - Das passende Geschenk">
+                    <div class="xmas-cord"></div>
+                    <div class="xmas-cap-wrap">
+                        <div class="xmas-ring"></div>
+                        <div class="xmas-cap"></div>
+                    </div>
+                    <div class="xmas-sphere">
+                        <div class="xmas-glare"></div>
+                        <div class="xmas-sparkles" aria-hidden="true"></div>
+                        <div class="xmas-desktop-content">
+                            <span class="xmas-eyebrow">✦ Weihnachten im Resort ✦</span>
+                            <strong class="xmas-heading">Gutschein<br>verschenken</strong>
+                            <span class="xmas-subtext">Das passende Geschenk für Golfer &amp; Familien</span>
+                            <span class="xmas-btn">Gutscheine kaufen →</span>
+                        </div>
+                    </div>
+                    <div class="xmas-mobile-content">
+                        <span class="xmas-eyebrow">✦ Weihnachten im Resort</span>
+                        <strong class="xmas-heading">Gutscheine: Das passende Geschenk</strong>
+                        <span class="xmas-btn">Jetzt entdecken →</span>
+                    </div>
+                </a>
+                <script>
+                    (function(){
+                        var b = document.getElementById('hero-xmas-bauble');
+                        if (b) {
+                            var n = new Date();
+                            var y = n.getFullYear();
+                            var exp = new Date(y, 11, 25, 0, 0, 0); // 25.12. 00:00 Uhr
+                            var start = new Date(y, 10, 1, 0, 0, 0); // ab 01.11.
+                            if (n < start || n >= exp) { b.remove(); }
+                        }
+                    })();
+                </script>
+
                 <div class="home-hero-content">
                     <span class="hero-main-sub" data-i18n="heroBadge">Sport &amp; Golf Resort</span>
                     <h1 class="hero-main-title" data-i18n="heroTitle">Gut Wissmannshof</h1>
                     <p class="hero-lead-text" data-i18n="heroLead">Golf. Hotel. Natur. An einem Ort.</p>
-
-                    <!-- Weihnachtskugel für Gutscheine (Automatisches Ausblenden ab 25.12.) -->
-                    <a href="gutscheine.html" id="hero-xmas-bauble" class="hero-xmas-bauble" aria-label="Weihnachtsgutscheine verschenken - Das passende Geschenk">
-                        <div class="xmas-cord"></div>
-                        <div class="xmas-cap-wrap">
-                            <div class="xmas-ring"></div>
-                            <div class="xmas-cap"></div>
-                        </div>
-                        <div class="xmas-sphere">
-                            <div class="xmas-glare"></div>
-                            <div class="xmas-desktop-content">
-                                <span class="xmas-eyebrow">Weihnachten im Resort</span>
-                                <strong class="xmas-heading">Gutschein<br>verschenken</strong>
-                                <span class="xmas-subtext">Das passende Geschenk für Golfer &amp; Genießer</span>
-                                <span class="xmas-btn">Gutscheine kaufen →</span>
-                            </div>
-                        </div>
-                        <div class="xmas-mobile-content">
-                            <span class="xmas-eyebrow">Weihnachten im Resort</span>
-                            <strong class="xmas-heading">Gutscheine: Das passende Geschenk</strong>
-                            <span class="xmas-btn">Jetzt entdecken →</span>
-                        </div>
-                    </a>
-                    <script>
-                        (function(){
-                            var b = document.getElementById('hero-xmas-bauble');
-                            if (b) {
-                                var n = new Date();
-                                var y = n.getFullYear();
-                                var exp = new Date(y, 11, 25, 0, 0, 0); // 25.12. 00:00 Uhr
-                                var start = new Date(y, 10, 1, 0, 0, 0); // ab 01.11.
-                                if (n < start || n >= exp) { b.remove(); }
-                            }
-                        })();
-                    </script>
 
                     <div class="hero-actions-wrap">
                         <a href="https://www.pccaddie.net/clubs/0493402/app.php?cat=tt_timetable_course" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="heroBtnTee">Startzeit reservieren ↗</a>
@@ -274,16 +275,24 @@
             <div class="container">
                 <div class="services-highlight-grid">
                     <!-- Gutscheine Highlight Card -->
-                    <a href="gutscheine.html" class="service-highlight-card" title="Gutscheine für Gut Wissmannshof online kaufen">
-                        <div class="service-highlight-content">
-                            <span class="service-highlight-tag">Gutschein-Shop</span>
-                            <h3>Gutscheine online kaufen</h3>
-                            <p>Das persönliche Geschenk für Golfer, Genießer &amp; Abenteurer. Wert- &amp; Themengutscheine sofort als Print@Home PDF ausdrucken.</p>
+                    <div class="service-highlight-card" style="flex-direction: column; align-items: stretch; gap: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+                            <div class="service-highlight-content" style="flex: 1; min-width: 220px;">
+                                <span class="service-highlight-tag">Gutschein-Shop</span>
+                                <h3><a href="gutscheine.html" style="color: inherit; text-decoration: none;">Gutscheine online kaufen</a></h3>
+                                <p>Das persönliche Geschenk für Golfer &amp; Abenteurer (Golfplatz, Pro Shop, Golfakademie &amp; Adventure Golf). Sofort als Print@Home PDF ausdrucken.</p>
+                            </div>
+                            <a href="gutscheine.html" class="service-highlight-btn">
+                                Gutscheine entdecken →
+                            </a>
                         </div>
-                        <div class="service-highlight-btn">
-                            Gutscheine entdecken →
+                        <div style="padding-top: 10px; border-top: 1px dashed var(--color-card-border, #E5E0D3); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.8rem; color: var(--color-text-muted, #5E6660);">
+                            <span><strong>Hinweis:</strong> Gutscheine für Hotel &amp; Restaurant (eigenständige Bereiche) erhalten Sie direkt auf der dortigen Webseite:</span>
+                            <a href="https://hotel-wissmannshof.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: var(--color-primary, #0D2218); background: #FAF7EE; border: 1px solid var(--color-gold, #B8963E); padding: 4px 12px; border-radius: 999px; text-decoration: none; white-space: nowrap;">
+                                Hotel &amp; Restaurant Gutscheine ↗
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- PC CADDIE App Highlight Card -->
                     <a href="pccaddie-app.html" class="service-highlight-card" title="Deine PC CADDIE App kann jetzt mehr">

@@ -368,7 +368,7 @@ img {
 .home-hero-content {
     position: relative;
     z-index: 3;
-    max-width: 760px;
+    max-width: min(740px, calc(100% - 260px));
     text-align: left;
     margin-bottom: 8px;
 }
@@ -473,17 +473,18 @@ img {
 .hero-xmas-bauble {
     position: absolute;
     top: 0;
-    right: max(24px, calc((100% - 1380px) / 2 + 24px));
+    right: max(36px, calc((100% - 1340px) / 2 + 36px));
     z-index: 9;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    width: 220px;
+    width: 230px;
     transform-origin: top center;
     animation: xmasSway 5.5s ease-in-out infinite alternate;
     cursor: pointer;
-    transition: filter 0.3s ease;
+    transition: filter 0.35s ease;
+    filter: drop-shadow(0 0 18px rgba(248, 217, 140, 0.25));
 }
 
 @keyframes xmasSway {
@@ -491,21 +492,45 @@ img {
     100% { transform: rotate(2.2deg); }
 }
 
+@keyframes xmasWarmGlow {
+    0% {
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.65),
+            inset -12px -12px 26px rgba(0, 0, 0, 0.82),
+            inset 10px 10px 24px rgba(255, 236, 179, 0.26),
+            0 0 28px rgba(212, 175, 55, 0.55),
+            0 0 58px rgba(248, 217, 140, 0.28),
+            0 0 85px rgba(212, 175, 55, 0.16);
+        border-color: rgba(248, 217, 140, 0.82);
+    }
+    100% {
+        box-shadow:
+            0 20px 44px rgba(0, 0, 0, 0.7),
+            inset -10px -10px 24px rgba(0, 0, 0, 0.78),
+            inset 12px 12px 28px rgba(255, 243, 200, 0.42),
+            0 0 42px rgba(248, 217, 140, 0.85),
+            0 0 78px rgba(212, 175, 55, 0.5),
+            0 0 115px rgba(248, 217, 140, 0.28);
+        border-color: #FFF3D1;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .hero-xmas-bauble {
+    .hero-xmas-bauble,
+    .xmas-sphere {
         animation: none !important;
     }
 }
 
 .hero-xmas-bauble:hover {
-    filter: brightness(1.08);
+    filter: brightness(1.08) drop-shadow(0 0 26px rgba(248, 217, 140, 0.45));
 }
 
 .xmas-cord {
     width: 2px;
-    height: 65px;
-    background: linear-gradient(180deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.7) 40%, #F5DEB3 100%);
-    box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+    height: 82px;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0) 0%, rgba(248, 217, 140, 0.85) 35%, #FFF3D1 100%);
+    box-shadow: 0 0 10px rgba(248, 217, 140, 0.75);
 }
 
 .xmas-cap-wrap {
@@ -518,37 +543,35 @@ img {
 .xmas-ring {
     width: 16px;
     height: 16px;
-    border: 2px solid #D4AF37;
+    border: 2px solid #F8D98C;
     border-radius: 50%;
     margin-bottom: -5px;
-    box-shadow: 0 0 5px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 8px rgba(248, 217, 140, 0.8);
 }
 
 .xmas-cap {
-    width: 40px;
-    height: 13px;
-    background: linear-gradient(180deg, #FFF3D1 0%, #D4AF37 45%, #8C6218 100%);
+    width: 42px;
+    height: 14px;
+    background: linear-gradient(90deg, #8C6218 0%, #FFF3D1 32%, #D4AF37 55%, #FFF3D1 78%, #8C6218 100%);
     border-radius: 4px 4px 1px 1px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 0 12px rgba(248, 217, 140, 0.5);
     position: relative;
     z-index: 2;
 }
 
 .xmas-sphere {
-    width: 210px;
-    height: 210px;
+    width: 216px;
+    height: 216px;
     border-radius: 50%;
     margin-top: -3px;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at 35% 28%, #1D543A 0%, #0E291C 48%, #06160F 82%, #020805 100%);
-    border: 2px solid rgba(212, 175, 55, 0.85);
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.65),
-        inset -12px -12px 25px rgba(0, 0, 0, 0.8),
-        inset 10px 10px 22px rgba(255, 255, 255, 0.22),
-        0 0 28px rgba(212, 175, 55, 0.35);
+    background:
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.16) 0%, transparent 62%),
+        radial-gradient(circle at 32% 25%, #236647 0%, #113322 46%, #071A11 80%, #030B07 100%);
+    border: 2px solid rgba(248, 217, 140, 0.9);
+    animation: xmasWarmGlow 3.2s ease-in-out infinite alternate;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -557,24 +580,42 @@ img {
     transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
+/* Warm festive halo behind the bauble */
+.xmas-sphere::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px dashed rgba(248, 217, 140, 0.32);
+    pointer-events: none;
+}
+
+.xmas-sparkles {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1.5px 1.5px at 24% 30%, rgba(255, 243, 209, 0.9) 50%, transparent 100%),
+        radial-gradient(2px 2px at 78% 26%, rgba(248, 217, 140, 0.85) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 82% 68%, rgba(255, 243, 209, 0.85) 50%, transparent 100%),
+        radial-gradient(2px 2px at 20% 72%, rgba(248, 217, 140, 0.8) 50%, transparent 100%),
+        radial-gradient(1px 1px at 50% 16%, rgba(255, 255, 255, 0.9) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
 .hero-xmas-bauble:hover .xmas-sphere {
-    transform: scale(1.04);
-    border-color: #F8D98C;
-    box-shadow:
-        0 24px 50px rgba(0, 0, 0, 0.75),
-        inset -12px -12px 25px rgba(0, 0, 0, 0.8),
-        inset 12px 12px 26px rgba(255, 255, 255, 0.32),
-        0 0 40px rgba(212, 175, 55, 0.65);
+    transform: scale(1.045);
+    border-color: #FFFFFF;
 }
 
 .xmas-glare {
     position: absolute;
     top: 14px;
     left: 26px;
-    width: 70px;
+    width: 72px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 75%);
+    background: linear-gradient(135deg, rgba(255, 250, 230, 0.52) 0%, rgba(255, 255, 255, 0) 75%);
     transform: rotate(-32deg);
     pointer-events: none;
     filter: blur(1.5px);
@@ -586,47 +627,48 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
     color: #FFFFFF;
 }
 
 .xmas-eyebrow {
     font-size: 0.62rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.11em;
     text-transform: uppercase;
-    color: #F8D98C;
+    color: #FFE49E;
+    text-shadow: 0 0 10px rgba(248, 217, 140, 0.6);
     line-height: 1.2;
 }
 
 .xmas-heading {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 1.18rem;
+    font-weight: 800;
     line-height: 1.15;
     color: #FFFFFF;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75), 0 0 18px rgba(248, 217, 140, 0.35);
     margin: 2px 0;
 }
 
 .xmas-subtext {
     font-size: 0.74rem;
     line-height: 1.25;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
     margin-bottom: 6px;
     max-width: 155px;
 }
 
 .xmas-btn {
     display: inline-block;
-    background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
+    background: linear-gradient(135deg, #F8D98C 0%, #D4AF37 50%, #AA771C 100%);
     color: #07150E !important;
     font-size: 0.72rem;
     font-weight: 800;
-    padding: 5px 12px;
+    padding: 5px 13px;
     border-radius: 999px;
     letter-spacing: 0.02em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 14px rgba(248, 217, 140, 0.5);
     white-space: nowrap;
 }
 
@@ -634,27 +676,30 @@ img {
     display: none;
 }
 
-/* Tablet view */
-@media (max-width: 1100px) and (min-width: 769px) {
+/* Tablet view (769px – 1180px): Hängt rechts oben im Hero mit sicherem Abstand zu Titel & Buttons */
+@media (max-width: 1180px) and (min-width: 769px) {
+    .home-hero-content {
+        max-width: calc(100% - 210px);
+    }
     .hero-xmas-bauble {
-        top: 60px;
-        right: 20px;
-        width: 175px;
+        top: 0;
+        right: 24px;
+        width: 180px;
     }
     .xmas-cord {
-        height: 40px;
+        height: 58px;
     }
     .xmas-sphere {
-        width: 170px;
-        height: 170px;
+        width: 174px;
+        height: 174px;
         padding: 14px;
     }
     .xmas-heading {
-        font-size: 0.98rem;
+        font-size: 1rem;
     }
     .xmas-subtext {
         font-size: 0.68rem;
-        max-width: 130px;
+        max-width: 132px;
     }
     .xmas-btn {
         font-size: 0.68rem;
@@ -662,38 +707,46 @@ img {
     }
 }
 
-/* Mobile responsive view */
+/* Smartphone view (<= 768px): Kompaktes, festlich glühendes Banner unterhalb der Hero-Buttons */
 @media (max-width: 768px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .home-hero-content {
+        order: 1;
+        max-width: 100%;
+    }
     .hero-xmas-bauble {
-        position: static;
+        order: 2;
+        position: relative;
         top: auto;
         right: auto;
         width: 100%;
         max-width: 100%;
-        margin: 0 0 22px 0;
+        margin: 18px 0 0 0;
         animation: none;
         flex-direction: row;
         align-items: center;
-        gap: 16px;
-        background: linear-gradient(135deg, rgba(13, 34, 24, 0.92) 0%, rgba(7, 21, 14, 0.95) 100%);
-        border: 1.5px solid rgba(212, 175, 55, 0.65);
-        border-radius: 20px;
-        padding: 12px 18px;
+        gap: 14px;
+        background: linear-gradient(135deg, rgba(16, 45, 31, 0.94) 0%, rgba(7, 21, 14, 0.97) 100%);
+        border: 1.5px solid rgba(248, 217, 140, 0.8);
+        border-radius: 18px;
+        padding: 11px 16px;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 26px rgba(212, 175, 55, 0.32);
     }
     .hero-xmas-bauble .xmas-cord,
     .hero-xmas-bauble .xmas-cap-wrap {
         display: none;
     }
     .hero-xmas-bauble .xmas-sphere {
-        width: 62px;
-        height: 62px;
-        min-width: 62px;
+        width: 54px;
+        height: 54px;
+        min-width: 54px;
         margin: 0;
         border-width: 1.5px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset -4px -4px 10px rgba(0, 0, 0, 0.8), 0 0 14px rgba(212, 175, 55, 0.4);
         padding: 0;
     }
     .hero-xmas-bauble .xmas-sphere .xmas-desktop-content {
@@ -708,16 +761,16 @@ img {
         flex: 1;
     }
     .hero-xmas-bauble .xmas-mobile-content .xmas-eyebrow {
-        font-size: 0.65rem;
+        font-size: 0.64rem;
     }
     .hero-xmas-bauble .xmas-mobile-content .xmas-heading {
-        font-size: 0.98rem;
+        font-size: 0.94rem;
         line-height: 1.25;
         margin: 1px 0 4px;
         color: #FFFFFF;
     }
     .hero-xmas-bauble .xmas-mobile-content .xmas-btn {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         padding: 3px 10px;
     }
 }
